@@ -1,0 +1,8 @@
+{
+  "name": "Digital Guide Box · Jan Dennis Brüning",
+  "description": "Neuigkeiten, einfache Anleitungen und persönliche Unterstützung für deinen digitalen Alltag.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

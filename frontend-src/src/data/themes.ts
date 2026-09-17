@@ -49,7 +49,8 @@ export const NEWS_CATEGORIES: Record<string, NewsCategoryConfig> = {
   'KI & digitale Assistenz': { icon: 'sparkles', theme: 'magenta' },
   'Verträge & Abos': { icon: 'receipt', theme: 'violett' },
   'Lernen & Wissen': { icon: 'graduation', theme: 'blau' },
-  'Vorsorge & Warnungen': { icon: 'siren', theme: 'gold' }
+  'Vorsorge & Warnungen': { icon: 'siren', theme: 'gold' },
+  'Gesundheit & E-Rezept': { icon: 'heart', theme: 'gruen' }
 };
 
 export function getCategoryConfig(category: string): NewsCategoryConfig {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { getAssetUrl } from '../utils/assets';
 
 interface PreloaderProps {
   active: boolean;
@@ -35,7 +34,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ active }) => {
             </svg>
           </span>
           <span className="preloader-mark">
-            <img src={getAssetUrl('profilbild.png')} alt="" width="128" height="128" />
+            <img src="/profilbild.png" alt="" width="128" height="128" />
           </span>
         </div>
         <p>

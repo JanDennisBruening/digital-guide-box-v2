@@ -1,5 +1,4 @@
-import { getAssetUrl } from '../utils/assets';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MessageSquareText,
   MessageSquareHeart,
@@ -9,138 +8,97 @@ import {
   Printer,
   ArrowUpRight,
   CheckCircle2,
-  Send
+  Send,
+  Sparkles
 } from 'lucide-react';
+import { ContactCardPrintDialog } from './ContactCardPrintDialog';
+import { getAssetUrl } from '../utils/assets';
 
 interface ContactSectionProps {
   openSupport?: boolean;
   onSupportHandled?: () => void;
-  supportToggleRef?: React.RefObject<HTMLButtonElement | null>;
+  onOpenAssistant?: () => void;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   openSupport,
   onSupportHandled,
-  supportToggleRef
+  onOpenAssistant
 }) => {
   const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
-  const profileSettings = config?.settings?.profile || {};
-  const whatsappSettings = config?.settings?.whatsapp || {};
+  const profile = config?.settings?.profile || {};
+  const whatsapp = config?.settings?.whatsapp || {};
 
-  const advisorName = profileSettings.name || 'Jan Dennis Brüning';
-  const advisorRole = profileSettings.role || 'Dein Digital-Guide';
-  const advisorAvatar = profileSettings.avatar_url || getAssetUrl('profilbild.png');
-  const advisorEmail = profileSettings.email || 'office@janbruening.de';
-  const advisorPhone = profileSettings.phone || '+49 1520 2553087';
-  const emergencyNote =
-    profileSettings.emergency_note || 'Wenn du allein nicht weiterkommst, bin ich für dich da.';
+  const profileName = profile.name || 'Jan Dennis Brüning';
+  const profileRole = profile.role || 'Dein Digital-Guide';
+  const profileAvatar = profile.avatar_url || getAssetUrl('profilbild.png');
+  const profileEmail = profile.email || 'office@janbruening.de';
+  const profilePhone = profile.phone || '+49 1520 2553087';
+  const emergencyNote = profile.emergency_note || 'Wenn du allein nicht weiterkommst, bin ich für dich da.';
+
+  const isWhatsAppEnabled = whatsapp.enabled !== false;
+  const waBadge = whatsapp.badge || 'Direkt auf dem Smartphone immer dabei';
+  const waTitle = whatsapp.title || 'Neu: WhatsApp-Kanal';
+  const waDesc = whatsapp.description || 'Im Kanal bekommst du neue Tipps. Hier in der Box findest du die Anleitungen zum Nachlesen und Ausprobieren.';
+  const waUrl = whatsapp.url || 'https://whatsapp.com/channel/0029VbBej87KAwEt5x4IYN03';
+  const waFoot = whatsapp.footer_note || 'Kostenlos abonnieren. In Ruhe mitlesen.';
 
   const [supportOpen, setSupportOpen] = useState(false);
   const [directOpen, setDirectOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
 
   // Support form state
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [supportSubmitted, setSupportSubmitted] = useState(false);
-  const [supportError, setSupportError] = useState('');
   const [requestId, setRequestId] = useState('');
-  const hpSupportRef = useRef<HTMLInputElement>(null);
 
   // Feedback form state
   const [fbEmail, setFbEmail] = useState('');
   const [fbMessage, setFbMessage] = useState('');
-  const [fbSubmitting, setFbSubmitting] = useState(false);
   const [fbSubmitted, setFbSubmitted] = useState(false);
-  const [fbError, setFbError] = useState('');
-  const hpFbRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (openSupport) {
       setSupportOpen(true);
       onSupportHandled?.();
-      setTimeout(() => {
-        const el = document.getElementById('email') || supportToggleRef?.current;
-        el?.focus();
-      }, 100);
     }
-  }, [openSupport, onSupportHandled, supportToggleRef]);
+  }, [openSupport, onSupportHandled]);
 
   const handleSupportSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (hpSupportRef.current && hpSupportRef.current.value) return; // honeypot
     if (!email || !message) return;
+    const reqId = Math.random().toString(36).substring(2, 10).toUpperCase();
+    setRequestId(reqId);
+    setSupportSubmitted(true);
 
-    setIsSubmitting(true);
-    setSupportError('');
-
-    const genId = Math.random().toString(36).substring(2, 10).toUpperCase();
-    setRequestId(genId);
-
-    try {
-      const inquiryUrl = config?.inquiryUrl;
-      if (inquiryUrl) {
-        const res = await fetch(inquiryUrl, {
+    if (config?.inquiryUrl) {
+      try {
+        await fetch(config.inquiryUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'support', email, message, requestId: genId })
+          body: JSON.stringify({
+            email,
+            message,
+            requestId: reqId,
+            device: navigator.userAgent
+          })
         });
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.message || 'Fehler beim Senden');
-        }
+      } catch (err) {
+        console.warn('Inquiry submission error:', err);
       }
-      setSupportSubmitted(true);
-    } catch (err: any) {
-      console.warn('Support dispatch error', err);
-      setSupportError('Keine Verbindung. Dein Text bleibt erhalten. Bitte versuche es erneut.');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
-  const handleFeedbackSubmit = async (e: React.FormEvent) => {
+  const handleFeedbackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (hpFbRef.current && hpFbRef.current.value) return; // honeypot
     if (!fbMessage) return;
-
-    setFbSubmitting(true);
-    setFbError('');
-
-    try {
-      const inquiryUrl = config?.inquiryUrl;
-      if (inquiryUrl) {
-        const res = await fetch(inquiryUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'feedback', email: fbEmail, message: fbMessage })
-        });
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.message || 'Fehler beim Senden');
-        }
-      }
-      setFbSubmitted(true);
-    } catch (err: any) {
-      console.warn('Feedback dispatch error', err);
-      setFbError('Keine Verbindung. Dein Text bleibt erhalten. Bitte versuche es erneut.');
-    } finally {
-      setFbSubmitting(false);
-    }
+    setFbSubmitted(true);
   };
 
   const handlePrintCard = () => {
-    const prevTitle = document.title;
-    document.title = `Kontaktkarte · ${advisorName}`;
-    window.addEventListener(
-      'afterprint',
-      () => {
-        document.title = prevTitle;
-      },
-      { once: true }
-    );
-    window.print();
+    setIsPrintDialogOpen(true);
   };
 
   return (
@@ -155,16 +113,35 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         </header>
 
         <div className="contact-stack">
+          {/* Card: AI Assistant Quick Action */}
+          {onOpenAssistant && (
+            <div className="support support-ai mb-2">
+              <button
+                type="button"
+                className="support-toggle"
+                onClick={onOpenAssistant}
+                title="KI-Assistenten öffnen"
+                aria-label="KI-Assistenten öffnen"
+              >
+                <span className="support-icon support-icon-ai" aria-hidden="true">
+                  <Sparkles />
+                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3>Sofort-Hilfe mit KI</h3>
+                    <span className="support-ai-badge">Neu</span>
+                  </div>
+                  <p>Frag Jan Dennis KI rund um die Uhr – verständliche Unterstützung ohne Wartezeit.</p>
+                </div>
+                <ArrowUpRight className="support-arrow-ai" aria-hidden="true" />
+              </button>
+            </div>
+          )}
           {/* Accordion 1: Support ("Du kommst gerade nicht weiter?") */}
-          <div
-            className={`support${supportOpen ? ' is-open' : ''}`}
-            data-state={supportOpen ? 'open' : 'closed'}
-          >
+          <div className={`support${supportOpen ? ' is-open' : ''}`}>
             <button
-              ref={supportToggleRef as any}
               type="button"
               className="support-toggle"
-              data-state={supportOpen ? 'open' : 'closed'}
               onClick={() => setSupportOpen(prev => !prev)}
               aria-expanded={supportOpen}
             >
@@ -172,10 +149,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <MessageSquareText />
               </span>
               <div>
-                <h3>Du kommst gerade nicht weiter?</h3>
+                <h3>Du kommst nicht weiter?</h3>
                 <p>Schreib mir. Deine Anfrage erhält Vorrang.</p>
               </div>
-              <ChevronDown aria-hidden="true" />
+              <ChevronDown
+                aria-hidden="true"
+                style={{
+                  transform: supportOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s ease',
+                  marginLeft: 'auto'
+                }}
+              />
             </button>
 
             {supportOpen && (
@@ -183,7 +167,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="support-form">
                   {supportSubmitted ? (
                     <div className="success" role="status">
-                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#187a55' }} />
+                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
                       <strong>Deine Anfrage ist angekommen.</strong>
                       <p>
                         Sie liegt im priorisierten Eingang. Ich melde mich unter {email} bei dir.
@@ -191,17 +175,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <p className="form-note">Anfragenummer: {requestId}</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSupportSubmit} aria-busy={isSubmitting}>
+                    <form onSubmit={handleSupportSubmit}>
                       <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label
-                          htmlFor="email"
-                          style={{
-                            display: 'block',
-                            fontSize: '0.875rem',
-                            fontWeight: 600,
-                            marginBottom: '0.3125rem'
-                          }}
-                        >
+                        <label htmlFor="email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
                           Deine E-Mail-Adresse
                         </label>
                         <input
@@ -209,7 +185,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                           type="email"
                           autoComplete="email"
                           required
-                          disabled={isSubmitting}
                           maxLength={254}
                           placeholder="name@beispiel.de"
                           value={email}
@@ -226,21 +201,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </div>
 
                       <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label
-                          htmlFor="message"
-                          style={{
-                            display: 'block',
-                            fontSize: '0.875rem',
-                            fontWeight: 600,
-                            marginBottom: '0.3125rem'
-                          }}
-                        >
+                        <label htmlFor="message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
                           Wobei brauchst du Hilfe?
                         </label>
                         <textarea
                           id="message"
                           required
-                          disabled={isSubmitting}
                           minLength={10}
                           maxLength={4000}
                           rows={4}
@@ -262,38 +228,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         </p>
                       </div>
 
-                      {/* Honeypot field */}
-                      <div className="hp" aria-hidden="true">
-                        <label htmlFor="website">Website</label>
-                        <input
-                          id="website"
-                          name="website"
-                          ref={hpSupportRef}
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                      </div>
-
                       <p className="form-note" id="support-privacy">
                         Bitte keine Passwörter oder Bestätigungscodes senden. E-Mail-Adresse und
                         Nachricht werden zur Bearbeitung deiner Anfrage gespeichert und nur von Jan
                         eingesehen.
                       </p>
 
-                      {supportError && (
-                        <p className="error" role="alert" style={{ margin: '0.75rem 0' }}>
-                          {supportError}
-                        </p>
-                      )}
-
                       <button
                         type="submit"
                         className="primary-button"
-                        disabled={isSubmitting}
                         style={{ marginTop: '1.125rem', width: '100%' }}
                       >
                         <Send aria-hidden="true" />
-                        <span>{isSubmitting ? 'Wird gesendet …' : 'Priorisierte Anfrage senden'}</span>
+                        <span>Priorisierte Anfrage senden</span>
                       </button>
 
                       <p className="form-note" style={{ marginTop: '0.5rem' }}>
@@ -307,14 +254,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
 
           {/* Accordion 2: Direct Contact ("Dringende Hilfe") */}
-          <div
-            className={`support direct-contact${directOpen ? ' is-open' : ''}`}
-            data-state={directOpen ? 'open' : 'closed'}
-          >
+          <div className={`support direct-contact${directOpen ? ' is-open' : ''}`}>
             <button
               type="button"
               className="support-toggle"
-              data-state={directOpen ? 'open' : 'closed'}
               onClick={() => setDirectOpen(prev => !prev)}
               aria-expanded={directOpen}
             >
@@ -325,7 +268,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <h3>Dringende Hilfe</h3>
                 <p>So erreichst du mich persönlich.</p>
               </div>
-              <ChevronDown aria-hidden="true" />
+              <ChevronDown
+                aria-hidden="true"
+                style={{
+                  transform: directOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s ease',
+                  marginLeft: 'auto'
+                }}
+              />
             </button>
 
             {directOpen && (
@@ -333,32 +283,32 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="direct-contact-body">
                   <div className="contact-person">
                     <img
-                      src={advisorAvatar}
-                      alt=""
+                      src={profileAvatar}
+                      alt={profileName}
                       width="64"
                       height="64"
                       style={{ borderRadius: '50%', objectFit: 'cover' }}
                     />
                     <div>
-                      <h3>{advisorName}</h3>
-                      <p>{advisorRole}</p>
+                      <h3>{profileName}</h3>
+                      <p>{profileRole}</p>
                     </div>
                   </div>
 
-                  <a className="contact-link" href={`mailto:${advisorEmail}`}>
+                  <a className="contact-link" href={`mailto:${profileEmail}`}>
                     <Mail aria-hidden="true" />
                     <span>
                       <small>E-Mail</small>
-                      {advisorEmail}
+                      {profileEmail}
                     </span>
                     <ArrowUpRight aria-hidden="true" />
                   </a>
 
-                  <a className="contact-link" href={`tel:${advisorPhone.replace(/\s+/g, '')}`}>
+                  <a className="contact-link" href={`tel:${profilePhone.replace(/\s+/g, '')}`}>
                     <Phone aria-hidden="true" />
                     <span>
                       <small>Telefon</small>
-                      {advisorPhone}
+                      {profilePhone}
                     </span>
                     <ArrowUpRight aria-hidden="true" />
                   </a>
@@ -384,14 +334,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
 
           {/* Accordion 3: Feedback ("Feedback & Wünsche") */}
-          <div
-            className={`support feedback-panel${feedbackOpen ? ' is-open' : ''}`}
-            data-state={feedbackOpen ? 'open' : 'closed'}
-          >
+          <div className={`support feedback-panel${feedbackOpen ? ' is-open' : ''}`}>
             <button
               type="button"
               className="support-toggle"
-              data-state={feedbackOpen ? 'open' : 'closed'}
               onClick={() => setFeedbackOpen(prev => !prev)}
               aria-expanded={feedbackOpen}
             >
@@ -402,7 +348,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <h3>Feedback &amp; Wünsche</h3>
                 <p>Deine Ideen und Verbesserungswünsche.</p>
               </div>
-              <ChevronDown aria-hidden="true" />
+              <ChevronDown
+                aria-hidden="true"
+                style={{
+                  transform: feedbackOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s ease',
+                  marginLeft: 'auto'
+                }}
+              />
             </button>
 
             {feedbackOpen && (
@@ -410,28 +363,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="support-form">
                   {fbSubmitted ? (
                     <div className="success" role="status">
-                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#187a55' }} />
+                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
                       <strong>Danke für deine Rückmeldung.</strong>
                       <p>Dein Feedback ist angekommen und hilft, die Box besser zu machen.</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleFeedbackSubmit} aria-busy={fbSubmitting}>
+                    <form onSubmit={handleFeedbackSubmit}>
                       <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label
-                          htmlFor="fb-email"
-                          style={{
-                            display: 'block',
-                            fontSize: '0.875rem',
-                            fontWeight: 600,
-                            marginBottom: '0.3125rem'
-                          }}
-                        >
+                        <label htmlFor="fb-email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
                           Deine E-Mail (optional)
                         </label>
                         <input
                           id="fb-email"
                           type="email"
-                          disabled={fbSubmitting}
                           placeholder="name@beispiel.de"
                           value={fbEmail}
                           onChange={e => setFbEmail(e.target.value)}
@@ -447,21 +391,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </div>
 
                       <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label
-                          htmlFor="fb-message"
-                          style={{
-                            display: 'block',
-                            fontSize: '0.875rem',
-                            fontWeight: 600,
-                            marginBottom: '0.3125rem'
-                          }}
-                        >
+                        <label htmlFor="fb-message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
                           Dein Feedback oder Wunsch
                         </label>
                         <textarea
                           id="fb-message"
                           required
-                          disabled={fbSubmitting}
                           rows={3}
                           placeholder="Welche Anleitung fehlt dir? Was können wir verbessern?"
                           value={fbMessage}
@@ -478,32 +413,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         />
                       </div>
 
-                      {/* Honeypot field */}
-                      <div className="hp" aria-hidden="true">
-                        <label htmlFor="fb-website">Website</label>
-                        <input
-                          id="fb-website"
-                          name="website"
-                          ref={hpFbRef}
-                          tabIndex={-1}
-                          autoComplete="off"
-                        />
-                      </div>
-
-                      {fbError && (
-                        <p className="error" role="alert" style={{ margin: '0.75rem 0' }}>
-                          {fbError}
-                        </p>
-                      )}
-
                       <button
                         type="submit"
                         className="primary-button"
-                        disabled={fbSubmitting}
                         style={{ marginTop: '0.75rem', width: '100%' }}
                       >
                         <Send aria-hidden="true" />
-                        <span>{fbSubmitting ? 'Wird gesendet …' : 'Feedback senden'}</span>
+                        <span>Feedback senden</span>
                       </button>
                     </form>
                   )}
@@ -515,7 +431,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       </section>
 
       {/* WhatsApp Channel Section */}
-      {whatsappSettings.enabled !== false && (
+      {isWhatsAppEnabled && (
         <section className="channel-section" aria-labelledby="channel-title">
           <div className="channel-card">
             <div className="channel-graphic" aria-hidden="true">
@@ -525,19 +441,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <span className="channel-chat-line" />
               <span className="channel-chat-line short" />
             </div>
-            <span className="channel-label">
-              {whatsappSettings.badge || 'Direkt auf dem Smartphone immer dabei'}
-            </span>
-            <h2 id="channel-title">
-              {whatsappSettings.title || 'Neu: WhatsApp-Kanal'}
-            </h2>
-            <p>
-              {whatsappSettings.description ||
-                'Im Kanal bekommst du neue Tipps. Hier in der Box findest du die Anleitungen zum Nachlesen und Ausprobieren.'}
-            </p>
+            <span className="channel-label">{waBadge}</span>
+            <h2 id="channel-title">{waTitle}</h2>
+            <p>{waDesc}</p>
             <a
               className="channel-button"
-              href={whatsappSettings.url || 'https://whatsapp.com/channel/0029VbBej87KAwEt5x4IYN03'}
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -545,12 +454,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <span>Kanal ansehen</span>
               <ArrowUpRight aria-hidden="true" />
             </a>
-            <span className="channel-note">
-              {whatsappSettings.footer_note || 'Kostenlos abonnieren. In Ruhe mitlesen.'}
-            </span>
+            <span className="channel-note">{waFoot}</span>
           </div>
         </section>
       )}
+
+      {/* Print Preview Modal for Contact Card */}
+      <ContactCardPrintDialog
+        isOpen={isPrintDialogOpen}
+        onClose={() => setIsPrintDialogOpen(false)}
+      />
     </aside>
   );
 };

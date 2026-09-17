@@ -43,6 +43,12 @@ final class DGBC_Settings {
 				'url'         => 'https://whatsapp.com/channel/0029VbBej87KAwEt5x4IYN03',
 				'footer_note' => 'Kostenlos abonnieren. In Ruhe mitlesen.',
 			),
+			'gemini' => array(
+				'enabled'       => true,
+				'api_key'       => '',
+				'default_model' => 'gemini-2.5-flash',
+				'system_prompt' => "Du bist Jan Dennis Brüning, der empathische, geduldige und verlässliche Digital-Guide der „Digital Guide Box“.\nDeine Mission ist es, Menschen im digitalen Alltag zu begleiten und ihnen die Scheu vor moderner Technologie zu nehmen – insbesondere bei Fragen zu Smartphones (Android & iPhone), Tablets, Windows/Mac, WhatsApp, E-Mails, Internetsicherheit, Online-Banking, Online-Diensten, Kundenkonten und digitalen Formularen.\n\nDeine Kommunikationsregeln:\n1. Freundlich, ermutigend und respektvoll im herzlichen „Du“.\n2. Vermeide technisches Fachchinesisch. Wenn Fachbegriffe unumgänglich sind (wie z. B. Cloud, Cache, 2-Faktor-Authentifizierung, Browserverlauf), erkläre sie sofort mit einem einfachen Alltagsvergleich.\n3. Strukturiere Handlungsanweisungen immer in klare, nummerierte Schritte (1., 2., 3.), sodass man sie leicht nachmachen kann.\n4. Höchste Wachsamkeit bei Sicherheit: Erinnere stets daran, niemals Passwörter, PINs oder TANs per Mail/Telefon weiterzugeben und bei verdächtigen Links oder Gewinnspielen vorsichtig zu sein.\n5. Empathie & Geduld: Es gibt keine dummen Fragen. Bestärke den Nutzer darin, Dinge in Ruhe auszuprobieren.\n6. Bei sehr kniffligen Problemen oder Geräte-Hardwaredefekten: Weise freundlich darauf hin, dass man dich in der Box auch direkt über die Kontaktkarte per Mail oder Telefon erreichen kann.\n7. Formatiere deine Antworten übersichtlich mit Absätzen, fetten Hervorhebungen und Listen.",
+			),
 			'custom_news' => array(),
 		);
 	}
@@ -126,6 +132,12 @@ final class DGBC_Settings {
 		$clean['whatsapp']['description'] = isset( $input['whatsapp']['description'] ) ? sanitize_textarea_field( $input['whatsapp']['description'] ) : $defaults['whatsapp']['description'];
 		$clean['whatsapp']['url']         = isset( $input['whatsapp']['url'] ) ? esc_url_raw( $input['whatsapp']['url'] ) : $defaults['whatsapp']['url'];
 		$clean['whatsapp']['footer_note'] = isset( $input['whatsapp']['footer_note'] ) ? sanitize_text_field( $input['whatsapp']['footer_note'] ) : $defaults['whatsapp']['footer_note'];
+
+		// Gemini
+		$clean['gemini']['enabled']       = ! empty( $input['gemini']['enabled'] );
+		$clean['gemini']['api_key']       = isset( $input['gemini']['api_key'] ) ? trim( sanitize_text_field( $input['gemini']['api_key'] ) ) : '';
+		$clean['gemini']['default_model'] = ! empty( $input['gemini']['default_model'] ) ? sanitize_text_field( $input['gemini']['default_model'] ) : 'gemini-2.5-flash';
+		$clean['gemini']['system_prompt'] = isset( $input['gemini']['system_prompt'] ) ? sanitize_textarea_field( $input['gemini']['system_prompt'] ) : $defaults['gemini']['system_prompt'];
 
 		// Custom News
 		$clean['custom_news'] = array();

@@ -15,12 +15,17 @@ import {
   Target,
   LifeBuoy,
   Lightbulb,
-  UsersRound
+  UsersRound,
+  Sparkles,
+  Check,
+  CheckCircle2,
+  Printer
 } from 'lucide-react';
 import { Guide, NewsItem, SelectionState } from '../types';
 import { getGuideStyles, getNewsStyles } from '../data/themes';
 import { GuideIcon, getStepIcon } from './GuideIcon';
 import { NewsAssessmentView } from './NewsAssessmentView';
+import { openGuidePrintWindow } from '../utils/pdfGenerator';
 
 function formatGermanDate(isoString: string): string {
   try {
@@ -41,6 +46,7 @@ interface ReadingDialogProps {
   allGuides: Guide[];
   allNews: NewsItem[];
   onSelectRelated: (selection: SelectionState) => void;
+  onAskAssistant?: (prompt: string) => void;
 }
 
 export const ReadingDialog: React.FC<ReadingDialogProps> = ({
@@ -48,7 +54,8 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
   onClose,
   allGuides,
   allNews,
-  onSelectRelated
+  onSelectRelated,
+  onAskAssistant
 }) => {
   const [stepIndex, setStepIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
@@ -85,14 +92,11 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
 
   const relatedGuides = isGuide
     ? allGuides.filter(g => g.id !== guide!.id && g.category === guide!.category).slice(0, 2)
-    : (newsItem?.guideIds ?? []).flatMap(id => {
-        const g = allGuides.find(x => x.id === id);
-        return g ? [g] : [];
-      });
+    : allGuides.filter(g => g.category.includes(newsItem!.category) || newsItem!.category.includes(g.category)).slice(0, 2);
 
   const relatedNews = !isGuide
     ? allNews.filter(n => n.id !== newsItem!.id && n.category === newsItem!.category).slice(0, 2)
-    : allNews.filter(n => (n.guideIds && n.guideIds.includes(guide!.id)) || n.category === guide!.category).slice(0, 2);
+    : allNews.filter(n => n.category.includes(guide!.category) || guide!.category.includes(n.category)).slice(0, 2);
 
   const themeStyles = isGuide
     ? getGuideStyles(guide?.theme)
@@ -185,17 +189,17 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
               </div>
 
               {isGuide && guide && (
-                <a
-                  className="pdf-access"
-                  href={`/api/pdf/${guide.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  className="pdf-access cursor-pointer"
+                  onClick={() => openGuidePrintWindow(guide)}
+                  aria-label="Anleitung drucken oder als PDF speichern"
                 >
-                  <FileText className="pdf-access-icon" aria-hidden="true" />
+                  <Printer className="pdf-access-icon" aria-hidden="true" />
                   <strong>Drucken / PDF</strong>
-                  <small>1 Seite · speichern oder drucken</small>
+                  <small>Druckfertige A4-Ansicht · speichern oder drucken</small>
                   <ArrowUpRight className="pdf-access-arrow" aria-hidden="true" />
-                </a>
+                </button>
               )}
             </div>
           </div>
@@ -225,12 +229,12 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                   className="walkthrough"
                   aria-labelledby={`${walkthroughId}-title`}
                 >
-                  <header className="walkthrough-heading">
+                  <header className="walkthrough-heading flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div>
-                      <h2 id={`${walkthroughId}-title`}>
+                      <h2 id={`${walkthroughId}-title`} className="text-xl sm:text-2xl font-bold text-slate-900 font-heading">
                         {isExplain ? 'In Ruhe verstehen' : 'Schritt für Schritt'}
                       </h2>
-                      <p>
+                      <p className="text-sm text-slate-600 font-body mt-0.5">
                         {isExplain
                           ? 'Lies einen Abschnitt nach dem anderen.'
                           : 'Lies zuerst den Schritt und probiere ihn dann auf deinem Gerät aus.'}
@@ -238,12 +242,12 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                     </div>
                     <button
                       type="button"
-                      className="walkthrough-overview"
+                      className="walkthrough-overview inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-700 hover:text-slate-900 border border-slate-200/90 shadow-2xs hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer whitespace-nowrap self-start sm:self-center"
                       aria-controls={walkthroughId}
                       aria-pressed={showAll}
                       onClick={() => setShowAll(prev => !prev)}
                     >
-                      <List aria-hidden="true" />
+                      <List className="w-4 h-4 text-slate-500 flex-shrink-0" aria-hidden="true" />
                       <span>
                         {showAll
                           ? 'Einzeln ansehen'
@@ -257,28 +261,42 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                       className="walkthrough-position"
                       aria-label={`${stepLabel} auswählen`}
                     >
-                      <span>
-                        {stepLabel} {stepIndex + 1} von {guide.steps.length}
-                      </span>
-                      <ol>
-                        {guide.steps.map((s, idx) => (
-                          <li key={s.title}>
-                            <button
-                              type="button"
-                              aria-current={idx === stepIndex ? 'step' : undefined}
-                              aria-controls={walkthroughId}
-                              aria-label={`${stepLabel} ${idx + 1}: ${s.title}`}
-                              onClick={() => handleStepJump(idx)}
-                              style={{
-                                fontWeight: idx === stepIndex ? 700 : 500,
-                                background: idx === stepIndex ? 'var(--guide-color)' : '#fff',
-                                color: idx === stepIndex ? '#fff' : 'inherit'
-                              }}
-                            >
-                              {idx + 1}
-                            </button>
-                          </li>
-                        ))}
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-200/90 shadow-2xs">
+                          {stepLabel} <span style={{ color: 'var(--guide-color, #235cbb)' }}>{stepIndex + 1}</span> von {guide.steps.length}
+                        </span>
+                      </div>
+
+                      <ol className="flex items-center gap-1.5 m-0 p-0 list-none">
+                        {guide.steps.map((s, idx) => {
+                          const isActive = idx === stepIndex;
+                          return (
+                            <li key={s.title || idx}>
+                              <button
+                                type="button"
+                                aria-current={isActive ? 'step' : undefined}
+                                aria-controls={walkthroughId}
+                                aria-label={`${stepLabel} ${idx + 1}: ${s.title}`}
+                                onClick={() => handleStepJump(idx)}
+                                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center transition-all cursor-pointer ${
+                                  isActive
+                                    ? 'text-white shadow-xs scale-105'
+                                    : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 hover:border-slate-400'
+                                }`}
+                                style={
+                                  isActive
+                                    ? {
+                                        background: 'var(--guide-color, #235cbb)',
+                                        borderColor: 'var(--guide-color, #235cbb)'
+                                      }
+                                    : {}
+                                }
+                              >
+                                {idx + 1}
+                              </button>
+                            </li>
+                          );
+                        })}
                       </ol>
                     </nav>
                   )}
@@ -292,7 +310,7 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                       if (!showAll && idx !== stepIndex) return null;
                       const StepIcon = getStepIcon(guide.id, idx);
                       return (
-                        <li key={idx} value={idx + 1}>
+                        <li key={idx} value={idx + 1} className="transition-all">
                           <div className="learning-step-symbol" aria-hidden="true">
                             <StepIcon aria-hidden="true" />
                           </div>
@@ -307,6 +325,15 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                               {step.title}
                             </h3>
                             <p>{step.text}</p>
+
+                            {step.check && (
+                              <div className="mt-3 p-3 rounded-xl bg-slate-50/90 border border-slate-200 text-xs sm:text-sm text-slate-800 flex items-start gap-2.5">
+                                <CheckCircle2 className="w-4 h-4 text-[#235cbb] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                                <div className="leading-relaxed">
+                                  <strong className="text-slate-900 font-bold">Erfolgs-Check:</strong> {step.check}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </li>
                       );
@@ -314,28 +341,37 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                   </ol>
 
                   {!showAll && (
-                    <div className="walkthrough-navigation">
+                    <div className="walkthrough-navigation flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-6 pt-5 border-t border-slate-200">
                       <button
                         type="button"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 text-sm font-semibold shadow-2xs hover:bg-slate-50 hover:text-slate-900 active:bg-slate-100 disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:bg-white transition-all cursor-pointer"
                         disabled={stepIndex === 0}
                         onClick={() => setStepIndex(s => Math.max(0, s - 1))}
                       >
-                        <ArrowLeft aria-hidden="true" />
+                        <ArrowLeft className="w-4 h-4 text-slate-500" aria-hidden="true" />
                         <span>Zurück</span>
                       </button>
 
                       {stepIndex < guide.steps.length - 1 ? (
                         <button
                           type="button"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold shadow-xs hover:brightness-95 active:brightness-90 transition-all cursor-pointer sm:ml-auto"
+                          style={{
+                            background: 'var(--guide-color, #235cbb)',
+                            borderColor: 'var(--guide-color, #235cbb)'
+                          }}
                           onClick={() => setStepIndex(s => Math.min(guide.steps.length - 1, s + 1))}
                         >
                           <span>
                             Weiter zu {stepLabel} {stepIndex + 2}
                           </span>
-                          <ArrowRight aria-hidden="true" />
+                          <ArrowRight className="w-4 h-4" aria-hidden="true" />
                         </button>
                       ) : (
-                        <span>Letzter {stepLabel} · du kannst jederzeit zurückblättern.</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-medium sm:ml-auto">
+                          <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                          <span>Letzter {stepLabel} · du kannst jederzeit zurückblättern.</span>
+                        </div>
                       )}
                     </div>
                   )}
@@ -427,6 +463,41 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                     <p>{newsItem.tip}</p>
                   </aside>
                 )}
+              </div>
+            )}
+
+            {/* Ask Jan Dennis AI about this topic */}
+            {onAskAssistant && (
+              <div className="my-6 p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                <div className="flex items-center gap-3 min-w-0">
+                  <img
+                    src="/profilbild.png"
+                    alt="Jan Dennis"
+                    className="w-10 h-10 rounded-full border border-blue-300 object-cover bg-white flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <h4 className="text-base font-bold text-slate-900 flex items-center gap-1.5 font-heading tracking-wide">
+                      <Sparkles className="w-4 h-4 text-[#235cbb] flex-shrink-0" />
+                      <span>Frage zu diesem Thema?</span>
+                    </h4>
+                    <p className="text-xs text-slate-600 font-body mt-0.5">
+                      Frag Jan Dennis direkt im neuen KI-Assistenten.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const title = selection.item.title;
+                    const prompt = `Hallo Jan Dennis! Ich lese gerade „${title}“ und habe dazu eine Frage: `;
+                    onClose();
+                    onAskAssistant(prompt);
+                  }}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#235cbb] hover:bg-[#1b4a99] active:bg-[#153b7b] text-white rounded-xl text-xs font-semibold font-body transition-colors shadow-xs whitespace-nowrap flex-shrink-0 self-start sm:self-auto cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span>Jan Dennis (KI) fragen</span>
+                </button>
               </div>
             )}
 

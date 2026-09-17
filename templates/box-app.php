@@ -11,6 +11,7 @@ $assets_url  = DGBC_URL . 'assets/';
 $verify_url  = rest_url( 'digital-guide-box-v2/v1/verify' );
 $lock_url    = rest_url( 'digital-guide-box-v2/v1/lock' );
 $inquiry_url = rest_url( 'digital-guide-box-v2/v1/inquiry' );
+$chat_url    = rest_url( 'digital-guide-box-v2/v1/chat' );
 $password    = DGBC_Auth::get_expected_password();
 $settings    = DGBC_Settings::get_all();
 
@@ -39,6 +40,7 @@ $fav_icon = ! empty( $settings['profile']['avatar_url'] )
         verifyUrl: <?php echo wp_json_encode( $verify_url ); ?>,
         lockUrl: <?php echo wp_json_encode( $lock_url ); ?>,
         inquiryUrl: <?php echo wp_json_encode( $inquiry_url ); ?>,
+        chatUrl: <?php echo wp_json_encode( $chat_url ); ?>,
         siteUrl: <?php echo wp_json_encode( home_url() ); ?>,
         password: <?php echo wp_json_encode( $password ); ?>,
         settings: <?php echo wp_json_encode( $settings ); ?>

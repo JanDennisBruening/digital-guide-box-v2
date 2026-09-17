@@ -59,6 +59,10 @@ final class DGBC_Admin {
 				$wa_input = (array) $_POST['whatsapp'];
 				$wa_input['enabled'] = ! empty( $_POST['whatsapp']['enabled'] );
 				$current['whatsapp'] = array_merge( $current['whatsapp'], $wa_input );
+			} elseif ( 'gemini' === $tab && isset( $_POST['gemini'] ) ) {
+				$gem_input = (array) $_POST['gemini'];
+				$gem_input['enabled'] = ! empty( $_POST['gemini']['enabled'] );
+				$current['gemini'] = array_merge( $current['gemini'] ?? array(), $gem_input );
 			}
 
 			DGBC_Settings::update_all( $current );
@@ -164,6 +168,7 @@ final class DGBC_Admin {
 			'gate'     => '🚪 Eingangstor / Begrüßung',
 			'profile'  => '👤 Profil & Beraterkontakt',
 			'whatsapp' => '💬 WhatsApp-Kanal',
+			'gemini'   => '🤖 KI-Assistent (Gemini)',
 			'news'     => '📰 Eigene Neuigkeiten (' . count( $settings['custom_news'] ) . ')',
 			'inbox'    => '📥 Posteingang',
 		);
@@ -468,6 +473,76 @@ final class DGBC_Admin {
 						</table>
 						<p class="submit">
 							<input type="submit" name="dgbc_save_settings" class="button button-primary" value="WhatsApp-Einstellungen speichern" />
+						</p>
+					</form>
+
+				<!-- TAB: GEMINI KI-ASSISTENT -->
+				<?php elseif ( 'gemini' === $active_tab ) : 
+					$gemini = $settings['gemini'] ?? DGBC_Settings::get_defaults()['gemini'];
+					$has_api_key = ! empty( $gemini['api_key'] );
+				?>
+					<form method="post" action="">
+						<?php wp_nonce_field( 'dgbc_settings_nonce_action', 'dgbc_settings_nonce' ); ?>
+						<input type="hidden" name="dgbc_current_tab" value="gemini" />
+						<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">🤖 KI-Assistent (Google Gemini)</h2>
+						<p style="color:#555;">Der integrierte KI-Assistent steht deinen Nutzerinnen und Nutzern in der Digital Guide Box geduldig zur Seite, erklärt Schritte einfach und nimmt Scheu vor digitaler Technik.</p>
+
+						<div style="background: <?php echo $has_api_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_api_key ? '#22c55e' : '#f59e0b'; ?>; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px;">
+							<?php if ( $has_api_key ) : ?>
+								<strong style="color:#166534;display:block;">✓ Google Gemini API-Schlüssel ist hinterlegt und aktiv.</strong>
+								<span style="font-size:13px;color:#15803d;">Der KI-Assistent kann in der Digital Guide Box Anfragen beantworten.</span>
+							<?php else : ?>
+								<strong style="color:#92400e;display:block;">⚠️ Noch kein Gemini API-Schlüssel hinterlegt</strong>
+								<span style="font-size:13px;color:#b45309;">
+									Um den KI-Assistenten zu nutzen, erstelle bitte einen kostenlosen API-Schlüssel in 
+									<a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">Google AI Studio (hier klicken) ↗</a> 
+									und trage ihn unten ein.
+								</span>
+							<?php endif; ?>
+						</div>
+
+						<table class="form-table" role="presentation">
+							<tr>
+								<th scope="row">KI-Assistent aktivieren</th>
+								<td>
+									<label>
+										<input type="checkbox" name="gemini[enabled]" value="1" <?php checked( ! empty( $gemini['enabled'] ) ); ?> />
+										<strong>KI-Assistent in der Digital Guide Box verfügbar machen</strong>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="gemini_api_key">Gemini API-Schlüssel</label></th>
+								<td>
+									<input name="gemini[api_key]" type="password" id="gemini_api_key" value="<?php echo esc_attr( $gemini['api_key'] ); ?>" class="large-text" placeholder="AIzaSy..." />
+									<button type="button" class="button button-secondary" style="margin-top:6px;" onclick="const f=document.getElementById('gemini_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">
+										Anzeigen / Verbergen
+									</button>
+									<p class="description">Wird sicher im WordPress-Backend gespeichert und niemals im Browser-Quellcode an die Besucher übertragen.</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="gemini_default_model">Standard-KI-Modell</label></th>
+								<td>
+									<select name="gemini[default_model]" id="gemini_default_model">
+										<option value="gemini-2.5-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.5-flash' ); ?>>Gemini 2.5 Flash (Empfohlen – schnell, modern, ideal für Alltagshilfe)</option>
+										<option value="gemini-2.5-pro" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.5-pro' ); ?>>Gemini 2.5 Pro (Für besonders anspruchsvolle, komplexe Aufgaben)</option>
+										<option value="gemini-2.0-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.0-flash' ); ?>>Gemini 2.0 Flash (Sehr schnelle Reaktionszeit)</option>
+										<option value="gemini-1.5-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash (Bewährtes Basis-Modell)</option>
+									</select>
+									<p class="description">Wähle das bevorzugte Gemini-Modell für die Standard-Antworten.</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="gemini_prompt">Persönlichkeit &amp; System-Prompt</label></th>
+								<td>
+									<textarea name="gemini[system_prompt]" id="gemini_prompt" rows="8" class="large-text" style="font-family:monospace;font-size:12px;"><?php echo esc_textarea( $gemini['system_prompt'] ); ?></textarea>
+									<p class="description">Definiert Tonfall, Verhaltensregeln und Zielgruppe des KI-Assistenten.</p>
+								</td>
+							</tr>
+						</table>
+						<p class="submit">
+							<input type="submit" name="dgbc_save_settings" class="button button-primary" value="KI-Einstellungen speichern" />
 						</p>
 					</form>
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SlidersHorizontal, X, Type, RotateCcw, Eye } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { SlidersHorizontal, X, Type, RotateCcw } from 'lucide-react';
 import { AppearanceSettings } from '../types';
 
 const STORAGE_KEY = 'digital-guide-box:appearance:v1';
@@ -41,36 +41,11 @@ export const AppearanceModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState<AppearanceSettings>(DEFAULT_APPEARANCE);
   const [persisted, setPersisted] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const initial = initializeAppearance();
     setSettings(initial);
   }, []);
-
-  // Close when clicking outside or pressing Escape
-  useEffect(() => {
-    if (!isOpen) return;
-
-    function handleClickOutside(e: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
 
   const update = (newSettings: AppearanceSettings) => {
     setSettings(newSettings);
@@ -84,199 +59,163 @@ export const AppearanceModal: React.FC = () => {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="appearance-popover-container"
-      style={{ position: 'relative', display: 'inline-block' }}
-    >
+    <>
       <button
         data-slot="popover-trigger"
         type="button"
-        className="appearance-trigger"
-        onClick={() => setIsOpen(open => !open)}
+        className="appearance-trigger inline-flex items-center gap-2 rounded-md text-sm font-medium"
+        onClick={() => setIsOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
       >
-        <SlidersHorizontal aria-hidden="true" />
+        <SlidersHorizontal className="w-4 h-4" aria-hidden="true" />
         <span>Ansicht anpassen</span>
       </button>
 
       {isOpen && (
         <div
-          data-slot="popover-content"
-          className="appearance-panel"
+          className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs"
           role="dialog"
-          aria-labelledby="appearance-title"
-          aria-describedby="appearance-description"
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 8px)',
-            right: 0,
-            background: '#ffffff',
-            zIndex: 60
-          }}
+          aria-modal="true"
+          aria-label="Deine Ansicht"
+          onClick={() => setIsOpen(false)}
         >
-          <header className="appearance-heading">
-            <h2 id="appearance-title">Deine Ansicht</h2>
-            <button
-              type="button"
-              className="appearance-close"
-              aria-label="Ansichtseinstellungen schließen"
-              onClick={() => setIsOpen(false)}
-            >
-              <X aria-hidden="true" />
-            </button>
-          </header>
+          <div
+            className="appearance-panel"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="appearance-heading">
+              <h2>Deine Ansicht</h2>
+              <button
+                type="button"
+                className="appearance-close"
+                aria-label="Ansichtseinstellungen schließen"
+                onClick={() => setIsOpen(false)}
+              >
+                <X aria-hidden="true" />
+              </button>
+            </div>
 
-          <p id="appearance-description">
-            Stell die Box so ein, wie sie für dich angenehm ist.
-          </p>
+            <p style={{ margin: '0.5rem 0 1.25rem', fontSize: '0.875rem', color: '#59687e' }}>
+              Stell die Box so ein, wie sie für dich angenehm ist.
+            </p>
 
-          {/* Font Size */}
-          <fieldset>
-            <legend>
-              <Type aria-hidden="true" />
-              <span>Schriftgröße</span>
-            </legend>
-            <div className="appearance-options" role="radiogroup" aria-label="Schriftgröße">
-              {(
-                [
-                  ['standard', 'Standard'],
-                  ['large', 'Größer'],
-                  ['larger', 'Noch größer']
-                ] as const
-              ).map(([val, label]) => {
-                const isChecked = settings.font === val;
-                return (
+            {/* Font Size */}
+            <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.25rem' }}>
+              <legend style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                <Type className="w-4 h-4" aria-hidden="true" />
+                Schriftgröße
+              </legend>
+              <div className="appearance-options" role="radiogroup">
+                {(
+                  [
+                    ['standard', 'Standard'],
+                    ['large', 'Größer'],
+                    ['larger', 'Noch größer']
+                  ] as const
+                ).map(([val, label]) => (
                   <label
                     key={val}
-                    className="appearance-option"
-                    onClick={() => update({ ...settings, font: val })}
+                    className={`appearance-option${settings.font === val ? ' is-active' : ''}`}
+                    style={{
+                      borderColor: settings.font === val ? '#164781' : undefined,
+                      background: settings.font === val ? '#eef3fd' : undefined,
+                      color: settings.font === val ? '#164781' : undefined,
+                      fontWeight: settings.font === val ? 600 : undefined
+                    }}
                   >
-                    <button
-                      type="button"
-                      role="radio"
-                      data-slot="radio-group-item"
-                      data-state={isChecked ? 'checked' : 'unchecked'}
-                      aria-checked={isChecked}
-                      className="aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] flex items-center justify-center"
-                      style={{
-                        borderColor: isChecked ? '#235cbb' : '#94a3b8'
-                      }}
-                    >
-                      {isChecked && (
-                        <span
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: '#235cbb', display: 'block' }}
-                        />
-                      )}
-                    </button>
+                    <input
+                      type="radio"
+                      name="fontSize"
+                      value={val}
+                      checked={settings.font === val}
+                      onChange={() => update({ ...settings, font: val })}
+                      className="sr-only"
+                    />
                     <span>{label}</span>
                   </label>
-                );
-              })}
-            </div>
-          </fieldset>
+                ))}
+              </div>
+            </fieldset>
 
-          {/* Contrast */}
-          <div className="appearance-contrast">
-            <label htmlFor="appearance-contrast" style={{ cursor: 'pointer' }}>
-              <Eye aria-hidden="true" />
-              <span>
-                Stärkerer Kontrast
-                <small>Dunklere Schrift und klarere Rahmen</small>
-              </span>
-            </label>
-            <button
-              type="button"
-              role="switch"
-              id="appearance-contrast"
-              data-slot="switch"
-              data-state={settings.contrast ? 'checked' : 'unchecked'}
-              aria-checked={settings.contrast}
-              onClick={() => update({ ...settings, contrast: !settings.contrast })}
-              className="peer group/switch inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all"
-              style={{
-                cursor: 'pointer',
-                backgroundColor: settings.contrast ? '#235cbb' : '#cbd5e1'
-              }}
-            >
-              <span
-                data-slot="switch-thumb"
-                data-state={settings.contrast ? 'checked' : 'unchecked'}
-                className="pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform"
+            {/* Contrast */}
+            <div className="appearance-contrast">
+              <label htmlFor="appearance-contrast" style={{ cursor: 'pointer' }}>
+                <strong style={{ display: 'block', fontSize: '0.875rem' }}>Stärkerer Kontrast</strong>
+                <small style={{ color: '#59687e', fontSize: '0.75rem' }}>Dunklere Schrift und klarere Rahmen</small>
+              </label>
+              <input
+                type="checkbox"
+                id="appearance-contrast"
+                checked={settings.contrast}
+                onChange={e => update({ ...settings, contrast: e.target.checked })}
+                style={{ width: '1.25rem', height: '1.25rem', accentColor: '#164781', cursor: 'pointer' }}
               />
-            </button>
-          </div>
+            </div>
 
-          {/* Background Theme */}
-          <fieldset>
-            <legend>Hintergrund</legend>
-            <div
-              className="appearance-options background-options"
-              role="radiogroup"
-              aria-label="Hintergrund"
-            >
-              {(
-                [
-                  ['brand', 'Original'],
-                  ['blue', 'Blau'],
-                  ['calm', 'Ruhig']
-                ] as const
-              ).map(([val, label]) => {
-                const isChecked = settings.background === val;
-                return (
+            {/* Background Theme */}
+            <fieldset style={{ border: 'none', padding: 0, margin: '1.25rem 0' }}>
+              <legend style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.5rem' }}>Hintergrund</legend>
+              <div
+                className="appearance-options background-options"
+                role="radiogroup"
+              >
+                {(
+                  [
+                    ['brand', 'Original', '#243e52'],
+                    ['blue', 'Blau', '#1d4875'],
+                    ['calm', 'Ruhig', '#2c3e38']
+                  ] as const
+                ).map(([val, label, bgHex]) => (
                   <label
                     key={val}
-                    className="appearance-option"
-                    onClick={() => update({ ...settings, background: val })}
+                    className={`appearance-option${settings.background === val ? ' is-active' : ''}`}
+                    style={{
+                      borderColor: settings.background === val ? '#164781' : undefined,
+                      background: settings.background === val ? '#eef3fd' : undefined,
+                      color: settings.background === val ? '#164781' : undefined,
+                      fontWeight: settings.background === val ? 600 : undefined
+                    }}
                   >
-                    <button
-                      type="button"
-                      role="radio"
-                      data-slot="radio-group-item"
-                      data-state={isChecked ? 'checked' : 'unchecked'}
-                      aria-checked={isChecked}
-                      className="aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] flex items-center justify-center"
-                      style={{
-                        borderColor: isChecked ? '#235cbb' : '#94a3b8'
-                      }}
-                    >
-                      {isChecked && (
-                        <span
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: '#235cbb', display: 'block' }}
-                        />
-                      )}
-                    </button>
+                    <input
+                      type="radio"
+                      name="bgTheme"
+                      value={val}
+                      checked={settings.background === val}
+                      onChange={() => update({ ...settings, background: val })}
+                      className="sr-only"
+                    />
                     <span
                       className={`appearance-swatch swatch-${val}`}
+                      style={{ background: bgHex }}
                       aria-hidden="true"
                     />
                     <span>{label}</span>
                   </label>
-                );
-              })}
-            </div>
-          </fieldset>
+                ))}
+              </div>
+            </fieldset>
 
-          {/* Reset Button */}
-          <button
-            type="button"
-            className="appearance-reset"
-            onClick={() => update(DEFAULT_APPEARANCE)}
-          >
-            <RotateCcw aria-hidden="true" />
-            <span>Zurücksetzen</span>
-          </button>
+            {/* Reset Button */}
+            <button
+              type="button"
+              className="appearance-reset"
+              onClick={() => update(DEFAULT_APPEARANCE)}
+              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', cursor: 'pointer' }}
+            >
+              <RotateCcw className="w-4 h-4" aria-hidden="true" />
+              <span>Zurücksetzen</span>
+            </button>
 
-          <p className="appearance-note">
-            {persisted
-              ? 'Deine Auswahl wird auf diesem Gerät gemerkt.'
-              : 'Deine Auswahl gilt, solange diese Seite geöffnet ist.'}
-          </p>
+            <p className="appearance-note">
+              {persisted
+                ? 'Deine Auswahl wird auf diesem Gerät gemerkt.'
+                : 'Deine Auswahl gilt, solange diese Seite geöffnet ist.'}
+            </p>
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
+

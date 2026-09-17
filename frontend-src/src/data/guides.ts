@@ -1,1794 +1,1626 @@
-import { Guide } from "../types";
+import { Guide } from '../types';
 
 export const ALL_GUIDES: Guide[] = [
   {
-    "id": "whatsapp",
-    "title": "WhatsApp",
-    "subtitle": "Nachrichten schreiben und in Kontakt bleiben.",
-    "category": "Kommunikation",
-    "minutes": 5,
-    "scope": "Smartphone · WhatsApp bereits eingerichtet",
-    "steps": [
-      {
-        "title": "Einen Chat öffnen",
-        "text": "Öffne WhatsApp und gehe zu „Chats“. Tippe auf das Symbol für einen neuen Chat und wähle eine vertraute Person aus. Bestehende Gespräche öffnest du direkt in der Liste.",
-        "shortText": "WhatsApp öffnen, „Chats“ wählen und das Gespräch mit einer vertrauten Person öffnen."
-      },
-      {
-        "title": "Eine Nachricht senden",
-        "text": "Tippe in das Textfeld, schreibe einen kurzen Gruß und tippe auf den Sendepfeil. Kontrolliere vorher den Namen oben, damit die Nachricht an die richtige Person geht.",
-        "shortText": "Namen prüfen, in das Textfeld tippen, Gruß schreiben und mit dem Sendepfeil abschicken."
-      },
-      {
-        "title": "Bei Bedarf ein Foto teilen",
-        "text": "Möchtest du zusätzlich ein Foto senden? Tippe im Chat auf Plus oder Büroklammer und wähle ein Foto. Prüfe die Vorschau vor dem Senden. Teile Bilder anderer Menschen nur mit deren Einverständnis. Für einen einfachen Gruß kannst du diesen Schritt überspringen.",
-        "shortText": "Nur bei Bedarf: Über Plus oder Büroklammer ein Foto wählen. Vorschau und Einverständnis der abgebildeten Person prüfen."
-      },
-      {
-        "title": "Eine Antwort finden",
-        "text": "Kehre zur Chatliste zurück und öffne das Gespräch erneut. Neue Nachrichten stehen unten im Verlauf. Zum Antworten nutzt du wieder das Textfeld.",
-        "shortText": "Zur Chatliste zurückgehen und das Gespräch erneut öffnen. Antworten stehen unten im Verlauf."
-      }
-    ],
-    "tip": "Übe zuerst mit einer vertrauten Person. Gib Bestätigungs- oder Registrierungscodes niemals weiter. Symbole und ihre Position können je nach Gerät und App-Version abweichen.",
-    "sources": [
-      {
-        "title": "WhatsApp-Hilfebereich (zum Nachschlagen)",
-        "url": "https://faq.whatsapp.com/"
-      }
-    ],
-    "theme": "gruen",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest jemandem einen Gruß schicken und später die Antwort wiederfinden. Wir beginnen mit einer vertrauten Person.",
-      "preparation": [
-        "WhatsApp ist auf deinem Smartphone bereits eingerichtet.",
-        "Wähle zum Üben eine Person, die mit einer Nachricht von dir rechnet."
-      ],
-      "result": "Öffne das Gespräch erneut: Steht dein Gruß im Verlauf und stimmt der Name oben? Eine Antwort erscheint im selben Gespräch.",
-      "ifStuck": "Siehst du andere Symbole? Suche nach dem Namen der Funktion. Bei der Frage nach einem Registrierungscode halte an und gib den Code niemandem weiter."
+    id: 'whatsapp',
+    title: 'Eine Nachricht schreiben',
+    subtitle: 'Mit WhatsApp in Kontakt bleiben.',
+    category: 'Kommunikation',
+    theme: 'gruen',
+    minutes: 3,
+    updatedAt: '2026-09-12',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'WhatsApp ist der einfachste Weg, um mit Kindern, Enkeln und Freunden in Kontakt zu bleiben, ohne SMS-Gebühren zu zahlen.',
+      preparation: [
+        'WhatsApp auf deinem Smartphone geöffnet',
+        'Die Telefonnummer deines Kontakts im Adressbuch gespeichert',
+        'Eine aktive Internetverbindung (WLAN oder mobile Daten)'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Chat öffnen',
+        text: 'Tippe auf das grüne WhatsApp-Symbol auf deinem Startbildschirm. Wähle in der Chat-Übersicht den Namen der Person aus, der du schreiben möchtest, oder tippe unten rechts auf das grüne Sprechblasen-Symbol, um einen neuen Kontakt zu wählen.',
+        check: 'Siehst du den Namen der Person oben und unten eine leere weiße Zeile?',
+        icon: 'contact-round'
+      },
+      {
+        title: 'Nachricht eingeben',
+        text: 'Tippe unten in das weiße Textfeld mit dem Hinweistext „Nachricht schreiben“. Sofort klappt deine Tastatur auf. Tippe deinen Text ein. Fehler korrigierst du mit der Rückschritt-Taste mit dem kleinen Kreuz oben rechts auf der Tastatur.',
+        check: 'Steht dein geschriebener Text im Eingabefeld?',
+        icon: 'send'
+      },
+      {
+        title: 'Foto oder Sprachnachricht beifügen (optional)',
+        text: 'Möchtest du ein Foto mitsenden? Tippe auf die kleine Büroklammer (Android) oder das Plus-Zeichen (iPhone) neben dem Eingabefeld und wähle „Galerie“ oder „Fotos“. Für eine Sprachnachricht hältst du das grüne Mikrofon-Symbol gedrückt, während du sprichst.',
+        check: 'Wurde das ausgewählte Foto als Vorschau angezeigt?',
+        icon: 'paperclip'
+      },
+      {
+        title: 'Absenden und Haken verstehen',
+        text: 'Tippe rechts neben dem Textfeld auf den grünen Kreis mit dem kleinen Papierflieger. Deine Nachricht wird sofort versendet. Ein grauer Haken bedeutet: abgeschickt. Zwei graue Haken: auf dem Empfängergerät angekommen. Zwei blaue Haken: die Nachricht wurde geöffnet und gelesen.',
+        check: 'Erscheint deine Nachricht in einer grünen Sprechblase auf der rechten Bildschirmseite?',
+        icon: 'message-circle'
+      }
+    ],
+    sources: [
+      { title: 'Offizielle WhatsApp-Hilfe für Chats', url: 'https://faq.whatsapp.com/5913398998672934' }
+    ]
   },
   {
-    "id": "google-konto",
-    "title": "Google-Konto",
-    "subtitle": "Das eigene Konto verstehen und absichern.",
-    "category": "Konten",
-    "minutes": 5,
-    "scope": "Browser · persönliches Google-Konto",
-    "steps": [
-      {
-        "title": "Erst prüfen, ob du ein Konto hast",
-        "text": "Nutzt du bereits Gmail, den Play Store oder andere Google-Dienste angemeldet? Dann hast du vermutlich schon ein Google-Konto. Prüfe die angezeigte Adresse über dein Profilbild, bevor du ein zweites Konto anlegst.",
-        "shortText": "Im Profilbild eines Google-Dienstes die angemeldete Adresse prüfen. Ein vorhandenes Konto weiterverwenden."
-      },
-      {
-        "title": "Bei Bedarf ein Konto erstellen",
-        "text": "Öffne accounts.google.com im Browser. Wähle „Konto erstellen“ und die persönliche Nutzung. Folge den Angaben auf dem Bildschirm. Eine neue Gmail-Adresse ist möglich; auch eine vorhandene andere E-Mail-Adresse kann verwendet werden.",
-        "shortText": "Nur ohne eigenes Konto: accounts.google.com selbst öffnen und „Konto erstellen“ wählen. Den Angaben folgen."
-      },
-      {
-        "title": "Zugang sicher aufbewahren",
-        "text": "Verwende ein langes Passwort, das du nur für dieses Konto nutzt. Speichere die Kontoadresse und den Zugang in einem Passwortmanager. Ergänze passende Wiederherstellungsoptionen, auf die du selbst zugreifen kannst.",
-        "shortText": "Ein eigenes langes Passwort verwenden und Zugang sowie Wiederherstellungsoptionen sicher aufbewahren."
-      },
-      {
-        "title": "Die Sicherheit prüfen",
-        "text": "Öffne myaccount.google.com und den Sicherheitsbereich. Prüfe deine Wiederherstellungsangaben und richte die angebotene Bestätigung in zwei Schritten ein. Bewahre zugehörige Wiederherstellungscodes sicher auf.",
-        "shortText": "Unter myaccount.google.com den Sicherheitsbereich prüfen und angebotenen zusätzlichen Kontoschutz einrichten."
-      }
-    ],
-    "tip": "Das Google-Konto ist dein Zugang zu mehreren Diensten. Gmail ist einer dieser Dienste. Ein neues Konto löst den vergessenen Zugang zu einem alten Konto nicht.",
-    "sources": [
-      {
-        "title": "Google: Konto erstellen",
-        "url": "https://support.google.com/accounts/answer/27441?hl=de"
-      },
-      {
-        "title": "Google: Bestätigung in zwei Schritten",
-        "url": "https://support.google.com/accounts/answer/185839?hl=de"
-      }
-    ],
-    "theme": "blau",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du nutzt vielleicht schon Gmail, weißt aber nicht genau, welcher Zugang dazugehört. Hier findest du heraus, welches Konto du hast und wie du es schützt.",
-      "preparation": [
-        "Halte deine bekannte E-Mail-Adresse bereit, falls du schon Google-Dienste nutzt.",
-        "Ein vorhandenes Konto musst du nicht noch einmal erstellen."
-      ],
-      "result": "Kannst du deine Kontoadresse nennen und deine Wiederherstellungsangaben im Sicherheitsbereich finden? Das ist eine gute Grundlage für spätere Hilfe.",
-      "ifStuck": "Ist nur das Passwort vergessen, nutze die Kontowiederherstellung. Ein zweites Konto bringt die alten Nachrichten und Daten nicht zurück."
+    id: 'google-konto',
+    title: 'Google-Konto verwalten',
+    subtitle: 'Sicherheit, Daten und Einstellungen im Blick behalten.',
+    category: 'Konten',
+    theme: 'blau',
+    minutes: 4,
+    updatedAt: '2026-09-10',
+    scope: 'Für Android, iPhone, iPad und Computer',
+    learning: {
+      kind: 'step',
+      why: 'Dein Google-Konto ist der Schlüssel für Play Store, Gmail, Google Fotos und Gerätesicherungen.',
+      preparation: [
+        'Eingeloggt mit deinem Google-Konto',
+        'Dein aktuelles Google-Passwort griffbereit'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Kontoverwaltung öffnen',
+        text: 'Öffne die App „Einstellungen“ auf deinem Android-Smartphone und tippe auf „Google“. Oder besuche im Webbrowser die Adresse myaccount.google.com und melde dich an.',
+        check: 'Siehst du dein Profilbild oder deine Initialen und deine E-Mail-Adresse?',
+        icon: 'search'
+      },
+      {
+        title: 'Persönliche Daten prüfen',
+        text: 'Tippe auf den Reiter „Persönliche Daten“. Hier siehst du deinen Namen, dein Geburtsdatum und die hinterlegte Telefonnummer. Prüfe, ob deine Handynummer noch aktuell ist – sie dient zur Passwortwiederherstellung!',
+        check: 'Stimmt die angezeigte Telefonnummer mit deiner aktuellen Rufnummer überein?',
+        icon: 'user-plus'
+      },
+      {
+        title: 'Sicherheits-Check durchführen',
+        text: 'Wechsle auf „Sicherheit“. Google bietet dir einen praktischen „Sicherheitscheck“ mit einem grünen Schild. Tippe darauf, um verdächtige Anmeldungen oder alte, nicht mehr genutzte Geräte zu entfernen.',
+        check: 'Werden dir nur deine eigenen, vertrauten Geräte angezeigt?',
+        icon: 'key-round'
+      },
+      {
+        title: '2-Schritt-Verifizierung aktivieren',
+        text: 'Schütze dein Konto zusätzlich mit der Bestätigung in zwei Schritten. Damit reicht ein gestohlenes Passwort Kriminellen nicht mehr aus – bei einer neuen Anmeldung erhältst du eine kurze Bestätigung auf dein Smartphone.',
+        check: 'Ist der Status bei „Bestätigung in zwei Schritten“ als „Aktiv“ markiert?',
+        icon: 'shield-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Kontoverwaltung & Hilfe', url: 'https://support.google.com/accounts' }
+    ]
   },
   {
-    "id": "gmail",
-    "title": "Gmail",
-    "subtitle": "Eine E-Mail schreiben, prüfen und versenden.",
-    "category": "Kommunikation",
-    "minutes": 4,
-    "scope": "Computer · Gmail im Browser",
-    "steps": [
-      {
-        "title": "Das Postfach öffnen",
-        "text": "Gib mail.google.com in die Adressleiste deines Browsers ein. Melde dich bei deinem Google-Konto an. Im Posteingang findest du eingegangene Nachrichten.",
-        "shortText": "mail.google.com im Browser öffnen und beim eigenen Google-Konto anmelden."
-      },
-      {
-        "title": "Eine Nachricht beginnen",
-        "text": "Klicke auf „Schreiben“. Trage bei „An“ die vollständige E-Mail-Adresse ein. Ein kurzer Betreff sagt der anderen Person, worum es geht, zum Beispiel „Unser Termin am Dienstag“.",
-        "shortText": "Auf „Schreiben“ klicken. Vollständige Adresse bei „An“ und einen kurzen Betreff eintragen."
-      },
-      {
-        "title": "Text schreiben und kontrollieren",
-        "text": "Schreibe deine Nachricht mit Anrede und Gruß. Prüfe anschließend die vollständige Empfängeradresse, den Betreff und den Text. Für den ersten Versuch brauchst du keinen Anhang.",
-        "shortText": "Nachricht schreiben. Empfängeradresse, Betreff und Text noch einmal in Ruhe prüfen."
-      },
-      {
-        "title": "Senden und wiederfinden",
-        "text": "Klicke auf „Senden“. Unter „Gesendet“ findest du die versandte Nachricht. Noch nicht versandte Texte speichert Gmail als Entwurf. Eine Antwort erscheint im Posteingang.",
-        "shortText": "„Senden“ wählen. Danach unter „Gesendet“ nachsehen; Antworten kommen in den Posteingang."
-      }
-    ],
-    "tip": "Nutze für den ersten Versuch deine eigene E-Mail-Adresse. Sende keine Passwörter oder Bestätigungscodes per E-Mail. Öffne unerwartete Anhänge erst nach Rückfrage.",
-    "sources": [
-      {
-        "title": "Google: E-Mails schreiben und senden",
-        "url": "https://support.google.com/mail/answer/9259768?hl=de"
-      }
-    ],
-    "theme": "rot",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest eine E-Mail verschicken und sicher sein, dass sie an die richtige Adresse geht. Für den ersten Versuch kannst du dir selbst schreiben.",
-      "preparation": [
-        "Öffne Gmail am Computer. Du brauchst Zugang zu deinem Google-Konto.",
-        "Halte die vollständige Adresse der empfangenden Person bereit."
-      ],
-      "result": "Findest du die Nachricht unter „Gesendet“? Hast du dir selbst geschrieben, sollte sie auch im Posteingang erscheinen.",
-      "ifStuck": "Fehlt die Nachricht unter „Gesendet“, schaue unter „Entwürfe“ nach. Prüfe vor erneutem Senden, ob sie nicht doch schon verschickt wurde."
+    id: 'gmail',
+    title: 'E-Mails mit Gmail schreiben & empfangen',
+    subtitle: 'Wichtige Nachrichten sicher lesen und beantworten.',
+    category: 'Kommunikation',
+    theme: 'blau',
+    minutes: 4,
+    updatedAt: '2026-09-08',
+    scope: 'Für Android, iPhone und Computer',
+    learning: {
+      kind: 'step',
+      why: 'E-Mails sind der Standard für Rechnungen, Behörden und offizielle Mitteilungen. Mit Gmail behältst du den Überblick.',
+      preparation: [
+        'Gmail-App auf deinem Smartphone',
+        'E-Mail-Adresse des Empfängers'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Posteingang öffnen',
+        text: 'Tippe auf das bunte Gmail-M-Symbol. Ungelesene Nachrichten erkennst du an der fettgedruckten Schrift. Tippe auf eine Zeile, um die ganze E-Mail zu lesen.',
+        check: 'Hast du die E-Mail geöffnet und kannst den Text scrollen?',
+        icon: 'mail'
+      },
+      {
+        title: 'Neue E-Mail verfassen',
+        text: 'Tippe unten rechts auf den runden Knopf „Verfassen“ (mit dem Stift-Symbol). Gib oben im Feld „An“ die genaue E-Mail-Adresse ein. Im Feld „Betreff“ schreibst du in zwei bis drei Worten, worum es geht.',
+        check: 'Enthält das Betreff-Feld eine kurze Zusammenfassung deines Anliegens?',
+        icon: 'type'
+      },
+      {
+        title: 'Text schreiben und Datei anhängen',
+        text: 'Tippe in das große weiße Textfeld und formuliere deine Nachricht. Wenn du ein Foto oder eine PDF-Datei mitsenden willst, tippe oben auf das Büroklammer-Symbol und wähle die Datei aus.',
+        check: 'Wird der Dateianhang als kleines Kästchen unter deinem Text aufgeführt?',
+        icon: 'paperclip'
+      },
+      {
+        title: 'E-Mail senden & Rückmeldung erhalten',
+        text: 'Tippe oben rechts auf den blauen Pfeil (Papierflieger), um die E-Mail abzuschicken. Unten erscheint kurz die Meldung „Gesendet“. Du kannst innerhalb von 5 Sekunden auf „Rückgängig“ tippen, falls du etwas vergessen hast.',
+        check: 'Ist die Meldung „Gesendet“ erschienen und das Verfassen-Fenster geschlossen?',
+        icon: 'send'
+      }
+    ],
+    sources: [
+      { title: 'Gmail Hilfeübersicht', url: 'https://support.google.com/mail' }
+    ]
   },
   {
-    "id": "webbrowser",
-    "title": "Webbrowser",
-    "subtitle": "Webseiten öffnen und dich im Internet orientieren.",
-    "category": "Internet",
-    "minutes": 4,
-    "scope": "Smartphone und Computer · Grundlagen",
-    "steps": [
-      {
-        "title": "Den Browser erkennen",
-        "text": "Ein Browser ist ein Programm zum Öffnen von Webseiten. Bekannte Beispiele sind Chrome, Safari, Firefox und Edge. Welcher bereits installiert ist, hängt von deinem Gerät ab.",
-        "shortText": "Ein Browser öffnet Webseiten. Beispiele sind Safari, Chrome, Firefox und Edge."
-      },
-      {
-        "title": "Eine Adresse öffnen",
-        "text": "Tippe in die Adressleiste, gib die vollständige Webadresse ein und bestätige mit Enter oder „Los“. So rufst du eine bekannte Seite direkt auf.",
-        "shortText": "Eine bekannte Webadresse in die Adressleiste eingeben und mit Enter oder „Los“ bestätigen."
-      },
-      {
-        "title": "Suchen und Adresse unterscheiden",
-        "text": "Kennst du die Adresse nicht, kannst du Suchwörter in die Leiste schreiben. Dann zeigt eine Suchmaschine Ergebnisse. Prüfe vor dem Öffnen den Anbieter und die Webadresse eines Treffers.",
-        "shortText": "Suchwörter führen zu Suchergebnissen. Vor dem Öffnen Anbieter und Webadresse prüfen."
-      },
-      {
-        "title": "Mit Tabs den Überblick behalten",
-        "text": "Ein Tab ist eine weitere geöffnete Webseite im selben Browser. Über Plus öffnest du meist einen neuen Tab. Schließe nicht mehr benötigte Tabs und nutze den Zurück-Pfeil, um zur vorherigen Seite zu gelangen.",
-        "shortText": "Ein Tab hält eine weitere Seite offen. Nicht benötigte Tabs schließen; der Zurück-Pfeil führt zur vorherigen Seite."
-      }
-    ],
-    "tip": "Browser und Suchmaschine sind verschieden: Der Browser öffnet Webseiten, die Suchmaschine hilft beim Finden. Der private Modus macht dich im Internet nicht anonym.",
-    "sources": [
-      {
-        "title": "Mozilla: Was macht ein Internet-Browser?",
-        "url": "https://www.firefox.com/de/more/what-is-a-browser/"
-      }
-    ],
-    "theme": "blau",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "explain",
-      "why": "Du sollst eine Webseite öffnen und fragst dich, welches Programm dafür gemeint ist. Hier lernst du den Browser an einer einfachen Aufgabe kennen.",
-      "preparation": [
-        "Halte ein Smartphone, Tablet oder einen Computer mit Internetzugang bereit.",
-        "Zum Ausprobieren genügt eine bekannte Webadresse."
-      ],
-      "result": "Kennst du die Webadresse, gibst du sie direkt ein. Kennst du nur das Thema, hilft dir eine Suche.",
-      "ifStuck": "Du musst keinen neuen Browser installieren. Schau nach einem Namen wie Safari, Chrome, Firefox oder Edge auf deinem Gerät."
+    id: 'webbrowser',
+    title: 'Was ist ein Webbrowser?',
+    subtitle: 'Webseiten öffnen und den Browser erkennen.',
+    category: 'Internet',
+    theme: 'tuerkis',
+    minutes: 3,
+    updatedAt: '2026-09-05',
+    scope: 'Grundwissen für alle Geräte',
+    learning: {
+      kind: 'explain',
+      why: 'Ein Webbrowser ist dein Schaufenster und Fahrzeug ins weltweite Netz. Egal ob Bahnfahrpläne, Wetterbericht oder Nachrichten – alles läuft über deinen Browser.',
+      preparation: [
+        'Dein Smartphone, Tablet oder Computer vor dir'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Den Browser auf deinem Gerät erkennen',
+        text: 'Auf Android-Geräten heißt der vorinstallierte Browser meist „Google Chrome“ (ein bunter Kreis in rot, gelb, grün und blau). Auf Apple-Geräten (iPhone/iPad/Mac) heißt er „Safari“ (ein blauer Kompass). Am Windows-PC heißt er oft „Microsoft Edge“ (ein blau-türkiser Wirbel).',
+        check: 'Findest du eines dieser Symbole auf deinem Bildschirm?',
+        icon: 'globe'
+      },
+      {
+        title: 'Die Adresszeile oben verstehen',
+        text: 'Ganz oben im Browser befindet sich eine lange Leiste. Das ist die Adresszeile. Hier kannst du entweder eine genaue Internetadresse eingeben (wie z. B. www.tagesschau.de) oder einfach ein Suchwort eintippen (wie „Wetter Berlin“).',
+        check: 'Siehst du die Leiste ganz oben am Bildschirmrand?',
+        icon: 'link'
+      },
+      {
+        title: 'Sichere Verbindungen am Vorhängeschloss erkennen',
+        text: 'Achte auf das kleine Schlosssymbol links in der Adresszeile. Es zeigt an, dass die Verbindung verschlüsselt ist und Daten wie Passwörter nicht unterwegs mitgelesen werden können.',
+        check: 'Siehst du bei bekannten Webseiten das Schlosssymbol?',
+        icon: 'search'
+      },
+      {
+        title: 'Tabs (Registerkarten) öffnen und schließen',
+        text: 'Du kannst mehrere Webseiten gleichzeitig geöffnet haben. Jede Seite liegt in einem sogenannten „Tab“ (Kartenreiter). Tippe auf das kleine Quadrat mit der Zahl darin, um alle geöffneten Seiten zu sehen und überflüssige mit dem „X“ zu schließen.',
+        check: 'Kannst du die Übersicht deiner offenen Tabs aufrufen?',
+        icon: 'folder-open'
+      }
+    ],
+    sources: [
+      { title: 'Bundesamt für Sicherheit in der Informationstechnik (BSI) – Sicher surfen', url: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Online-surfen-aber-sicher/online-surfen-aber-sicher_node.html' }
+    ]
   },
   {
-    "id": "wlan",
-    "title": "WLAN",
-    "subtitle": "Das Smartphone mit deinem WLAN verbinden.",
-    "category": "Geräte & Technik",
-    "minutes": 3,
-    "scope": "Android und iPhone · eigenes WLAN",
-    "steps": [
-      {
-        "title": "Den Netzwerknamen bereitlegen",
-        "text": "Suche den Namen deines WLANs und das zugehörige WLAN-Passwort. Wenn sie nicht geändert wurden, stehen sie häufig auf einem Aufkleber am Router.",
-        "shortText": "WLAN-Namen und WLAN-Passwort bereitlegen, häufig auf dem Router-Aufkleber."
-      },
-      {
-        "title": "WLAN in den Einstellungen öffnen",
-        "text": "Auf dem iPhone: „Einstellungen“ und „WLAN“. Unter Android heißt der Bereich häufig „Netzwerk & Internet“ und „Internet“ oder „Verbindungen“ und „WLAN“. Aktiviere WLAN.",
-        "shortText": "In den Einstellungen „WLAN“ suchen und einschalten. Unter Android kann es unter „Verbindungen“ oder „Internet“ stehen."
-      },
-      {
-        "title": "Das richtige Netzwerk auswählen",
-        "text": "Tippe auf deinen Netzwerknamen. Gib das WLAN-Passwort ein; Groß- und Kleinschreibung zählen. Bestätige mit „Verbinden“ oder dem entsprechenden Knopf.",
-        "shortText": "Eigenes Netzwerk antippen. WLAN-Passwort mit richtiger Groß- und Kleinschreibung eingeben und verbinden."
-      },
-      {
-        "title": "Die Verbindung prüfen",
-        "text": "Achte in den WLAN-Einstellungen darauf, ob dein eigenes Netzwerk als verbunden angezeigt wird. Öffne anschließend eine bekannte Webseite. Lädt sie nicht, prüfe, ob andere Geräte im selben WLAN ins Internet kommen. Die WLAN-Verbindung und der Internetzugang sind zwei verschiedene Dinge.",
-        "shortText": "Verbindungsstatus ansehen und eine bekannte Webseite öffnen. WLAN und Internetzugang getrennt prüfen."
-      }
-    ],
-    "tip": "Eine WLAN-Verbindung allein garantiert noch keinen Internetzugang. Nutze das WLAN-Passwort und nicht versehentlich das Kennwort für die Router-Verwaltung.",
-    "sources": [
-      {
-        "title": "Google: WLAN auf Android",
-        "url": "https://support.google.com/android/answer/9075847?hl=de"
-      },
-      {
-        "title": "Apple: Mit einem WLAN verbinden",
-        "url": "https://support.apple.com/de-de/111786"
-      }
-    ],
-    "theme": "tuerkis",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest zu Hause mit dem Smartphone ins Internet. Dafür verbinden wir es mit deinem eigenen WLAN.",
-      "preparation": [
-        "Halte den WLAN-Namen und das WLAN-Passwort bereit.",
-        "Bleibe zum Einrichten in der Nähe deines Routers."
-      ],
-      "result": "In den WLAN-Einstellungen steht dein Netz als verbunden. Lädt zusätzlich eine bekannte Webseite, funktioniert auch der Internetzugang.",
-      "ifStuck": "Prüfe den Netzwerknamen und das WLAN-Passwort. Besteht die Verbindung bereits, aber keine Seite lädt, frage nach, ob andere Geräte im selben WLAN ins Internet kommen."
+    id: 'wlan',
+    title: 'Mit WLAN verbinden',
+    subtitle: 'Dein Gerät zu Hause ins Internet bringen.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 4,
+    updatedAt: '2026-09-11',
+    scope: 'Für Android, iPhone, iPad und Laptops',
+    learning: {
+      kind: 'step',
+      why: 'Im heimischen WLAN surfst du schnell, stabil und verbrauchst kein teures mobiles Datenvolumen deines Handytarifs.',
+      preparation: [
+        'WLAN-Name (SSID) und WLAN-Passwort (meist auf der Unterseite deines Internet-Routers aufgedruckt)',
+        'In Reichweite deines Routers sein'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'WLAN-Einstellungen öffnen',
+        text: 'Öffne auf deinem Smartphone die App „Einstellungen“ und tippe ganz oben auf „WLAN“ (oder „Netzwerk & Internet“). Stelle sicher, dass der WLAN-Schalter auf Ein (blau/grün) steht.',
+        check: 'Wird dir eine Liste mit Namen verfügbarer Funknetzwerke angezeigt?',
+        icon: 'wifi'
+      },
+      {
+        title: 'Dein eigenes Heimnetz auswählen',
+        text: 'Suche in der Liste nach dem Namen deines Routers (z. B. „FRITZ!Box 7590“ oder „Speedport“). Tippe auf den Namen deines Netzwerks.',
+        check: 'Öffnet sich ein Eingabefeld für das Passwort?',
+        icon: 'settings'
+      },
+      {
+        title: 'WLAN-Schlüssel sorgfältig eintippen',
+        text: 'Tippe den WLAN-Netzwerkschlüssel ein. Tipp: Aktiviere die Option „Passwort anzeigen“ (kleines Augensymbol), um Tippfehler bei langen Zahlenketten oder Groß-/Kleinschreibung sofort zu sehen.',
+        check: 'Stimmt jedes Zeichen genau mit dem Aufkleber am Router überein?',
+        icon: 'key-round'
+      },
+      {
+        title: 'Verbinden und Verbindungssymbol prüfen',
+        text: 'Tippe auf „Verbinden“. Nach wenigen Sekunden erscheint unter dem Namen der Hinweis „Verbunden“ und ganz oben in der Statusleiste deines Smartphones siehst du den gefüllten WLAN-Fächer.',
+        check: 'Ist der WLAN-Fächer ganz oben neben der Akkuanzeige sichtbar?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'AVM FRITZ!Box WLAN-Hilfe', url: 'https://avm.de/service/wlan/' }
+    ]
   },
   {
-    "id": "updates",
-    "title": "Updates",
-    "subtitle": "Dein Smartphone auf Aktualisierungen prüfen.",
-    "category": "Sicherheit",
-    "minutes": 4,
-    "scope": "Android und iPhone · Systemupdates",
-    "steps": [
-      {
-        "title": "Das Update vorbereiten",
-        "text": "Verbinde dein Smartphone mit einem vertrauten WLAN und lade den Akku ausreichend oder schließe das Ladegerät an. Sorge für freien Speicherplatz und eine aktuelle Sicherung wichtiger Daten.",
-        "shortText": "WLAN, Stromversorgung, freien Speicher und eine aktuelle Datensicherung sicherstellen."
-      },
-      {
-        "title": "Die passenden Einstellungen öffnen",
-        "text": "Auf dem iPhone öffnest du „Einstellungen“, dann „Allgemein“ und „Softwareupdate“. Auf Android suchst du in den Einstellungen nach „Softwareupdate“. Nutze nur den Weg, der zu deinem Gerät passt.",
-        "shortText": "iPhone: Einstellungen → Allgemein → Softwareupdate. Android: In den Einstellungen nach „Softwareupdate“ suchen."
-      },
-      {
-        "title": "Die angebotene Aktualisierung prüfen",
-        "text": "Wird ein Update angeboten, lies die Hinweise auf dem Bildschirm. Starte es, wenn dein Gerät am Strom hängt und du es eine Weile nicht brauchst. Wird nichts angeboten, musst du hier nichts erzwingen.",
-        "shortText": "Hinweise lesen. Eine angebotene Aktualisierung erst starten, wenn du das Gerät eine Weile nicht brauchst."
-      },
-      {
-        "title": "Installation abschließen",
-        "text": "Lass das Gerät während der Installation eingeschaltet und starte es neu, wenn du dazu aufgefordert wirst. Prüfe danach den Aktualisierungsstatus erneut. Die Installation kann deutlich länger als das Lesen dieser Anleitung dauern.",
-        "shortText": "Installation nicht unterbrechen. Einen verlangten Neustart zulassen und anschließend den Update-Status prüfen."
-      }
-    ],
-    "tip": "Starte Updates aus den Geräteeinstellungen. Eine Warnung auf irgendeiner Webseite ist kein verlässlicher Update-Hinweis. Ältere Geräte erhalten eventuell keine neuen Sicherheitsupdates mehr.",
-    "sources": [
-      {
-        "title": "Google: Android aktualisieren",
-        "url": "https://support.google.com/android/answer/7680439?hl=de"
-      },
-      {
-        "title": "Apple: iPhone oder iPad aktualisieren",
-        "url": "https://support.apple.com/de-de/118575"
-      }
-    ],
-    "theme": "violett",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Dein Smartphone bietet eine Aktualisierung an. Hier erfährst du, wie du sie in Ruhe vorbereitest und sicher aus den Einstellungen startest.",
-      "preparation": [
-        "Nutze vertrautes WLAN, genügend Akku und eine aktuelle Sicherung wichtiger Daten.",
-        "Plane Zeit ein, in der du dein Smartphone nicht brauchst. Die Installation dauert länger als das Lesen."
-      ],
-      "result": "Siehst du nach einem möglichen Neustart in den Update-Einstellungen, ob die Installation beendet ist oder noch etwas aussteht?",
-      "ifStuck": "Findest du den Menüpunkt nicht, nutze die Suche in den Einstellungen. Wird kein Update angeboten, kann das am Modell oder Hersteller liegen."
+    id: 'updates',
+    title: 'Updates richtig installieren',
+    subtitle: 'Dein Smartphone und Computer immer geschützt halten.',
+    category: 'Sicherheit',
+    theme: 'gold',
+    minutes: 4,
+    updatedAt: '2026-09-09',
+    scope: 'Für alle Geräte',
+    learning: {
+      kind: 'step',
+      why: 'Updates schließen Sicherheitslücken, bevor Betrüger sie ausnutzen können, und verbessern die Geschwindigkeit deines Geräts.',
+      preparation: [
+        'Smartphone zu mindestens 50 % aufgeladen oder am Ladekabel',
+        'Mit einem stabilen WLAN verbunden'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Systemeinstellungen aufrufen',
+        text: 'Öffne die „Einstellungen“-App. Scrolle ganz nach unten und tippe auf „System“ oder „Systemupdate“ (bei Android) bzw. auf „Allgemein“ > „Softwareupdate“ (beim iPhone).',
+        check: 'Siehst du den Bereich zur Aktualisierung des Betriebssystems?',
+        icon: 'smartphone'
+      },
+      {
+        title: 'Nach Aktualisierungen suchen',
+        text: 'Dein Gerät prüft jetzt automatisch, ob ein neues Update vorliegt. Liegt ein Update bereit, siehst du die Versionsnummer und die Neuerungen.',
+        check: 'Wird dir ein verfügbares Update oder die Meldung „System ist aktuell“ angezeigt?',
+        icon: 'settings'
+      },
+      {
+        title: 'Download und Installation starten',
+        text: 'Tippe auf „Herunterladen und installieren“. Das Herunterladen kann je nach Internetgeschwindigkeit einige Minuten dauern. Lass das Gerät währenddessen einfach liegen.',
+        check: 'Läuft der Ladebalken für das Update gleichmäßig voran?',
+        icon: 'settings'
+      },
+      {
+        title: 'Neustart abwarten',
+        text: 'Sobald die Daten geladen sind, startet das Smartphone neu. Der Bildschirm wird kurz schwarz und zeigt ein Logo oder einen Fortschrittskreis. Unterbrich diesen Vorgang nicht!',
+        check: 'Hat das Gerät neu gestartet und fordert deine normale PIN zur Entsperrung an?',
+        icon: 'refresh-cw'
+      }
+    ],
+    sources: [
+      { title: 'BSI – Updates einspielen', url: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Updates-patchen/updates-patchen_node.html' }
+    ]
   },
   {
-    "id": "passwoerter",
-    "title": "Passwörter",
-    "subtitle": "Zugänge mit einfachen Gewohnheiten schützen.",
-    "category": "Sicherheit",
-    "minutes": 4,
-    "scope": "Alle Geräte · Grundlagen",
-    "steps": [
-      {
-        "title": "Für jedes Konto ein eigenes Passwort",
-        "text": "Verwende dasselbe Passwort nicht für mehrere Dienste. Sonst kann ein gestohlener Zugang auch andere Konten gefährden. Beginne beim Schutz deines wichtigsten E-Mail-Kontos.",
-        "shortText": "Für jedes Konto ein eigenes Passwort verwenden. Mit dem wichtigsten E-Mail-Konto beginnen."
-      },
-      {
-        "title": "Länge statt persönlicher Angaben",
-        "text": "Wähle ein langes, schwer vorhersehbares Passwort. Namen, Geburtstage und einfache Zahlenfolgen sind ungeeignet. Ein Passwortmanager kann starke Passwörter erzeugen und sicher speichern.",
-        "shortText": "Lange, unvorhersehbare Passwörter wählen. Namen, Geburtstage und einfache Zahlenfolgen vermeiden."
-      },
-      {
-        "title": "Den Passwortmanager gut absichern",
-        "text": "Schütze ihn mit einem besonders starken Hauptpasswort beziehungsweise der vorgesehenen sicheren Geräteanmeldung. Richte die angebotenen Wiederherstellungsmöglichkeiten ein, bevor du dich darauf verlässt.",
-        "shortText": "Den Passwortmanager durch ein starkes Hauptpasswort oder die vorgesehene sichere Geräteanmeldung schützen."
-      },
-      {
-        "title": "Einen zweiten Schutz ergänzen",
-        "text": "Aktiviere bei wichtigen Konten die Bestätigung in zwei Schritten, wenn sie angeboten wird. Sichere die Wiederherstellungscodes getrennt und geschützt, damit du bei einem Geräteverlust weiter an dein Konto kommst.",
-        "shortText": "Bei wichtigen Konten die Bestätigung in zwei Schritten ergänzen und Wiederherstellungscodes sicher aufbewahren."
-      }
-    ],
-    "tip": "Teile Passwörter und Einmalcodes auch dann nicht, wenn jemand angeblich vom Support anruft. Ein Beispielsatz aus einer Anleitung eignet sich niemals als echtes Passwort.",
-    "sources": [
-      {
-        "title": "Google: Starke Passwörter",
-        "url": "https://support.google.com/accounts/answer/32040?hl=de"
-      },
-      {
-        "title": "Google: Bestätigung in zwei Schritten",
-        "url": "https://support.google.com/accounts/answer/185839?hl=de"
-      }
-    ],
-    "theme": "gold",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "explain",
-      "why": "Ein Passwort schützt deinen persönlichen Zugang. Du lernst die wichtigsten Gewohnheiten kennen, ohne alle Konten auf einmal ändern zu müssen.",
-      "preparation": [
-        "Beginne gedanklich mit deinem wichtigsten E-Mail-Konto.",
-        "Halte deine echten Passwörter privat und gib sie in keiner Kontaktanfrage an."
-      ],
-      "result": "Ein gutes Grundprinzip ist: für jedes Konto ein eigenes langes Passwort, sicher aufbewahrt und bei wichtigen Konten zusätzlich geschützt.",
-      "ifStuck": "Ein Passwortmanager ist ein geschütztes Programm für deine Zugänge. Wenn du noch keinen nutzt, lass dir die Einrichtung zeigen, bevor du gespeicherte Zugänge veränderst."
+    id: 'passwoerter',
+    title: 'Passwörter sicher nutzen',
+    subtitle: 'Deine Zugänge besser schützen.',
+    category: 'Sicherheit',
+    theme: 'gold',
+    minutes: 5,
+    updatedAt: '2026-09-13',
+    scope: 'Für alle Online-Dienste',
+    learning: {
+      kind: 'step',
+      why: 'Sichere Passwörter verhindern, dass Kriminelle deine E-Mails lesen, in deinem Namen einkaufen oder an deine Bankdaten gelangen.',
+      preparation: [
+        'Etwas Ruhe zum Nachdenken',
+        'Einen sicheren Notizort oder einen Passwort-Manager'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Die Satz-Methode anwenden',
+        text: 'Verwende keine einzelnen Namen oder Geburtsdaten. Bilde stattdessen einen Merksatz: „Mein Hund Bello geht jeden Tag 3 Mal spazieren!“. Nimm die Anfangsbuchstaben: „MhBgjT3Ms!“. Schon hast du ein extrem starkes Passwort mit Groß- und Kleinbuchstaben, Zahl und Sonderzeichen.',
+        check: 'Besteht dein gewähltes Passwort aus mindestens 10 Zeichen und verschiedenen Zeichenarten?',
+        icon: 'key-round'
+      },
+      {
+        title: 'Niemals dasselbe Passwort doppelt nutzen',
+        text: 'Die wichtigste Grundregel: Dein E-Mail-Passwort muss einzigartig sein! Wenn ein Online-Shop gehackt wird, probieren die Täter die Kombination sofort bei deiner E-Mail und bei Bezahldiensten aus.',
+        check: 'Nutzt du für dein E-Mail-Postfach ein eigenes, nur dort verwendetes Passwort?',
+        icon: 'shield-check'
+      },
+      {
+        title: 'Passwort-Manager im Smartphone nutzen',
+        text: 'Du musst dir nicht 30 Passwörter merken! Nutze den integrierten Passwort-Manager von Google (Android) oder den iCloud-Schlüsselbund (iPhone). Er schlägt sichere Passwörter vor und füllt sie bei der Anmeldung automatisch aus.',
+        check: 'Fragt dein Smartphone beim Anmelden: „Möchten Sie das Passwort speichern?“',
+        icon: 'save'
+      },
+      {
+        title: 'Passwort-Kompromittierungen prüfen',
+        text: 'Sowohl Google als auch Apple warnen dich automatisch, falls ein von dir verwendetes Passwort bei einem bekannten Datenleck im Internet aufgetaucht ist. Ändere betroffene Passwörter sofort.',
+        check: 'Sind im Sicherheitsbereich deines Kontos keine roten Warnhinweise zu finden?',
+        icon: 'shield-check'
+      }
+    ],
+    sources: [
+      { title: 'BSI Ratgeber: Sichere Passwörter erstellen', url: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Passwoerter/passwoerter_node.html' }
+    ]
   },
   {
-    "id": "betrugsnachrichten",
-    "title": "Betrugsnachrichten",
-    "subtitle": "Verdächtige E-Mails erkennen und ruhig reagieren.",
-    "category": "Sicherheit",
-    "minutes": 4,
-    "scope": "E-Mail · auch auf andere Nachrichten übertragbar",
-    "steps": [
-      {
-        "title": "Bei Druck kurz anhalten",
-        "text": "Eine Nachricht verlangt sofortiges Handeln, droht mit einer Sperre oder verspricht einen überraschenden Gewinn? Reagiere zunächst nicht. Solche Aufforderungen können ein Betrugsversuch sein.",
-        "shortText": "Bei Drohung, Zeitdruck oder überraschendem Gewinn zunächst anhalten. Nichts bestätigen."
-      },
-      {
-        "title": "Absender und Anliegen prüfen",
-        "text": "Kontrolliere die vollständige E-Mail-Adresse und überlege, ob du die Nachricht erwartet hast. Ein bekannter Anzeigename oder ein Logo beweist nichts. Auch fehlerfreie Sprache ist kein Echtheitsbeleg.",
-        "shortText": "Vollständige Absenderadresse und Anliegen prüfen. Namen, Logos und fehlerfreie Sprache beweisen keine Echtheit."
-      },
-      {
-        "title": "Unabhängig nachfragen",
-        "text": "Öffne die offizielle App oder gib die bekannte Webadresse selbst ein. Frage bei Bedarf über eine bereits bekannte Nummer nach. Verwende dafür keine Kontaktdaten oder Links aus der verdächtigen Nachricht.",
-        "shortText": "Die bekannte Anbieter-App oder selbst eingegebene Webadresse nutzen; unabhängig nachfragen."
-      },
-      {
-        "title": "Melden und Zugang schützen",
-        "text": "Melde die Nachricht in deinem Mailprogramm als Phishing. Hast du Zugangsdaten eingegeben, ändere das betroffene Passwort sofort über die offizielle Seite und kontrolliere dein Konto auf unbekannte Zugriffe.",
-        "shortText": "Als Phishing melden. Bereits eingegebene Zugangsdaten sofort über die echte Anbieter-Seite ändern."
-      }
-    ],
-    "tip": "Ein Link lässt sich leichter vermeiden als ein Schaden rückgängig machen. Gib nach einer unerwarteten Nachricht keine Passwörter, Bestätigungscodes oder vertraulichen Daten ein.",
-    "sources": [
-      {
-        "title": "Google: Phishing vermeiden und melden",
-        "url": "https://support.google.com/mail/answer/8253?hl=de"
-      }
-    ],
-    "theme": "gruen",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Eine Nachricht setzt dich unter Druck: Dein Konto werde gesperrt oder du sollst sofort Daten angeben. Wir prüfen zuerst in Ruhe, bevor du reagierst.",
-      "preparation": [
-        "Lasse Links und Anhänge in der verdächtigen Nachricht zunächst geschlossen.",
-        "Halte einen bereits bekannten Kontaktweg zum angeblichen Absender bereit."
-      ],
-      "result": "Konntest du das Anliegen über einen bekannten Kontaktweg unabhängig prüfen, ohne Daten über die verdächtige Nachricht einzugeben? Wenn nicht, hole dir Unterstützung.",
-      "ifStuck": "Hast du bereits ein Passwort eingegeben, ändere es über die echte Anbieter-Seite. Hole bei Unsicherheit persönliche Unterstützung; nutze keine Kontaktdaten aus der Nachricht."
+    id: 'betrugsnachrichten',
+    title: 'Verdächtige Nachrichten erkennen',
+    subtitle: 'Phishing, falsche Paket-SMS und Trickbetrug entlarven.',
+    category: 'Sicherheit',
+    theme: 'gold',
+    minutes: 4,
+    updatedAt: '2026-09-14',
+    scope: 'Für SMS, WhatsApp und E-Mails',
+    learning: {
+      kind: 'step',
+      why: 'Kriminelle fälschen Absender von Banken, Paketdiensten oder geben sich als Tochter/Sohn aus („Hallo Mama, mein Handy ist kaputt“). Erkenne die Maschen sofort.',
+      preparation: [
+        'Gesunde Skepsis vor Eile und Geldanfragen'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Druck und Zeitnot als Alarmsignal werten',
+        text: 'Betrüger setzen dich fast immer unter Druck: „Ihr Konto wird in 24 Stunden gesperrt“, „Paket konnte nicht zugestellt werden, jetzt Zoll zahlen“ oder „Dringender Notfall“. Banken und Behörden verlangen niemals überstürzte Online-Aktionen!',
+        check: 'Klingt der Text auffällig drängend oder bedrohlich?',
+        icon: 'shield-alert'
+      },
+      {
+        title: 'Links niemals leichtfertig antippen',
+        text: 'Tippe niemals auf Links in unverlangten SMS oder E-Mails. Schau dir die Internetadresse genau an: Statt dhl.de steht dort oft dhl-paket-service-info.com. Wenn du unsicher bist, öffne die offizielle App des Anbieters selbst.',
+        check: 'Stammt der Link von einer kryptischen Adresse mit Bindestrichen oder Zahlen?',
+        icon: 'search'
+      },
+      {
+        title: 'Die „Hallo Mama / Hallo Papa“-Masche durchschauen',
+        text: 'Erreicht dich eine Nachricht von einer unbekannten Nummer: „Hallo Mama, ich habe mein Handy verloren, das ist meine neue Nummer“? Rufe die Person IMMER zuerst auf der alten, dir bekannten Nummer an oder stelle eine persönliche Kontrollfrage.',
+        check: 'Hast du die Person vor einer Geldüberweisung persönlich am Telefon gesprochen?',
+        icon: 'message-circle'
+      },
+      {
+        title: 'Nachricht blockieren und löschen',
+        text: 'Antworte Betrügern niemals. Tippe auf die drei Punkte oben im Chat oder die Absendernummer und wähle „Blockieren und als Spam melden“. Lösche die Nachricht anschließend.',
+        check: 'Wurde der Kontakt blockiert und aus deiner Nachrichtenübersicht entfernt?',
+        icon: 'shield-check'
+      }
+    ],
+    sources: [
+      { title: 'Polizeiliche Kriminalprävention – Phishing & Betrug', url: 'https://www.polizei-beratung.de/themen-und-tipps/gefahren-im-internet/e-commerce/phishing/' }
+    ]
   },
   {
-    "id": "fotos-sichern",
-    "title": "Fotos sichern",
-    "subtitle": "Mit Google Fotos eine Sicherung einrichten.",
-    "category": "Fotos & Dateien",
-    "minutes": 5,
-    "scope": "Google Fotos auf Android · Google-Konto erforderlich",
-    "steps": [
-      {
-        "title": "Das richtige Konto prüfen",
-        "text": "Öffne Google Fotos und tippe auf dein Profilbild. Kontrolliere die angezeigte E-Mail-Adresse. Die Bilder sollen in deinem eigenen Konto gesichert werden.",
-        "shortText": "In Google Fotos das Profilbild öffnen und die eigene Kontoadresse kontrollieren."
-      },
-      {
-        "title": "Die Sicherung einschalten",
-        "text": "Öffne die Google Fotos-Einstellungen und „Sicherung“. Aktiviere die Sicherung und prüfe das Zielkonto. Bilder werden dabei in dein Google-Konto im Internet hochgeladen.",
-        "shortText": "Unter Fotos-Einstellungen → Sicherung die Sicherung und das Zielkonto prüfen."
-      },
-      {
-        "title": "Speicher und Verbindung prüfen",
-        "text": "Prüfe den verfügbaren Speicherplatz und wähle die gewünschte Sicherungsqualität. Nutze für größere Bildmengen WLAN. Falls weitere Geräteordner gesichert werden sollen, wähle sie gezielt aus.",
-        "shortText": "Kontospeicher und Sicherungsqualität ansehen. Für viele Bilder WLAN verwenden."
-      },
-      {
-        "title": "Den Erfolg kontrollieren",
-        "text": "Warte, bis der Sicherungsstatus den Abschluss bestätigt. Öffne testweise photos.google.com im Browser mit demselben Konto und kontrolliere ein paar Bilder. Sichere besonders wichtige Fotos zusätzlich separat.",
-        "shortText": "Auf den Abschluss warten und Bilder unter photos.google.com mit demselben Konto prüfen. Kein Löschtest!"
-      }
-    ],
-    "tip": "Löschen in Google Fotos kann auch gesicherte Bilder und verbundene Geräte betreffen. Lösche deshalb nicht probeweise, um die Sicherung zu testen. Eine zweite unabhängige Kopie schützt zusätzlich.",
-    "sources": [
-      {
-        "title": "Google: Fotos und Videos sichern",
-        "url": "https://support.google.com/photos/answer/6193313?hl=de"
-      },
-      {
-        "title": "Google: Auswirkungen beim Löschen",
-        "url": "https://support.google.com/photos/answer/6128858?hl=de"
-      }
-    ],
-    "theme": "magenta",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest deine Fotos auch bei einem verlorenen oder kaputten Smartphone behalten. Wir prüfen dafür die Sicherung in Google Fotos.",
-      "preparation": [
-        "Die Anleitung gilt für Google Fotos auf Android mit deinem eigenen Google-Konto.",
-        "Nutze WLAN. Lösche zum Testen keine Fotos."
-      ],
-      "result": "Sind die Bilder unter photos.google.com mit demselben Konto sichtbar und meldet die App eine abgeschlossene Sicherung?",
-      "ifStuck": "Lies den Sicherungsstatus: Voller Kontospeicher oder eine unterbrochene Verbindung können den Vorgang anhalten. Sichere besonders wichtige Fotos zusätzlich unabhängig."
+    id: 'fotos-sichern',
+    title: 'Fotos sicher speichern',
+    subtitle: 'Bilder sichern und Speicherplatz freigeben.',
+    category: 'Fotos & Dateien',
+    theme: 'magenta',
+    minutes: 5,
+    updatedAt: '2026-09-07',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Fotos sind unersetzliche Erinnerungen. Geht das Smartphone verloren oder fällt ins Wasser, sind deine Bilder dank automatischer Sicherung in der Cloud gerettet.',
+      preparation: [
+        'Mit deinem Google- oder Apple-Konto angemeldet',
+        'Mit einem WLAN verbunden'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Fotos-App öffnen und Sicherungsstatus prüfen',
+        text: 'Öffne „Google Fotos“ (Android) oder „Fotos“ (iPhone). Tippe oben rechts auf dein Profilbild oder Initialen. Dort siehst du den Status der Sicherung.',
+        check: 'Steht dort „Sicherung abgeschlossen“ oder siehst du ein Rädchen, das gerade hochlädt?',
+        icon: 'user-round'
+      },
+      {
+        title: 'Automatische Sicherung aktivieren',
+        text: 'Tippe auf „Fotos-Einstellungen“ > „Sichern & Synchronisieren“ (oder bei Apple unter „Einstellungen“ > „Fotos“ > „iCloud-Fotos“). Aktiviere den Schalter.',
+        check: 'Ist der Schalter grün oder blau hinterlegt?',
+        icon: 'cloud-upload'
+      },
+      {
+        title: 'Speicherplatz auf dem Gerät freigeben',
+        text: 'Wenn der interne Speicher deines Handys voll wird, tippe in Google Fotos auf „Speicherplatz freigeben“. Die App löscht nur jene Fotos vom Gerät, die bereits sicher in der Cloud liegen!',
+        check: 'Wird dir angezeigt, wie viele Megabyte oder Gigabyte freigegeben werden können?',
+        icon: 'hard-drive'
+      },
+      {
+        title: 'Fotos auf neuem Gerät oder PC wiederfinden',
+        text: 'Öffne auf deinem Tablet oder Computer die Webseite photos.google.com oder icloud.com und melde dich mit deinen Kontodaten an. Alle deine Fotos sind sofort sichtbar.',
+        check: 'Siehst du deine Urlaubs- und Familienfotos auch am Computerbildschirm?',
+        icon: 'file-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Fotos Hilfebereich', url: 'https://support.google.com/photos' }
+    ]
   },
   {
-    "id": "qr-codes",
-    "title": "QR-Codes",
-    "subtitle": "Mit der Kamera eine verlinkte Seite öffnen.",
-    "category": "Internet",
-    "minutes": 3,
-    "scope": "iPhone · Kamera-App",
-    "steps": [
-      {
-        "title": "Die Kamera öffnen",
-        "text": "Ein QR-Code ist ein quadratisches Muster, das zum Beispiel eine Webadresse enthält. Öffne die Kamera-App auf deinem iPhone, als wolltest du ein Foto machen.",
-        "shortText": "Die Kamera-App auf dem iPhone öffnen."
-      },
-      {
-        "title": "Den Code ins Bild nehmen",
-        "text": "Richte die Kamera so aus, dass der ganze QR-Code auf dem Bildschirm zu sehen ist. Halte das Gerät kurz ruhig. Du musst kein Foto aufnehmen.",
-        "shortText": "Den ganzen QR-Code ins Bild nehmen und das Gerät kurz ruhig halten. Kein Foto nötig."
-      },
-      {
-        "title": "Den Hinweis prüfen",
-        "text": "Warte auf den eingeblendeten Link. Überlege vor dem Antippen, ob du den Code und den Anbieter kennst. Ein QR-Code allein sagt nichts über die Vertrauenswürdigkeit der Seite aus.",
-        "shortText": "Den eingeblendeten Link und den Anbieter vor dem Antippen prüfen."
-      },
-      {
-        "title": "Die Seite öffnen",
-        "text": "Tippe auf den Hinweis, wenn das Ziel plausibel ist. Die verlinkten Inhalte öffnen sich. Bei einer unerwarteten Aufforderung zur Anmeldung oder Zahlung halte erst einmal inne.",
-        "shortText": "Nur ein plausibles Ziel öffnen. Bei unerwarteter Anmeldung oder Zahlung erst anhalten."
-      }
-    ],
-    "tip": "Wird nichts erkannt, ändere Abstand oder Licht. Du kannst auf dem iPhone auch „Code scannen“ im Kontrollzentrum verwenden.",
-    "sources": [
-      {
-        "title": "Apple: QR-Code mit dem iPhone scannen",
-        "url": "https://support.apple.com/de-de/102680"
-      }
-    ],
-    "theme": "schiefer",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Auf einem Aushang siehst du ein quadratisches Muster. Mit der iPhone-Kamera kannst du ansehen, welche Webseite sich dahinter verbirgt.",
-      "preparation": [
-        "Nutze ein iPhone und einen gut lesbaren QR-Code eines bekannten Anbieters.",
-        "Öffne Links nur, wenn das angezeigte Ziel zur Situation passt."
-      ],
-      "result": "Nach dem Antippen des geprüften Hinweises öffnet sich die passende Webseite. Du musstest dafür kein Foto aufnehmen.",
-      "ifStuck": "Wird kein Hinweis angezeigt, ändere Abstand oder Licht und halte das Gerät ruhig. Alternativ gibt es „Code scannen“ im Kontrollzentrum."
+    id: 'qr-codes',
+    title: 'QR-Codes scannen',
+    subtitle: 'Speisekarten, Tickets und Webseiten mit der Kamera öffnen.',
+    category: 'Unterwegs',
+    theme: 'tuerkis',
+    minutes: 2,
+    updatedAt: '2026-09-06',
+    scope: 'Für alle modernen Smartphones',
+    learning: {
+      kind: 'step',
+      why: 'Ein QR-Code ist ein quadratisches Punktemuster, das eine Web-Adresse enthält. Du musst die lange Adresse nicht mehr mühsam abtippen.',
+      preparation: [
+        'Einen QR-Code in Sichtweite (z. B. auf einem Flyer, Magazin oder Speisekarte)'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Kamera-App deines Smartphones öffnen',
+        text: 'Du brauchst keine extra App! Öffne einfach die ganz normale Foto-Kamera-App deines Smartphones.',
+        check: 'Siehst du das Live-Kamerabild auf deinem Display?',
+        icon: 'camera'
+      },
+      {
+        title: 'Kamera ruhig auf den Code richten',
+        text: 'Halte dein Smartphone so, dass das schwarz-weiße Quadrat gut im Bildschirm zu sehen ist. Du musst kein Foto auslösen – die Kamera erkennt das Muster von selbst.',
+        check: 'Erscheint nach 1–2 Sekunden ein gelber oder weißer Rahmen um den QR-Code?',
+        icon: 'qr-code'
+      },
+      {
+        title: 'Angezeigten Web-Link prüfen',
+        text: 'Direkt über oder unter dem Code erscheint eine kleine gelbe oder weiße Schaltfläche mit dem Link oder dem Namen der Internetseite.',
+        check: 'Erkennst du den Link und wirkt die Adresse vertrauenswürdig?',
+        icon: 'search'
+      },
+      {
+        title: 'Schaltfläche antippen und Inhalt öffnen',
+        text: 'Tippe mit dem Finger auf die gelbe Schaltfläche. Dein Webbrowser öffnet sich und zeigt die Speisekarte, Fahrkarte oder Infoseite sofort an.',
+        check: 'Hat sich die gewünschte Webseite geöffnet?',
+        icon: 'arrow-up-right'
+      }
+    ],
+    sources: [
+      { title: 'Verbraucherzentrale – QR-Codes sicher nutzen', url: 'https://www.verbraucherzentrale.de/wissen/digitale-welt/datenschutz/qrcodes-was-sie-koennen-und-wo-die-risiken-liegen-10874' }
+    ]
   },
   {
-    "id": "screenshots",
-    "title": "Screenshots",
-    "subtitle": "Den Bildschirm als Bild festhalten und wiederfinden.",
-    "category": "Fotos & Dateien",
-    "minutes": 3,
-    "scope": "Android · Tasten können je nach Gerät abweichen",
-    "steps": [
-      {
-        "title": "Den Inhalt vorbereiten",
-        "text": "Öffne die Ansicht, die du festhalten möchtest. Ein Screenshot ist ein Bild des Bildschirms – hilfreich etwa, um eine Fehlermeldung zu zeigen.",
-        "shortText": "Die gewünschte Bildschirmansicht ohne vertrauliche Angaben öffnen."
-      },
-      {
-        "title": "Die Aufnahme machen",
-        "text": "Drücke die Ein-/Aus-Taste und die Leisertaste kurz gleichzeitig. Meist erscheint eine kleine Vorschau. Funktioniert das nicht, schau in der Hilfe deines Geräteherstellers nach.",
-        "shortText": "Ein-/Aus-Taste und Leisertaste kurz gleichzeitig drücken. Auf die Vorschau achten."
-      },
-      {
-        "title": "Das Bild wiederfinden",
-        "text": "Öffne deine Fotos- oder Galerie-App und suche den Ordner „Screenshots“. In Google Fotos findest du ihn unter „Sammlungen“, dann „Auf diesem Gerät“.",
-        "shortText": "In Fotos oder Galerie den Ordner „Screenshots“ suchen."
-      },
-      {
-        "title": "Prüfen und bei Bedarf teilen",
-        "text": "Öffne das Bild und kontrolliere den Inhalt. Über „Teilen“ kannst du eine App und die gewünschte Person wählen. Prüfe die Empfängerangabe vor dem Senden.",
-        "shortText": "Bildinhalt prüfen. Bei Bedarf „Teilen“ wählen und vor dem Senden die richtige Person kontrollieren."
-      }
-    ],
-    "tip": "Achte darauf, dass keine Passwörter, Codes oder privaten Nachrichten sichtbar sind. Manche Apps verhindern Bildschirmaufnahmen; das ist kein Gerätefehler.",
-    "sources": [
-      {
-        "title": "Google: Screenshots auf Android",
-        "url": "https://support.google.com/android/answer/9075928?hl=de"
-      }
-    ],
-    "theme": "violett",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest eine Fehlermeldung jemandem zeigen. Ein Screenshot hält genau das fest, was gerade auf deinem Bildschirm zu sehen ist.",
-      "preparation": [
-        "Diese Anleitung gilt für Android; Tasten können je nach Modell abweichen.",
-        "Öffne eine Ansicht ohne Passwörter, Codes oder private Nachrichten."
-      ],
-      "result": "Findest du das Bildschirmbild in deiner Fotos-App und ist die wichtige Stelle lesbar?",
-      "ifStuck": "Klappt die Tastenkombination nicht, nutze die Hilfe deines Geräteherstellers. Manche Apps verhindern Aufnahmen absichtlich."
+    id: 'screenshots',
+    title: 'Bildschirmfoto machen',
+    subtitle: 'Wichtige Anzeigen aufnehmen und speichern.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 3,
+    updatedAt: '2026-09-04',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Ein Bildschirmfoto (Screenshot) speichert genau das, was du gerade siehst – ideal für Buchungsbestätigungen, Fehlermeldungen oder Rezept-Ideen.',
+      preparation: [
+        'Den Inhalt, den du fotografieren willst, auf dem Bildschirm anzeigen'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Tastenkombination finden',
+        text: 'Bei fast allen modernen Smartphones drückst du gleichzeitig die Ein-/Aus-Taste und die Leiser-Taste für eine halbe Sekunde. Bei älteren iPhones ist es die Ein-/Aus-Taste und der Home-Button.',
+        check: 'Weißt du, wo sich die Tasten an den Seiten deines Geräts befinden?',
+        icon: 'smartphone'
+      },
+      {
+        title: 'Gleichzeitig kurz drücken',
+        text: 'Drücke beide Tasten genau im selben Moment kurz und fest. Der Bildschirm blitzt kurz weiß auf und du hörst eventuell ein kurzes Klick-Geräusch wie bei einer Kamera.',
+        check: 'Hat der Bildschirm kurz aufgeblitzt?',
+        icon: 'camera'
+      },
+      {
+        title: 'Vorschau unten in der Ecke antippen',
+        text: 'Unten links erscheint für wenige Sekunden ein kleines Vorschaubild. Tippst du darauf, kannst du das Bild zuschneiden oder mit einem virtuellen Stift wichtige Dinge einkreisen.',
+        check: 'Siehst du das kleine Vorschaubild nach dem Drücken?',
+        icon: 'image'
+      },
+      {
+        title: 'Speichern und teilen',
+        text: 'Das Bildschirmfoto wird automatisch in deiner Galerie im Album „Screenshots“ abgelegt. Du kannst es direkt per WhatsApp oder E-Mail weiterleiten.',
+        check: 'Findest du das Bild in deiner Fotos-App wieder?',
+        icon: 'send'
+      }
+    ],
+    sources: [
+      { title: 'Android Hilfe – Screenshot erstellen', url: 'https://support.google.com/android/answer/9075928' }
+    ]
   },
   {
-    "id": "schriftgroesse",
-    "title": "Größere Schrift",
-    "subtitle": "Texte auf dem Smartphone angenehmer lesen.",
-    "category": "Geräte & Technik",
-    "minutes": 3,
-    "scope": "Android · Schrift- und Anzeigeeinstellungen",
-    "steps": [
-      {
-        "title": "Die Einstellungen öffnen",
-        "text": "Sind dir Nachrichten und Menüs zu klein? Öffne die Einstellungen deines Smartphones. Du erkennst die App meist an einem Zahnrad.",
-        "shortText": "Die Einstellungen am Zahnrad-Symbol öffnen."
-      },
-      {
-        "title": "Nach Schriftgröße suchen",
-        "text": "Nutze die Suche in den Einstellungen und gib „Schriftgröße“ ein. Öffne den passenden Treffer. Der Bereich kann je nach Hersteller auch „Anzeigegröße und Text“ heißen.",
-        "shortText": "Nach „Schriftgröße“ suchen und den passenden Treffer öffnen."
-      },
-      {
-        "title": "Die Größe anpassen",
-        "text": "Bewege den Schieberegler ein Stück nach rechts. Sieh dir die Vorschau an und wähle eine Größe, die du bequem lesen kannst. Über „Anzeigegröße“ lassen sich auch Bedienelemente vergrößern.",
-        "shortText": "Den Regler etwas nach rechts bewegen und die Vorschau prüfen. „Anzeigegröße“ verändert auch Bedienelemente."
-      },
-      {
-        "title": "Im Alltag ausprobieren",
-        "text": "Öffne eine häufig genutzte App und lies einen Text. Passt die Größe noch nicht, kehre zu den Einstellungen zurück und ändere sie erneut. Beginne mit kleinen Anpassungen.",
-        "shortText": "Eine häufig genutzte App öffnen und die Lesbarkeit prüfen. Die Einstellung lässt sich wieder ändern."
-      }
-    ],
-    "tip": "Nicht jede App übernimmt die Schriftgröße des Geräts. Manche Apps bieten zusätzlich eigene Einstellungen für Text oder Darstellung.",
-    "sources": [
-      {
-        "title": "Google: Text- und Anzeigeeinstellungen",
-        "url": "https://support.google.com/accessibility/android/answer/11183305?hl=de"
-      }
-    ],
-    "theme": "gold",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Nachrichten und Menüs sind dir zu klein? Du kannst die Darstellung auf deinem Android-Smartphone an deine Augen anpassen.",
-      "preparation": [
-        "Nutze dein Android-Smartphone; die Menünamen können je nach Hersteller anders heißen.",
-        "Eine kleine Änderung genügt für den ersten Versuch."
-      ],
-      "result": "Kannst du einen Text in einer häufig genutzten App bequemer lesen? Falls nicht, passe die Größe erneut an.",
-      "ifStuck": "Manche Apps übernehmen die Geräteeinstellung nicht. Suche dann zusätzlich in der betreffenden App nach „Darstellung“ oder „Schriftgröße“."
+    id: 'schriftgroesse',
+    title: 'Schriftgröße anpassen',
+    subtitle: 'Texte auf dem Smartphone größer und leichter lesbar machen.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 2,
+    updatedAt: '2026-09-03',
+    scope: 'Für alle Smartphones und Tablets',
+    learning: {
+      kind: 'step',
+      why: 'Wenn dir Texte auf dem Handy zu klein sind, kannst du die Schriftgröße für das gesamte System dauerhaft angenehm vergrößern.',
+      preparation: [
+        'Smartphone entsperrt vor dir'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Einstellungen für das Display aufrufen',
+        text: 'Öffne die App „Einstellungen“ und tippe auf „Display“ oder „Bedienungshilfen“ (bei Apple: „Anzeige & Helligkeit“).',
+        check: 'Bist du im Einstellungsmenü für die Bildschirmanzeige?',
+        icon: 'settings'
+      },
+      {
+        title: 'Schriftgröße und Anzeigegröße wählen',
+        text: 'Tippe auf den Eintrag „Schriftgröße“ oder „Textgröße“. Du siehst einen Beispieltext und darunter einen Schieberegler mit Punkten.',
+        check: 'Wird dir der Schieberegler von A (klein) bis A (groß) angezeigt?',
+        icon: 'type'
+      },
+      {
+        title: 'Schieberegler nach rechts bewegen',
+        text: 'Ziehe den runden Regler mit dem Finger Schritt für Schritt nach rechts. Beobachte den Beispieltext oben – er wächst sofort mit.',
+        check: 'Ist der Text jetzt ohne Brille oder Anstrengung gut lesbar?',
+        icon: 'sliders-horizontal'
+      },
+      {
+        title: 'Übernahme prüfen',
+        text: 'Verlasse die Einstellungen und öffne deine Nachrichten oder WhatsApp. Alle Texte und Menünamen erscheinen nun in deiner gewählten Wunschgröße.',
+        check: 'Sind auch deine Chats und Kontakte deutlich größer dargestellt?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Barrierefreiheit – Schriftgröße', url: 'https://support.google.com/accessibility/android/answer/6006972' }
+    ]
   },
   {
-    "id": "kontakte",
-    "title": "Kontakte speichern",
-    "subtitle": "Namen und Telefonnummern schnell griffbereit haben.",
-    "category": "Kommunikation",
-    "minutes": 3,
-    "scope": "Android · Google Kontakte",
-    "steps": [
-      {
-        "title": "Kontakte öffnen",
-        "text": "Öffne die App „Kontakte“ von Google. Suche zuerst nach dem Namen der Person. Ist sie schon gespeichert, kannst du den vorhandenen Eintrag ergänzen.",
-        "shortText": "Google Kontakte öffnen und nach der Person suchen."
-      },
-      {
-        "title": "Einen neuen Eintrag anlegen",
-        "text": "Fehlt die Person noch in der Liste? Tippe auf Plus oder „Hinzufügen“. Ist sie schon gespeichert, öffne den bestehenden Eintrag zum Bearbeiten. Wähle bei mehreren angebotenen Konten bewusst dein eigenes Konto als Speicherort.",
-        "shortText": "Nur wenn sie fehlt: Plus oder „Hinzufügen“ wählen. Das eigene Konto als Speicherort prüfen."
-      },
-      {
-        "title": "Die Angaben eintragen",
-        "text": "Trage den Namen und die Telefonnummer ein. Ergänze bei Bedarf eine E-Mail-Adresse. Kontrolliere die Nummer Ziffer für Ziffer, bevor du weitermachst.",
-        "shortText": "Namen und Telefonnummer eintragen. Die Nummer Ziffer für Ziffer kontrollieren."
-      },
-      {
-        "title": "Speichern und wiederfinden",
-        "text": "Tippe auf „Speichern“. Suche den Namen erneut in deiner Kontaktliste und öffne den Eintrag. Prüfe, ob die gewünschten Angaben vollständig und richtig sind.",
-        "shortText": "„Speichern“ wählen und den Namen erneut suchen. Alle Angaben prüfen."
-      }
-    ],
-    "tip": "In deinem Google-Konto gespeicherte Kontakte können auf anderen Geräten mit demselben Konto erscheinen. Merke dir daher, welches Konto du als Speicherort nutzt.",
-    "sources": [
-      {
-        "title": "Google: Kontakte hinzufügen",
-        "url": "https://support.google.com/contacts/answer/1069522?co=GENIE.Platform%3DAndroid&hl=de"
-      }
-    ],
-    "theme": "blau",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest eine Telefonnummer unter einem Namen speichern, damit du sie später nicht wieder suchen musst.",
-      "preparation": [
-        "Diese Anleitung nutzt Google Kontakte auf Android.",
-        "Halte Namen und Telefonnummer bereit und prüfe, ob die Person schon gespeichert ist."
-      ],
-      "result": "Suche den Namen erneut in Kontakte. Stimmen Telefonnummer und der gewählte Speicherort?",
-      "ifStuck": "Findest du den Kontakt nicht, prüfe das ausgewählte Konto. Vermeide doppelte Einträge, indem du zuerst nach dem Namen suchst."
+    id: 'kontakte',
+    title: 'Kontakte anlegen und pflegen',
+    subtitle: 'Telefonnummern und Adressen übersichtlich speichern.',
+    category: 'Kommunikation',
+    theme: 'blau',
+    minutes: 4,
+    updatedAt: '2026-09-02',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Ein sauberes Adressbuch spart Suchzeit, hilft beim Telefonieren und synchronisiert sich automatisch mit WhatsApp und deinen anderen Geräten.',
+      preparation: [
+        'Name und Telefonnummer der Person parat haben'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Kontakte-App öffnen',
+        text: 'Öffne die App „Kontakte“ (oft ein Adressbuch-Symbol oder ein blaues Männchen-Symbol).',
+        check: 'Siehst du deine alphabetische Liste bisheriger Kontakte?',
+        icon: 'contact-round'
+      },
+      {
+        title: 'Neuen Kontakt anlegen (+)',
+        text: 'Tippe unten rechts oder oben auf das Plus-Symbol (+). Es öffnet sich das leere Kontaktformular.',
+        check: 'Siehst du Eingabefelder für Vorname, Nachname und Telefonnummer?',
+        icon: 'user-plus'
+      },
+      {
+        title: 'Vorname, Nachname und Rufnummer eintragen',
+        text: 'Tippe Vor- und Nachnamen ein. Trage die Telefonnummer am besten mit Ländervorwahl ein (z. B. +49 170 ...), damit sie auch im Auslandsurlaub oder in WhatsApp sicher funktioniert.',
+        check: 'Sind Name und Telefonnummer fehlerfrei eingetragen?',
+        icon: 'phone'
+      },
+      {
+        title: 'Speicherort beachten & speichern',
+        text: 'Achte darauf, dass als Speicherort dein Google-Konto oder iCloud ausgewählt ist (nicht nur die SIM-Karte). Tippe oben auf „Speichern“.',
+        check: 'Erscheint der neue Name jetzt in deiner Kontaktliste?',
+        icon: 'save'
+      }
+    ],
+    sources: [
+      { title: 'Google Kontakte Hilfe', url: 'https://support.google.com/contacts' }
+    ]
   },
   {
-    "id": "apps-installieren",
-    "title": "Apps installieren",
-    "subtitle": "Eine passende App im Play Store finden und öffnen.",
-    "category": "Geräte & Technik",
-    "minutes": 4,
-    "scope": "Android · Play Store mit Google-Konto eingerichtet",
-    "steps": [
-      {
-        "title": "Den Play Store öffnen",
-        "text": "Öffne die App „Play Store“ auf deinem Smartphone. Hier kannst du Apps suchen und auf deinem Gerät installieren.",
-        "shortText": "Den Play Store auf dem Android-Smartphone öffnen."
-      },
-      {
-        "title": "Gezielt suchen",
-        "text": "Gib den Namen der gewünschten App in die Suche ein. Öffne den passenden Treffer und prüfe App-Name und Anbieter, damit du nicht versehentlich eine ähnlich benannte App auswählst.",
-        "shortText": "Nach der gewünschten App suchen und Namen sowie Anbieter kontrollieren."
-      },
-      {
-        "title": "Kosten und Angaben lesen",
-        "text": "Lies die Beschreibung und prüfe den Preis. Achte auch auf Hinweise zu In-App-Käufen oder Abos. Eine kostenlose Installation bedeutet nicht, dass später alle Funktionen kostenlos sind.",
-        "shortText": "Preis, Beschreibung, In-App-Käufe und mögliche Abos vor dem Installieren lesen."
-      },
-      {
-        "title": "Installieren und starten",
-        "text": "Tippe auf „Installieren“, wenn du die App möchtest. Steht dort ein Preis, handelt es sich um einen Kauf. Warte auf den Abschluss und tippe anschließend auf „Öffnen“.",
-        "shortText": "„Installieren“ wählen und danach „Öffnen“. Ein angezeigter Preis bedeutet einen Kauf."
-      }
-    ],
-    "tip": "Wenn eine App nicht für dein Gerät angeboten wird, installiere nicht irgendeine Ersatzdatei aus einer Nachricht. Frage im Zweifel nach, welche App gemeint ist.",
-    "sources": [
-      {
-        "title": "Google: Apps aus dem Play Store herunterladen",
-        "url": "https://support.google.com/googleplay/answer/113409?hl=de"
-      },
-      {
-        "title": "Google: In-App-Käufe erkennen",
-        "url": "https://support.google.com/googleplay/answer/1061913?hl=de"
-      }
-    ],
-    "theme": "gruen",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest eine bestimmte App auf deinem Android-Smartphone nutzen. Wir suchen sie im Play Store und prüfen zuerst Anbieter und Kosten.",
-      "preparation": [
-        "Der Play Store ist mit deinem Google-Konto eingerichtet.",
-        "Halte den genauen App-Namen und möglichst den Anbieter bereit."
-      ],
-      "result": "Erscheint nach der Installation „Öffnen“ und startet die erwartete App?",
-      "ifStuck": "Wird die App nicht für dein Gerät angeboten, lade keine Ersatzdatei aus einer Nachricht. Frage nach, welche App und welcher Anbieter gemeint sind."
+    id: 'apps-installieren',
+    title: 'Apps sicher herunterladen',
+    subtitle: 'Aus dem Play Store oder App Store neue Programme installieren.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 4,
+    updatedAt: '2026-09-01',
+    scope: 'Für Android (Play Store) und Apple (App Store)',
+    learning: {
+      kind: 'step',
+      why: 'Ob DB Navigator für Zugfahrten, Wetter-App oder Online-Banking: Der offizielle App-Laden ist der sicherste Ort für neue Programme.',
+      preparation: [
+        'Google Play Store oder Apple App Store auf deinem Gerät',
+        'Stabile WLAN-Verbindung'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Den offiziellen Store öffnen',
+        text: 'Öffne den „Google Play Store“ (buntes Dreieck) auf Android bzw. den „App Store“ (weißes A auf blauem Grund) auf dem iPhone.',
+        check: 'Bist du auf der Startseite des App-Stores?',
+        icon: 'download'
+      },
+      {
+        title: 'Suchbegriff eingeben',
+        text: 'Tippe oben oder unten auf die Lupe „Suchen“. Gib den Namen der gewünschten App ein, z. B. „DB Navigator“ oder „WDR aktuell“.',
+        check: 'Werden dir passende Suchergebnisse mit Firmenlogo angezeigt?',
+        icon: 'search'
+      },
+      {
+        title: 'Entwickler und Bewertungen prüfen',
+        text: 'Achte vor dem Laden auf den Namen des Anbieters (z. B. „Deutsche Bahn AG“ bei DB Navigator). Vermeide Nachahmer-Apps mit schlechten Bewertungen.',
+        check: 'Stimmt der Herausgeber mit dem Originalanbieter überein?',
+        icon: 'file-check'
+      },
+      {
+        title: 'Installieren antippen',
+        text: 'Tippe auf die Schaltfläche „Installieren“ (oder „Laden“). Die App lädt herunter und installiert sich automatisch. Anschließend findest du ihr Symbol auf deinem Startbildschirm.',
+        check: 'Hat sich die Beschriftung des Knopfes zu „Öffnen“ geändert?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Play – Apps suchen und installieren', url: 'https://support.google.com/googleplay/answer/113410' }
+    ]
   },
   {
-    "id": "google-maps",
-    "title": "Google Maps",
-    "subtitle": "Ein Ziel finden und den Weg dorthin planen.",
-    "category": "Unterwegs",
-    "minutes": 4,
-    "scope": "Android · Google Maps",
-    "steps": [
-      {
-        "title": "Das Ziel suchen",
-        "text": "Öffne Google Maps und gib die Adresse oder den Namen deines Ziels in das Suchfeld ein. Prüfe den Ort und die vollständige Adresse, besonders bei ähnlichen Namen.",
-        "shortText": "Google Maps öffnen, Ziel suchen und die vollständige Adresse prüfen."
-      },
-      {
-        "title": "Die Route aufrufen",
-        "text": "Tippe auf „Route“. Kontrolliere den Startpunkt. Du kannst „Mein Standort“ nutzen oder eine andere Startadresse eingeben, wenn du von dort aus planen möchtest.",
-        "shortText": "„Route“ wählen und den richtigen Startpunkt kontrollieren."
-      },
-      {
-        "title": "Die Fortbewegung wählen",
-        "text": "Wähle zum Beispiel das Auto, öffentliche Verkehrsmittel oder „Zu Fuß“. Vergleiche die vorgeschlagenen Wege und die voraussichtliche Dauer.",
-        "shortText": "Auto, öffentliche Verkehrsmittel oder „Zu Fuß“ passend auswählen."
-      },
-      {
-        "title": "Den Weg ansehen",
-        "text": "Schau dir die Route vor dem Losgehen in Ruhe an. Öffne bei Bedarf die einzelnen Wegschritte. Bei einem anderen Startpunkt als deinem Standort erhältst du zunächst eine Vorschau.",
-        "shortText": "Route vor dem Losgehen ansehen. Vor Ort haben Beschilderung und tatsächliche Umgebung Vorrang."
-      }
-    ],
-    "tip": "Zeitangaben sind Schätzungen. Beachte unterwegs die tatsächliche Umgebung und Beschilderung. Bediene das Smartphone nur, wenn du sicher stehst.",
-    "sources": [
-      {
-        "title": "Google: Routen in Google Maps anzeigen",
-        "url": "https://support.google.com/maps/answer/144339?co=GENIE.Platform%3DAndroid&hl=de"
-      }
-    ],
-    "theme": "gruen",
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest vor einem Ausflug wissen, wie du dein Ziel erreichst. Wir planen den Weg zuerst in Ruhe, bevor du losgehst.",
-      "preparation": [
-        "Nutze Google Maps auf Android und halte eine möglichst genaue Zieladresse bereit.",
-        "Bediene das Smartphone unterwegs nur, wenn du sicher stehst."
-      ],
-      "result": "Passen Zieladresse, Startpunkt und Fortbewegungsart zu deinem geplanten Weg?",
-      "ifStuck": "Bei ähnlich benannten Orten hilft die vollständige Adresse. Für einen anderen Startpunkt als deinen Standort siehst du zunächst eine Routenvorschau."
+    id: 'google-maps',
+    title: 'Orientierung mit Google Maps',
+    subtitle: 'Adressen suchen, Routen planen und Wege finden.',
+    category: 'Unterwegs',
+    theme: 'tuerkis',
+    minutes: 5,
+    updatedAt: '2026-08-30',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Nie wieder verfahren oder verlaufen: Google Maps zeigt dir den besten Weg zu Fuß, mit Bus & Bahn oder mit dem Auto.',
+      preparation: [
+        'Standortfunktion (GPS) am Smartphone aktiviert'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Zieladresse in die Suchleiste eingeben',
+        text: 'Öffne Google Maps. Tippe ganz oben in die Suchzeile und gib die Adresse oder den Namen des Ortes ein (z. B. „Apotheke Hauptstraße“ oder „Bahnhof Mannheim“).',
+        check: 'Erscheint ein roter Stecknadel-Pin am Zielort auf der Karte?',
+        icon: 'search'
+      },
+      {
+        title: 'Routen-Vorschau öffnen',
+        text: 'Tippe unten auf den blauen Knopf „Route“. Maps berechnet sofort den Weg von deinem aktuellen Standort.',
+        check: 'Siehst du eine blaue Linie auf der Karte, die den Weg markiert?',
+        icon: 'map-pin'
+      },
+      {
+        title: 'Verkehrsmittel auswählen',
+        text: 'Wähle oben das passende Symbol: Auto, öffentliche Verkehrsmittel (Bus/Bahn), Fußgänger oder Fahrrad. Du siehst sofort die geschätzte Dauer.',
+        check: 'Hast du das richtige Fortbewegungsmittel ausgewählt?',
+        icon: 'footprints'
+      },
+      {
+        title: 'Navigation starten',
+        text: 'Tippe unten auf den grünen Knopf „Starten“. Dein Smartphone führt dich nun mit gesprochenen Abbiegeanweisungen Schritt für Schritt an dein Ziel.',
+        check: 'Hörst du die Sprachansage und bewegt sich der Pfeil mit dir mit?',
+        icon: 'route'
+      }
+    ],
+    sources: [
+      { title: 'Google Maps Hilfe und Navigation', url: 'https://support.google.com/maps' }
+    ]
   },
   {
-    "id": "bluetooth",
-    "title": "Bluetooth verbinden",
-    "subtitle": "Kopfhörer oder Lautsprecher kabellos verbinden.",
-    "category": "Geräte & Technik",
-    "theme": "blau",
-    "minutes": 4,
-    "scope": "Android · Bluetooth-Zubehör",
-    "steps": [
-      {
-        "title": "Das Zubehör vorbereiten",
-        "text": "Schalte deine Kopfhörer oder den Lautsprecher ein und halte sie in der Nähe des Smartphones. Aktiviere den Kopplungsmodus so, wie es in der Anleitung des Zubehörs beschrieben ist.",
-        "shortText": "Zubehör einschalten, in der Nähe bereithalten und laut Anleitung in den Kopplungsmodus setzen."
-      },
-      {
-        "title": "Bluetooth öffnen",
-        "text": "Wische vom oberen Displayrand nach unten und halte das Bluetooth-Symbol gedrückt. Aktiviere Bluetooth, falls es ausgeschaltet ist. Tippe auf „Neues Gerät koppeln“ oder öffne die verfügbaren Geräte.",
-        "shortText": "Bluetooth am Smartphone öffnen, einschalten und nach neuen Geräten suchen."
-      },
-      {
-        "title": "Das richtige Gerät wählen",
-        "text": "Tippe auf den Namen deiner Kopfhörer oder deines Lautsprechers. Vergleiche ihn mit der Geräteanleitung. Bestätige die Kopplung nur für dein eigenes Zubehör.",
-        "shortText": "Den Namen des eigenen Zubehörs prüfen und dessen Kopplung bestätigen."
-      },
-      {
-        "title": "Die Verbindung ausprobieren",
-        "text": "Warte, bis das Gerät als verbunden erscheint. Starte einen kurzen Ton bei niedriger Lautstärke. Beim nächsten Mal können sich die bereits gekoppelten Geräte automatisch verbinden.",
-        "shortText": "Auf „Verbunden“ achten und einen Ton bei niedriger Lautstärke testen."
-      }
-    ],
-    "tip": "Wird das Zubehör nicht gefunden, prüfe Kopplungsmodus und Akku. Einzelne Menünamen hängen vom Smartphone-Hersteller ab.",
-    "sources": [
-      {
-        "title": "Google: Bluetooth-Geräte unter Android koppeln",
-        "url": "https://support.google.com/android/answer/9417604?hl=de"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest Kopfhörer oder einen Lautsprecher kabellos mit deinem Smartphone verbinden. Diese erste Verbindung heißt „Koppeln“.",
-      "preparation": [
-        "Nutze Android und dein eigenes, ausreichend geladenes Zubehör.",
-        "Halte die Zubehöranleitung bereit: Sie erklärt den Kopplungsmodus."
-      ],
-      "result": "Steht das Zubehör als verbunden in der Liste und hörst du einen kurzen Testton bei niedriger Lautstärke?",
-      "ifStuck": "Prüfe Akku und Kopplungsmodus. Halte das Zubehör in der Nähe des Smartphones und vergleiche den Gerätenamen."
+    id: 'bluetooth',
+    title: 'Bluetooth-Geräte verbinden',
+    subtitle: 'Kopfhörer, Lautsprecher oder Freisprechanlage koppeln.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 3,
+    updatedAt: '2026-08-28',
+    scope: 'Für alle Smartphones und Laptops',
+    learning: {
+      kind: 'step',
+      why: 'Kabellos Musik hören oder sicher im Auto telefonieren: Mit Bluetooth verbindest du Zubehör ohne Kabelsalat.',
+      preparation: [
+        'Das Zubehörteil (z. B. Kopfhörer) geladen und eingeschaltet'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Zubehör in den Kopplungsmodus versetzen',
+        text: 'Halte am Kopfhörer oder Lautsprecher die Einschalttaste für einige Sekunden gedrückt, bis eine kleine LED schnell blau/weiß blinkt oder eine Stimme „Pairing“ sagt.',
+        check: 'Blinkt die Anzeige am Zubehörgerät im Kopplungsmodus?',
+        icon: 'bluetooth'
+      },
+      {
+        title: 'Bluetooth am Smartphone einschalten',
+        text: 'Öffne auf deinem Smartphone „Einstellungen“ > „Bluetooth“ (oder „Verbundene Geräte“) und aktiviere Bluetooth.',
+        check: 'Ist der Bluetooth-Schalter aktiv?',
+        icon: 'settings'
+      },
+      {
+        title: 'Neues Gerät in der Liste antippen',
+        text: 'Tippe auf „Neues Gerät koppeln“. Dein Smartphone sucht nach Zubehör in der Nähe. Tippe auf den Namen deines Kopfhörers in der Liste.',
+        check: 'Taucht der Modellname deines Kopfhörers in der Liste auf?',
+        icon: 'search'
+      },
+      {
+        title: 'Kopplung bestätigen',
+        text: 'Tippe bei der Abfrage auf „Koppeln“. Das Gerät meldet „Connected“ und der Ton deines Smartphones wird nun kabellos über das Zubehör abgespielt.',
+        check: 'Steht neben dem Namen der Vermerk „Verbunden“?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Bluetooth-Kopplung Android Hilfe', url: 'https://support.google.com/android/answer/9075840' }
+    ]
   },
   {
-    "id": "dokumente-scannen",
-    "title": "Dokumente scannen",
-    "subtitle": "Einen Brief als gut lesbare PDF speichern.",
-    "category": "Fotos & Dateien",
-    "theme": "tuerkis",
-    "minutes": 4,
-    "scope": "Android · Google Drive mit Google-Konto",
-    "steps": [
-      {
-        "title": "Die Kamera in Drive öffnen",
-        "text": "Lege den Brief flach auf eine gut beleuchtete Fläche. Öffne Google Drive und tippe rechts unten auf das Kamera-Symbol. Erlaube den Kamerazugriff, wenn die App danach fragt.",
-        "shortText": "Brief flach ins Licht legen. In Google Drive die Kamera öffnen und bei Bedarf Zugriff erlauben."
-      },
-      {
-        "title": "Die Seite erfassen",
-        "text": "Halte das Smartphone möglichst gerade über das Blatt. Achte darauf, dass alle Ecken innerhalb der erkannten Umrandung liegen. Warte auf die automatische Aufnahme oder löse selbst aus.",
-        "shortText": "Alle Blattecken erfassen; Smartphone gerade halten und aufnehmen."
-      },
-      {
-        "title": "Das Ergebnis prüfen",
-        "text": "Kontrolliere, ob der Text scharf und vollständig ist. Passe den Zuschnitt bei Bedarf an. Über das Plus kannst du weitere Seiten aufnehmen. Gehe anschließend mit „Fertig“ weiter.",
-        "shortText": "Schärfe und Ränder prüfen. Bei Bedarf weitere Seiten hinzufügen und „Fertig“ wählen."
-      },
-      {
-        "title": "Als PDF ablegen",
-        "text": "Vergib einen klaren Namen, zum Beispiel „Brief_2026-09-10“. Wähle PDF als Dateiformat und den gewünschten Drive-Ordner. Tippe auf „Speichern“ und öffne die Datei zur Kontrolle.",
-        "shortText": "Einen verständlichen Dateinamen, PDF und den passenden Drive-Ordner wählen. Speichern und die Datei öffnen."
-      }
-    ],
-    "tip": "Die Datei wird in deinem Google Drive gespeichert. Prüfe bei vertraulichen Unterlagen, ob dieser Speicherort für dich passt. Das Papieroriginal solltest du bei wichtigen Dokumenten behalten.",
-    "sources": [
-      {
-        "title": "Google: Dokumente mit dem Mobilgerät als PDF scannen",
-        "url": "https://support.google.com/a/users/answer/9308884?hl=de&co=GENIE.Platform%3DAndroid"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest einen Papierbrief als gut lesbare PDF aufbewahren. Dafür fotografieren wir ihn mit der Scan-Funktion in Google Drive.",
-      "preparation": [
-        "Nutze Google Drive auf Android mit deinem Google-Konto.",
-        "Lege den Brief flach ins Licht. Prüfe, ob dein Drive für diese Unterlagen der passende Speicherort ist."
-      ],
-      "result": "Lässt sich die gespeicherte PDF öffnen, und sind alle Seiten vollständig und scharf lesbar?",
-      "ifStuck": "Sind Ecken abgeschnitten oder Buchstaben unscharf, nimm die Seite erneut auf. Wichtige Papieroriginale behältst du zusätzlich."
+    id: 'dokumente-scannen',
+    title: 'Dokumente mit dem Handy scannen',
+    subtitle: 'Briefe und Rechnungen als PDF fotografieren.',
+    category: 'Fotos & Dateien',
+    theme: 'magenta',
+    minutes: 4,
+    updatedAt: '2026-08-25',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Kein sperriger Scanner nötig: Dein Smartphone schneidet Dokumente automatisch gerade zu und speichert sie als lesbare, versandfertige PDF-Datei.',
+      preparation: [
+        'Das Dokument flach auf einen gut beleuchteten, kontrastreichen Tisch legen'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Scan-Funktion öffnen',
+        text: 'Öffne auf Android die App „Google Drive“ und tippe unten rechts auf das Plus (+) und dann auf „Scannen“. Auf dem iPhone öffnest du die App „Notizen“, erstellst eine Notiz, tippst auf das Kamera-Symbol und wählst „Dokumente scannen“.',
+        check: 'Bist du im Kamera-Modus für Dokumentenscans?',
+        icon: 'camera'
+      },
+      {
+        title: 'Kamera ruhig über das Blatt halten',
+        text: 'Halte das Smartphone waagerecht über die Seite. Die Kamera erkennt die vier Kanten des Papiers automatisch mit einem blauen oder gelben Rahmen.',
+        check: 'Wurde das gesamte Dokument vom Rahmen erfasst?',
+        icon: 'scan-line'
+      },
+      {
+        title: 'Zuschnitt und Lesbarkeit prüfen',
+        text: 'Das Smartphone schneidet Schatten und Tischkanten weg und stellt den Text scharf und kontrastreich wie auf einer Fotokopie dar.',
+        check: 'Ist der Text im Vorschaubild gestochen scharf zu lesen?',
+        icon: 'file-check'
+      },
+      {
+        title: 'Als PDF speichern oder versenden',
+        text: 'Tippe auf „Speichern“. Du hast nun eine echte PDF-Datei, die du direkt per E-Mail an Versicherungen, Ämter oder Ärzte weiterleiten kannst.',
+        check: 'Wurde die fertige PDF-Datei abgespeichert?',
+        icon: 'save'
+      }
+    ],
+    sources: [
+      { title: 'Google Drive Hilfe – Dokumente mit Smartphone scannen', url: 'https://support.google.com/drive/answer/3145835' }
+    ]
   },
   {
-    "id": "uebersetzen",
-    "title": "Texte übersetzen",
-    "subtitle": "Wörter und kurze Sätze in einer anderen Sprache verstehen.",
-    "category": "Kommunikation",
-    "theme": "blau",
-    "minutes": 3,
-    "scope": "Android · Google Übersetzer",
-    "steps": [
-      {
-        "title": "Die Sprachen auswählen",
-        "text": "Öffne die App „Google Übersetzer“. Wähle links unten die Sprache des ursprünglichen Textes und rechts unten die Sprache, in die du übersetzen möchtest, zum Beispiel Französisch → Deutsch.",
-        "shortText": "Google Übersetzer öffnen und Ausgangs- sowie Zielsprache auswählen."
-      },
-      {
-        "title": "Einen kurzen Text eingeben",
-        "text": "Tippe in das Textfeld und schreibe das Wort oder den Satz. Ein vollständiger, kurzer Satz liefert mehr Zusammenhang als ein einzelnes Wort.",
-        "shortText": "Einen kurzen vollständigen Satz in das Textfeld eingeben."
-      },
-      {
-        "title": "Die Übersetzung lesen",
-        "text": "Die Übersetzung erscheint meist automatisch. Falls nicht, tippe auf „Übersetzen“. Prüfe, ob die gewählte Ausgangs- und Zielsprache stimmen und ob die Aussage im Zusammenhang plausibel klingt.",
-        "shortText": "Die Übersetzung lesen und Sprache sowie Zusammenhang kontrollieren."
-      },
-      {
-        "title": "Die Aussprache anhören",
-        "text": "Tippe auf das Lautsprecher-Symbol bei der Übersetzung, wenn du sie hören möchtest. Du kannst den Text ändern und dir danach die neue Übersetzung anzeigen lassen.",
-        "shortText": "Bei Bedarf am Lautsprecher-Symbol die Aussprache anhören."
-      }
-    ],
-    "tip": "Automatische Übersetzungen können sich irren. Für einen alltäglichen Satz sind sie eine Hilfe; wichtige oder verbindliche Texte solltest du zusätzlich prüfen lassen.",
-    "sources": [
-      {
-        "title": "Google: Geschriebenen Text übersetzen und anhören",
-        "url": "https://support.google.com/translate/answer/6142478?hl=de&co=GENIE.Platform%3DAndroid"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest einen kurzen fremdsprachigen Satz verstehen, zum Beispiel auf einer Speisekarte. Wir beginnen mit einem einfachen Alltagstext.",
-      "preparation": [
-        "Nutze Google Übersetzer auf Android.",
-        "Wähle einen unvertraulichen Satz. Für verbindliche Texte brauchst du zusätzliche Prüfung."
-      ],
-      "result": "Stimmen Ausgangs- und Zielsprache? Passt die übersetzte Aussage zum Zusammenhang?",
-      "ifStuck": "Klingt die Antwort unverständlich, prüfe die Sprachen und verwende einen vollständigen kurzen Satz statt einzelner Wörter."
+    id: 'uebersetzen',
+    title: 'Texte und Sprache übersetzen',
+    subtitle: 'Mit dem Smartphone fremde Sprachen verstehen.',
+    category: 'Unterwegs',
+    theme: 'tuerkis',
+    minutes: 3,
+    updatedAt: '2026-08-22',
+    scope: 'Für Auslandsreisen und fremdsprachige Briefe',
+    learning: {
+      kind: 'step',
+      why: 'Ob Speisekarten in Italien oder Hinweisschilder im Urlaub: Übersetze geschriebenen Text oder gesprochene Worte sekundenschnell auf Deutsch.',
+      preparation: [
+        'App „Google Übersetzer“ oder „Apple Übersetzen“ installiert'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Sprachen auswählen',
+        text: 'Öffne die Übersetzer-App. Wähle links die Ausgangssprache (oder „Sprache erkennen“) und rechts „Deutsch“.',
+        check: 'Steht auf der rechten Seite Deutsch als Zielsprache?',
+        icon: 'languages'
+      },
+      {
+        title: 'Text tippen oder sprechen',
+        text: 'Tippe einen Text ein oder tippe auf das Mikrofon-Symbol und sprich deinen Satz einfach auf Deutsch ein. Die App übersetzt sofort in die Fremdsprache.',
+        check: 'Erscheint die Übersetzung im unteren Kasten?',
+        icon: 'type'
+      },
+      {
+        title: 'Kamera-Übersetzung für Schilder und Speisekarten',
+        text: 'Tippe auf das Kamera-Symbol. Halte die Kamera auf einen fremdsprachigen Text. Die fremden Wörter werden wie durch Zauberhand auf dem Bildschirm durch deutsche Wörter ersetzt!',
+        check: 'Siehst du den deutschen Text direkt über dem Schild eingeblendet?',
+        icon: 'search'
+      },
+      {
+        title: 'Übersetzung laut vorlesen lassen',
+        text: 'Tippe auf das Lautsprecher-Symbol neben der Übersetzung. Dein Smartphone spricht den Satz mit korrekter Aussprache für dich laut aus.',
+        check: 'Wird der Satz klar und verständlich vorgelesen?',
+        icon: 'volume-2'
+      }
+    ],
+    sources: [
+      { title: 'Google Übersetzer Hilfeseite', url: 'https://support.google.com/translate' }
+    ]
   },
   {
-    "id": "kalender",
-    "title": "Termine eintragen",
-    "subtitle": "Eine Verabredung im Google Kalender festhalten.",
-    "category": "Organisation",
-    "theme": "violett",
-    "minutes": 4,
-    "scope": "Android · Google Kalender mit Google-Konto",
-    "steps": [
-      {
-        "title": "Einen Termin beginnen",
-        "text": "Öffne Google Kalender. Tippe auf das Plus („Eintragen“ oder „Erstellen“) und wähle „Termin“. Kontrolliere den ausgewählten Kalender, besonders wenn du mehrere Konten nutzt.",
-        "shortText": "Google Kalender öffnen, Plus und „Termin“ wählen. Den richtigen Kalender prüfen."
-      },
-      {
-        "title": "Den Termin benennen",
-        "text": "Trage einen verständlichen Titel ein, zum Beispiel „Spaziergang mit Anna“. Ergänze bei Bedarf den Treffpunkt. Für einen eigenen Merktermin brauchst du keine Gäste einzuladen.",
-        "shortText": "Einen klaren Titel und bei Bedarf einen Treffpunkt eintragen. Für eigene Termine keine Gäste nötig."
-      },
-      {
-        "title": "Datum und Uhrzeit prüfen",
-        "text": "Stelle den richtigen Tag sowie Beginn und Ende ein. Deaktiviere „Ganztägig“, wenn du eine genaue Uhrzeit festhalten möchtest. Prüfe auch die angebotene Benachrichtigung.",
-        "shortText": "Datum, Beginn, Ende und Benachrichtigung prüfen. „Ganztägig“ für eine genaue Uhrzeit ausschalten."
-      },
-      {
-        "title": "Speichern und wiederfinden",
-        "text": "Tippe auf „Speichern“. Öffne den betreffenden Tag und kontrolliere deinen Eintrag. Wenn etwas nicht stimmt, öffne den Termin, tippe auf das Stift-Symbol, ändere die Angaben und speichere erneut.",
-        "shortText": "Speichern und den betreffenden Tag erneut öffnen. Den Eintrag kontrollieren."
-      }
-    ],
-    "tip": "Ein Eintrag ist noch keine Einladung an andere. Gäste werden nur eingeladen, wenn du sie bewusst hinzufügst. Prüfe bei gemeinsam genutzten Kalendern, wer deine Termine sehen kann.",
-    "sources": [
-      {
-        "title": "Google: Termine erstellen und bearbeiten",
-        "url": "https://support.google.com/calendar/answer/72143?hl=de&co=GENIE.Platform%3DAndroid"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest einen Termin festhalten und später wiederfinden. Wir tragen zunächst einen Termin nur für dich selbst ein.",
-      "preparation": [
-        "Nutze Google Kalender auf Android mit deinem Google-Konto.",
-        "Halte Datum, Uhrzeit und gegebenenfalls den Treffpunkt bereit."
-      ],
-      "result": "Öffne den betreffenden Tag erneut. Stimmen Termin, Uhrzeit, Kalender und die gewünschte Benachrichtigung?",
-      "ifStuck": "Liegt der Termin nicht am erwarteten Ort, prüfe Datum und Kalender. Du kannst ihn am Stift-Symbol bearbeiten und erneut speichern."
+    id: 'kalender',
+    title: 'Termine im digitalen Kalender',
+    subtitle: 'Erinnerungen einrichten und Termine nicht mehr verpassen.',
+    category: 'Organisation',
+    theme: 'schiefer',
+    minutes: 4,
+    updatedAt: '2026-08-20',
+    scope: 'Für Android, iPhone und PC',
+    learning: {
+      kind: 'step',
+      why: 'Arztbesuche, Geburtstage und Müllabfuhr im Griff haben: Dein Smartphone erinnert dich rechtzeitig vor jedem Termin mit Ton.',
+      preparation: [
+        'Datum und Uhrzeit deines nächsten Termins'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Kalender öffnen und Tag wählen',
+        text: 'Öffne die App „Kalender“. Tippe auf den Tag im Monats- oder Wochenüberblick, an dem der Termin stattfinden soll.',
+        check: 'Ist der gewünschte Tag aufgerufen?',
+        icon: 'calendar-plus'
+      },
+      {
+        title: 'Neuen Termin anlegen',
+        text: 'Tippe auf das Plus-Symbol (+). Gib im obersten Feld den Titel ein (z. B. „Zahnarzt Dr. Müller“).',
+        check: 'Hast du den Terminnamen eingetragen?',
+        icon: 'type'
+      },
+      {
+        title: 'Uhrzeit und Erinnerung einstellen',
+        text: 'Stelle Beginn und Ende ein. Tippe auf „Benachrichtigung“ und wähle aus, wann du erinnert werden möchtest – zum Beispiel „2 Stunden vorher“ oder „1 Tag vorher“.',
+        check: 'Ist eine Erinnerungszeit eingerichtet?',
+        icon: 'clock-3'
+      },
+      {
+        title: 'Termin speichern',
+        text: 'Tippe oben rechts auf „Speichern“. Der Termin erscheint als farbiger Balken in deiner Übersicht und du wirst automatisch rechtzeitig benachrichtigt.',
+        check: 'Siehst du den neuen Termin in deiner Kalenderansicht?',
+        icon: 'save'
+      }
+    ],
+    sources: [
+      { title: 'Google Kalender Hilfe', url: 'https://support.google.com/calendar' }
+    ]
   },
   {
-    "id": "wecker",
-    "title": "Wecker stellen",
-    "subtitle": "Eine Weckzeit einrichten und den Ton prüfen.",
-    "category": "Organisation",
-    "theme": "gold",
-    "minutes": 3,
-    "scope": "iPhone · App „Uhr“",
-    "steps": [
-      {
-        "title": "Die Uhr-App öffnen",
-        "text": "Öffne auf deinem iPhone die App „Uhr“ und wähle „Wecker“. Tippe auf das Plus, um eine neue Weckzeit anzulegen.",
-        "shortText": "„Uhr“ öffnen, „Wecker“ und Plus wählen."
-      },
-      {
-        "title": "Uhrzeit und Tage wählen",
-        "text": "Stelle die gewünschte Uhrzeit ein. Unter „Wiederholen“ kannst du bestimmte Wochentage auswählen. Gib dem Wecker bei Bedarf eine Beschreibung, damit du ihn später erkennst.",
-        "shortText": "Uhrzeit und gegebenenfalls Wiederholungstage einstellen."
-      },
-      {
-        "title": "Einen hörbaren Ton wählen",
-        "text": "Wähle unter „Ton“ einen passenden Weckton. Die Lautstärke stellst du in den iPhone-Einstellungen unter „Töne & Haptik“ mit dem Regler „Klingelton- und Hinweistöne“ ein.",
-        "shortText": "Weckton wählen. Die Lautstärke unter Einstellungen → Töne & Haptik prüfen."
-      },
-      {
-        "title": "Speichern und ausprobieren",
-        "text": "Bestätige den Wecker mit „Fertig“ beziehungsweise „Sichern“. Prüfe, ob er in der Liste eingeschaltet ist. Teste eine neue Einstellung zuerst mit einer Weckzeit wenige Minuten später.",
-        "shortText": "Speichern, eingeschalteten Wecker kontrollieren und mit einer nahen Uhrzeit testen."
-      }
-    ],
-    "tip": "Kontrolliere Uhrzeit, Wiederholung und Lautstärke, bevor du dich auf den Wecker verlässt. Halte dein iPhone für die Nacht ausreichend geladen.",
-    "sources": [
-      {
-        "title": "Apple: Wecker auf dem iPhone stellen und verwalten",
-        "url": "https://support.apple.com/de-de/118444"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest dich mit deinem iPhone an eine feste Uhrzeit erinnern lassen. Ein kurzer Probelauf gibt dir Sicherheit für den Alltag.",
-      "preparation": [
-        "Nutze die App „Uhr“ auf dem iPhone.",
-        "Wähle zum Üben eine Uhrzeit wenige Minuten später und halte das Gerät geladen."
-      ],
-      "result": "Ist der Wecker eingeschaltet, und hörst du ihn zur Probezeit in passender Lautstärke?",
-      "ifStuck": "Prüfe Uhrzeit, Wiederholung, Ton und die Lautstärke für Klingelton- und Hinweistöne. Verlasse dich erst nach einem erfolgreichen Test darauf."
+    id: 'wecker',
+    title: 'Wecker und Timer stellen',
+    subtitle: 'Zur richtigen Zeit geweckt und an Aufgaben erinnert werden.',
+    category: 'Organisation',
+    theme: 'schiefer',
+    minutes: 2,
+    updatedAt: '2026-08-18',
+    scope: 'Für alle Handys',
+    learning: {
+      kind: 'step',
+      why: 'Perfekt zum Aufstehen, für das Backen im Ofen oder die pünktliche Einnahme von Medikamenten.',
+      preparation: [
+        'Uhr-App auf deinem Startbildschirm'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Uhr-App öffnen und Wecker wählen',
+        text: 'Öffne die App „Uhr“ und tippe unten auf den Reiter „Wecker“.',
+        check: 'Bist du in der Wecker-Übersicht?',
+        icon: 'alarm-clock'
+      },
+      {
+        title: 'Weckzeit einstellen',
+        text: 'Tippe auf das Plus (+) oder eine bestehende Weckzeit. Stelle Stunde und Minute mit dem Ziffernblatt oder Schieber ein.',
+        check: 'Stimmt die eingestellte Weckzeit?',
+        icon: 'clock-3'
+      },
+      {
+        title: 'Wochentage und Ton festlegen',
+        text: 'Wähle aus, ob der Wecker nur einmal oder montags bis freitags täglich klingeln soll. Wähle bei Bedarf einen angenehmen Weckton aus.',
+        check: 'Sind die gewünschten Wochentage ausgewählt?',
+        icon: 'volume-2'
+      },
+      {
+        title: 'Wecker aktivieren',
+        text: 'Tippe auf „Speichern“. Achte darauf, dass der Schiebeschalter neben der Weckzeit eingeschaltet ist. Oben in der Leiste erscheint ein kleines Wecker-Symbol.',
+        check: 'Ist das Weckersymbol ganz oben in der Statusleiste sichtbar?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Uhr Hilfe', url: 'https://support.google.com/clock' }
+    ]
   },
   {
-    "id": "downloads",
-    "title": "Downloads wiederfinden",
-    "subtitle": "Eine heruntergeladene Datei auf dem Smartphone öffnen.",
-    "category": "Fotos & Dateien",
-    "theme": "magenta",
-    "minutes": 3,
-    "scope": "Android · Files by Google",
-    "steps": [
-      {
-        "title": "Die Dateien-App öffnen",
-        "text": "Öffne „Files by Google“. Unter „Zuletzt verwendet“ findest du zuletzt hinzugefügte, heruntergeladene oder geänderte Dateien. Suche dort zuerst nach deiner Datei.",
-        "shortText": "Files by Google öffnen und unter „Zuletzt verwendet“ nachsehen."
-      },
-      {
-        "title": "Die Übersicht eingrenzen",
-        "text": "Schau unter „Kategorien“ nach dem passenden Dateityp, zum Beispiel Dokumenten. Über das Dreipunkt-Menü und „Sortieren nach“ kannst du die Reihenfolge nach Datum oder Dateiname ändern.",
-        "shortText": "Die passende Kategorie, etwa Dokumente, wählen und bei Bedarf nach Datum sortieren."
-      },
-      {
-        "title": "Nach dem Namen suchen",
-        "text": "Wenn du die Datei noch nicht siehst, tippe oben in die Suchleiste. Gib einen Teil des Dateinamens ein. Filter für Dateityp oder Datum helfen, die Treffer weiter einzugrenzen.",
-        "shortText": "Einen Teil des Dateinamens in die Suche eingeben; angebotene Filter nutzen."
-      },
-      {
-        "title": "Die passende Datei öffnen",
-        "text": "Prüfe Name und Datum und tippe auf den passenden Treffer. Bei einer PDF sollte sich eine Leseansicht öffnen. Merke dir den Dateinamen, damit du sie später leichter wiederfindest.",
-        "shortText": "Name und Datum prüfen und die Datei öffnen. Den Namen fürs Wiederfinden merken."
-      }
-    ],
-    "tip": "Andere Android-Geräte haben zusätzlich eine App namens „Dateien“ oder „Eigene Dateien“. Diese Anleitung bezieht sich auf „Files by Google“; die Menüs können anders aussehen.",
-    "sources": [
-      {
-        "title": "Google: Dateien ansehen und sortieren",
-        "url": "https://support.google.com/files/answer/9765314?hl=de"
-      },
-      {
-        "title": "Google: Dateien suchen",
-        "url": "https://support.google.com/files/answer/9765316?hl=de"
-      }
-    ],
-    "level": "Grundlagen",
-    "learning": {
-      "kind": "practice",
-      "why": "Du hast eine Datei heruntergeladen und findest sie nicht mehr. Wir suchen sie anhand von Dateiname und Datum auf deinem Smartphone.",
-      "preparation": [
-        "Diese Anleitung gilt für Files by Google auf Android.",
-        "Erinnere dich an einen Teil des Dateinamens oder daran, wann du die Datei gespeichert hast."
-      ],
-      "result": "Öffnet sich die erwartete Datei mit dem richtigen Namen und Inhalt?",
-      "ifStuck": "Andere Geräte nutzen „Dateien“ oder „Eigene Dateien“. Orientiere dich dort an Suche, Datum und Dateityp; Menüs können abweichen."
+    id: 'downloads',
+    title: 'Heruntergeladene Dateien finden',
+    subtitle: 'PDFs und Fahrkarten auf dem Smartphone wiederfinden.',
+    category: 'Fotos & Dateien',
+    theme: 'magenta',
+    minutes: 3,
+    updatedAt: '2026-08-15',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Häufig lädt man eine Bahnfahrkarte, eine Rechnung oder eine Bedienungsanleitung im Browser herunter und weiß danach nicht, wo die Datei gelandet ist.',
+      preparation: [
+        'Eine heruntergeladene Datei auf deinem Gerät'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Die App „Dateien“ öffnen',
+        text: 'Öffne auf Android die App „Dateien“ (oder „Files by Google“). Auf dem iPhone heißt die passende App „Dateien“ mit einem blauen Ordner-Symbol.',
+        check: 'Siehst du die Datei-Ordner-App auf deinem Bildschirm?',
+        icon: 'folder-open'
+      },
+      {
+        title: 'Kategorie „Downloads“ aufrufen',
+        text: 'Tippe in der Übersicht auf den Ordner oder die Kategorie „Downloads“.',
+        check: 'Bist du im Downloads-Verzeichnis angekommen?',
+        icon: 'download'
+      },
+      {
+        title: 'Nach Datum sortieren',
+        text: 'Die neuesten Dateien stehen meist ganz oben. Anhand des Dateinamens (z. B. fahrkarte.pdf) erkennst du deine gesuchte Datei.',
+        check: 'Siehst du deine zuletzt heruntergeladene Datei an oberster Stelle?',
+        icon: 'file-search'
+      },
+      {
+        title: 'Datei antippen und ansehen',
+        text: 'Tippe einmal auf die Zeile. Die Datei öffnet sich sofort zum Lesen. Über die drei Punkte kannst du sie ausdrucken oder weiterleiten.',
+        check: 'Konnte das Dokument erfolgreich geöffnet werden?',
+        icon: 'file-text'
+      }
+    ],
+    sources: [
+      { title: 'Dateien auf Android finden – Hilfe', url: 'https://support.google.com/android/answer/9075847' }
+    ]
   },
   {
-    "id": "gmail-anhaenge",
-    "title": "Anhänge versenden",
-    "subtitle": "Ein Foto oder eine PDF per Gmail verschicken.",
-    "category": "Kommunikation",
-    "theme": "rot",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Gmail-App · Android",
-    "steps": [
-      {
-        "title": "Eine Nachricht beginnen",
-        "text": "Öffne Gmail und tippe auf „Schreiben“. Trage die E-Mail-Adresse ein und beschreibe kurz, welche Datei du schicken möchtest.",
-        "shortText": "Gmail öffnen und eine neue Nachricht mit Adresse und kurzem Text beginnen."
-      },
-      {
-        "title": "Die Büroklammer antippen",
-        "text": "Tippe oben auf das Symbol zum Anhängen. Wähle „Fotos“ für ein Bild oder „Dateien“ für eine gespeicherte PDF.",
-        "shortText": "Die Büroklammer wählen und je nach Inhalt Fotos oder Dateien öffnen."
-      },
-      {
-        "title": "Die Datei auswählen",
-        "text": "Suche deine Datei und tippe sie an. Prüfe in der Nachricht den Dateinamen oder die Vorschau. Einen falschen Anhang entfernst du über das X daneben.",
-        "shortText": "Gewünschte Datei auswählen und die Vorschau prüfen. Einen falschen Anhang am X entfernen."
-      },
-      {
-        "title": "Prüfen und senden",
-        "text": "Kontrolliere Empfänger und Anhang noch einmal. Tippe erst dann auf den Senden-Pfeil. Unter „Gesendet“ findest du deine verschickte Nachricht.",
-        "shortText": "Adresse und Anhang kontrollieren, dann senden. Unter „Gesendet“ nachsehen."
-      }
-    ],
-    "tip": "Übe zunächst mit einer unverfänglichen Datei. Sehr große Anhänge kann Gmail als Drive-Link einfügen; dabei gelten eigene Zugriffsrechte.",
-    "sources": [
-      {
-        "title": "Google: Anhänge mit Gmail versenden",
-        "url": "https://support.google.com/mail/answer/6584?hl=de&co=GENIE.Platform%3DAndroid"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest ein Foto oder eine PDF per E-Mail schicken. Wir prüfen vor dem Senden sowohl die Datei als auch die Adresse.",
-      "preparation": [
-        "Nutze die Gmail-App auf Android.",
-        "Halte eine unverfängliche Übungsdatei und die richtige E-Mail-Adresse bereit."
-      ],
-      "result": "Findest du unter „Gesendet“ die Nachricht mit der gewünschten Datei und der richtigen Adresse?",
-      "ifStuck": "Ist der falsche Anhang ausgewählt, entferne ihn vor dem Senden am X. Sehr große Dateien können als Drive-Link eigene Zugriffsrechte benötigen."
+    id: 'gmail-anhaenge',
+    title: 'Anhänge in E-Mails öffnen & speichern',
+    subtitle: 'Fotos und Dokumente sicher empfangen.',
+    category: 'Kommunikation',
+    theme: 'blau',
+    minutes: 3,
+    updatedAt: '2026-08-12',
+    scope: 'Für alle E-Mail-Apps',
+    learning: {
+      kind: 'step',
+      why: 'Arztbriefe, Rechnungen oder Familienfotos kommen oft als Anhang einer E-Mail. Lerne, wie du sie sicher öffnest.',
+      preparation: [
+        'Eine E-Mail mit Anhang in deinem Posteingang'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'E-Mail mit Anhang erkennen',
+        text: 'E-Mails mit Anhang haben in der Übersicht meist ein kleines Büroklammer-Symbol. Öffne die Nachricht.',
+        check: 'Siehst du unter dem Text rechteckige Kästchen für die angehängten Dateien?',
+        icon: 'mail'
+      },
+      {
+        title: 'Dateiendung vor dem Öffnen prüfen',
+        text: 'Sichere Anhänge enden auf .pdf, .jpg, .png oder .docx. Vorsicht bei Anhängen mit .exe, .zip oder .vbs – öffne solche Dateien niemals von unbekannten Absendern!',
+        check: 'Endet die Datei auf eine bekannte Dokument- oder Foto-Endung?',
+        icon: 'paperclip'
+      },
+      {
+        title: 'Anhang zur Vorschau antippen',
+        text: 'Tippe auf das Vorschaubild oder den Namen des Anhangs. Das Dokument öffnet sich sicher zur Voransicht.',
+        check: 'Wird der Inhalt des Dokuments angezeigt?',
+        icon: 'file-check'
+      },
+      {
+        title: 'Auf dem Smartphone dauerhaft sichern',
+        text: 'Tippe oben oder neben dem Anhang auf den Pfeil nach unten (Herunterladen-Symbol). Die Datei liegt nun sicher in deinem Download-Ordner.',
+        check: 'Erscheint die Meldung „Datei heruntergeladen“?',
+        icon: 'send'
+      }
+    ],
+    sources: [
+      { title: 'Gmail – Anhänge anzeigen und herunterladen', url: 'https://support.google.com/mail/answer/3070160' }
+    ]
   },
   {
-    "id": "gmail-ordnen",
-    "title": "Gmail aufräumen",
-    "subtitle": "Erledigte E-Mails ablegen und wiederfinden.",
-    "category": "Kommunikation",
-    "theme": "rot",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Gmail · Computer im Webbrowser",
-    "steps": [
-      {
-        "title": "Eine erledigte E-Mail wählen",
-        "text": "Öffne Gmail und setze das Häkchen neben einer Nachricht, die du erledigt hast. Beginne zum Üben mit einer einzelnen E-Mail.",
-        "shortText": "In Gmail eine erledigte E-Mail am Kästchen markieren."
-      },
-      {
-        "title": "Archivieren auswählen",
-        "text": "Klicke oben auf das Archiv-Symbol: ein Kästchen mit Pfeil nach unten. Die E-Mail verschwindet aus dem Posteingang, bleibt aber gespeichert.",
-        "shortText": "Das Archiv-Symbol wählen: Kästchen mit Pfeil nach unten."
-      },
-      {
-        "title": "Die Nachricht wiederfinden",
-        "text": "Öffne links „Mehr“ und dann „Alle E-Mails“. Dort liegen auch archivierte Nachrichten. Über die Suchleiste findest du Absender oder Betreff wieder.",
-        "shortText": "Unter „Mehr“ → „Alle E-Mails“ oder per Suche die Nachricht wiederfinden."
-      },
-      {
-        "title": "Bei Bedarf zurückholen",
-        "text": "Markiere die archivierte E-Mail und klicke oben auf „In Posteingang verschieben“. Antwortet jemand darauf, erscheint die Unterhaltung ebenfalls wieder im Posteingang.",
-        "shortText": "Bei Bedarf markieren und „In Posteingang verschieben“ wählen."
-      }
-    ],
-    "tip": "Archivieren schafft Übersicht, aber keinen freien Speicherplatz. Die Nachricht bleibt erhalten; du musst zum Aufräumen nichts löschen.",
-    "sources": [
-      {
-        "title": "Google: E-Mails in Gmail archivieren",
-        "url": "https://support.google.com/mail/answer/6576?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Dein Posteingang ist voll, aber du möchtest nichts Wichtiges löschen. Archivieren räumt eine erledigte E-Mail aus dem Posteingang und bewahrt sie auf.",
-      "preparation": [
-        "Nutze Gmail am Computer im Browser.",
-        "Wähle zum Üben nur eine einzelne, bereits erledigte Nachricht."
-      ],
-      "result": "Findest du die Nachricht nach dem Archivieren unter „Alle E-Mails“ oder über die Suche wieder?",
-      "ifStuck": "Die E-Mail ist nicht gelöscht. Suche nach Absender oder Betreff und verschiebe sie bei Bedarf wieder in den Posteingang."
+    id: 'gmail-ordnen',
+    title: 'E-Mails ordnen und löschen',
+    subtitle: 'Das Postfach aufgeräumt und übersichtlich halten.',
+    category: 'Kommunikation',
+    theme: 'blau',
+    minutes: 4,
+    updatedAt: '2026-08-10',
+    scope: 'Für Gmail',
+    learning: {
+      kind: 'step',
+      why: 'Ein überfülltes Postfach sorgt für Stress und verbraucht Speicherplatz. Mit wenigen Handgriffen wird dein Posteingang wieder blitzsauber.',
+      preparation: [
+        'Gmail-Posteingang geöffnet'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Überflüssige Werbemails markieren',
+        text: 'Tippe links neben einer E-Mail auf das runde Absender-Symbol (oder halte die Zeile eine Sekunde gedrückt). Ein blauer Haken erscheint.',
+        check: 'Wurde die E-Mail mit einem Haken markiert?',
+        icon: 'mail'
+      },
+      {
+        title: 'In den Papierkorb werfen',
+        text: 'Tippe ganz oben in der Aktionsleiste auf das Mülleimer-Symbol. Die E-Mail wandert in den Papierkorb und wird nach 30 Tagen endgültig gelöscht.',
+        check: 'Ist die unerwünschte Nachricht aus dem Posteingang verschwunden?',
+        icon: 'archive'
+      },
+      {
+        title: 'Suchfunktion für alte Nachrichten nutzen',
+        text: 'Suche nicht manuell durch Hunderte Mails. Tippe oben auf die Lupe und gib den Namen des Absenders oder ein Stichwort ein (z. B. „Stadtwerke“).',
+        check: 'Werden dir sofort alle Nachrichten zu diesem Stichwort angezeigt?',
+        icon: 'search'
+      },
+      {
+        title: 'Wichtige Nachrichten mit Stern hervorheben',
+        text: 'Tippe bei Rechnungen oder Terminen auf den kleinen Stern rechts. Über das Menü „Markiert“ findest du diese wichtigen E-Mails jederzeit sofort wieder.',
+        check: 'Leuchtet der Stern gelb?',
+        icon: 'inbox'
+      }
+    ],
+    sources: [
+      { title: 'Gmail Posteingang organisieren', url: 'https://support.google.com/mail/answer/6579' }
+    ]
   },
   {
-    "id": "google-meet",
-    "title": "Am Videochat teilnehmen",
-    "subtitle": "Mit Google Meet zu einem Gespräch dazukommen.",
-    "category": "Kommunikation",
-    "theme": "gruen",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Google Meet · Computer mit Kamera und Mikrofon",
-    "steps": [
-      {
-        "title": "Den Einladungslink öffnen",
-        "text": "Öffne den Meet-Link, den dir deine bekannte Kontaktperson geschickt hat. Plane beim ersten Mal ein paar Minuten Vorlauf ein.",
-        "shortText": "Den erwarteten Meet-Link der bekannten Kontaktperson öffnen."
-      },
-      {
-        "title": "Bild und Ton prüfen",
-        "text": "Erlaube Kamera und Mikrofon für Meet, wenn dein Browser danach fragt. In der Vorschau kannst du Bild und Ton prüfen und das gewünschte Gerät auswählen.",
-        "shortText": "In der Vorschau Kamera und Mikrofon erlauben und Bild sowie Ton prüfen."
-      },
-      {
-        "title": "Dem Gespräch beitreten",
-        "text": "Klicke auf „Jetzt teilnehmen“ oder „Teilnahme erbitten“. Ohne Anmeldung wirst du nach deinem Namen gefragt und musst gegebenenfalls auf die Freigabe warten.",
-        "shortText": "„Jetzt teilnehmen“ oder „Teilnahme erbitten“ wählen. Falls nötig, auf Einlass warten."
-      },
-      {
-        "title": "Mikrofon bewusst nutzen",
-        "text": "Über das Mikrofon-Symbol schaltest du deinen Ton ein und aus. Zum Beenden klickst du auf den roten Hörer. Damit verlässt du das Gespräch.",
-        "shortText": "Mikrofon bewusst ein- oder ausschalten. Mit dem roten Hörer das Gespräch verlassen."
-      }
-    ],
-    "tip": "Ein ruhiger Platz und Kopfhörer erleichtern das Gespräch. Ob du sofort teilnehmen kannst, hängt von den Einstellungen der einladenden Person ab.",
-    "sources": [
-      {
-        "title": "Google: An einer Meet-Videokonferenz teilnehmen",
-        "url": "https://support.google.com/meet/answer/9303069?hl=de"
-      },
-      {
-        "title": "Google: Bild und Ton vorab prüfen",
-        "url": "https://support.google.com/meet/answer/10409699?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest an einem Videogespräch teilnehmen. Wir prüfen Bild und Ton, bevor du dem Gespräch beitrittst.",
-      "preparation": [
-        "Nutze einen Computer mit Kamera und Mikrofon.",
-        "Öffne nur den erwarteten Link einer bekannten Kontaktperson und plane beim ersten Mal etwas Vorlauf ein."
-      ],
-      "result": "Bist du im Gespräch und kann die andere Person dich hören? Das Mikrofon lässt sich jederzeit ein- oder ausschalten.",
-      "ifStuck": "Wartest du auf Einlass, muss die einladende Person dich eventuell zulassen. Prüfe bei Tonproblemen das ausgewählte Mikrofon und den erlaubten Zugriff."
+    id: 'google-meet',
+    title: 'Videoanrufe mit Google Meet',
+    subtitle: 'Mit Familie und Freunden per Video sprechen.',
+    category: 'Kommunikation',
+    theme: 'blau',
+    minutes: 4,
+    updatedAt: '2026-08-08',
+    scope: 'Für Computer, Android und iPad/iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Enkel beim Großwerden zuschauen oder mit weit entfernt lebenden Freunden sprechen, als säße man am selben Kaffeetisch.',
+      preparation: [
+        'Google-Konto vorhanden',
+        'Kamera und Mikrofon am Gerät funktionsfähig'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Google Meet aufrufen',
+        text: 'Öffne die App „Meet“ auf deinem Smartphone oder öffne meet.google.com im Browser deines Computers.',
+        check: 'Bist du auf der Übersichtsseite von Google Meet?',
+        icon: 'link'
+      },
+      {
+        title: 'Neues Meeting starten oder Link öffnen',
+        text: 'Tippe auf „Neue Videokonferenz“ oder klicke einfach auf den Einladungslink, den dir jemand per E-Mail oder WhatsApp geschickt hat.',
+        check: 'Öffnet sich das Vorbereitungsfenster mit deinem Kamerabild?',
+        icon: 'video'
+      },
+      {
+        title: 'Kamera und Mikrofon freigeben',
+        text: 'Falls dein Browser fragt: Erlaube den Zugriff auf Kamera und Mikrofon. Du siehst dein eigenes Bild zur Kontrolle im Bildschirm.',
+        check: 'Siehst du dich selbst klar und deutlich im Display?',
+        icon: 'user-round'
+      },
+      {
+        title: 'Dem Gespräch beitreten & sprechen',
+        text: 'Tippe auf „Jetzt teilnehmen“. Während des Gesprächs kannst du mit dem Mikrofon-Knopf deinen Ton stumm schalten, wenn du nur zuhören möchtest. Mit dem roten Hörer legst du auf.',
+        check: 'Siehst und hörst du die anderen Teilnehmer?',
+        icon: 'mic'
+      }
+    ],
+    sources: [
+      { title: 'Google Meet Hilfebereich', url: 'https://support.google.com/meet' }
+    ]
   },
   {
-    "id": "konto-wiederherstellen",
-    "title": "Google-Zugang retten",
-    "subtitle": "Was du tun kannst, wenn dein Passwort fehlt.",
-    "category": "Konten",
-    "theme": "blau",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Privates Google-Konto · Webbrowser",
-    "steps": [
-      {
-        "title": "Die echte Hilfe öffnen",
-        "text": "Rufe selbst accounts.google.com/signin/recovery im Browser auf. Starte nicht über einen unerwarteten Link in einer Nachricht.",
-        "shortText": "accounts.google.com/signin/recovery selbst im Browser öffnen."
-      },
-      {
-        "title": "Dein Konto angeben",
-        "text": "Trage die E-Mail-Adresse deines Google-Kontos ein. Folge den angezeigten Fragen. Welche Nachweise angeboten werden, hängt von deinem Konto ab.",
-        "shortText": "Die E-Mail-Adresse des betroffenen Google-Kontos angeben."
-      },
-      {
-        "title": "Die Inhaberschaft bestätigen",
-        "text": "Beantworte die Fragen so genau wie möglich. Nutze einen angebotenen Bestätigungscode nur auf der selbst geöffneten Google-Seite. Gib ihn niemandem weiter.",
-        "shortText": "Die angebotenen Fragen beantworten. Codes nur auf der selbst geöffneten Google-Seite eingeben."
-      },
-      {
-        "title": "Ein neues Passwort festlegen",
-        "text": "Wenn Google dich dazu auffordert, wähle ein starkes Passwort, das du für dieses Konto noch nicht benutzt hast. Bewahre es in deinem Passwortmanager auf.",
-        "shortText": "Falls angeboten, ein neues eigenes Passwort festlegen und sicher aufbewahren."
-      }
-    ],
-    "tip": "Eine Wiederherstellung ist nicht garantiert. Google arbeitet nicht mit Diensten zusammen, die gegen Geld einen Kontozugang versprechen. Für Arbeitskonten ist die zuständige Administration der erste Kontakt.",
-    "sources": [
-      {
-        "title": "Google: Konto oder Gmail-Zugang wiederherstellen",
-        "url": "https://support.google.com/accounts/answer/7682439?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du kommst nicht mehr in dein privates Google-Konto. Wir nutzen die offizielle Wiederherstellung, statt einen zweiten Zugang anzulegen.",
-      "preparation": [
-        "Halte deine Google-E-Mail-Adresse bereit.",
-        "Nutze nach Möglichkeit ein vertrautes Gerät und gib Bestätigungscodes niemandem weiter."
-      ],
-      "result": "Konntest du dich mit dem wiederhergestellten Zugang anmelden? Prüfe danach im Konto deine Wiederherstellungsangaben.",
-      "ifStuck": "Nutze nur die offizielle Hilfe. Bei Arbeitskonten ist die zuständige Administration der richtige Kontakt; zahle keinem Dienst für ein versprochenes Entsperren."
+    id: 'konto-wiederherstellen',
+    title: 'Konto wiederherstellen',
+    subtitle: 'Wenn das Passwort vergessen wurde oder der Zugang blockiert ist.',
+    category: 'Konten',
+    theme: 'blau',
+    minutes: 5,
+    updatedAt: '2026-08-05',
+    scope: 'Für Google-, Apple- und Mail-Konten',
+    learning: {
+      kind: 'step',
+      why: 'Passwort vergessen? Keine Panik. Mit den richtigen Wiederherstellungs-Schritten erlangst du deinen Zugang sicher zurück.',
+      preparation: [
+        'Zugriff auf dein Smartphone mit deiner SIM-Karte für SMS-Codes',
+        'Eventuell hinterlegte zweite E-Mail-Adresse'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Wiederherstellungsseite aufrufen',
+        text: 'Gehe auf accounts.google.com/signin/recovery (oder die Seite des jeweiligen Anbieters) und gib deine E-Mail-Adresse ein.',
+        check: 'Steht auf der Seite „Kontowiederherstellung“?',
+        icon: 'globe'
+      },
+      {
+        title: '„Passwort vergessen?“ wählen',
+        text: 'Tippe unter dem Passworteingabefeld auf den blauen Link „Passwort vergessen?“.',
+        check: 'Fragt der Dienst nach einer alternativen Bestätigung?',
+        icon: 'user-round'
+      },
+      {
+        title: 'Bestätigungscode per SMS anfordern',
+        text: 'Wähle die Option „Code an meine Telefonnummer senden“. Innerhalb von 30 Sekunden erhältst du eine SMS mit einem 6-stelligen Zahlencode (z. B. G-123456).',
+        check: 'Hast du die SMS mit dem Prüfcode erhalten?',
+        icon: 'shield-check'
+      },
+      {
+        title: 'Neues, sicheres Passwort vergeben',
+        text: 'Tippe den empfangenen Code ein. Anschließend darfst du ein neues, sicheres Passwort wählen. Notiere es dir an einem sicheren Ort.',
+        check: 'Konnte die Anmeldung mit dem neuen Passwort erfolgreich abgeschlossen werden?',
+        icon: 'key-round'
+      }
+    ],
+    sources: [
+      { title: 'Google Kontowiederherstellung Leitfaden', url: 'https://support.google.com/accounts/troubleshooter/2402620' }
+    ]
   },
   {
-    "id": "lesezeichen",
-    "title": "Lesezeichen speichern",
-    "subtitle": "Lieblingsseiten in Chrome schnell wieder öffnen.",
-    "category": "Internet",
-    "theme": "tuerkis",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Google Chrome · Computer",
-    "steps": [
-      {
-        "title": "Die richtige Seite öffnen",
-        "text": "Rufe die Webseite auf, die du öfter brauchst. Prüfe, ob du wirklich auf der gewünschten Seite bist, bevor du sie speicherst.",
-        "shortText": "Die gewünschte Webseite öffnen und die Adresse prüfen."
-      },
-      {
-        "title": "Den Stern anklicken",
-        "text": "Klicke rechts neben der Adressleiste auf den Stern. Chrome speichert die Seite als Lesezeichen. Ein kurzer, eindeutiger Name hilft beim Wiederfinden.",
-        "shortText": "Den Stern an der Adressleiste anklicken und einen verständlichen Namen vergeben."
-      },
-      {
-        "title": "Das Lesezeichen wiederfinden",
-        "text": "Öffne oben rechts das Dreipunkt-Menü. Wähle „Lesezeichen und Listen“ und dann „Lesezeichenmanager“. Dort kannst du die gespeicherte Seite auswählen.",
-        "shortText": "Im Dreipunkt-Menü „Lesezeichen und Listen“ → „Lesezeichenmanager“ öffnen."
-      },
-      {
-        "title": "Die Leiste einblenden",
-        "text": "Für häufige Seiten öffne im Dreipunkt-Menü „Lesezeichen und Listen“ und aktiviere „Lesezeichenleiste anzeigen“. Die Leiste bietet schnellen Zugriff.",
-        "shortText": "Für schnellen Zugriff bei Bedarf im selben Menü die Lesezeichenleiste anzeigen."
-      }
-    ],
-    "tip": "Ein Lesezeichen speichert die Adresse, keine Kopie der Webseite. Wenn sich die Seite verändert, siehst du beim nächsten Öffnen den neuen Inhalt.",
-    "sources": [
-      {
-        "title": "Google: Lesezeichen in Chrome verwalten",
-        "url": "https://support.google.com/chrome/answer/188842?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest eine häufig benötigte Webseite schnell wiederfinden. Ein Lesezeichen merkt sich ihre Adresse für dich.",
-      "preparation": [
-        "Nutze Google Chrome am Computer.",
-        "Öffne eine Webseite, deren Anbieter und Adresse du kennst."
-      ],
-      "result": "Kannst du die Seite über deinen gespeicherten Namen erneut öffnen?",
-      "ifStuck": "Ein Lesezeichen speichert keine unveränderliche Kopie. Ein anderer Seiteninhalt kann bedeuten, dass der Anbieter die Webseite aktualisiert hat."
+    id: 'lesezeichen',
+    title: 'Lesezeichen im Browser anlegen',
+    subtitle: 'Lieblingsseiten mit einem Klick wieder aufrufen.',
+    category: 'Internet',
+    theme: 'tuerkis',
+    minutes: 3,
+    updatedAt: '2026-08-02',
+    scope: 'Für Chrome, Safari und Edge',
+    learning: {
+      kind: 'step',
+      why: 'Statt jedes Mal komplizierte Internetadressen einzutippen, legst du deine Lieblingsseiten einfach als Lesezeichen (Favoriten) ab.',
+      preparation: [
+        'Die gewünschte Webseite im Browser geöffnet'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Lieblingswebseite öffnen',
+        text: 'Öffne im Browser die Seite, die du speichern möchtest (z. B. deine Tageszeitung, die Mediathek oder den Wetterbericht).',
+        check: 'Bist du auf der gewünschten Internetseite?',
+        icon: 'globe'
+      },
+      {
+        title: 'Lesezeichen-Stern antippen',
+        text: 'Tippe oben rechts auf die drei Punkte und dann auf den Stern (bei Chrome) oder unten auf das Teilen-Symbol und dann „Lesezeichen hinzufügen“ (bei Safari).',
+        check: 'Erscheint die Meldung „Lesezeichen hinzugefügt“?',
+        icon: 'bookmark'
+      },
+      {
+        title: 'Namen bei Bedarf anpassen',
+        text: 'Du kannst den Text kürzen, z. B. einfach „Wetter“ statt „Wetterbericht Deutschland heute vor Ort“. Tippe auf „Speichern“.',
+        check: 'Hast du einen kurzen, verständlichen Namen gewählt?',
+        icon: 'folder-open'
+      },
+      {
+        title: 'Lesezeichen-Leiste schnell öffnen',
+        text: 'Tippe in Zukunft einfach auf die drei Punkte > „Lesezeichen“. Ein Fingertipp genügt und die Seite öffnet sich sofort.',
+        check: 'Siehst du dein neues Lesezeichen in der Liste?',
+        icon: 'mouse-pointer-2'
+      }
+    ],
+    sources: [
+      { title: 'Google Chrome – Lesezeichen verwalten', url: 'https://support.google.com/chrome/answer/188842' }
+    ]
   },
   {
-    "id": "benachrichtigungen",
-    "title": "Weniger Benachrichtigungen",
-    "subtitle": "Selbst entscheiden, welche App dich unterbricht.",
-    "category": "Geräte & Technik",
-    "theme": "violett",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Android · Menünamen können je nach Gerät abweichen",
-    "steps": [
-      {
-        "title": "Die Einstellungen öffnen",
-        "text": "Öffne auf deinem Smartphone die Einstellungen und wähle „Benachrichtigungen“. Suche dort nach „App-Benachrichtigungen“.",
-        "shortText": "Einstellungen → Benachrichtigungen → App-Benachrichtigungen öffnen."
-      },
-      {
-        "title": "Eine App auswählen",
-        "text": "Öffne eine App, die dich häufig unterbricht. Falls sie nicht unter den letzten Apps erscheint, lasse dir alle Apps anzeigen.",
-        "shortText": "Eine App auswählen, die dich häufig unterbricht."
-      },
-      {
-        "title": "Die Hinweise anpassen",
-        "text": "Schalte nicht benötigte Benachrichtigungen aus. Bietet die App einzelne Kategorien an, kannst du nur diese ändern und andere Hinweise weiterhin erhalten.",
-        "shortText": "Unnötige Hinweise oder einzelne angebotene Kategorien ausschalten."
-      },
-      {
-        "title": "Die Änderung ausprobieren",
-        "text": "Nutze dein Smartphone eine Weile. Fehlt dir eine wichtige Meldung, öffne denselben Bereich erneut und schalte sie wieder ein.",
-        "shortText": "Die Wirkung im Alltag prüfen. Fehlende wichtige Hinweise im selben Bereich wieder einschalten."
-      }
-    ],
-    "tip": "Beginne mit einer App. Auch ohne Benachrichtigung können neue Inhalte in der App ankommen; du bemerkst sie dann eventuell erst beim Öffnen.",
-    "sources": [
-      {
-        "title": "Google: Benachrichtigungen unter Android verwalten",
-        "url": "https://support.google.com/android/answer/9079661?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Dein Smartphone unterbricht dich ständig. Wir ändern zunächst die Hinweise einer einzelnen App, damit du den Unterschied gut beurteilen kannst.",
-      "preparation": [
-        "Nutze dein Android-Smartphone.",
-        "Wähle zuerst eine App, deren Hinweise du selten brauchst."
-      ],
-      "result": "Ist es im Alltag ruhiger, während wichtige Nachrichten weiterhin auffallen? Beobachte die Änderung eine Weile.",
-      "ifStuck": "Fehlt eine wichtige Meldung, schalte den betreffenden Hinweis im selben Menü wieder ein. Inhalte können auch ohne Benachrichtigung in der App ankommen."
+    id: 'benachrichtigungen',
+    title: 'Benachrichtigungen einstellen',
+    subtitle: 'Nur noch wichtige Töne und Meldungen erhalten.',
+    category: 'Geräte & Technik',
+    theme: 'violett',
+    minutes: 3,
+    updatedAt: '2026-07-28',
+    scope: 'Für alle Smartphones',
+    learning: {
+      kind: 'step',
+      why: 'Ständiges Piepen und Bimmeln nervt. Schalte Werbemeldungen von Spielen oder Shopping-Apps stumm, während wichtige Anrufe weiterhin klingeln.',
+      preparation: [
+        'Dein Smartphone zur Hand'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Benachrichtigungs-Menü aufrufen',
+        text: 'Öffne „Einstellungen“ > „Benachrichtigungen“ (oder „Apps & Benachrichtigungen“).',
+        check: 'Siehst du die Liste deiner kürzlich benachrichtigten Apps?',
+        icon: 'settings'
+      },
+      {
+        title: 'App-Liste durchsehen',
+        text: 'Tippe auf „App-Einstellungen“ oder „Alle Apps anzeigen“. Du siehst nun jede App mit einem Schalter.',
+        check: 'Werden dir alle installierten Apps aufgelistet?',
+        icon: 'bell'
+      },
+      {
+        title: 'Unerwünschte Apps stummschalten',
+        text: 'Schalte den Schalter bei Apps aus, von denen du keine Werbung oder unnötigen Töne hören willst (z. B. Spiele, Online-Shops).',
+        check: 'Sind unwichtige Apps auf Grau (Aus) gestellt?',
+        icon: 'sliders-horizontal'
+      },
+      {
+        title: 'Wichtige Kanäle aktiv lassen',
+        text: 'Lasse Telefon, SMS, Kalender und WhatsApp unbedingt aktiviert, damit du dringende Nachrichten und Termine weiterhin mitbekommst.',
+        check: 'Bleiben wichtige Kommunikations-Apps weiterhin aktiv?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Android Benachrichtigungen steuern', url: 'https://support.google.com/android/answer/9079661' }
+    ]
   },
   {
-    "id": "app-berechtigungen",
-    "title": "App-Zugriffe prüfen",
-    "subtitle": "Kamera, Mikrofon und Standort bewusst freigeben.",
-    "category": "Sicherheit",
-    "theme": "gold",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Android · Beispiel Google Pixel ab Android 11",
-    "steps": [
-      {
-        "title": "Die App-Einstellungen finden",
-        "text": "Öffne „Einstellungen“ und dann „Apps“. Wähle die gewünschte App; über „Alle Apps anzeigen“ findest du weitere Einträge.",
-        "shortText": "Einstellungen → Apps öffnen und die betreffende App wählen."
-      },
-      {
-        "title": "Die Berechtigungen ansehen",
-        "text": "Tippe auf „Berechtigungen“. Hier siehst du, welche Zugriffe die App erhalten hat und welche du bislang nicht erlaubt hast.",
-        "shortText": "Unter „Berechtigungen“ erlaubte und nicht erlaubte Zugriffe ansehen."
-      },
-      {
-        "title": "Einen Zugriff anpassen",
-        "text": "Tippe zum Beispiel auf „Standort“. Wähle, sofern angeboten, „Nur während der Nutzung der App“ oder „Nicht zulassen“. Entscheide passend zur Funktion der App.",
-        "shortText": "Einen Zugriff passend zur Aufgabe anpassen, etwa den Standort nur während der Nutzung erlauben."
-      },
-      {
-        "title": "Die App ausprobieren",
-        "text": "Öffne die App erneut. Funktioniert etwas nicht mehr, kannst du denselben Zugriff gezielt wieder erlauben. Eine Kamera-App braucht zum Fotografieren Kamerazugriff.",
-        "shortText": "Die App ausprobieren. Benötigte Zugriffe bei Bedarf gezielt wieder erlauben."
-      }
-    ],
-    "tip": "Nicht jede App braucht jeden Zugriff. Prüfe den konkreten Zweck. Auswahlmöglichkeiten unterscheiden sich je nach Berechtigung, Android-Version und Hersteller.",
-    "sources": [
-      {
-        "title": "Google: App-Berechtigungen unter Android ändern",
-        "url": "https://support.google.com/android/answer/9431959?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Eine App fragt nach Kamera, Standort oder Mikrofon. Du kannst ihre Zugriffe passend zu dem einstellen, was du mit ihr machen möchtest.",
-      "preparation": [
-        "Die Beispiele gelten für Google Pixel ab Android 11; andere Geräte können anders aussehen.",
-        "Ändere zuerst nur einen Zugriff einer einzelnen App."
-      ],
-      "result": "Funktioniert die gewünschte Aufgabe noch, während unnötige Zugriffe eingeschränkt sind?",
-      "ifStuck": "Fehlt eine Funktion, kannst du den nötigen Zugriff im selben Bereich wieder erlauben. Eine Kamera-App braucht zum Fotografieren Kamerazugriff."
+    id: 'app-berechtigungen',
+    title: 'App-Berechtigungen prüfen',
+    subtitle: 'Kamera, Standort und Kontakte nur gezielt freigeben.',
+    category: 'Sicherheit',
+    theme: 'gold',
+    minutes: 4,
+    updatedAt: '2026-07-24',
+    scope: 'Für Android und iPhone',
+    learning: {
+      kind: 'step',
+      why: 'Eine Taschenlampen-App braucht weder deinen Standort noch deine Kontakte. Behalte die Kontrolle über deine Privatsphäre.',
+      preparation: [
+        'Dein Smartphone entsperrt'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Datenschutz-Einstellungen aufrufen',
+        text: 'Öffne „Einstellungen“ > „Datenschutz“ > „Berechtigungsmanager“ (oder „Apps“ > „Berechtigungen“).',
+        check: 'Siehst du Kategorien wie Kamera, Kontakte, Mikrofon und Standort?',
+        icon: 'settings'
+      },
+      {
+        title: 'Standort-Zugriff überprüfen',
+        text: 'Tippe auf „Standort“. Hier siehst du, welche Apps deinen Aufenthaltsort kennen dürfen. Wähle bei Navi-Apps „Nur beim Verwenden der App“, bei anderen „Nicht zulassen“.',
+        check: 'Haben nur Navigations- und Wetter-Apps Zugriff auf deinen Standort?',
+        icon: 'shield-check'
+      },
+      {
+        title: 'Kamera und Mikrofon prüfen',
+        text: 'Gehe die Liste bei „Mikrofon“ und „Kamera“ durch. Nur Apps, mit denen du telefonierst oder Fotos machst, sollten hier aktiv sein.',
+        check: 'Gibt es unbekannte oder verdächtige Apps mit Mikrofonzugriff?',
+        icon: 'sliders-horizontal'
+      },
+      {
+        title: 'Unnötige Berechtigungen entziehen',
+        text: 'Tippe auf eine fragwürdige App und wähle „Nicht zulassen“. Die App funktioniert meist trotzdem weiter – nur ohne Daten abzugreifen.',
+        check: 'Wurden überflüssige Freigaben erfolgreich entfernt?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'BSI – App-Berechtigungen richtig verwalten', url: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Mobil-unterwegs/Smartphones-sichern/smartphones-sichern_node.html' }
+    ]
   },
   {
-    "id": "dateien-teilen",
-    "title": "Dateien gezielt teilen",
-    "subtitle": "Eine Drive-Datei für eine bestimmte Person freigeben.",
-    "category": "Fotos & Dateien",
-    "theme": "magenta",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Google Drive · Computer · eigene Datei",
-    "steps": [
-      {
-        "title": "Die Datei auswählen",
-        "text": "Öffne drive.google.com und wähle die Datei aus. Klicke auf „Freigeben“ oder „Teilen“. Prüfe, ob es die richtige Datei ist.",
-        "shortText": "In Google Drive die richtige Datei wählen und „Freigeben“ oder „Teilen“ öffnen."
-      },
-      {
-        "title": "Die Person eintragen",
-        "text": "Gib die E-Mail-Adresse der gewünschten Person ein. Prüfe die vollständige Adresse, damit die Datei nicht bei jemand anderem landet.",
-        "shortText": "Die vollständige E-Mail-Adresse der gewünschten Person prüfen und eintragen."
-      },
-      {
-        "title": "Die Rolle festlegen",
-        "text": "Wähle „Betrachter“, wenn die Person nur lesen soll. „Mitbearbeiter“ ist sinnvoll, wenn sie den Inhalt verändern darf. Lass den allgemeinen Zugriff eingeschränkt.",
-        "shortText": "„Betrachter“ zum Lesen oder „Mitbearbeiter“ zum Ändern wählen. Allgemeinen Zugriff eingeschränkt lassen."
-      },
-      {
-        "title": "Die Freigabe abschließen",
-        "text": "Klicke auf „Senden“ oder „Freigeben“. Eine Benachrichtigung wird verschickt, wenn sie aktiviert ist. Im Freigabefenster kannst du später die Zugriffe kontrollieren.",
-        "shortText": "Freigabe bestätigen. Anschließend Person, Rolle und vorhandene Ordnerrechte kontrollieren."
-      }
-    ],
-    "tip": "Dateien können Zugriffsrechte ihres Ordners übernehmen. Ein direkt eingeschränkter Dateilink hebt solche bestehenden Ordnerrechte nicht auf. Prüfe deshalb auch, wo die Datei liegt.",
-    "sources": [
-      {
-        "title": "Google: Dateien in Drive freigeben",
-        "url": "https://support.google.com/drive/answer/2494822?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest einer bestimmten Person eine Datei zeigen, ohne sie allgemein zugänglich zu machen. Wir prüfen Person und Zugriffsrecht vor der Freigabe.",
-      "preparation": [
-        "Nutze Google Drive am Computer und eine eigene Datei.",
-        "Prüfe bei vertraulichen Inhalten auch die Freigaben des übergeordneten Ordners."
-      ],
-      "result": "Zeigt das Freigabefenster die richtige Person mit der passenden Rolle? Kann sie nur das tun, was du erlauben möchtest?",
-      "ifStuck": "Eine Datei kann Rechte ihres Ordners übernehmen. Eine einzelne eingeschränkte Freigabe entfernt solche bestehenden Ordnerrechte nicht."
+    id: 'dateien-teilen',
+    title: 'Dateien und Fotos sicher teilen',
+    subtitle: 'Fotos an Freunde senden, ohne die Qualität zu verlieren.',
+    category: 'Fotos & Dateien',
+    theme: 'magenta',
+    minutes: 3,
+    updatedAt: '2026-07-20',
+    scope: 'Für alle Geräte',
+    learning: {
+      kind: 'step',
+      why: 'WhatsApp verkleinert Fotos oft stark. Wenn du Bilder in voller Schärfe weitergeben willst, gibt es clevere Direktwege.',
+      preparation: [
+        'Das Foto oder die Datei in deiner Galerie ausgewählt'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Foto auswählen und Teilen-Symbol suchen',
+        text: 'Tippe das Foto in deiner Galerie an. Suche unten nach dem Teilen-Symbol (drei Punkte mit zwei Linien bei Android bzw. ein Viereck mit Pfeil nach oben bei Apple).',
+        check: 'Tippst du auf das Teilen-Symbol und es öffnet sich ein Auswahlmenü?',
+        icon: 'folder-open'
+      },
+      {
+        title: 'Quick Share oder AirDrop für Personen in der Nähe',
+        text: 'Steht die Person direkt neben dir? Nutze „Quick Share“ (Android/Windows) oder „AirDrop“ (Apple). Die Datei fliegt in Sekundenschnelle per Funk direkt aufs andere Gerät.',
+        check: 'Wird das Gerät deiner Bekannten in der Auswahlliste angezeigt?',
+        icon: 'user-plus'
+      },
+      {
+        title: 'Link teilen für große Fotoalben',
+        text: 'Möchtest du 50 Urlaubsfotos teilen? Erstelle in Google Fotos oder iCloud ein „Geteiltes Album“ und versende nur den Zugriffslink per Mail oder WhatsApp.',
+        check: 'Wurde der Album-Link in deine Zwischenablage kopiert?',
+        icon: 'eye'
+      },
+      {
+        title: 'Freigabe bei Bedarf wieder aufheben',
+        text: 'Du kannst den geteilten Link jederzeit wieder löschen, wenn die Empfänger die Bilder heruntergeladen haben.',
+        check: 'Hast du die Kontrolle über den geteilten Ordner behalten?',
+        icon: 'share-2'
+      }
+    ],
+    sources: [
+      { title: 'Google Quick Share Anleitung', url: 'https://support.google.com/android/answer/9286773' }
+    ]
   },
   {
-    "id": "listen",
-    "title": "Listen zum Abhaken",
-    "subtitle": "Einkäufe und kleine Aufgaben mit Google Notizen sammeln.",
-    "category": "Organisation",
-    "theme": "schiefer",
-    "level": "Grundlagen",
-    "minutes": 3,
-    "scope": "Google Notizen (Keep) · Computer",
-    "steps": [
-      {
-        "title": "Google Notizen öffnen",
-        "text": "Rufe keep.google.com auf und melde dich mit deinem Google-Konto an. Deine Übersicht zeigt die bereits gespeicherten Notizen.",
-        "shortText": "keep.google.com öffnen und beim eigenen Konto anmelden."
-      },
-      {
-        "title": "Eine neue Liste beginnen",
-        "text": "Klicke neben „Notiz schreiben“ auf das Symbol „Neue Liste“. Gib einen klaren Titel ein, zum Beispiel „Einkauf“ oder „Für den Ausflug“.",
-        "shortText": "„Neue Liste“ wählen und einen verständlichen Titel eintragen."
-      },
-      {
-        "title": "Die Punkte eintragen",
-        "text": "Schreibe jeden Artikel oder jede Aufgabe in eine eigene Zeile. Klicke auf „Fertig“, wenn deine erste Liste steht.",
-        "shortText": "Jeden Punkt in eine eigene Zeile schreiben und „Fertig“ wählen."
-      },
-      {
-        "title": "Erledigte Punkte abhaken",
-        "text": "Öffne die Liste erneut und klicke auf das Kästchen neben einem erledigten Punkt. Du kannst weitere Einträge ergänzen und ihre Reihenfolge durch Ziehen ändern.",
-        "shortText": "Liste erneut öffnen und erledigte Punkte an den Kästchen abhaken."
-      }
-    ],
-    "tip": "Halte die Liste zunächst kurz. Aufgaben wie „USB-Kabel einpacken“ sind leichter abzuhaken als allgemeine Vorhaben wie „alles vorbereiten“.",
-    "sources": [
-      {
-        "title": "Google: Listen in Google Notizen erstellen",
-        "url": "https://support.google.com/keep/answer/6395451?hl=de"
-      }
-    ],
-    "learning": {
-      "kind": "practice",
-      "why": "Du möchtest Einkäufe oder kleine Aufgaben im Blick behalten. Wir erstellen eine kurze Liste, die du später abhaken kannst.",
-      "preparation": [
-        "Nutze Google Notizen (Keep) am Computer mit deinem Google-Konto.",
-        "Drei konkrete Punkte reichen zum Ausprobieren."
-      ],
-      "result": "Findest du deine Liste wieder, und lässt sich ein erledigter Punkt abhaken?",
-      "ifStuck": "Beginne mit kleinen Aufgaben wie „USB-Kabel einpacken“. Unklare Vorhaben lassen sich schwerer abhaken."
+    id: 'listen',
+    title: 'Digitale Notizen & Einkaufslisten',
+    subtitle: 'Erledigungen und Einkäufe bequem abhaken.',
+    category: 'Organisation',
+    theme: 'schiefer',
+    minutes: 3,
+    updatedAt: '2026-07-15',
+    scope: 'Für Google Notizen, Apple Notizen & Co.',
+    learning: {
+      kind: 'step',
+      why: 'Kein verlorener Zettel mehr im Supermarkt: Schreibe Einkäufe aufs Smartphone und hake erledigte Dinge mit einem Fingertipp ab.',
+      preparation: [
+        'App „Google Notizen“ (gelbes Notizblatt) oder Apple „Notizen“'
+      ]
     },
-    "updatedAt": "2026-09-14"
+    steps: [
+      {
+        title: 'Notizen-App öffnen',
+        text: 'Öffne die App „Google Notizen“ auf Android oder „Notizen“ auf dem iPhone.',
+        check: 'Bist du in der Notizen-Übersicht?',
+        icon: 'list-checks'
+      },
+      {
+        title: 'Neue Häkchen-Liste anlegen',
+        text: 'Tippe unten auf das kleine Kästchen-Symbol mit dem Häkchen (Neue Checkliste). Gib oben einen Titel ein, z. B. „Einkauf Samstag“.',
+        check: 'Siehst du eine Zeile mit einem leeren quadratischen Kontrollkästchen davor?',
+        icon: 'plus'
+      },
+      {
+        title: 'Einträge aufschreiben',
+        text: 'Tippe deinen ersten Artikel ein (z. B. „Milch“) und drücke auf der Tastatur auf Enter (neue Zeile). Es erscheint automatisch das nächste Kästchen („Äpfel“, „Brot“ usw.).',
+        check: 'Hast du deine Einkaufsliste vollständig eingetippt?',
+        icon: 'type'
+      },
+      {
+        title: 'Im Laden mit einem Tipp abhaken',
+        text: 'Im Supermarkt tippst du einfach auf das Kästchen neben der Milch. Der Eintrag wird durchgestrichen und rutscht nach unten in den Bereich „Erledigt“.',
+        check: 'Hakt sich der Eintrag sauber ab und bleibt übersichtlich?',
+        icon: 'circle-check'
+      }
+    ],
+    sources: [
+      { title: 'Google Notizen Hilfe', url: 'https://support.google.com/keep' }
+    ]
+  },
+  // Foundations:
+  {
+    id: 'app-grundlagen',
+    title: 'Was ist eine App?',
+    subtitle: 'Kleine Programme, die dir im Alltag helfen.',
+    category: 'Geräte & Technik',
+    theme: 'blau',
+    minutes: 3,
+    updatedAt: '2026-07-10',
+    scope: 'Grundlagenwissen',
+    learning: {
+      kind: 'explain',
+      why: 'Das Wort „App“ ist die Abkürzung für das englische Wort „Application“, was Anwendung oder Programm bedeutet. Apps sind kleine Werkzeuge auf deinem Smartphone.',
+      preparation: [
+        'Blick auf deinen Smartphone-Bildschirm'
+      ]
+    },
+    steps: [
+      {
+        title: 'Die bunten Symbole verstehen',
+        text: 'Jedes bunte Kästchen auf deinem Startbildschirm ist eine App. Es gibt Apps für fast jeden Zweck: Fahrpläne, Wetterberichte, Fotobearbeitung oder Spiele.',
+        check: 'Erkennst du, dass WhatsApp, Kalender und Rechner jeweils eigene Apps sind?',
+        icon: 'lightbulb'
+      },
+      {
+        title: 'Vorinstallierte und nachladbare Apps',
+        text: 'Einige Apps waren schon beim Kauf auf dem Gerät (wie Telefon und Kamera). Viele weitere praktische Apps kannst du dir nach Bedarf kostenlos oder gegen Bezahlung aus dem App-Store laden.',
+        check: 'Weißt du, welche Apps du am häufigsten im Alltag nutzt?',
+        icon: 'mouse-pointer-2'
+      },
+      {
+        title: 'Wie Apps ins Internet gehen',
+        text: 'Die meisten Apps holen sich ihre Informationen über das Internet (WLAN oder mobile Daten). Ein digitaler Fahrplan zeigt deshalb immer minutengenau an, ob der Zug pünktlich ist.',
+        check: 'Verstehst du, warum manche Apps eine Internetverbindung benötigen?',
+        icon: 'globe'
+      },
+      {
+        title: 'Apps beenden und Ordnung halten',
+        text: 'Apps verbrauchen nur wenig Strom, wenn sie im Hintergrund liegen. Du musst sie nicht ständig mühsam schließen. Nicht mehr gebrauchte Apps löschst du einfach durch langes Gedrückthalten.',
+        check: 'Weißt du, wie du eine App vom Bildschirm entfernst?',
+        icon: 'download'
+      }
+    ],
+    sources: [
+      { title: 'Bundeszentrale für politische Bildung – Smartphone-Apps erklärt', url: 'https://www.bpb.de' }
+    ]
   },
   {
-    "id": "app-grundlagen",
-    "title": "Was ist eine App?",
-    "subtitle": "Ein Programm für eine bestimmte Aufgabe – zum Beispiel Fotos, Wetter oder Nachrichten.",
-    "category": "Geräte & Technik",
-    "theme": "violett",
-    "scope": "Smartphone, Tablet und Computer · ohne Vorkenntnisse",
-    "steps": [
+    id: 'betriebssystem',
+    title: 'Was ist ein Betriebssystem?',
+    subtitle: 'Die Grundlage, auf der dein Gerät arbeitet.',
+    category: 'Geräte & Technik',
+    theme: 'blau',
+    minutes: 3,
+    updatedAt: '2026-07-08',
+    scope: 'Grundlagenwissen',
+    learning: {
+      kind: 'explain',
+      why: 'Das Betriebssystem ist wie der Dirigent in einem Orchester. Es sorgt dafür, dass Bildschirm, Tasten, Akku, Lautsprecher und Apps harmonisch zusammenarbeiten.',
+      preparation: [
+        'Interesse an der Technik deines Geräts'
+      ]
+    },
+    steps: [
       {
-        "title": "Ein Helfer für eine Aufgabe",
-        "text": "App ist die Kurzform von „Applikation“, also Anwendung. Gemeint ist ein Programm: Die Kamera-App macht Fotos, der Wecker erinnert dich und eine Wetter-App zeigt die Vorhersage. Apps gibt es auch auf Computern.",
-        "shortText": "Eine App ist ein Programm für eine Aufgabe, etwa Fotos aufnehmen oder die Uhrzeit anzeigen."
+        title: 'Die Hauptaufgabe des Betriebssystems',
+        text: 'Ohne Betriebssystem wäre dein Smartphone nur ein toter Haufen aus Glas, Metall und Chips. Das System übersetzt deine Fingertipps in elektrische Befehle und startet deine gewünschten Programme.',
+        check: 'Ist dir klar, dass das Betriebssystem die Basis für alles andere ist?',
+        icon: 'monitor'
       },
       {
-        "title": "Am Symbol wiedererkennen",
-        "text": "Eine App erkennst du meist an ihrem Namen und einem kleinen Bild auf dem Bildschirm. Tippe das Symbol an, um sie zu öffnen. Zurück auf dem Startbildschirm ist die App weiterhin installiert.",
-        "shortText": "Name und Symbol helfen beim Wiedererkennen. Antippen öffnet die App."
+        title: 'Die zwei großen Welten auf Smartphones',
+        text: 'Auf Smartphones gibt es zwei dominierende Systeme: „Android“ (entwickelt von Google, genutzt von Samsung, Xiaomi, Motorola etc.) und „iOS“ (exklusiv auf Apple iPhones).',
+        check: 'Weißt du, ob du ein Android-Gerät oder ein iPhone besitzt?',
+        icon: 'smartphone'
       },
       {
-        "title": "App und Webseite unterscheiden",
-        "text": "Das Wetter kannst du in einer eigenen App oder auf einer Webseite im Browser ansehen. Eine App muss also nicht für jede Aufgabe neu installiert werden. Der Browser selbst ist ebenfalls eine App.",
-        "shortText": "Eine Aufgabe kann auch auf einer Webseite möglich sein. Der Browser selbst ist eine App."
+        title: 'Die Systeme auf Computern',
+        text: 'Auf Laptops und Desktop-Computern heißt das bekannteste Betriebssystem „Microsoft Windows“. Apple-Computer nutzen „macOS“.',
+        check: 'Erkennst du den Unterschied zwischen Smartphone- und PC-Systemen?',
+        icon: 'search'
       },
       {
-        "title": "Schon da oder später ergänzt",
-        "text": "Viele Apps sind beim Kauf vorhanden. Weitere findest du zum Beispiel im App Store oder Google Play Store. Lies vor dem Installieren, wer die App anbietet, was sie kostet und welche Zugriffe sie verlangt.",
-        "shortText": "Viele Apps sind schon da; weitere gibt es im App-Store. Vorher Anbieter, Kosten und Zugriffe prüfen."
+        title: 'Warum das System regelmäßig erneuert werden muss',
+        text: 'Mit Betriebssystem-Updates erhält dein Gerät neue Funktionen, wird schneller und vor allem gegen neu entdeckte Sicherheitslücken geschützt.',
+        check: 'Führst du empfohlene System-Updates gewissenhaft durch?',
+        icon: 'refresh-cw'
       }
     ],
-    "tip": "„Installieren“ bedeutet, eine App auf das Gerät zu holen. „Öffnen“ bedeutet, sie zu benutzen. Ein Benutzerkonto ist ein eigener Zugang und nicht dasselbe wie die App.",
-    "sources": [
-      {
-        "title": "Google: Apps auf Android-Geräte herunterladen",
-        "url": "https://support.google.com/android/answer/9457058?hl=de"
-      }
-    ],
-    "level": "Grundlagen",
-    "minutes": 3,
-    "updatedAt": "2026-09-14",
-    "learning": {
-      "kind": "explain",
-      "why": "Jemand sagt: „Öffne die App.“ Du fragst dich, was damit gemeint ist? Wir schauen auf die kleinen Helfer, die du vielleicht schon täglich nutzt.",
-      "preparation": [
-        "Du brauchst nichts neu zu installieren.",
-        "Denke zum Beispiel an die Kamera oder den Wecker auf deinem Gerät."
-      ],
-      "result": "Ein Foto aufnehmen? Dafür öffnest du die Kamera-App. Eine Wetterseite ansehen? Dafür genügt der Browser.",
-      "ifStuck": "Siehst du viele Symbole, suche nach einem bekannten Namen wie „Kamera“. Ein Benutzerkonto ist dagegen dein persönlicher Zugang zu einem Dienst."
-    }
+    sources: [
+      { title: 'BSI – Das Betriebssystem einfach erklärt', url: 'https://www.bsi.bund.de' }
+    ]
   },
   {
-    "id": "betriebssystem",
-    "title": "Was ist ein Betriebssystem?",
-    "subtitle": "Die grundlegende Software, die dein Gerät und deine Apps zusammenarbeiten lässt.",
-    "category": "Geräte & Technik",
-    "theme": "violett",
-    "scope": "Smartphone, Tablet und Computer · ohne Vorkenntnisse",
-    "steps": [
+    id: 'ios-android',
+    title: 'Was ist der Unterschied zwischen iOS und Android?',
+    subtitle: 'Zwei Smartphone-Systeme einfach unterscheiden.',
+    category: 'Geräte & Technik',
+    theme: 'blau',
+    minutes: 3,
+    updatedAt: '2026-07-05',
+    scope: 'Grundlagenwissen',
+    learning: {
+      kind: 'explain',
+      why: 'Wenn Freunde oder Familie dir beim Handy helfen wollen, fragen sie fast immer: „Hast du Android oder ein iPhone?“. Hier erfährst du, was das bedeutet.',
+      preparation: [
+        'Dein eigenes Smartphone ansehen'
+      ]
+    },
+    steps: [
       {
-        "title": "Die Grundlage deines Geräts",
-        "text": "Das Betriebssystem organisiert Bildschirm, Speicher und Programme. Es sorgt dafür, dass du dein Gerät bedienen und Apps ausführen kannst. Du benutzt es täglich, auch ohne seinen Namen zu kennen.",
-        "shortText": "Das Betriebssystem organisiert Bildschirm, Speicher und Programme eines Geräts."
+        title: 'Android: Riesige Auswahl und Offenheit',
+        text: 'Android gehört Google. Fast alle Smartphone-Hersteller (außer Apple) nutzen Android. Du hast eine riesige Auswahl an Geräten in allen Preisklassen – von 100 Euro bis über 1000 Euro.',
+        check: 'Hat dein Smartphone ein Herstellerlogo wie Samsung, Google, Xiaomi oder Nokia auf der Rückseite?',
+        icon: 'smartphone'
       },
       {
-        "title": "Gerät, System und App",
-        "text": "Ein Beispiel: Dein Smartphone ist das Gerät, Android sein Betriebssystem und WhatsApp eine App darauf. Auf einem iPhone heißt das System iOS. Bei Computern begegnen dir etwa Windows, macOS oder Linux.",
-        "shortText": "Beispiel: Smartphone = Gerät, Android = System, WhatsApp = App. Das iPhone nutzt iOS."
+        title: 'iOS: Exklusiv, abgestimmt und einheitlich',
+        text: 'iOS läuft ausschließlich auf dem iPhone von Apple. Hardware und Software kommen aus einer Hand. Die Bedienung ist auf allen iPhones nahezu identisch und sehr übersichtlich.',
+        check: 'Hat dein Gerät einen angebissenen Apfel auf der Rückseite?',
+        icon: 'message-circle'
       },
       {
-        "title": "Darum sehen Anleitungen anders aus",
-        "text": "Das System beeinflusst, wo Einstellungen und Schaltflächen stehen. Auch die Version und der Hersteller spielen eine Rolle. Passt ein Bildschirmbild nicht zu deinem Gerät, suche eine Anleitung für dein System.",
-        "shortText": "System, Version und Hersteller beeinflussen die Menüs. Darum kann eine Anleitung anders aussehen."
+        title: 'Die App-Läden unterscheiden',
+        text: 'Bei Android lädst du Apps aus dem „Google Play Store“. Beim iPhone lädst du Apps aus dem „Apple App Store“. Die meisten beliebten Apps (WhatsApp, Bahn, Sparkasse) gibt es für beide Systeme.',
+        check: 'Heißt dein App-Laden Play Store oder App Store?',
+        icon: 'search'
       },
       {
-        "title": "Aktualisierungen gehören dazu",
-        "text": "Ein Update verbessert die Software und kann Sicherheitslücken schließen. System und Apps erhalten eigene Updates. Nutze dafür die Einstellungen deines Geräts oder den App-Store, statt Aufforderungen auf fremden Webseiten zu folgen.",
-        "shortText": "System und Apps bekommen eigene Updates. Dafür Geräteeinstellungen oder App-Store nutzen."
+        title: 'Zusammenarbeit im Alltag',
+        text: 'Egal ob deine Freunde Android oder iPhone haben: Ihr könnt problemlos miteinander telefonieren, WhatsApp-Nachrichten austauschen und Fotos teilen.',
+        check: 'Weißt du jetzt sicher, welches System du nutzt?',
+        icon: 'send'
       }
     ],
-    "tip": "Wenn du Hilfe suchst, nenne möglichst das Gerät und das Betriebssystem. Auf Android findest du die Systemversion meist in den Einstellungen unter „Über das Telefon“ und „Android-Version“.",
-    "sources": [
-      {
-        "title": "Google: Android-Version prüfen",
-        "url": "https://support.google.com/android/answer/7680439?hl=de"
-      },
-      {
-        "title": "BSI: Warum Softwareupdates wichtig sind",
-        "url": "https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Updates-Browser-Open-Source-Software/Wichtige-Softwareupdates/wichtige-softwareupdates_node.html"
-      }
-    ],
-    "level": "Grundlagen",
-    "minutes": 3,
-    "updatedAt": "2026-09-14",
-    "learning": {
-      "kind": "explain",
-      "why": "Eine Anleitung passt nicht zu deinem Bildschirm? Oft liegt das am Betriebssystem. Hier lernst du, wie Gerät, System und App zusammengehören.",
-      "preparation": [
-        "Du brauchst keine Einstellungen zu verändern.",
-        "Denke an ein Gerät, das du regelmäßig benutzt."
-      ],
-      "result": "Das Gerät ist die Technik zum Anfassen, das Betriebssystem organisiert sie, und eine App übernimmt eine bestimmte Aufgabe.",
-      "ifStuck": "Du musst die Namen nicht auswendig kennen. Für Hilfe reicht zunächst der Name deines Geräts; gemeinsam lässt sich das passende System herausfinden."
-    }
+    sources: [
+      { title: 'Stiftung Warentest – Smartphone-Systeme im Vergleich', url: 'https://www.test.de' }
+    ]
   },
   {
-    "id": "ios-android",
-    "title": "iOS und Android",
-    "subtitle": "Zwei Smartphone-Systeme: Ähnliche Aufgaben, manchmal andere Wege.",
-    "category": "Geräte & Technik",
-    "theme": "blau",
-    "scope": "iPhone und Android-Smartphone · Orientierung",
-    "steps": [
+    id: 'internet-grundlagen',
+    title: 'Wie funktioniert das Internet?',
+    subtitle: 'Wie dein Gerät mit der Welt verbunden ist.',
+    category: 'Internet',
+    theme: 'tuerkis',
+    minutes: 3,
+    updatedAt: '2026-07-01',
+    scope: 'Grundlagenwissen',
+    learning: {
+      kind: 'explain',
+      why: 'Das Internet ist kein geheimnisvoller Zauberkasten, sondern ein weltumspannendes Netz aus Computern und Kabeln, die miteinander Daten austauschen.',
+      preparation: [
+        'Neugierde auf die Funktionsweise'
+      ]
+    },
+    steps: [
       {
-        "title": "Welche Namen gehören zusammen?",
-        "text": "iOS ist das Betriebssystem des iPhones von Apple. Android läuft auf Smartphones verschiedener Hersteller, zum Beispiel Samsung und Google. Beides ist bereits beim Kauf des jeweiligen Geräts eingerichtet.",
-        "shortText": "iOS ist das System des iPhones. Android läuft zum Beispiel auf Smartphones von Samsung oder Google."
+        title: 'Das weltweite Netz der Computer',
+        text: 'Wenn du eine Internetseite aufrufst, schickt dein Smartphone eine Anfrage an einen Computer irgendwo auf der Welt (einen sogenannten „Server“). Dieser schickt die Seite in Bruchteilen einer Sekunde an dich zurück.',
+        check: 'Verstehst du das Prinzip von Frage und Antwort im Netz?',
+        icon: 'globe'
       },
       {
-        "title": "Im Alltag kannst du Ähnliches tun",
-        "text": "Mit beiden Systemen kannst du telefonieren, Fotos machen, Nachrichten schreiben und Webseiten öffnen. Viele bekannte Apps gibt es für beide. Die Symbole oder Menüs können trotzdem anders aussehen.",
-        "shortText": "Mit beiden kannst du telefonieren, fotografieren, Nachrichten schreiben und Webseiten öffnen."
+        title: 'Die Brücke zu Hause: Dein WLAN-Router',
+        text: 'Zu Hause sendet dein Smartphone per Funk (WLAN) an deinen Router (die kleine Box an der Wand). Dieser ist über ein Telefon- oder Glasfaserkabel fest mit dem Internet verbunden.',
+        check: 'Weißt du, wo dein Router in der Wohnung steht?',
+        icon: 'wifi'
       },
       {
-        "title": "Die passende Anleitung wählen",
-        "text": "Steht in einer Anleitung „iPhone“ oder „iOS“, ist sie für ein iPhone gedacht. Für ein Android-Gerät helfen oft zusätzlich Hersteller und Modell. Der Google Play Store gehört zu vielen Android-Geräten, der App Store zum iPhone.",
-        "shortText": "Für die richtige Anleitung auf iPhone/iOS oder Android sowie Hersteller und Modell achten."
+        title: 'Unterwegs: Die Mobilfunkmasten',
+        text: 'Unterwegs schickt dein Smartphone Funksignale an die nächsten Mobilfunkmasten (LTE / 4G oder 5G). Diese leiten deine Daten ebenfalls in das feste Kabelnetz weiter.',
+        check: 'Siehst du unterwegs das 4G- oder 5G-Symbol in deiner Statusleiste?',
+        icon: 'share-2'
       },
       {
-        "title": "Gemeinsam in Kontakt bleiben",
-        "text": "Ihr braucht nicht dasselbe System, um euch etwa über WhatsApp Nachrichten zu schicken. Wichtig ist die passende App auf beiden Geräten. Einzelne Funktionen oder andere Dienste können sich jedoch unterscheiden.",
-        "shortText": "Für Kontakte über WhatsApp braucht ihr nicht dasselbe System, sondern die passende App auf beiden Geräten."
+        title: 'Sicherheit auf der Datenreise',
+        text: 'Moderne Datenübertragung ist verschlüsselt (erkennbar am Schloss in der Browser-Adresszeile). Dadurch kann niemand auf dem Weg deine Passwörter oder Bankdaten abfangen.',
+        check: 'Achtetest du bereits auf das kleine Schlosssymbol?',
+        icon: 'shield-alert'
       }
     ],
-    "tip": "Du musst die Fachnamen nicht auswendig lernen. Halte den Namen deines Geräts und seines Systems fest. So findest du leichter die passende Hilfe.",
-    "sources": [
-      {
-        "title": "Apple: iPhone-Benutzerhandbuch",
-        "url": "https://support.apple.com/de-de/guide/iphone/welcome/ios"
-      },
-      {
-        "title": "Google: Android-Version prüfen",
-        "url": "https://support.google.com/android/answer/7680439?hl=de"
-      }
-    ],
-    "level": "Grundlagen",
-    "minutes": 3,
-    "updatedAt": "2026-09-14",
-    "learning": {
-      "kind": "explain",
-      "why": "Du hörst die Begriffe iOS und Android und weißt nicht, welche Anleitung zu deinem Smartphone passt. Wir ordnen die Namen ein.",
-      "preparation": [
-        "Du brauchst nichts umzustellen.",
-        "Der Herstellername oder die Modellbezeichnung deines Smartphones hilft bei der Zuordnung."
-      ],
-      "result": "iOS gehört zum iPhone von Apple. Android läuft auf Smartphones verschiedener Hersteller. Für viele Alltagsaufgaben können beide ähnliche Dinge.",
-      "ifStuck": "Halte den Gerätenamen fest oder zeige ihn bei einer persönlichen Hilfe. Unterschiedliche Menüs bedeuten nicht, dass du etwas falsch gemacht hast."
-    }
+    sources: [
+      { title: 'Internet-ABC – Wie funktioniert das Internet?', url: 'https://www.internet-abc.de' }
+    ]
   },
   {
-    "id": "internet-grundlagen",
-    "title": "Wie funktioniert das Internet?",
-    "subtitle": "Viele verbundene Geräte tauschen Informationen aus – auch dein Smartphone.",
-    "category": "Internet",
-    "theme": "tuerkis",
-    "scope": "Smartphone und Computer · ohne Vorkenntnisse",
-    "steps": [
+    id: 'benutzerkonto',
+    title: 'Was ist ein Benutzerkonto?',
+    subtitle: 'Deinen persönlichen Zugang zu einem Dienst verstehen.',
+    category: 'Konten',
+    theme: 'blau',
+    minutes: 3,
+    updatedAt: '2026-06-25',
+    scope: 'Grundlagenwissen',
+    learning: {
+      kind: 'explain',
+      why: 'Ein Benutzerkonto ist wie ein persönliches Schließfach im Internet. Nur mit deinem Schlüssel (E-Mail und Passwort) hast du Zugriff auf deine Daten.',
+      preparation: [
+        'Gedanken an deine bestehenden Online-Dienste'
+      ]
+    },
+    steps: [
       {
-        "title": "Ein weltweites Netz",
-        "text": "Das Internet verbindet viele Computernetze miteinander. Darüber reisen zum Beispiel Nachrichten, Bilder und Webseiten. Ein Browser zeigt Webseiten an; das Internet ist die Verbindung dahinter.",
-        "shortText": "Das Internet verbindet Computernetze; darüber werden Nachrichten, Bilder und Webseiten übertragen."
+        title: 'Warum man Benutzerkonten braucht',
+        text: 'Ob bei Google, Amazon, deiner Bank oder beim Arztportal: Das Konto sorgt dafür, dass die Webseite weiß, wer du bist, und niemand Fremdes deine Bestellungen oder Nachrichten einsehen kann.',
+        check: 'Ist dir klar, warum ein Konto deine persönlichen Daten schützt?',
+        icon: 'user-round'
       },
       {
-        "title": "So kommt dein Gerät hinein",
-        "text": "Zu Hause verbindet sich dein Smartphone meist per WLAN mit dem Router. Der Router stellt über deinen Anbieter die Verbindung ins Internet her. Unterwegs nutzt ein Smartphone häufig das Mobilfunknetz und mobile Daten.",
-        "shortText": "Zu Hause führt der Weg meist über WLAN und Router, unterwegs über mobile Daten."
+        title: 'Benutzername und Passwort',
+        text: 'Als Benutzername dient heute fast immer deine persönliche E-Mail-Adresse. Zusammen mit deinem geheimen Passwort bildet sie das Schloss zu deinem Konto.',
+        check: 'Weißt du deine Haupt-E-Mail-Adresse auswendig?',
+        icon: 'key-round'
       },
       {
-        "title": "Ein Beispiel: das Wetter ansehen",
-        "text": "Du öffnest eine Wetterseite. Dein Gerät fragt den Computer des Anbieters nach den Informationen. Diese kommen in kleinen Datenpaketen zurück. Der Browser setzt sie wieder zur sichtbaren Seite zusammen.",
-        "shortText": "Eine Wetterseite fragt Informationen beim Anbieter ab. Der Browser stellt sie auf deinem Bildschirm dar."
+        title: 'Die Abmeldefunktion (Logout)',
+        text: 'Nutzt du ein fremdes Gerät (z. B. in der Bibliothek oder bei Bekannten), solltest du dich nach der Nutzung immer über „Abmelden“ oder „Logout“ aus deinem Konto ausloggen.',
+        check: 'Meldest du dich an fremden Computern nach der Arbeit stets ab?',
+        icon: 'user-plus'
       },
       {
-        "title": "Verbunden heißt nicht immer online",
-        "text": "Das WLAN-Zeichen zeigt zunächst die Verbindung zum WLAN. Fällt der Internetanschluss aus, kann das Zeichen trotzdem da sein. Ohne Internet funktionieren manche Dinge weiter, etwa bereits gespeicherte Fotos ansehen oder den Wecker stellen.",
-        "shortText": "Das WLAN-Zeichen allein beweist keinen Internetzugang. Gespeicherte Fotos oder ein Wecker können auch offline funktionieren."
+        title: 'Konto schützen mit zwei Faktoren',
+        text: 'Aktiviere wo immer möglich die Zwei-Faktor-Authentifizierung. Dann reicht Kriminellen dein Passwort allein nicht mehr – sie bräuchten auch dein physisches Handy.',
+        check: 'Hast du für deine wichtigsten Konten die Bestätigung in zwei Schritten aktiviert?',
+        icon: 'log-out'
       }
     ],
-    "tip": "WLAN und Internet sind nicht dasselbe. Bei Problemen hilft die Frage: Ist nur mein Gerät betroffen oder können andere Geräte im selben WLAN ebenfalls keine Webseiten öffnen?",
-    "sources": [
-      {
-        "title": "Mozilla/MDN: Wie funktioniert das Internet?",
-        "url": "https://developer.mozilla.org/de/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work"
-      }
-    ],
-    "level": "Grundlagen",
-    "minutes": 3,
-    "updatedAt": "2026-09-14",
-    "learning": {
-      "kind": "explain",
-      "why": "Eine Webseite lädt nicht, obwohl das WLAN-Zeichen da ist. Um das einzuordnen, unterscheiden wir Internet, WLAN und Browser.",
-      "preparation": [
-        "Du brauchst keine Kabel umzustecken oder Einstellungen zu ändern.",
-        "Als Beispiel genügt eine Wetterseite, die du schon kennst."
-      ],
-      "result": "Das WLAN verbindet dein Gerät mit dem Router. Der Internetanschluss führt darüber hinaus; der Browser zeigt dir Webseiten an.",
-      "ifStuck": "Frage bei einer Störung: Kann nur mein Gerät keine Seite öffnen oder auch ein anderes Gerät im selben WLAN nicht? Das grenzt die Ursache ein."
-    }
-  },
-  {
-    "id": "benutzerkonto",
-    "title": "Was ist ein Benutzerkonto?",
-    "subtitle": "Dein persönlicher Zugang, damit ein Dienst dich und deine gespeicherten Angaben erkennt.",
-    "category": "Konten",
-    "theme": "blau",
-    "scope": "Apps und Webseiten · ohne Vorkenntnisse",
-    "steps": [
-      {
-        "title": "Ein persönlicher Bereich",
-        "text": "Ein Benutzerkonto heißt manchmal auch Account. Es ordnet dir persönliche Angaben zu, zum Beispiel deine E-Mails oder gespeicherten Termine. „Konto“ meint hier keinen Geldbetrag auf einem Bankkonto.",
-        "shortText": "Ein Benutzerkonto oder Account ordnet dir persönliche Daten bei einem Anbieter zu."
-      },
-      {
-        "title": "Dein Zugang hat einen Namen",
-        "text": "Bei vielen Diensten meldest du dich mit einer E-Mail-Adresse und einem Passwort an. Manche bieten andere Anmeldewege. Die Adresse sagt, welches Konto du meinst; der zusätzliche Nachweis schützt den Zugang.",
-        "shortText": "Die E-Mail-Adresse bezeichnet häufig das Konto; Passwort oder ein anderer Nachweis schützt den Zugang."
-      },
-      {
-        "title": "Anlegen und Anmelden unterscheiden",
-        "text": "„Registrieren“ oder „Konto erstellen“ legt einen neuen Zugang an. „Anmelden“ öffnet deinen vorhandenen Zugang. Nutzt du bereits Gmail, hast du ein Google-Konto. Erstelle bei vergessenen Zugangsdaten nicht vorschnell ein weiteres.",
-        "shortText": "Registrieren heißt neu anlegen, Anmelden heißt vorhandenen Zugang öffnen."
-      },
-      {
-        "title": "Gerät und Konto sind verschieden",
-        "text": "Ein Online-Konto gehört zum jeweiligen Anbieter. Du kannst es oft auf mehreren Geräten verwenden. Eine App zu schließen oder zu entfernen löscht das Konto normalerweise nicht. Auf fremden Geräten meldest du dich nach der Nutzung wieder ab.",
-        "shortText": "Ein Konto lässt sich oft auf mehreren Geräten nutzen. Auf fremden Geräten nach der Nutzung abmelden."
-      }
-    ],
-    "tip": "Bewahre den Namen des Anbieters und deine Anmeldeadresse gut auf. Nutze für jedes Konto ein eigenes Passwort und speichere es in einem Passwortmanager. Teile keine Passwörter oder Bestätigungscodes.",
-    "sources": [
-      {
-        "title": "Google: Das Google-Konto im Überblick",
-        "url": "https://www.google.com/intl/de/account/about/"
-      }
-    ],
-    "level": "Grundlagen",
-    "minutes": 3,
-    "updatedAt": "2026-09-14",
-    "learning": {
-      "kind": "explain",
-      "why": "Eine App fragt nach einem Konto oder einer Anmeldung. Hier erfährst du, was dein persönlicher Zugang ist und wann du schon einen hast.",
-      "preparation": [
-        "Du musst zum Lesen kein neues Konto erstellen.",
-        "Denke an einen Dienst, den du bereits mit deiner E-Mail-Adresse nutzt."
-      ],
-      "result": "„Registrieren“ erstellt einen Zugang. „Anmelden“ nutzt einen vorhandenen. Gerät, App und Benutzerkonto sind verschiedene Dinge.",
-      "ifStuck": "Ist dein Passwort vergessen, suche die Wiederherstellung des bestehenden Kontos. Ein neues Konto enthält die alten Daten normalerweise nicht."
-    }
+    sources: [
+      { title: 'BSI – Benutzerkonten sicher verwalten', url: 'https://www.bsi.bund.de' }
+    ]
   }
 ];

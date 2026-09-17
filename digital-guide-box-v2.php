@@ -24,6 +24,7 @@ require_once DGBC_DIR . 'includes/class-dgbc-settings.php';
 require_once DGBC_DIR . 'includes/class-dgbc-auth.php';
 require_once DGBC_DIR . 'includes/class-dgbc-router.php';
 require_once DGBC_DIR . 'includes/class-dgbc-inquiries.php';
+require_once DGBC_DIR . 'includes/class-dgbc-assistant.php';
 require_once DGBC_DIR . 'includes/class-dgbc-admin.php';
 
 final class Digital_Guide_Box_V2 {
@@ -32,6 +33,7 @@ final class Digital_Guide_Box_V2 {
 		DGBC_Auth::init();
 		DGBC_Router::init();
 		DGBC_Inquiries::init();
+		DGBC_Assistant::init();
 		DGBC_Admin::init();
 	}
 

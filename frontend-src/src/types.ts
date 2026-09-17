@@ -3,7 +3,6 @@ export type ThemeColor = 'gruen' | 'blau' | 'rot' | 'tuerkis' | 'violett' | 'gol
 export interface GuideStep {
   title: string;
   text: string;
-  shortText?: string;
   check?: string;
   icon?: string;
 }
@@ -17,9 +16,8 @@ export interface Guide {
   minutes: number;
   updatedAt: string;
   scope: string;
-  level?: string;
   learning?: {
-    kind?: 'explain' | 'step' | 'practice' | string;
+    kind?: 'explain' | 'step';
     why: string;
     preparation: string[];
     result?: string;
@@ -42,9 +40,6 @@ export interface NewsItem {
   id: string;
   title: string;
   category: string;
-  topics?: string[];
-  icon?: string;
-  summary?: string;
   date: string;
   dateLabel?: string;
   relevance: string;
@@ -53,13 +48,11 @@ export interface NewsItem {
   paragraphTitles: string[];
   paragraphs: string[];
   reading?: {
-    audience?: string;
-    actionIndex?: number;
+    audience: string;
     actions: string[];
   };
   tip: string;
-  checkedAt?: string;
-  guideIds?: string[];
+  checkedAt: string;
   sources: Array<{ title: string; url: string }>;
 }
 
@@ -69,7 +62,20 @@ export interface AppearanceSettings {
   background: 'brand' | 'blue' | 'calm';
 }
 
-export type ActiveTab = 'news' | 'guides';
+export type ActiveTab = 'news' | 'guides' | 'assistant';
+
+export type ChatModel = 'gemini-3.5-flash' | 'gemini-3.1-pro-preview' | 'gemini-3.1-flash-lite';
+
+export type ChatTaskType = 'general' | 'complex' | 'fast';
+
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+  modelUsed?: string;
+  error?: boolean;
+}
 
 export interface SelectionState {
   kind: 'guide' | 'news';

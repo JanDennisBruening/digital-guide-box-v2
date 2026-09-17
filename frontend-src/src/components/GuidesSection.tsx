@@ -148,7 +148,6 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
                   className="guide-group-toggle"
                   onClick={() => toggleGroup(group.id)}
                   aria-expanded={isOpen}
-                  data-state={isOpen ? 'open' : 'closed'}
                 >
                   <span className="guide-group-icon" aria-hidden="true">
                     <GroupIconComponent />

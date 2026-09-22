@@ -21,7 +21,7 @@ import { ALL_NEWS } from './data/news';
 import { SelectionState, Guide, NewsItem, ActiveTab } from './types';
 import { Brand } from './components/Brand';
 import { Preloader } from './components/Preloader';
-import { AppearanceModal, initializeAppearance } from './components/AppearanceModal';
+import { AppearanceModal } from './components/AppearanceModal';
 import { SearchDialog } from './components/SearchDialog';
 import { GuidesSection } from './components/GuidesSection';
 import { NewsSection } from './components/NewsSection';
@@ -196,10 +196,6 @@ export function App() {
         <main className="gate-shell">
           <section className="box gate-box">
             <Brand />
-
-            <div className="gate-appearance">
-              <AppearanceModal />
-            </div>
 
             <p className="gate-principle">{gateSettings.principle || 'Nachlesen · Verstehen · Anwenden'}</p>
             <h1>{gateSettings.title || 'Schön, dass du da bist.'}</h1>

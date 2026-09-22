@@ -21,7 +21,7 @@ import { ALL_NEWS } from './data/news';
 import { SelectionState, Guide, NewsItem, ActiveTab } from './types';
 import { Brand } from './components/Brand';
 import { Preloader } from './components/Preloader';
-import { AppearanceModal } from './components/AppearanceModal';
+import { AppearanceModal, initializeAppearance } from './components/AppearanceModal';
 import { SearchDialog } from './components/SearchDialog';
 import { GuidesSection } from './components/GuidesSection';
 import { NewsSection } from './components/NewsSection';
@@ -193,29 +193,47 @@ export function App() {
 
       {!authorized ? (
         /* Gate Screen (Authentic Login / Welcome Gate) */
-        <main className="gate-shell">
-          <section className="box gate-box">
-            <Brand />
+        <main className="gate-shell min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 relative z-10">
+          <section className="gate-box w-full max-w-[480px] bg-white/92 backdrop-blur-2xl border border-white/80 rounded-3xl shadow-[0_25px_60px_-15px_rgba(27,41,65,0.12),0_0_0_1px_rgba(255,255,255,0.8)] p-6 sm:p-9 flex flex-col items-center text-center">
+            {/* Header: Avatar with gradient border + Name & Subtitle */}
+            <div className="flex flex-col items-center mb-6">
+              <div className="relative p-[3px] rounded-full bg-gradient-to-tr from-[#235cbb] via-[#38bdf8] to-[#f472b6] shadow-sm mb-3">
+                <img
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover bg-white"
+                  src={profileSettings?.avatar_url || getAssetUrl('profilbild.png')}
+                  alt={profileSettings?.name || 'Jan Dennis Brüning'}
+                  width="80"
+                  height="80"
+                />
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 tracking-tight m-0">
+                {profileSettings?.name || 'Jan Dennis Brüning'}
+              </h1>
+              <p className="text-xs sm:text-sm font-medium text-slate-500 mt-1 m-0">
+                {gateSettings.principle || profileSettings?.subtitle || 'Designer, Creator & Digital-Guide'}
+              </p>
+            </div>
 
-            <p className="gate-principle">{gateSettings.principle || 'Nachlesen · Verstehen · Anwenden'}</p>
-            <h1>{gateSettings.title || 'Schön, dass du da bist.'}</h1>
-            <p>{gateSettings.subtitle || 'Deine Anleitungen und Neuigkeiten für einen entspannten digitalen Alltag.'}</p>
+            {/* Welcome text */}
+            <div className="w-full bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-100 mb-6 text-left">
+              <h2 className="text-lg sm:text-xl font-bold font-heading text-slate-800 m-0 mb-1.5">
+                {gateSettings.title || 'Schön, dass du da bist.'}
+              </h2>
+              <p className="text-sm text-slate-600 leading-relaxed m-0">
+                {gateSettings.subtitle || 'Deine Anleitungen und Neuigkeiten für einen entspannten digitalen Alltag.'}
+              </p>
+            </div>
 
-            <form onSubmit={handleUnlock}>
-              <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
+            {/* Form */}
+            <form onSubmit={handleUnlock} className="w-full text-left">
+              <div className="mb-4">
                 <label
                   htmlFor="password"
-                  style={{
-                    display: 'block',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    marginBottom: '0.375rem',
-                    color: '#405371'
-                  }}
+                  className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5"
                 >
                   Dein Passwort
                 </label>
-                <div className="password-wrap">
+                <div className="relative flex items-center">
                   <input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
@@ -224,14 +242,7 @@ export function App() {
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Passwort eingeben"
                     disabled={preloaderActive}
-                    style={{
-                      width: '100%',
-                      padding: '0.625rem 2.875rem 0.625rem 0.875rem',
-                      borderRadius: '0.625rem',
-                      border: '1px solid #8fa6c5',
-                      background: '#f7f9fd',
-                      fontSize: '1rem'
-                    }}
+                    className="w-full px-4 py-3 pr-12 text-base rounded-xl border border-slate-200 bg-white/95 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#235cbb] focus:ring-4 focus:ring-blue-500/10 transition-all shadow-2xs"
                   />
                   <button
                     type="button"
@@ -239,69 +250,59 @@ export function App() {
                     onClick={() => setShowPassword(s => !s)}
                     aria-label={showPassword ? 'Passwort verbergen' : 'Passwort anzeigen'}
                     aria-pressed={showPassword}
-                    style={{
-                      position: 'absolute',
-                      right: '0.5rem',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      padding: '0.375rem',
-                      color: '#526a8a'
-                    }}
+                    className="absolute right-2.5 p-2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
                   >
-                    {showPassword ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
+                    {showPassword ? <EyeOff className="w-5 h-5" aria-hidden="true" /> : <Eye className="w-5 h-5" aria-hidden="true" />}
                   </button>
                 </div>
               </div>
 
               {gateError && (
-                <p className="error" id="gate-error" role="alert">
+                <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium" id="gate-error" role="alert">
                   {gateError}
-                </p>
+                </div>
               )}
 
               <button
                 type="submit"
-                className="primary-button"
                 disabled={preloaderActive}
-                style={{ width: '100%' }}
+                className="w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-[#235cbb] hover:bg-[#1b4a99] active:bg-[#163f82] transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 text-base cursor-pointer disabled:opacity-50"
               >
-                <LockKeyhole aria-hidden="true" />
+                <LockKeyhole className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span>{preloaderActive ? 'Box wird geöffnet …' : 'Box öffnen'}</span>
-                {!preloaderActive && <ArrowRight aria-hidden="true" />}
+                {!preloaderActive && <ArrowRight className="w-4 h-4 flex-shrink-0" aria-hidden="true" />}
               </button>
             </form>
 
-            <p
-              className="form-note"
-              style={{ marginBottom: 0, marginTop: '1.25rem', textAlign: 'center' }}
-            >
+            <p className="text-xs text-slate-400 text-center mt-4 mb-0">
               {gateSettings.note || 'Dein Zugang bleibt für acht Stunden geöffnet.'}
             </p>
-
-            <footer className="gate-footer">
-              <nav className="footer-links" aria-label="Weitere Informationen">
-                <a
-                  href={gateSettings.home_url || 'https://www.janbruening.de'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <House aria-hidden="true" />
-                  <span>Zurück zur Startseite</span>
-                </a>
-                <a
-                  href={gateSettings.imprint_url || 'https://www.janbruening.de/impressum'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FileText aria-hidden="true" />
-                  <span>Impressum</span>
-                </a>
-              </nav>
-            </footer>
           </section>
+
+          {/* Footer below the box */}
+          <footer className="mt-6 text-center">
+            <nav className="flex items-center justify-center gap-4 text-xs text-slate-500" aria-label="Weitere Informationen">
+              <span>© {new Date().getFullYear()} {profileSettings?.name || 'Jan Dennis Brüning'}</span>
+              <span>·</span>
+              <a
+                href={gateSettings.home_url || 'https://www.janbruening.de'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-800 transition-colors underline underline-offset-2"
+              >
+                Zurück zur Startseite
+              </a>
+              <span>·</span>
+              <a
+                href={gateSettings.imprint_url || 'https://www.janbruening.de/impressum'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-800 transition-colors underline underline-offset-2"
+              >
+                Impressum
+              </a>
+            </nav>
+          </footer>
         </main>
       ) : (
         /* Authorized Main Shell */

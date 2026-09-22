@@ -31,8 +31,24 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-dosis);
 }
 
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f7faf9 !important;
+  background-image: 
+    radial-gradient(at 0% 0%, #c5f0ec 0px, transparent 55%),
+    radial-gradient(at 100% 0%, #f4e7d7 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #f7dce7 0px, transparent 55%),
+    radial-gradient(at 0% 100%, #f0edde 0px, transparent 50%),
+    radial-gradient(at 50% 50%, #ffffff 0px, transparent 75%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
 body {
   font-family: var(--font-inter);
+  color: #1e293b;
 }
 
 .font-body {
@@ -261,6 +277,11 @@ body {
   display: flex !important;
   flex-direction: column !important;
   border-radius: 1.75rem !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  box-shadow: 0 25px 60px -15px rgba(27, 41, 65, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Match Reading Dialog popup exactly to the main box geometry and padding */
@@ -421,15 +442,15 @@ body {
   }
 }
 
-/* Outer Footer with credit and links - Relaxed padding and crystal white on dark page background */
+/* Outer Footer with credit and links - Relaxed padding and subtle slate on light pastel background */
 .outer-footer {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  margin: 0.125rem auto 0.25rem !important;
-  padding: 0.5rem 1rem 0.5rem !important;
+  margin: 0.25rem auto 0.5rem !important;
+  padding: 0.5rem 1rem !important;
   text-align: center !important;
-  color: #ffffff !important;
+  color: #475569 !important;
   font-size: 0.84rem !important;
   line-height: 1.35 !important;
   width: 100% !important;
@@ -438,11 +459,11 @@ body {
 
 .outer-footer p {
   margin: 0 0 0.25rem 0 !important;
-  color: #ffffff !important;
+  color: #475569 !important;
   font-weight: 500 !important;
   font-size: 0.84rem !important;
   line-height: 1.35 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: none !important;
 }
 
 .outer-footer .footer-links {
@@ -455,7 +476,7 @@ body {
 }
 
 .outer-footer a {
-  color: #ffffff !important;
+  color: #334155 !important;
   text-decoration: underline !important;
   text-underline-offset: 3px !important;
   font-weight: 500 !important;
@@ -465,17 +486,17 @@ body {
   gap: 0.35rem !important;
   min-height: 1.625rem !important;
   padding: 0.125rem 0.375rem !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: none !important;
   transition: color 0.2s ease !important;
 }
 
 .outer-footer a:hover {
-  color: #bfdbfe !important;
+  color: #1d4ed8 !important;
 }
 
 .outer-footer svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #475569 !important;
+  stroke: #475569 !important;
   width: 0.875rem !important;
   height: 0.875rem !important;
 }

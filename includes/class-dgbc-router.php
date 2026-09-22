@@ -15,13 +15,18 @@ final class DGBC_Router {
 		add_action( 'init', array( __CLASS__, 'add_rewrite_rules' ) );
 		add_filter( 'query_vars', array( __CLASS__, 'add_query_vars' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'intercept_template' ) );
+		add_shortcode( 'digital_guide_box', array( __CLASS__, 'render_shortcode' ) );
 		add_shortcode( 'digital_guide_box_v2', array( __CLASS__, 'render_shortcode' ) );
 		add_shortcode( 'digital_guide_box_custom', array( __CLASS__, 'render_shortcode' ) );
 	}
 
 	public static function get_endpoint_slug() {
 		$access = DGBC_Settings::get_section( 'access' );
-		return ! empty( $access['slug'] ) ? sanitize_title( $access['slug'] ) : 'digital-guide-box-v2';
+		$slug   = ! empty( $access['slug'] ) ? sanitize_title( $access['slug'] ) : 'digital-guide-box';
+		if ( 'digital-guide-box-v2' === $slug ) {
+			$slug = 'digital-guide-box';
+		}
+		return $slug;
 	}
 
 	public static function get_box_url() {
@@ -35,6 +40,15 @@ final class DGBC_Router {
 			'index.php?' . self::QUERY_VAR . '=1',
 			'top'
 		);
+
+		// Backwards compatibility for old v2 slug
+		if ( 'digital-guide-box' === $slug ) {
+			add_rewrite_rule(
+				'^digital-guide-box-v2/?$',
+				'index.php?' . self::QUERY_VAR . '=1',
+				'top'
+			);
+		}
 	}
 
 	public static function add_query_vars( $vars ) {
@@ -49,7 +63,7 @@ final class DGBC_Router {
 
 		// Fallback detection via REQUEST_URI
 		$request_path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
-		$is_direct    = ( $request_path === $slug );
+		$is_direct    = ( $request_path === $slug || ( 'digital-guide-box' === $slug && $request_path === 'digital-guide-box-v2' ) );
 
 		if ( $is_query || $is_direct ) {
 			self::load_canvas_template();

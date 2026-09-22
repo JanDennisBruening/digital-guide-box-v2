@@ -366,7 +366,7 @@ final class DGBC_Admin {
 									<code><?php echo esc_html( home_url( '/' ) ); ?></code>
 									<input name="access[slug]" type="text" id="dgbc_slug" value="<?php echo esc_attr( $settings['access']['slug'] ); ?>" class="regular-text" style="width:220px;" required />
 									<code>/</code>
-									<p class="description">Standard: <code>digital-guide-box-v2</code>. Kann frei angepasst werden (z. B. <code>ratgeber-box</code>).</p>
+									<p class="description">Standard: <code>digital-guide-box</code>. Kann frei angepasst werden (z. B. <code>ratgeber-box</code>).</p>
 								</td>
 							</tr>
 							<tr>
@@ -379,7 +379,7 @@ final class DGBC_Admin {
 							<tr>
 								<th scope="row">Shortcode</th>
 								<td>
-									<code>[digital_guide_box_v2]</code>
+									<code>[digital_guide_box]</code>
 									<p class="description">Zur Einbindung in Standardseiten, Block-Editor oder Elementor.</p>
 								</td>
 							</tr>

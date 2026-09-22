@@ -16,7 +16,7 @@ final class DGBC_Settings {
 			'access' => array(
 				'password'           => 'digitalguidejan',
 				'session_duration'   => 8 * HOUR_IN_SECONDS, // 28800 seconds
-				'slug'               => 'digital-guide-box-v2',
+				'slug'               => 'digital-guide-box',
 				'notification_email' => 'office@janbruening.de',
 			),
 			'gate' => array(
@@ -88,6 +88,10 @@ final class DGBC_Settings {
 			$merged[ $section ] = wp_parse_args( $sec_stored, $sec_defaults );
 		}
 
+		if ( isset( $merged['access']['slug'] ) && 'digital-guide-box-v2' === $merged['access']['slug'] ) {
+			$merged['access']['slug'] = 'digital-guide-box';
+		}
+
 		return $merged;
 	}
 
@@ -119,6 +123,9 @@ final class DGBC_Settings {
 		$slug = ! empty( $input['access']['slug'] )
 			? sanitize_title( $input['access']['slug'] )
 			: $defaults['access']['slug'];
+		if ( 'digital-guide-box-v2' === $slug ) {
+			$slug = 'digital-guide-box';
+		}
 		$clean['access']['slug'] = $slug;
 
 		$email = ! empty( $input['access']['notification_email'] )

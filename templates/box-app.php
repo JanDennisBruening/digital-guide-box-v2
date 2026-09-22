@@ -25,10 +25,10 @@ $fav_icon = ! empty( $settings['profile']['avatar_url'] )
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Guide Box · <?php echo esc_html( $settings['profile']['name'] ); ?></title>
+    <title>Digital-Guide-Box · <?php echo esc_html( $settings['profile']['name'] ); ?></title>
     <meta name="description" content="<?php echo esc_attr( $settings['gate']['subtitle'] ); ?>" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta property="og:title" content="Digital Guide Box · <?php echo esc_attr( $settings['profile']['name'] ); ?>" />
+    <meta property="og:title" content="Digital-Guide-Box · <?php echo esc_attr( $settings['profile']['name'] ); ?>" />
     <meta property="og:description" content="<?php echo esc_attr( $settings['gate']['subtitle'] ); ?>" />
     <link rel="icon" href="<?php echo esc_url( $fav_icon ); ?>" type="image/png" sizes="256x256" />
     <link rel="apple-touch-icon" href="<?php echo esc_url( $fav_icon ); ?>" type="image/png" sizes="256x256" />

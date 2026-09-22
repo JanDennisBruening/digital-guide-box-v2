@@ -70,10 +70,10 @@ final class DGBC_Inquiries {
 		$recipient       = ! empty( $access_settings['notification_email'] ) ? $access_settings['notification_email'] : 'office@janbruening.de';
 
 		$subject = 'support' === $type
-			? sprintf( '[Digital Guide Box v2] Priorisierte Supportanfrage #%s', $req_id )
-			: sprintf( '[Digital Guide Box v2] Neues Feedback / Wunsch #%s', $req_id );
+			? sprintf( '[Digital-Guide-Box] Priorisierte Supportanfrage #%s', $req_id )
+			: sprintf( '[Digital-Guide-Box] Neues Feedback / Wunsch #%s', $req_id );
 
-		$body  = "Neue Mitteilung aus der Digital Guide Box (v2):\n\n";
+		$body  = "Neue Mitteilung aus der Digital-Guide-Box:\n\n";
 		$body .= "Art: " . ( 'support' === $type ? 'Priorisierter Support' : 'Feedback & Wünsche' ) . "\n";
 		$body .= "Anfragenummer: #" . $req_id . "\n";
 		if ( ! empty( $email ) ) {
@@ -81,7 +81,7 @@ final class DGBC_Inquiries {
 		}
 		$body .= "Datum: " . wp_date( 'd.m.Y H:i' ) . "\n\n";
 		$body .= "Nachricht:\n" . $message . "\n\n";
-		$body .= "---\nDiese E-Mail wurde automatisch von deiner Digital Guide Box gesendet.";
+		$body .= "---\nDiese E-Mail wurde automatisch von deiner Digital-Guide-Box gesendet.";
 
 		$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 		if ( ! empty( $email ) ) {

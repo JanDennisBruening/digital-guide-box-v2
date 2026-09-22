@@ -25,7 +25,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ active }) => {
       aria-live="polite"
       aria-hidden={!active}
     >
-      <span className="sr-only">Deine Digital Guide Box wird geöffnet.</span>
+      <span className="sr-only">Deine Digital-Guide-Box wird geöffnet.</span>
       <div className="preloader-stage" aria-hidden="true">
         <div className="preloader-logo-shell">
           <span className="preloader-orbit">

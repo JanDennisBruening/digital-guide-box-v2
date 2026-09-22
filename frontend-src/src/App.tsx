@@ -346,7 +346,7 @@ export function App() {
                 </div>
               </header>
 
-              <h1 className="sr-only">Deine Digital Guide Box</h1>
+              <h1 className="sr-only">Deine Digital-Guide-Box</h1>
 
               {/* Orientation Navigation */}
               <nav
@@ -498,7 +498,7 @@ export function App() {
                   <div
                     className="box-tab-list"
                     role="tablist"
-                    aria-label="Inhalte der Digital Guide Box"
+                    aria-label="Inhalte der Digital-Guide-Box"
                   >
                     <button
                       type="button"

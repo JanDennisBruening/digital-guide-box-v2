@@ -18,7 +18,7 @@ export const Brand: React.FC = () => {
       />
       <div>
         <div className="brand-title">
-          Digital Guide <span>Box</span>
+          Digital-Guide-<span>Box</span>
         </div>
         <p className="byline">von {authorName}</p>
       </div>

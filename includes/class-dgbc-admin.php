@@ -18,8 +18,8 @@ final class DGBC_Admin {
 
 	public static function add_admin_menu() {
 		add_menu_page(
-			'Digital Guide Box v2',
-			'Digital Guide Box v2',
+			'Digital-Guide-Box',
+			'Digital-Guide-Box',
 			'manage_options',
 			'digital-guide-box-v2',
 			array( __CLASS__, 'render_admin_page' ),
@@ -281,10 +281,10 @@ final class DGBC_Admin {
 		<div class="wrap" style="max-width: 1100px;">
 			<h1 style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
 				<span class="dashicons dashicons-welcome-learn-more" style="font-size:32px;width:32px;height:32px;color:#164781;"></span>
-				Digital Guide Box <span style="font-size:16px;background:#e5effb;color:#164781;padding:3px 10px;border-radius:12px;font-weight:600;">v<?php echo esc_html( DGBC_VERSION ); ?> Konfigurierbar</span>
+				Digital-Guide-Box <span style="font-size:16px;background:#e5effb;color:#164781;padding:3px 10px;border-radius:12px;font-weight:600;">v<?php echo esc_html( DGBC_VERSION ); ?></span>
 			</h1>
 			<p style="font-size:15px;color:#555;margin-bottom:20px;">
-				Verwalte alle Inhalte, Texte, Anleitungen, Neuigkeiten und Einstellungen deiner Digital Guide Box flexibel im WordPress-Backend.
+				Verwalte alle Inhalte, Texte, Anleitungen, Neuigkeiten und Einstellungen deiner Digital-Guide-Box flexibel im WordPress-Backend.
 			</p>
 
 			<?php if ( isset( $_GET['settings-updated'] ) ) : ?>
@@ -308,7 +308,7 @@ final class DGBC_Admin {
 			<!-- Quick Link Card -->
 			<div style="background:#fff;border-left:4px solid #164781;box-shadow:0 1px 3px rgba(0,0,0,0.08);padding:16px 20px;border-radius:4px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;">
 				<div>
-					<strong style="font-size:15px;color:#164781;display:block;">🔗 Direktlink zu deiner Digital Guide Box (v2)</strong>
+					<strong style="font-size:15px;color:#164781;display:block;">🔗 Direktlink zu deiner Digital-Guide-Box</strong>
 					<span style="font-size:13px;color:#666;">Diesen Link erhalten Käuferinnen und Käufer nach dem Kauf:</span>
 				</div>
 				<div style="display:flex;gap:8px;align-items:center;">
@@ -514,7 +514,7 @@ final class DGBC_Admin {
 									return;
 								}
 								file_frame = wp.media({
-									title: 'Profilbild für Digital Guide Box auswählen',
+									title: 'Profilbild für Digital-Guide-Box auswählen',
 									button: { text: 'Als Profilbild verwenden' },
 									multiple: false
 								});
@@ -604,7 +604,7 @@ final class DGBC_Admin {
 						<?php wp_nonce_field( 'dgbc_settings_nonce_action', 'dgbc_settings_nonce' ); ?>
 						<input type="hidden" name="dgbc_current_tab" value="gemini" />
 						<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">🤖 KI-Assistent &amp; Modellauswahl</h2>
-						<p style="color:#555;">Der integrierte KI-Assistent steht deinen Nutzerinnen und Nutzern in der Digital Guide Box geduldig zur Seite. Wähle hier flexibel deinen bevorzugten KI-Dienst – von Google Gemini über europäische DSGVO-Anbieter (Mistral AI) bis hin zu einem selbstgehosteten Server (Ollama).</p>
+						<p style="color:#555;">Der integrierte KI-Assistent steht deinen Nutzerinnen und Nutzern in der Digital-Guide-Box geduldig zur Seite. Wähle hier flexibel deinen bevorzugten KI-Dienst – von Google Gemini über europäische DSGVO-Anbieter (Mistral AI) bis hin zu einem selbstgehosteten Server (Ollama).</p>
 
 						<table class="form-table" role="presentation">
 							<tr>
@@ -612,7 +612,7 @@ final class DGBC_Admin {
 								<td>
 									<label>
 										<input type="checkbox" name="gemini[enabled]" value="1" <?php checked( ! empty( $ai_cfg['enabled'] ) ); ?> />
-										<strong>KI-Assistent in der Digital Guide Box verfügbar machen</strong>
+										<strong>KI-Assistent in der Digital-Guide-Box verfügbar machen</strong>
 									</label>
 								</td>
 							</tr>

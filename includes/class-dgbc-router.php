@@ -65,7 +65,7 @@ final class DGBC_Router {
 		if ( file_exists( $template_path ) ) {
 			include $template_path;
 		} else {
-			wp_die( 'Digital Guide Box Template nicht gefunden.', 'Fehler', array( 'response' => 404 ) );
+			wp_die( 'Digital-Guide-Box Template nicht gefunden.', 'Fehler', array( 'response' => 404 ) );
 		}
 	}
 

@@ -64,7 +64,7 @@ export function generateGuidePrintHtml(guide: Guide, origin: string = ''): strin
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Anleitung: ${guide.title} · Digital Guide Box</title>
+  <title>Anleitung: ${guide.title} · Digital-Guide-Box</title>
   <style>
     @page {
       size: A4 portrait;
@@ -261,7 +261,7 @@ export function generateGuidePrintHtml(guide: Guide, origin: string = ''): strin
       <img src="${avatarUrl}" class="brand-avatar" alt="Jan Dennis Brüning" />
       <div class="brand-meta">
         <h2>Jan Dennis Brüning</h2>
-        <p>Dein Digital-Guide · Digital Guide Box</p>
+        <p>Dein Digital-Guide · Digital-Guide-Box</p>
       </div>
     </div>
     <div class="header-details">

@@ -56,8 +56,15 @@ final class DGBC_Settings {
 				'groq_model'       => 'llama-3.3-70b-versatile',
 				'custom_endpoint'  => '',
 				'custom_api_key'   => '',
-				'custom_model'     => 'llama3.2',
-				'system_prompt'    => "Du bist Jan Dennis Brüning, der empathische, geduldige und verlässliche Digital-Guide der „Digital Guide Box“.\nDeine Mission ist es, Menschen im digitalen Alltag zu begleiten und ihnen die Scheu vor moderner Technologie zu nehmen – insbesondere bei Fragen zu Smartphones (Android & iPhone), Tablets, Windows/Mac, WhatsApp, E-Mails, Internetsicherheit, Online-Banking, Online-Diensten, Kundenkonten und digitalen Formularen.\n\nDeine Kommunikationsregeln:\n1. Freundlich, ermutigend und respektvoll im herzlichen „Du“.\n2. Vermeide technisches Fachchinesisch. Wenn Fachbegriffe unumgänglich sind (wie z. B. Cloud, Cache, 2-Faktor-Authentifizierung, Browserverlauf), erkläre sie sofort mit einem einfachen Alltagsvergleich.\n3. Strukturiere Handlungsanweisungen immer in klare, nummerierte Schritte (1., 2., 3.), sodass man sie leicht nachmachen kann.\n4. Höchste Wachsamkeit bei Sicherheit: Erinnere stets daran, niemals Passwörter, PINs oder TANs per Mail/Telefon weiterzugeben und bei verdächtigen Links oder Gewinnspielen vorsichtig zu sein.\n5. Empathie & Geduld: Es gibt keine dummen Fragen. Bestärke den Nutzer darin, Dinge in Ruhe auszuprobieren.\n6. Bei sehr kniffligen Problemen oder Geräte-Hardwaredefekten: Weise freundlich darauf hin, dass man dich in der Box auch direkt über die Kontaktkarte per Mail oder Telefon erreichen kann.\n7. Formatiere deine Antworten übersichtlich mit Absätzen, fetten Hervorhebungen und Listen.",
+				'custom_model'              => 'llama3.2',
+				'system_prompt'             => "Du bist Jan Dennis Brüning, der empathische, geduldige und verlässliche Digital-Guide der „Digital Guide Box“.\nDeine Mission ist es, Menschen im digitalen Alltag zu begleiten und ihnen die Scheu vor moderner Technologie zu nehmen – insbesondere bei Fragen zu Smartphones (Android & iPhone), Tablets, Windows/Mac, WhatsApp, E-Mails, Internetsicherheit, Online-Banking, Online-Diensten, Kundenkonten und digitalen Formularen.\n\nDeine Kommunikationsregeln:\n1. Freundlich, ermutigend und respektvoll im herzlichen „Du“.\n2. Vermeide technisches Fachchinesisch. Wenn Fachbegriffe unumgänglich sind (wie z. B. Cloud, Cache, 2-Faktor-Authentifizierung, Browserverlauf), erkläre sie sofort mit einem einfachen Alltagsvergleich.\n3. Strukturiere Handlungsanweisungen immer in klare, nummerierte Schritte (1., 2., 3.), sodass man sie leicht nachmachen kann.\n4. Höchste Wachsamkeit bei Sicherheit: Erinnere stets daran, niemals Passwörter, PINs oder TANs per Mail/Telefon weiterzugeben und bei verdächtigen Links oder Gewinnspielen vorsichtig zu sein.\n5. Empathie & Geduld: Es gibt keine dummen Fragen. Bestärke den Nutzer darin, Dinge in Ruhe auszuprobieren.\n6. Bei sehr kniffligen Problemen oder Geräte-Hardwaredefekten: Weise freundlich darauf hin, dass man dich in der Box auch direkt über die Kontaktkarte per Mail oder Telefon erreichen kann.\n7. Formatiere deine Antworten übersichtlich mit Absätzen, fetten Hervorhebungen und Listen.",
+				'rate_limit_enabled'        => true,
+				'rate_limit_requests'       => 10,
+				'rate_limit_window_minutes' => 10,
+				'max_input_length'          => 800,
+				'max_output_tokens'         => 800,
+				'strict_topic_filter'       => true,
+				'off_topic_message'         => 'Als dein persönlicher Digital-Guide helfe ich dir sehr gerne bei allen Fragen rund um Smartphone, Tablet, Computer, Internet, E-Mail, WhatsApp und digitale Dienste. Fragen außerhalb dieses Themas kann ich leider nicht beantworten. Wie kann ich dich bei deinen Geräten oder digitalen Formularen unterstützen?',
 			),
 			'custom_news' => array(),
 		);
@@ -165,6 +172,14 @@ final class DGBC_Settings {
 		$clean['gemini']['custom_model']    = ! empty( $input['gemini']['custom_model'] ) ? sanitize_text_field( $input['gemini']['custom_model'] ) : 'llama3.2';
 
 		$clean['gemini']['system_prompt']   = isset( $input['gemini']['system_prompt'] ) ? sanitize_textarea_field( $input['gemini']['system_prompt'] ) : $defaults['gemini']['system_prompt'];
+
+		$clean['gemini']['rate_limit_enabled']        = ! empty( $input['gemini']['rate_limit_enabled'] );
+		$clean['gemini']['rate_limit_requests']       = isset( $input['gemini']['rate_limit_requests'] ) ? max( 1, min( 100, intval( $input['gemini']['rate_limit_requests'] ) ) ) : 10;
+		$clean['gemini']['rate_limit_window_minutes'] = isset( $input['gemini']['rate_limit_window_minutes'] ) ? max( 1, min( 1440, intval( $input['gemini']['rate_limit_window_minutes'] ) ) ) : 10;
+		$clean['gemini']['max_input_length']          = isset( $input['gemini']['max_input_length'] ) ? max( 100, min( 5000, intval( $input['gemini']['max_input_length'] ) ) ) : 800;
+		$clean['gemini']['max_output_tokens']         = isset( $input['gemini']['max_output_tokens'] ) ? max( 100, min( 4096, intval( $input['gemini']['max_output_tokens'] ) ) ) : 800;
+		$clean['gemini']['strict_topic_filter']       = ! empty( $input['gemini']['strict_topic_filter'] );
+		$clean['gemini']['off_topic_message']         = isset( $input['gemini']['off_topic_message'] ) ? sanitize_textarea_field( $input['gemini']['off_topic_message'] ) : $defaults['gemini']['off_topic_message'];
 
 		// Custom News
 		$clean['custom_news'] = array();

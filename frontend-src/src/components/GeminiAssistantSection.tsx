@@ -84,6 +84,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
   const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
   const profileAvatar = config?.settings?.profile?.avatar_url || getAssetUrl('profilbild.png');
   const profileName = config?.settings?.profile?.name || 'Jan Dennis';
+  const maxInputLength: number = config?.settings?.gemini?.max_input_length || 800;
 
   const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
@@ -552,6 +553,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
             <textarea
               ref={textareaRef}
               value={input}
+              maxLength={maxInputLength}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Frag Jan Dennis etwas... (z. B. 'Wie mache ich ein Bildschirmfoto am Handy?')"
@@ -559,8 +561,13 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
               disabled={isLoading}
               className="w-full resize-none px-4 py-2.5 text-sm font-body rounded-xl border border-slate-300 focus:border-[#235cbb] focus:ring-2 focus:ring-blue-100 outline-none transition-all disabled:bg-slate-50 disabled:text-slate-400 placeholder:text-slate-400 leading-normal"
             />
-            <div className="absolute right-2 bottom-2 text-[10px] text-slate-400 font-body pointer-events-none hidden sm:block">
-              ↵ Senden · Umschalt+↵ Zeilenumbruch
+            <div className="absolute right-2 bottom-2 text-[10px] text-slate-400 font-body pointer-events-none hidden sm:flex items-center gap-2">
+              {input.length > maxInputLength * 0.75 && (
+                <span className={input.length >= maxInputLength ? 'text-amber-600 font-semibold' : 'text-slate-400'}>
+                  {input.length}/{maxInputLength}
+                </span>
+              )}
+              <span>↵ Senden · Umschalt+↵ Zeilenumbruch</span>
             </div>
           </div>
 

@@ -58,7 +58,9 @@ final class DGBC_Admin {
 				$current['whatsapp'] = array_merge( $current['whatsapp'], $wa_input );
 			} elseif ( 'gemini' === $tab && isset( $_POST['gemini'] ) ) {
 				$gem_input = (array) $_POST['gemini'];
-				$gem_input['enabled'] = ! empty( $_POST['gemini']['enabled'] );
+				$gem_input['enabled']             = ! empty( $_POST['gemini']['enabled'] );
+				$gem_input['rate_limit_enabled']  = ! empty( $_POST['gemini']['rate_limit_enabled'] );
+				$gem_input['strict_topic_filter'] = ! empty( $_POST['gemini']['strict_topic_filter'] );
 				$current['gemini'] = array_merge( $current['gemini'] ?? array(), $gem_input );
 			}
 
@@ -804,6 +806,63 @@ final class DGBC_Admin {
 								<td>
 									<textarea name="gemini[system_prompt]" id="gemini_prompt" rows="8" class="large-text" style="font-family:monospace;font-size:12px;"><?php echo esc_textarea( $ai_cfg['system_prompt'] ); ?></textarea>
 									<p class="description">Definiert Tonfall, Verhaltensregeln und Zielgruppe des KI-Assistenten – gilt einheitlich für alle ausgewählten KI-Anbieter.</p>
+								</td>
+							</tr>
+						</table>
+
+						<hr style="margin:28px 0 20px;border:0;border-top:1px solid #cbd5e1;" />
+
+						<h3 style="font-size:16px;margin:16px 0 8px;display:flex;align-items:center;gap:8px;">
+							<span>🛡️</span> Sicherheit, Limits &amp; Spam-Schutz
+						</h3>
+						<p class="description" style="margin-bottom:16px;">
+							Schütze deinen KI-Assistenten vor übermäßigen Anfragen, böswilligen Bots, Kostenfallen und thematischer Zweckentfremdung.
+						</p>
+
+						<table class="form-table" role="presentation">
+							<tr>
+								<th scope="row">Rate-Limiting (Anfrageschutz)</th>
+								<td>
+									<label>
+										<input type="checkbox" name="gemini[rate_limit_enabled]" value="1" <?php checked( ! empty( $ai_cfg['rate_limit_enabled'] ) ); ?> />
+										<strong>Anfragen pro Besucher zeitlich begrenzen</strong> (schützt vor Bot-Dauerfeuer und Kostenexplosion)
+									</label>
+									<div style="margin-top:8px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+										<span>Maximal</span>
+										<input type="number" name="gemini[rate_limit_requests]" value="<?php echo esc_attr( $ai_cfg['rate_limit_requests'] ?? 10 ); ?>" min="1" max="100" style="width:70px;" />
+										<span>Fragen innerhalb von</span>
+										<input type="number" name="gemini[rate_limit_window_minutes]" value="<?php echo esc_attr( $ai_cfg['rate_limit_window_minutes'] ?? 10 ); ?>" min="1" max="1440" style="width:70px;" />
+										<span>Minuten pro Besucher/IP</span>
+									</div>
+									<p class="description">Standard: 10 Fragen in 10 Minuten. Bei Überschreitung erhält der Nutzer einen freundlichen Hinweis auf eine kurze Pause oder den direkten Kontakt zu dir.</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="gemini_max_input">Max. Zeichen pro Frage</label></th>
+								<td>
+									<input name="gemini[max_input_length]" type="number" id="gemini_max_input" value="<?php echo esc_attr( $ai_cfg['max_input_length'] ?? 800 ); ?>" min="100" max="5000" style="width:100px;" /> Zeichen
+									<p class="description">Verhindert, dass jemand riesige Textmengen oder Dokumente in den Chat kopiert. Standard: 800 Zeichen (ca. 120 Wörter).</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="gemini_max_tokens">Max. Antwortlänge (Tokens)</label></th>
+								<td>
+									<input name="gemini[max_output_tokens]" type="number" id="gemini_max_tokens" value="<?php echo esc_attr( $ai_cfg['max_output_tokens'] ?? 800 ); ?>" min="100" max="4096" style="width:100px;" /> Tokens
+									<p class="description">Begrenzt die Ausführlichkeit der generierten Antwort. Schont dein API-Kontingent und verhindert Endlostexte. Standard: 800 Tokens (ca. 500–600 Wörter).</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">Themen-Filter (Guardrails)</th>
+								<td>
+									<label>
+										<input type="checkbox" name="gemini[strict_topic_filter]" value="1" <?php checked( ! empty( $ai_cfg['strict_topic_filter'] ) ); ?> />
+										<strong>Strikte thematische Leitplanken aktivieren</strong> (lehnt themenfremde Fragen automatisch ab)
+									</label>
+									<p class="description">Beschränkt den Assistenten auf digitale Alltagsthemen (Smartphones, PC, Internet, E-Mail, WhatsApp, Online-Dienste, Passwörter, Sicherheit). Fragen zu Politik, Hausaufgaben, Witzen oder Versuche, die Anweisungen zu manipulieren, werden höflich abgewiesen.</p>
+									<div style="margin-top:10px;">
+										<label for="gemini_off_topic_msg" style="display:block;font-weight:600;margin-bottom:4px;">Freundliche Ablehnungsnachricht bei themenfremden Fragen:</label>
+										<textarea name="gemini[off_topic_message]" id="gemini_off_topic_msg" rows="3" class="large-text"><?php echo esc_textarea( $ai_cfg['off_topic_message'] ?? DGBC_Settings::get_defaults()['gemini']['off_topic_message'] ); ?></textarea>
+									</div>
 								</td>
 							</tr>
 						</table>

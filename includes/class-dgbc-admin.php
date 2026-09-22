@@ -279,7 +279,7 @@ final class DGBC_Admin {
 		<div class="wrap" style="max-width: 1100px;">
 			<h1 style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
 				<span class="dashicons dashicons-welcome-learn-more" style="font-size:32px;width:32px;height:32px;color:#164781;"></span>
-				Digital Guide Box <span style="font-size:16px;background:#e5effb;color:#164781;padding:3px 10px;border-radius:12px;font-weight:600;">v2 Konfigurierbar</span>
+				Digital Guide Box <span style="font-size:16px;background:#e5effb;color:#164781;padding:3px 10px;border-radius:12px;font-weight:600;">v<?php echo esc_html( DGBC_VERSION ); ?> Konfigurierbar</span>
 			</h1>
 			<p style="font-size:15px;color:#555;margin-bottom:20px;">
 				Verwalte alle Inhalte, Texte, Anleitungen, Neuigkeiten und Einstellungen deiner Digital Guide Box flexibel im WordPress-Backend.

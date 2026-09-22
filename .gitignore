@@ -1,3 +1,4 @@
 .DS_Store
 frontend-src/node_modules/
 frontend-src/dist/
+*.zip

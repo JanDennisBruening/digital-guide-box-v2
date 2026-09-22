@@ -40,13 +40,24 @@ export function App() {
   const accessSettings = config?.settings?.access || {};
   const customNews = config?.settings?.custom_news || [];
 
-  // Merge custom news from WordPress backend with built-in news
-  const mergedNews: NewsItem[] = useMemo(() => {
+  // Guides: use WordPress-managed guides if available, otherwise built-in ALL_GUIDES
+  const guidesData: Guide[] = useMemo(() => {
+    if (config?.guides && Array.isArray(config.guides) && config.guides.length > 0) {
+      return config.guides;
+    }
+    return ALL_GUIDES;
+  }, [config]);
+
+  // News: use WordPress-managed news if available, otherwise merged custom + built-in ALL_NEWS
+  const newsData: NewsItem[] = useMemo(() => {
+    if (config?.news && Array.isArray(config.news) && config.news.length > 0) {
+      return config.news;
+    }
     if (customNews && Array.isArray(customNews) && customNews.length > 0) {
       return [...customNews, ...ALL_NEWS];
     }
     return ALL_NEWS;
-  }, [customNews]);
+  }, [config, customNews]);
 
   // Authorization state: check localStorage session
   const [authorized, setAuthorized] = useState<boolean>(() => {
@@ -315,8 +326,8 @@ export function App() {
                 <Brand />
 
                 <SearchDialog
-                  guides={ALL_GUIDES}
-                  news={mergedNews}
+                  guides={guidesData}
+                  news={newsData}
                   onSelect={handleSelectFromSearch}
                   inputRef={searchInputRef}
                 />
@@ -501,7 +512,7 @@ export function App() {
                         <Newspaper aria-hidden="true" />
                         <span>Neuigkeiten</span>
                       </span>
-                      <span className="guide-count text-slate-700 bg-white/80 font-medium">{mergedNews.length} Beiträge</span>
+                      <span className="guide-count text-slate-700 bg-white/80 font-medium">{newsData.length} Beiträge</span>
                     </button>
 
                     <button
@@ -531,7 +542,7 @@ export function App() {
                         <BookOpen aria-hidden="true" />
                         <span>Anleitungen</span>
                       </span>
-                      <span className="guide-count">{ALL_GUIDES.length} verfügbar</span>
+                      <span className="guide-count">{guidesData.length} verfügbar</span>
                     </button>
                   </div>
 
@@ -546,7 +557,7 @@ export function App() {
                       <header className="tab-panel-heading">
                         <p>Aktuelle Hinweise und Neues aus deiner Box.</p>
                       </header>
-                      <NewsSection news={mergedNews} onOpenNews={handleOpenNews} />
+                      <NewsSection news={newsData} onOpenNews={handleOpenNews} />
                     </div>
                   </div>
 
@@ -581,7 +592,7 @@ export function App() {
                         <p>Einfache Anleitungen zum Nachlesen und Ausprobieren.</p>
                       </header>
                       <GuidesSection
-                        guides={ALL_GUIDES}
+                        guides={guidesData}
                         onOpenGuide={handleOpenGuide}
                       />
                     </div>
@@ -656,8 +667,8 @@ export function App() {
           <ReadingDialog
             selection={selection}
             onClose={() => setSelection(null)}
-            allGuides={ALL_GUIDES}
-            allNews={mergedNews}
+            allGuides={guidesData}
+            allNews={newsData}
             onSelectRelated={setSelection}
             onAskAssistant={(prompt) => {
               setAssistantPrompt(prompt);

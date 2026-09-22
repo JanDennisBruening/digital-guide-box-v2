@@ -21,6 +21,7 @@ define( 'DGBC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DGBC_URL', plugin_dir_url( __FILE__ ) );
 
 require_once DGBC_DIR . 'includes/class-dgbc-settings.php';
+require_once DGBC_DIR . 'includes/class-dgbc-content.php';
 require_once DGBC_DIR . 'includes/class-dgbc-auth.php';
 require_once DGBC_DIR . 'includes/class-dgbc-router.php';
 require_once DGBC_DIR . 'includes/class-dgbc-inquiries.php';

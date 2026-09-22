@@ -1,6 +1,7 @@
 <?php
 /**
  * Admin Management Center for Digital Guide Box (Configurable Edition).
+ * Full CRUD for Settings, Guides (Anleitungen) & News (Neuigkeiten).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -35,15 +36,11 @@ final class DGBC_Admin {
 	}
 
 	public static function handle_actions() {
-		if ( ! isset( $_POST['dgbc_save_settings'] ) && ! isset( $_POST['dgbc_add_news'] ) && ! isset( $_GET['dgbc_delete_news'] ) && ! isset( $_GET['dgbc_delete_inquiry'] ) ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'Keine ausreichenden Berechtigungen.' );
-		}
-
-		// Save Settings Tab
+		// 1. Save General Settings
 		if ( isset( $_POST['dgbc_save_settings'] ) ) {
 			check_admin_referer( 'dgbc_settings_nonce_action', 'dgbc_settings_nonce' );
 			$current = DGBC_Settings::get_all();
@@ -73,73 +70,176 @@ final class DGBC_Admin {
 			exit;
 		}
 
-		// Add Custom News
-		if ( isset( $_POST['dgbc_add_news'] ) ) {
-			check_admin_referer( 'dgbc_news_nonce_action', 'dgbc_news_nonce' );
-			$current = DGBC_Settings::get_all();
+		// 2. Save Guide (Create or Edit)
+		if ( isset( $_POST['dgbc_save_guide'] ) ) {
+			check_admin_referer( 'dgbc_guide_nonce_action', 'dgbc_guide_nonce' );
 
-			$news_id = ! empty( $_POST['news_id'] ) ? sanitize_key( $_POST['news_id'] ) : 'news-' . uniqid();
-			$title   = sanitize_text_field( $_POST['news_title'] ?? '' );
-			if ( ! empty( $title ) ) {
-				$para1   = sanitize_textarea_field( $_POST['news_para1'] ?? '' );
-				$para2   = sanitize_textarea_field( $_POST['news_para2'] ?? '' );
-				$paragraphs = array_values( array_filter( array( $para1, $para2 ) ) );
+			$raw_id = sanitize_key( $_POST['guide_id'] ?? '' );
+			if ( empty( $raw_id ) ) {
+				$raw_id = sanitize_title( $_POST['guide_title'] ?? 'anleitung' );
+				if ( empty( $raw_id ) ) {
+					$raw_id = 'anleitung-' . uniqid();
+				}
+			}
 
-				$new_item = array(
-					'id'              => $news_id,
-					'title'           => $title,
-					'category'        => sanitize_text_field( $_POST['news_category'] ?? 'Geräte & Technik' ),
-					'date'            => sanitize_text_field( $_POST['news_date'] ?? current_time( 'Y-m-d' ) ),
-					'dateLabel'       => sanitize_text_field( $_POST['news_datelabel'] ?? 'Aktuell' ),
-					'relevance'       => sanitize_textarea_field( $_POST['news_relevance'] ?? '' ),
-					'takeaway'        => sanitize_textarea_field( $_POST['news_takeaway'] ?? '' ),
-					'tip'             => sanitize_textarea_field( $_POST['news_tip'] ?? '' ),
-					'paragraphTitles' => array( 'Hintergrund', 'Praxistipp' ),
-					'paragraphs'      => $paragraphs,
-					'guideIds'        => ! empty( $_POST['news_guides'] ) ? array_map( 'sanitize_key', (array) $_POST['news_guides'] ) : array(),
-					'assessment'      => array(
-						'relevance' => sanitize_key( $_POST['news_assess_rel'] ?? 'yes' ),
-						'context'   => sanitize_text_field( $_POST['news_assess_ctx'] ?? '' ),
-						'action'    => sanitize_key( $_POST['news_assess_act'] ?? 'none' ),
-						'advice'    => sanitize_text_field( $_POST['news_assess_adv'] ?? '' ),
-					),
-				);
+			// Preparation steps: split by lines
+			$prep_raw = sanitize_textarea_field( $_POST['guide_prep'] ?? '' );
+			$prep_lines = array_values( array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", '', $prep_raw ) ) ) ) );
 
-				// Replace or append
-				$replaced = false;
-				foreach ( $current['custom_news'] as $idx => $ex ) {
-					if ( $ex['id'] === $news_id ) {
-						$current['custom_news'][ $idx ] = $new_item;
-						$replaced = true;
-						break;
+			// Dynamic steps
+			$steps = array();
+			if ( isset( $_POST['steps'] ) && is_array( $_POST['steps'] ) ) {
+				foreach ( $_POST['steps'] as $s ) {
+					$s_title = sanitize_text_field( $s['title'] ?? '' );
+					$s_text  = sanitize_textarea_field( $s['text'] ?? '' );
+					$s_check = sanitize_text_field( $s['check'] ?? '' );
+					$s_icon  = sanitize_key( $s['icon'] ?? 'check' );
+					if ( ! empty( $s_title ) || ! empty( $s_text ) ) {
+						$steps[] = array(
+							'title' => $s_title,
+							'text'  => $s_text,
+							'check' => $s_check,
+							'icon'  => $s_icon,
+						);
 					}
 				}
-				if ( ! $replaced ) {
-					array_unshift( $current['custom_news'], $new_item );
-				}
-
-				DGBC_Settings::update_all( $current );
 			}
+
+			// Sources
+			$sources = array();
+			if ( ! empty( $_POST['guide_source_title'] ) ) {
+				$sources[] = array(
+					'title' => sanitize_text_field( $_POST['guide_source_title'] ),
+					'url'   => esc_url_raw( $_POST['guide_source_url'] ?? '' ),
+				);
+			}
+
+			$guide_item = array(
+				'id'        => $raw_id,
+				'title'     => sanitize_text_field( $_POST['guide_title'] ?? '' ),
+				'subtitle'  => sanitize_text_field( $_POST['guide_subtitle'] ?? '' ),
+				'category'  => sanitize_text_field( $_POST['guide_category'] ?? 'Alltag' ),
+				'theme'     => sanitize_key( $_POST['guide_theme'] ?? 'blau' ),
+				'minutes'   => absint( $_POST['guide_minutes'] ?? 3 ),
+				'updatedAt' => sanitize_text_field( $_POST['guide_updated_at'] ?? current_time( 'Y-m-d' ) ),
+				'scope'     => sanitize_text_field( $_POST['guide_scope'] ?? 'Für Android und iPhone' ),
+				'learning'  => array(
+					'kind'        => 'step',
+					'why'         => sanitize_textarea_field( $_POST['guide_why'] ?? '' ),
+					'preparation' => $prep_lines,
+				),
+				'steps'     => $steps,
+				'tip'       => sanitize_textarea_field( $_POST['guide_tip'] ?? '' ),
+				'sources'   => $sources,
+			);
+
+			DGBC_Content::save_guide( $guide_item );
+
+			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'guide-saved' => 'true' ), admin_url( 'admin.php' ) ) );
+			exit;
+		}
+
+		// 3. Delete Guide
+		if ( isset( $_GET['dgbc_delete_guide'] ) ) {
+			check_admin_referer( 'dgbc_delete_guide_action' );
+			$del_id = sanitize_key( $_GET['dgbc_delete_guide'] );
+			DGBC_Content::delete_guide( $del_id );
+
+			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'guide-deleted' => 'true' ), admin_url( 'admin.php' ) ) );
+			exit;
+		}
+
+		// 4. Reset Guides to Defaults
+		if ( isset( $_POST['dgbc_reset_guides'] ) ) {
+			check_admin_referer( 'dgbc_reset_guides_action', 'dgbc_reset_guides_nonce' );
+			DGBC_Content::reset_guides();
+
+			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'guides-reset' => 'true' ), admin_url( 'admin.php' ) ) );
+			exit;
+		}
+
+		// 5. Save News (Create or Edit)
+		if ( isset( $_POST['dgbc_save_news'] ) ) {
+			check_admin_referer( 'dgbc_news_nonce_action', 'dgbc_news_nonce' );
+
+			$raw_id = sanitize_key( $_POST['news_id'] ?? '' );
+			if ( empty( $raw_id ) ) {
+				$raw_id = sanitize_title( $_POST['news_title'] ?? 'neuigkeit' );
+				if ( empty( $raw_id ) ) {
+					$raw_id = 'news-' . uniqid();
+				}
+			}
+
+			// Dynamic Paragraphs
+			$paragraphs       = array();
+			$paragraph_titles = array();
+			if ( isset( $_POST['paragraphs'] ) && is_array( $_POST['paragraphs'] ) ) {
+				foreach ( $_POST['paragraphs'] as $p ) {
+					$p_title = sanitize_text_field( $p['title'] ?? '' );
+					$p_text  = sanitize_textarea_field( $p['text'] ?? '' );
+					if ( ! empty( $p_text ) ) {
+						$paragraphs[]       = $p_text;
+						$paragraph_titles[] = ! empty( $p_title ) ? $p_title : 'Details';
+					}
+				}
+			}
+
+			// Sources
+			$sources = array();
+			if ( ! empty( $_POST['news_source_title'] ) ) {
+				$sources[] = array(
+					'title' => sanitize_text_field( $_POST['news_source_title'] ),
+					'url'   => esc_url_raw( $_POST['news_source_url'] ?? '' ),
+				);
+			}
+
+			$news_item = array(
+				'id'              => $raw_id,
+				'title'           => sanitize_text_field( $_POST['news_title'] ?? '' ),
+				'category'        => sanitize_text_field( $_POST['news_category'] ?? 'Geräte & Technik' ),
+				'date'            => sanitize_text_field( $_POST['news_date'] ?? current_time( 'Y-m-d' ) ),
+				'dateLabel'       => sanitize_text_field( $_POST['news_datelabel'] ?? 'Aktuell' ),
+				'relevance'       => sanitize_textarea_field( $_POST['news_relevance'] ?? '' ),
+				'takeaway'        => sanitize_textarea_field( $_POST['news_takeaway'] ?? '' ),
+				'tip'             => sanitize_textarea_field( $_POST['news_tip'] ?? '' ),
+				'checkedAt'       => sanitize_text_field( $_POST['news_date'] ?? current_time( 'Y-m-d' ) ),
+				'paragraphTitles' => $paragraph_titles,
+				'paragraphs'      => $paragraphs,
+				'assessment'      => array(
+					'relevance' => sanitize_key( $_POST['news_assess_rel'] ?? 'yes' ),
+					'context'   => sanitize_text_field( $_POST['news_assess_ctx'] ?? '' ),
+					'action'    => sanitize_key( $_POST['news_assess_act'] ?? 'none' ),
+					'advice'    => sanitize_text_field( $_POST['news_assess_adv'] ?? '' ),
+				),
+				'sources'         => $sources,
+			);
+
+			DGBC_Content::save_news_item( $news_item );
 
 			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'news-saved' => 'true' ), admin_url( 'admin.php' ) ) );
 			exit;
 		}
 
-		// Delete Custom News
+		// 6. Delete News
 		if ( isset( $_GET['dgbc_delete_news'] ) ) {
 			check_admin_referer( 'dgbc_delete_news_action' );
-			$del_id  = sanitize_key( $_GET['dgbc_delete_news'] );
-			$current = DGBC_Settings::get_all();
-			$current['custom_news'] = array_values( array_filter( $current['custom_news'], function( $item ) use ( $del_id ) {
-				return ( $item['id'] !== $del_id );
-			} ) );
-			DGBC_Settings::update_all( $current );
+			$del_id = sanitize_key( $_GET['dgbc_delete_news'] );
+			DGBC_Content::delete_news_item( $del_id );
 
 			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'news-deleted' => 'true' ), admin_url( 'admin.php' ) ) );
 			exit;
 		}
 
-		// Delete Inquiry
+		// 7. Reset News to Defaults
+		if ( isset( $_POST['dgbc_reset_news'] ) ) {
+			check_admin_referer( 'dgbc_reset_news_action', 'dgbc_reset_news_nonce' );
+			DGBC_Content::reset_news();
+
+			wp_safe_redirect( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'news-reset' => 'true' ), admin_url( 'admin.php' ) ) );
+			exit;
+		}
+
+		// 8. Delete Inquiry
 		if ( isset( $_GET['dgbc_delete_inquiry'] ) ) {
 			check_admin_referer( 'dgbc_delete_inquiry_action' );
 			$del_id    = sanitize_text_field( $_GET['dgbc_delete_inquiry'] );
@@ -159,9 +259,11 @@ final class DGBC_Admin {
 			return;
 		}
 
-		$settings = DGBC_Settings::get_all();
-		$box_url  = DGBC_Router::get_box_url();
+		$settings   = DGBC_Settings::get_all();
+		$box_url    = DGBC_Router::get_box_url();
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'access';
+		$all_guides = DGBC_Content::get_guides();
+		$all_news   = DGBC_Content::get_news();
 
 		$tabs = array(
 			'access'   => '🔑 Zugang & Links',
@@ -169,25 +271,34 @@ final class DGBC_Admin {
 			'profile'  => '👤 Profil & Beraterkontakt',
 			'whatsapp' => '💬 WhatsApp-Kanal',
 			'gemini'   => '🤖 KI-Assistent (Gemini)',
-			'news'     => '📰 Eigene Neuigkeiten (' . count( $settings['custom_news'] ) . ')',
+			'guides'   => '📖 Anleitungen (' . count( $all_guides ) . ')',
+			'news'     => '📰 Neuigkeiten (' . count( $all_news ) . ')',
 			'inbox'    => '📥 Posteingang',
 		);
 		?>
-		<div class="wrap" style="max-width: 1040px;">
+		<div class="wrap" style="max-width: 1100px;">
 			<h1 style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
 				<span class="dashicons dashicons-welcome-learn-more" style="font-size:32px;width:32px;height:32px;color:#164781;"></span>
 				Digital Guide Box <span style="font-size:16px;background:#e5effb;color:#164781;padding:3px 10px;border-radius:12px;font-weight:600;">v2 Konfigurierbar</span>
 			</h1>
 			<p style="font-size:15px;color:#555;margin-bottom:20px;">
-				Passe alle Texte, Kontaktdaten, Passwörter und Inhalte deiner Digital Guide Box flexibel im WordPress-Backend an.
+				Verwalte alle Inhalte, Texte, Anleitungen, Neuigkeiten und Einstellungen deiner Digital Guide Box flexibel im WordPress-Backend.
 			</p>
 
 			<?php if ( isset( $_GET['settings-updated'] ) ) : ?>
 				<div class="notice notice-success is-dismissible"><p><strong>Einstellungen erfolgreich gespeichert.</strong></p></div>
+			<?php elseif ( isset( $_GET['guide-saved'] ) ) : ?>
+				<div class="notice notice-success is-dismissible"><p><strong>Anleitung erfolgreich gespeichert.</strong></p></div>
+			<?php elseif ( isset( $_GET['guide-deleted'] ) ) : ?>
+				<div class="notice notice-success is-dismissible"><p><strong>Anleitung gelöscht.</strong></p></div>
+			<?php elseif ( isset( $_GET['guides-reset'] ) ) : ?>
+				<div class="notice notice-success is-dismissible"><p><strong>Alle Anleitungen wurden auf den Standardwert zurückgesetzt.</strong></p></div>
 			<?php elseif ( isset( $_GET['news-saved'] ) ) : ?>
 				<div class="notice notice-success is-dismissible"><p><strong>Beitrag erfolgreich gespeichert.</strong></p></div>
 			<?php elseif ( isset( $_GET['news-deleted'] ) ) : ?>
 				<div class="notice notice-success is-dismissible"><p><strong>Beitrag gelöscht.</strong></p></div>
+			<?php elseif ( isset( $_GET['news-reset'] ) ) : ?>
+				<div class="notice notice-success is-dismissible"><p><strong>Alle Neuigkeiten wurden auf den Standardwert zurückgesetzt.</strong></p></div>
 			<?php elseif ( isset( $_GET['inquiry-deleted'] ) ) : ?>
 				<div class="notice notice-success is-dismissible"><p><strong>Anfrage aus dem Posteingang gelöscht.</strong></p></div>
 			<?php endif; ?>
@@ -476,7 +587,7 @@ final class DGBC_Admin {
 						</p>
 					</form>
 
-				<!-- TAB: GEMINI KI-ASSISTENT -->
+				<!-- 5. TAB: GEMINI KI-ASSISTENT -->
 				<?php elseif ( 'gemini' === $active_tab ) : 
 					$gemini = $settings['gemini'] ?? DGBC_Settings::get_defaults()['gemini'];
 					$has_api_key = ! empty( $gemini['api_key'] );
@@ -546,122 +657,760 @@ final class DGBC_Admin {
 						</p>
 					</form>
 
-				<!-- 5. TAB: CUSTOM NEWS -->
-				<?php elseif ( 'news' === $active_tab ) : ?>
-					<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">Eigene Neuigkeiten &amp; Ankündigungen</h2>
-					<p>Hier kannst du eigene Neuigkeiten und Warnungen anlegen, die im Tab „Neuigkeiten“ ganz oben für deine Nutzerinnen und Nutzer erscheinen.</p>
+				<!-- 6. TAB: GUIDES (ANLEITUNGEN VERWALTEN) -->
+				<?php elseif ( 'guides' === $active_tab ) : 
+					$action = sanitize_key( $_GET['action'] ?? '' );
+					$editing_id = sanitize_key( $_GET['id'] ?? '' );
+					$is_edit = ( 'edit_guide' === $action );
+					$edit_guide = null;
 
-					<!-- List of Custom News -->
-					<?php if ( ! empty( $settings['custom_news'] ) ) : ?>
-						<table class="wp-list-table widefat fixed striped" style="margin-bottom:30px;">
+					if ( $is_edit && ! empty( $editing_id ) && 'new' !== $editing_id ) {
+						$edit_guide = DGBC_Content::get_guide( $editing_id );
+					}
+				?>
+					<?php if ( $is_edit ) : 
+						$g_id       = $edit_guide['id'] ?? ( 'guide-' . uniqid() );
+						$g_title    = $edit_guide['title'] ?? '';
+						$g_subtitle = $edit_guide['subtitle'] ?? '';
+						$g_category = $edit_guide['category'] ?? 'Kommunikation';
+						$g_theme    = $edit_guide['theme'] ?? 'blau';
+						$g_minutes  = $edit_guide['minutes'] ?? 3;
+						$g_scope    = $edit_guide['scope'] ?? 'Für Android und iPhone';
+						$g_updated  = $edit_guide['updatedAt'] ?? current_time( 'Y-m-d' );
+						$g_why      = $edit_guide['learning']['why'] ?? '';
+						$g_prep     = ! empty( $edit_guide['learning']['preparation'] ) ? implode( "\n", (array) $edit_guide['learning']['preparation'] ) : '';
+						$g_steps    = ! empty( $edit_guide['steps'] ) ? (array) $edit_guide['steps'] : array();
+						$g_tip      = $edit_guide['tip'] ?? '';
+						$g_src_title = $edit_guide['sources'][0]['title'] ?? '';
+						$g_src_url   = $edit_guide['sources'][0]['url'] ?? '';
+
+						if ( empty( $g_steps ) ) {
+							$g_steps = array(
+								array( 'title' => 'Schritt 1', 'text' => '', 'check' => '', 'icon' => 'check' )
+							);
+						}
+					?>
+						<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+							<h2 style="margin:0;font-size:18px;">
+								<?php echo empty( $edit_guide ) ? '➕ Neue Anleitung erstellen' : '✏️ Anleitung bearbeiten: ' . esc_html( $g_title ); ?>
+							</h2>
+							<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides' ), admin_url( 'admin.php' ) ) ); ?>" class="button">
+								← Zurück zur Übersicht
+							</a>
+						</div>
+
+						<form method="post" action="">
+							<?php wp_nonce_field( 'dgbc_guide_nonce_action', 'dgbc_guide_nonce' ); ?>
+							<table class="form-table" role="presentation">
+								<tr>
+									<th scope="row"><label for="guide_title">Titel der Anleitung *</label></th>
+									<td>
+										<input name="guide_title" type="text" id="guide_title" value="<?php echo esc_attr( $g_title ); ?>" class="large-text" required placeholder="z. B. Eine Nachricht schreiben" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_subtitle">Untertitel / Kurzbeschreibung</label></th>
+									<td>
+										<input name="guide_subtitle" type="text" id="guide_subtitle" value="<?php echo esc_attr( $g_subtitle ); ?>" class="large-text" placeholder="z. B. Mit WhatsApp in Kontakt bleiben." />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_id">ID (Kürzel / Slug)</label></th>
+									<td>
+										<input name="guide_id" type="text" id="guide_id" value="<?php echo esc_attr( $g_id ); ?>" class="regular-text" style="width:240px;" />
+										<p class="description">Eindeutiger Bezeichner (z. B. <code>whatsapp</code>, <code>google-konto</code>). Nur Kleinbuchstaben, Zahlen und Bindestriche.</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_category">Kategorie</label></th>
+									<td>
+										<input name="guide_category" type="text" id="guide_category" value="<?php echo esc_attr( $g_category ); ?>" class="regular-text" list="guide_categories_list" />
+										<datalist id="guide_categories_list">
+											<option value="Kommunikation">
+											<option value="Konten">
+											<option value="Sicherheit">
+											<option value="Geräte">
+											<option value="Internet">
+											<option value="Mobilität">
+											<option value="Digitale Dienste">
+											<option value="Alltag">
+										</datalist>
+										<p class="description">Wähle eine bestehende Kategorie oder trage eine neue ein.</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_theme">Farbschema (Theme)</label></th>
+									<td>
+										<select name="guide_theme" id="guide_theme">
+											<option value="gruen" <?php selected( $g_theme, 'gruen' ); ?>>Grün (z. B. WhatsApp, Kommunikation)</option>
+											<option value="blau" <?php selected( $g_theme, 'blau' ); ?>>Blau (z. B. Konten, System)</option>
+											<option value="rot" <?php selected( $g_theme, 'rot' ); ?>>Rot (z. B. Sicherheit, Warnungen)</option>
+											<option value="tuerkis" <?php selected( $g_theme, 'tuerkis' ); ?>>Türkis (z. B. Internet, Browser)</option>
+											<option value="violett" <?php selected( $g_theme, 'violett' ); ?>>Violett (z. B. Medien, Unterhaltung)</option>
+											<option value="gold" <?php selected( $g_theme, 'gold' ); ?>>Gold / Gelb (z. B. Banking, Finanzen)</option>
+											<option value="magenta" <?php selected( $g_theme, 'magenta' ); ?>>Magenta (z. B. Verwaltung, Anträge)</option>
+											<option value="schiefer" <?php selected( $g_theme, 'schiefer' ); ?>>Schiefergrau (z. B. Allgemeines)</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_minutes">Dauer (Minuten)</label></th>
+									<td>
+										<input name="guide_minutes" type="number" id="guide_minutes" min="1" max="60" value="<?php echo esc_attr( $g_minutes ); ?>" style="width:80px;" /> Minuten
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_scope">Gültigkeitsbereich (Scope)</label></th>
+									<td>
+										<input name="guide_scope" type="text" id="guide_scope" value="<?php echo esc_attr( $g_scope ); ?>" class="regular-text" placeholder="z. B. Für Android und iPhone" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_why">Warum das wichtig ist (Lernziel)</label></th>
+									<td>
+										<textarea name="guide_why" id="guide_why" rows="2" class="large-text"><?php echo esc_textarea( $g_why ); ?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_prep">Vorbereitung (je Zeile ein Punkt)</label></th>
+									<td>
+										<textarea name="guide_prep" id="guide_prep" rows="3" class="large-text"><?php echo esc_textarea( $g_prep ); ?></textarea>
+										<p class="description">Jede Zeile wird als eigener Vorbereitungspunkt angezeigt.</p>
+									</td>
+								</tr>
+							</table>
+
+							<!-- Step Builder -->
+							<h3 style="margin-top:25px;font-size:16px;border-bottom:1px solid #eee;padding-bottom:8px;">
+								📋 Schritte der Anleitung
+							</h3>
+							<div id="dgbc-steps-container">
+								<?php foreach ( $g_steps as $idx => $step ) : ?>
+									<div class="dgbc-step-block" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px;margin-bottom:14px;">
+										<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+											<strong style="color:#164781;font-size:14px;" class="dgbc-step-heading">Schritt <?php echo esc_html( $idx + 1 ); ?></strong>
+											<button type="button" class="button button-link-delete dgbc-remove-step-btn" onclick="this.closest('.dgbc-step-block').remove(); renumberSteps();">
+												Schritt entfernen
+											</button>
+										</div>
+										<table class="form-table" style="margin:0;">
+											<tr>
+												<th style="width:140px;padding:6px 0;">Schritt-Titel</th>
+												<td style="padding:6px 0;">
+													<input type="text" name="steps[<?php echo esc_attr( $idx ); ?>][title]" value="<?php echo esc_attr( $step['title'] ?? '' ); ?>" class="large-text" placeholder="z. B. Chat öffnen" required />
+												</td>
+											</tr>
+											<tr>
+												<th style="padding:6px 0;">Ausführlicher Text</th>
+												<td style="padding:6px 0;">
+													<textarea name="steps[<?php echo esc_attr( $idx ); ?>][text]" rows="3" class="large-text" placeholder="Genaue Handlungsanweisung ohne Fachbegriffe ..." required><?php echo esc_textarea( $step['text'] ?? '' ); ?></textarea>
+												</td>
+											</tr>
+											<tr>
+												<th style="padding:6px 0;">Prüf-Frage (Check)</th>
+												<td style="padding:6px 0;">
+													<input type="text" name="steps[<?php echo esc_attr( $idx ); ?>][check]" value="<?php echo esc_attr( $step['check'] ?? '' ); ?>" class="large-text" placeholder="z. B. Siehst du das Menü auf dem Bildschirm?" />
+												</td>
+											</tr>
+										</table>
+									</div>
+								<?php endforeach; ?>
+							</div>
+
+							<p>
+								<button type="button" class="button button-secondary" id="dgbc-add-step-btn">
+									➕ Weiteren Schritt hinzufügen
+								</button>
+							</p>
+
+							<script>
+							function renumberSteps() {
+								jQuery('#dgbc-steps-container .dgbc-step-block').each(function(index) {
+									jQuery(this).find('.dgbc-step-heading').text('Schritt ' + (index + 1));
+									jQuery(this).find('input, textarea').each(function() {
+										var name = jQuery(this).attr('name');
+										if (name) {
+											jQuery(this).attr('name', name.replace(/steps\[\d+\]/, 'steps[' + index + ']'));
+										}
+									});
+								});
+							}
+
+							jQuery(document).ready(function($) {
+								$('#dgbc-add-step-btn').on('click', function() {
+									var count = $('#dgbc-steps-container .dgbc-step-block').length;
+									var tpl = `
+										<div class="dgbc-step-block" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px;margin-bottom:14px;">
+											<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+												<strong style="color:#164781;font-size:14px;" class="dgbc-step-heading">Schritt ` + (count + 1) + `</strong>
+												<button type="button" class="button button-link-delete dgbc-remove-step-btn" onclick="this.closest('.dgbc-step-block').remove(); renumberSteps();">
+													Schritt entfernen
+												</button>
+											</div>
+											<table class="form-table" style="margin:0;">
+												<tr>
+													<th style="width:140px;padding:6px 0;">Schritt-Titel</th>
+													<td style="padding:6px 0;">
+														<input type="text" name="steps[` + count + `][title]" value="" class="large-text" placeholder="z. B. Bestätigen" required />
+													</td>
+												</tr>
+												<tr>
+													<th style="padding:6px 0;">Ausführlicher Text</th>
+													<td style="padding:6px 0;">
+														<textarea name="steps[` + count + `][text]" rows="3" class="large-text" placeholder="Genaue Handlungsanweisung ..." required></textarea>
+													</td>
+												</tr>
+												<tr>
+													<th style="padding:6px 0;">Prüf-Frage (Check)</th>
+													<td style="padding:6px 0;">
+														<input type="text" name="steps[` + count + `][check]" value="" class="large-text" placeholder="z. B. Wurde die Bestätigung angezeigt?" />
+													</td>
+												</tr>
+											</table>
+										</div>
+									`;
+									$('#dgbc-steps-container').append(tpl);
+								});
+							});
+							</script>
+
+							<h3 style="margin-top:25px;font-size:16px;border-bottom:1px solid #eee;padding-bottom:8px;">
+								💡 Tipp &amp; Quellenangabe
+							</h3>
+							<table class="form-table" role="presentation">
+								<tr>
+									<th scope="row"><label for="guide_tip">Hilfreicher Tipp (optional)</label></th>
+									<td>
+										<textarea name="guide_tip" id="guide_tip" rows="2" class="large-text" placeholder="Ein nützlicher Zusatztipp ..."><?php echo esc_textarea( $g_tip ); ?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="guide_source_title">Quelle / Weiterführender Link</label></th>
+									<td>
+										<input name="guide_source_title" type="text" id="guide_source_title" value="<?php echo esc_attr( $g_src_title ); ?>" class="regular-text" placeholder="Titel (z. B. Offizielle Hilfe)" />
+										<input name="guide_source_url" type="url" id="guide_source_url" value="<?php echo esc_attr( $g_src_url ); ?>" class="regular-text" placeholder="https://..." />
+									</td>
+								</tr>
+							</table>
+
+							<p class="submit" style="display:flex;gap:12px;align-items:center;">
+								<input type="submit" name="dgbc_save_guide" class="button button-primary button-large" value="💾 Anleitung speichern" />
+								<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-large">
+									Abbrechen
+								</a>
+							</p>
+						</form>
+
+					<?php else : 
+						// LIST VIEW FOR GUIDES
+						$filter_cat = sanitize_text_field( $_GET['filter_cat'] ?? '' );
+						$search_q   = sanitize_text_field( $_GET['s_guide'] ?? '' );
+
+						$filtered_guides = $all_guides;
+						if ( ! empty( $filter_cat ) ) {
+							$filtered_guides = array_values( array_filter( $filtered_guides, function( $g ) use ( $filter_cat ) {
+								return ( ( $g['category'] ?? '' ) === $filter_cat );
+							} ) );
+						}
+						if ( ! empty( $search_q ) ) {
+							$filtered_guides = array_values( array_filter( $filtered_guides, function( $g ) use ( $search_q ) {
+								$haystack = ( $g['title'] ?? '' ) . ' ' . ( $g['subtitle'] ?? '' ) . ' ' . ( $g['category'] ?? '' );
+								return ( false !== stripos( $haystack, $search_q ) );
+							} ) );
+						}
+
+						// Gather unique categories for filter
+						$categories = array();
+						foreach ( $all_guides as $g ) {
+							if ( ! empty( $g['category'] ) && ! in_array( $g['category'], $categories, true ) ) {
+								$categories[] = $g['category'];
+							}
+						}
+						sort( $categories );
+					?>
+						<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+							<div>
+								<h2 style="margin:0;font-size:18px;">📖 Alle Anleitungen verwalten (<?php echo count( $all_guides ); ?>)</h2>
+								<p style="margin:4px 0 0 0;color:#666;font-size:13px;">Bearbeite bestehende Anleitungen, erstelle neue oder setze alle Inhalte auf die Standardwerte zurück.</p>
+							</div>
+							<div style="display:flex;gap:10px;align-items:center;">
+								<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'action' => 'edit_guide', 'id' => 'new' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-primary">
+									➕ Neue Anleitung erstellen
+								</a>
+								<form method="post" action="" onsubmit="return confirm('Möchtest du wirklich alle Anleitungen auf die ursprünglichen 35 Standard-Anleitungen zurücksetzen? Eigene Änderungen gehen dabei verloren.');" style="display:inline;">
+									<?php wp_nonce_field( 'dgbc_reset_guides_action', 'dgbc_reset_guides_nonce' ); ?>
+									<input type="submit" name="dgbc_reset_guides" class="button button-secondary" value="🔄 Auf Standard zurücksetzen" />
+								</form>
+							</div>
+						</div>
+
+						<!-- Filter Bar -->
+						<div style="background:#f8fafc;padding:12px 16px;border-radius:4px;border:1px solid #e2e8f0;margin-bottom:20px;display:flex;gap:15px;align-items:center;flex-wrap:wrap;">
+							<form method="get" action="" style="display:flex;gap:10px;align-items:center;flex:1;flex-wrap:wrap;">
+								<input type="hidden" name="page" value="digital-guide-box-v2" />
+								<input type="hidden" name="tab" value="guides" />
+
+								<label for="filter_cat" style="font-size:13px;font-weight:600;">Kategorie:</label>
+								<select name="filter_cat" id="filter_cat" onchange="this.form.submit();">
+									<option value="">Alle Kategorien (<?php echo count( $all_guides ); ?>)</option>
+									<?php foreach ( $categories as $cat ) : ?>
+										<option value="<?php echo esc_attr( $cat ); ?>" <?php selected( $filter_cat, $cat ); ?>>
+											<?php echo esc_html( $cat ); ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+
+								<label for="s_guide" style="font-size:13px;font-weight:600;margin-left:10px;">Suche:</label>
+								<input type="search" name="s_guide" id="s_guide" value="<?php echo esc_attr( $search_q ); ?>" placeholder="Titel oder Schlagwort ..." style="width:200px;" />
+
+								<input type="submit" class="button button-secondary" value="Filtern" />
+								<?php if ( ! empty( $filter_cat ) || ! empty( $search_q ) ) : ?>
+									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-link">
+										Filter zurücksetzen
+									</a>
+								<?php endif; ?>
+							</form>
+						</div>
+
+						<!-- Guides Table -->
+						<table class="wp-list-table widefat fixed striped">
 							<thead>
 								<tr>
-									<th>Titel</th>
-									<th style="width:160px;">Kategorie</th>
-									<th style="width:110px;">Datum</th>
-									<th style="width:140px;">Wichtigkeit</th>
-									<th style="width:100px;">Aktionen</th>
+									<th style="width:130px;">Theme &amp; ID</th>
+									<th>Titel &amp; Untertitel</th>
+									<th style="width:140px;">Kategorie</th>
+									<th style="width:90px;">Dauer</th>
+									<th style="width:90px;">Schritte</th>
+									<th style="width:140px;text-align:right;">Aktionen</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ( $settings['custom_news'] as $cnews ) : ?>
+								<?php if ( ! empty( $filtered_guides ) ) : ?>
+									<?php foreach ( $filtered_guides as $g ) : 
+										$theme_colors = array(
+											'gruen'    => '#16a34a',
+											'blau'     => '#2563eb',
+											'rot'      => '#dc2626',
+											'tuerkis'  => '#0d9488',
+											'violett'  => '#7c3aed',
+											'gold'     => '#d97706',
+											'magenta'  => '#c026d3',
+											'schiefer' => '#475569',
+										);
+										$badge_color = $theme_colors[ $g['theme'] ?? 'blau' ] ?? '#2563eb';
+									?>
+										<tr>
+											<td>
+												<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:<?php echo esc_attr( $badge_color ); ?>;margin-right:4px;"></span>
+												<code><?php echo esc_html( $g['id'] ?? '-' ); ?></code>
+											</td>
+											<td>
+												<strong><?php echo esc_html( $g['title'] ?? 'Ohne Titel' ); ?></strong>
+												<?php if ( ! empty( $g['subtitle'] ) ) : ?>
+													<span style="display:block;font-size:12px;color:#666;"><?php echo esc_html( $g['subtitle'] ); ?></span>
+												<?php endif; ?>
+											</td>
+											<td><?php echo esc_html( $g['category'] ?? '-' ); ?></td>
+											<td><?php echo esc_html( $g['minutes'] ?? 3 ); ?> Min.</td>
+											<td><?php echo count( $g['steps'] ?? array() ); ?> Schritte</td>
+											<td style="text-align:right;">
+												<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'action' => 'edit_guide', 'id' => $g['id'] ), admin_url( 'admin.php' ) ) ); ?>" class="button button-small">
+													Bearbeiten
+												</a>
+												<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'guides', 'dgbc_delete_guide' => $g['id'] ), admin_url( 'admin.php' ) ), 'dgbc_delete_guide_action' ) ); ?>" class="button button-small" onclick="return confirm('Diese Anleitung wirklich löschen?');" style="color:#b32d2e;">
+													Löschen
+												</a>
+											</td>
+										</tr>
+									<?php endforeach; ?>
+								<?php else : ?>
 									<tr>
-										<td><strong><?php echo esc_html( $cnews['title'] ); ?></strong></td>
-										<td><?php echo esc_html( $cnews['category'] ); ?></td>
-										<td><?php echo esc_html( $cnews['date'] ); ?></td>
-										<td>
-											<?php
-											$act = $cnews['assessment']['action'] ?? 'none';
-											if ( 'important' === $act ) {
-												echo '<span style="color:#d97706;font-weight:600;">⚠️ Wichtig</span>';
-											} elseif ( 'recommended' === $act ) {
-												echo '<span style="color:#2563eb;font-weight:600;">ℹ️ Empfohlen</span>';
-											} else {
-												echo '<span style="color:#16a34a;font-weight:600;">✅ Zur Kenntnis</span>';
-											}
-											?>
-										</td>
-										<td>
-											<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'dgbc_delete_news' => $cnews['id'] ), admin_url( 'admin.php' ) ), 'dgbc_delete_news_action' ) ); ?>" class="button button-small" onclick="return confirm('Diesen Beitrag wirklich löschen?');" style="color:#b32d2e;">
-												Löschen
-											</a>
+										<td colspan="6" style="padding:20px;text-align:center;color:#666;">
+											Keine Anleitungen für diesen Filter gefunden.
 										</td>
 									</tr>
-								<?php endforeach; ?>
+								<?php endif; ?>
 							</tbody>
 						</table>
-					<?php else : ?>
-						<p style="background:#f9f9f9;padding:15px;border-left:3px solid #ccc;color:#666;">Noch keine eigenen Beiträge angelegt. Die 5 Standardbeiträge der Box sind weiterhin aktiv.</p>
 					<?php endif; ?>
 
-					<!-- Add New News Form -->
-					<div style="background:#fdfdfd;border:1px solid #e5e5e5;padding:20px;border-radius:4px;">
-						<h3 style="margin-top:0;font-size:16px;">➕ Neuen Beitrag hinzufügen</h3>
+				<!-- 7. TAB: NEWS (NEUIGKEITEN VERWALTEN) -->
+				<?php elseif ( 'news' === $active_tab ) : 
+					$action = sanitize_key( $_GET['action'] ?? '' );
+					$editing_id = sanitize_key( $_GET['id'] ?? '' );
+					$is_edit = ( 'edit_news' === $action );
+					$edit_item = null;
+
+					if ( $is_edit && ! empty( $editing_id ) && 'new' !== $editing_id ) {
+						$edit_item = DGBC_Content::get_news_item( $editing_id );
+					}
+				?>
+					<?php if ( $is_edit ) : 
+						$n_id          = $edit_item['id'] ?? ( 'news-' . uniqid() );
+						$n_title       = $edit_item['title'] ?? '';
+						$n_category    = $edit_item['category'] ?? 'Geräte & Technik';
+						$n_date        = $edit_item['date'] ?? current_time( 'Y-m-d' );
+						$n_datelabel   = $edit_item['dateLabel'] ?? 'Aktuell';
+						$n_relevance   = $edit_item['relevance'] ?? '';
+						$n_takeaway    = $edit_item['takeaway'] ?? '';
+						$n_tip         = $edit_item['tip'] ?? '';
+						$n_assess_act  = $edit_item['assessment']['action'] ?? 'none';
+						$n_assess_ctx  = $edit_item['assessment']['context'] ?? '';
+						$n_assess_adv  = $edit_item['assessment']['advice'] ?? '';
+						$n_assess_rel  = $edit_item['assessment']['relevance'] ?? 'yes';
+						$n_src_title   = $edit_item['sources'][0]['title'] ?? '';
+						$n_src_url     = $edit_item['sources'][0]['url'] ?? '';
+
+						$paragraphs       = $edit_item['paragraphs'] ?? array();
+						$paragraph_titles = $edit_item['paragraphTitles'] ?? array();
+						if ( empty( $paragraphs ) ) {
+							$paragraphs       = array( '' );
+							$paragraph_titles = array( 'Hintergrund' );
+						}
+					?>
+						<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+							<h2 style="margin:0;font-size:18px;">
+								<?php echo empty( $edit_item ) ? '➕ Neuen Beitrag erstellen' : '✏️ Beitrag bearbeiten: ' . esc_html( $n_title ); ?>
+							</h2>
+							<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news' ), admin_url( 'admin.php' ) ) ); ?>" class="button">
+								← Zurück zur Übersicht
+							</a>
+						</div>
+
 						<form method="post" action="">
 							<?php wp_nonce_field( 'dgbc_news_nonce_action', 'dgbc_news_nonce' ); ?>
 							<table class="form-table" role="presentation">
 								<tr>
 									<th scope="row"><label for="news_title">Titel des Beitrags *</label></th>
 									<td>
-										<input name="news_title" type="text" id="news_title" class="large-text" required placeholder="z. B. Neues Sicherheitsupdate für WhatsApp" />
+										<input name="news_title" type="text" id="news_title" value="<?php echo esc_attr( $n_title ); ?>" class="large-text" required placeholder="z. B. Push-TAN-Freigabe: Was du vor dem Bestätigen unbedingt lesen musst" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="news_id">ID (Kürzel / Slug)</label></th>
+									<td>
+										<input name="news_id" type="text" id="news_id" value="<?php echo esc_attr( $n_id ); ?>" class="regular-text" style="width:240px;" />
+										<p class="description">Eindeutiger Bezeichner (z. B. <code>push-tan-richtig-pruefen-2026</code>).</p>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="news_category">Kategorie</label></th>
 									<td>
 										<select name="news_category" id="news_category">
-											<option value="Sicherheit & Schutz">Sicherheit & Schutz</option>
-											<option value="Geräte & Technik" selected>Geräte & Technik</option>
-											<option value="Kommunikation & Mobilität">Kommunikation & Mobilität</option>
-											<option value="Digitale Verwaltung">Digitale Verwaltung</option>
-											<option value="Online-Banking & Einkauf">Online-Banking & Einkauf</option>
-											<option value="Lernen & Wissen">Lernen & Wissen</option>
+											<?php
+											$news_cats = array(
+												'Geräte & Technik',
+												'Kommunikation & Mobilität',
+												'Digitale Verwaltung',
+												'Sicherheit & Schutz',
+												'Online-Banking & Einkauf',
+												'Formulare & Anträge',
+												'Medien & Unterhaltung',
+												'Künstliche Intelligenz',
+												'Verträge & Abos',
+												'Lernen & Wissen',
+												'Vorsorge & Vollmachten',
+												'Gesundheit & E-Rezept',
+											);
+											foreach ( $news_cats as $cat ) {
+												echo '<option value="' . esc_attr( $cat ) . '" ' . selected( $n_category, $cat, false ) . '>' . esc_html( $cat ) . '</option>';
+											}
+											?>
 										</select>
 									</td>
 								</tr>
 								<tr>
-									<th scope="row"><label for="news_datelabel">Bezeichnung Datum</label></th>
+									<th scope="row"><label for="news_date">Datum &amp; Kennzeichnung</label></th>
 									<td>
-										<input name="news_datelabel" type="text" id="news_datelabel" value="Aktuell" style="width:140px;" />
-										<input name="news_date" type="date" value="<?php echo esc_attr( current_time( 'Y-m-d' ) ); ?>" />
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><label for="news_relevance">Kurzbeschreibung (Vorschau)</label></th>
-									<td>
-										<textarea name="news_relevance" id="news_relevance" rows="2" class="large-text" placeholder="Worum geht es in einem Satz?"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><label for="news_takeaway">Das Wichtigste für dich</label></th>
-									<td>
-										<input name="news_takeaway" type="text" id="news_takeaway" class="large-text" placeholder="z. B. Bitte aktualisiere deine App im App-Store." />
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><label for="news_para1">Ausführlicher Text</label></th>
-									<td>
-										<textarea name="news_para1" id="news_para1" rows="4" class="large-text" placeholder="Beschreibe die Details einfach und verständlich …"></textarea>
+										<input name="news_date" type="date" id="news_date" value="<?php echo esc_attr( $n_date ); ?>" />
+										<input name="news_datelabel" type="text" value="<?php echo esc_attr( $n_datelabel ); ?>" placeholder="z. B. Aktuell, Warnung, Ratgeber" style="width:160px;margin-left:8px;" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="news_assess_act">Handlungsempfehlung (Ampel)</label></th>
 									<td>
 										<select name="news_assess_act" id="news_assess_act">
-											<option value="none">Grün · Keine sofortige Handlung nötig</option>
-											<option value="recommended">Gelb · Handlung empfohlen</option>
-											<option value="important">Rot / Warnung · Wichtig &amp; Dringend</option>
+											<option value="important" <?php selected( $n_assess_act, 'important' ); ?>>🔴 Rot / Warnung · Wichtig &amp; Dringend</option>
+											<option value="recommended" <?php selected( $n_assess_act, 'recommended' ); ?>>🟡 Gelb · Handlung empfohlen</option>
+											<option value="none" <?php selected( $n_assess_act, 'none' ); ?>>🟢 Grün · Zur Kenntnis / Keine sofortige Handlung</option>
 										</select>
 									</td>
 								</tr>
+								<tr>
+									<th scope="row"><label for="news_relevance">Kurzbeschreibung (Vorschau)</label></th>
+									<td>
+										<textarea name="news_relevance" id="news_relevance" rows="2" class="large-text" placeholder="Worum geht es in einem Satz?"><?php echo esc_textarea( $n_relevance ); ?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="news_takeaway">Das Wichtigste für dich (Takeaway)</label></th>
+									<td>
+										<textarea name="news_takeaway" id="news_takeaway" rows="2" class="large-text" placeholder="Kernaussage für den Leser ..."><?php echo esc_textarea( $n_takeaway ); ?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="news_assess_ctx">Zielgruppe / Kontext</label></th>
+									<td>
+										<input name="news_assess_ctx" type="text" id="news_assess_ctx" value="<?php echo esc_attr( $n_assess_ctx ); ?>" class="large-text" placeholder="z. B. Für alle, die Banking-Apps auf dem Handy nutzen." />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="news_assess_adv">Konkreter Ratschlag</label></th>
+									<td>
+										<input name="news_assess_adv" type="text" id="news_assess_adv" value="<?php echo esc_attr( $n_assess_adv ); ?>" class="large-text" placeholder="z. B. Vor dem Fingerabdruck immer Betrag und IBAN prüfen." />
+									</td>
+								</tr>
 							</table>
-							<p class="submit">
-								<input type="submit" name="dgbc_add_news" class="button button-primary" value="Beitrag jetzt veröffentlichen" />
+
+							<!-- Dynamic Paragraphs Builder -->
+							<h3 style="margin-top:25px;font-size:16px;border-bottom:1px solid #eee;padding-bottom:8px;">
+								📝 Ausführlicher Inhalt (Absätze)
+							</h3>
+							<div id="dgbc-paragraphs-container">
+								<?php foreach ( $paragraphs as $pidx => $ptext ) : 
+									$ptitle = $paragraph_titles[ $pidx ] ?? 'Absatz ' . ( $pidx + 1 );
+								?>
+									<div class="dgbc-para-block" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px;margin-bottom:14px;">
+										<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+											<strong style="color:#164781;font-size:14px;" class="dgbc-para-heading">Absatz <?php echo esc_html( $pidx + 1 ); ?></strong>
+											<button type="button" class="button button-link-delete dgbc-remove-para-btn" onclick="this.closest('.dgbc-para-block').remove(); renumberParas();">
+												Absatz entfernen
+											</button>
+										</div>
+										<table class="form-table" style="margin:0;">
+											<tr>
+												<th style="width:140px;padding:6px 0;">Zwischenüberschrift</th>
+												<td style="padding:6px 0;">
+													<input type="text" name="paragraphs[<?php echo esc_attr( $pidx ); ?>][title]" value="<?php echo esc_attr( $ptitle ); ?>" class="large-text" placeholder="z. B. Was steckt dahinter?" />
+												</td>
+											</tr>
+											<tr>
+												<th style="padding:6px 0;">Textinhalt</th>
+												<td style="padding:6px 0;">
+													<textarea name="paragraphs[<?php echo esc_attr( $pidx ); ?>][text]" rows="4" class="large-text" placeholder="Absatztext ..." required><?php echo esc_textarea( $ptext ); ?></textarea>
+												</td>
+											</tr>
+										</table>
+									</div>
+								<?php endforeach; ?>
+							</div>
+
+							<p>
+								<button type="button" class="button button-secondary" id="dgbc-add-para-btn">
+									➕ Weiteren Absatz hinzufügen
+								</button>
+							</p>
+
+							<script>
+							function renumberParas() {
+								jQuery('#dgbc-paragraphs-container .dgbc-para-block').each(function(index) {
+									jQuery(this).find('.dgbc-para-heading').text('Absatz ' + (index + 1));
+									jQuery(this).find('input, textarea').each(function() {
+										var name = jQuery(this).attr('name');
+										if (name) {
+											jQuery(this).attr('name', name.replace(/paragraphs\[\d+\]/, 'paragraphs[' + index + ']'));
+										}
+									});
+								});
+							}
+
+							jQuery(document).ready(function($) {
+								$('#dgbc-add-para-btn').on('click', function() {
+									var count = $('#dgbc-paragraphs-container .dgbc-para-block').length;
+									var tpl = `
+										<div class="dgbc-para-block" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px;margin-bottom:14px;">
+											<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+												<strong style="color:#164781;font-size:14px;" class="dgbc-para-heading">Absatz ` + (count + 1) + `</strong>
+												<button type="button" class="button button-link-delete dgbc-remove-para-btn" onclick="this.closest('.dgbc-para-block').remove(); renumberParas();">
+													Absatz entfernen
+												</button>
+											</div>
+											<table class="form-table" style="margin:0;">
+												<tr>
+													<th style="width:140px;padding:6px 0;">Zwischenüberschrift</th>
+													<td style="padding:6px 0;">
+														<input type="text" name="paragraphs[` + count + `][title]" value="" class="large-text" placeholder="z. B. Praxistipp" />
+													</td>
+												</tr>
+												<tr>
+													<th style="padding:6px 0;">Textinhalt</th>
+													<td style="padding:6px 0;">
+														<textarea name="paragraphs[` + count + `][text]" rows="4" class="large-text" placeholder="Absatztext ..." required></textarea>
+													</td>
+												</tr>
+											</table>
+										</div>
+									`;
+									$('#dgbc-paragraphs-container').append(tpl);
+								});
+							});
+							</script>
+
+							<h3 style="margin-top:25px;font-size:16px;border-bottom:1px solid #eee;padding-bottom:8px;">
+								💡 Praxistipp &amp; Quellenangabe
+							</h3>
+							<table class="form-table" role="presentation">
+								<tr>
+									<th scope="row"><label for="news_tip">Praxistipp</label></th>
+									<td>
+										<textarea name="news_tip" id="news_tip" rows="2" class="large-text" placeholder="Praktischer Tipp für den Alltag ..."><?php echo esc_textarea( $n_tip ); ?></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><label for="news_source_title">Quelle / Weiterführender Link</label></th>
+									<td>
+										<input name="news_source_title" type="text" id="news_source_title" value="<?php echo esc_attr( $n_src_title ); ?>" class="regular-text" placeholder="Titel (z. B. BSI, Verbraucherzentrale)" />
+										<input name="news_source_url" type="url" id="news_source_url" value="<?php echo esc_attr( $n_src_url ); ?>" class="regular-text" placeholder="https://..." />
+									</td>
+								</tr>
+							</table>
+
+							<p class="submit" style="display:flex;gap:12px;align-items:center;">
+								<input type="submit" name="dgbc_save_news" class="button button-primary button-large" value="💾 Beitrag speichern" />
+								<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-large">
+									Abbrechen
+								</a>
 							</p>
 						</form>
-					</div>
 
-				<!-- 6. TAB: INBOX -->
+					<?php else : 
+						// LIST VIEW FOR NEWS
+						$filter_cat = sanitize_text_field( $_GET['filter_cat'] ?? '' );
+						$search_q   = sanitize_text_field( $_GET['s_news'] ?? '' );
+
+						$filtered_news = $all_news;
+						if ( ! empty( $filter_cat ) ) {
+							$filtered_news = array_values( array_filter( $filtered_news, function( $n ) use ( $filter_cat ) {
+								return ( ( $n['category'] ?? '' ) === $filter_cat );
+							} ) );
+						}
+						if ( ! empty( $search_q ) ) {
+							$filtered_news = array_values( array_filter( $filtered_news, function( $n ) use ( $search_q ) {
+								$haystack = ( $n['title'] ?? '' ) . ' ' . ( $n['relevance'] ?? '' ) . ' ' . ( $n['category'] ?? '' );
+								return ( false !== stripos( $haystack, $search_q ) );
+							} ) );
+						}
+
+						// Unique categories
+						$categories = array();
+						foreach ( $all_news as $n ) {
+							if ( ! empty( $n['category'] ) && ! in_array( $n['category'], $categories, true ) ) {
+								$categories[] = $n['category'];
+							}
+						}
+						sort( $categories );
+					?>
+						<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+							<div>
+								<h2 style="margin:0;font-size:18px;">📰 Alle Neuigkeiten verwalten (<?php echo count( $all_news ); ?>)</h2>
+								<p style="margin:4px 0 0 0;color:#666;font-size:13px;">Bearbeite bestehende Beiträge, erstelle neue Warnungen und Tipps oder setze alle Inhalte auf die Standardwerte zurück.</p>
+							</div>
+							<div style="display:flex;gap:10px;align-items:center;">
+								<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'action' => 'edit_news', 'id' => 'new' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-primary">
+									➕ Neuen Beitrag erstellen
+								</a>
+								<form method="post" action="" onsubmit="return confirm('Möchtest du wirklich alle Neuigkeiten auf die ursprünglichen 60 Standard-Beiträge zurücksetzen? Eigene Änderungen gehen dabei verloren.');" style="display:inline;">
+									<?php wp_nonce_field( 'dgbc_reset_news_action', 'dgbc_reset_news_nonce' ); ?>
+									<input type="submit" name="dgbc_reset_news" class="button button-secondary" value="🔄 Auf Standard zurücksetzen" />
+								</form>
+							</div>
+						</div>
+
+						<!-- Filter Bar -->
+						<div style="background:#f8fafc;padding:12px 16px;border-radius:4px;border:1px solid #e2e8f0;margin-bottom:20px;display:flex;gap:15px;align-items:center;flex-wrap:wrap;">
+							<form method="get" action="" style="display:flex;gap:10px;align-items:center;flex:1;flex-wrap:wrap;">
+								<input type="hidden" name="page" value="digital-guide-box-v2" />
+								<input type="hidden" name="tab" value="news" />
+
+								<label for="filter_cat" style="font-size:13px;font-weight:600;">Kategorie:</label>
+								<select name="filter_cat" id="filter_cat" onchange="this.form.submit();">
+									<option value="">Alle Themen (<?php echo count( $all_news ); ?>)</option>
+									<?php foreach ( $categories as $cat ) : ?>
+										<option value="<?php echo esc_attr( $cat ); ?>" <?php selected( $filter_cat, $cat ); ?>>
+											<?php echo esc_html( $cat ); ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+
+								<label for="s_news" style="font-size:13px;font-weight:600;margin-left:10px;">Suche:</label>
+								<input type="search" name="s_news" id="s_news" value="<?php echo esc_attr( $search_q ); ?>" placeholder="Titel oder Schlagwort ..." style="width:200px;" />
+
+								<input type="submit" class="button button-secondary" value="Filtern" />
+								<?php if ( ! empty( $filter_cat ) || ! empty( $search_q ) ) : ?>
+									<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news' ), admin_url( 'admin.php' ) ) ); ?>" class="button button-link">
+										Filter zurücksetzen
+									</a>
+								<?php endif; ?>
+							</form>
+						</div>
+
+						<!-- News Table -->
+						<table class="wp-list-table widefat fixed striped">
+							<thead>
+								<tr>
+									<th style="width:130px;">Wichtigkeit</th>
+									<th>Titel &amp; Kurzbeschreibung</th>
+									<th style="width:160px;">Kategorie</th>
+									<th style="width:110px;">Datum</th>
+									<th style="width:140px;text-align:right;">Aktionen</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php if ( ! empty( $filtered_news ) ) : ?>
+									<?php foreach ( $filtered_news as $item ) : 
+										$act = $item['assessment']['action'] ?? 'none';
+									?>
+										<tr>
+											<td>
+												<?php if ( 'important' === $act ) : ?>
+													<span style="display:inline-block;padding:3px 8px;border-radius:10px;background:#fee2e2;color:#991b1b;font-weight:600;font-size:11px;">
+														🔴 Wichtig
+													</span>
+												<?php elseif ( 'recommended' === $act ) : ?>
+													<span style="display:inline-block;padding:3px 8px;border-radius:10px;background:#fef3c7;color:#92400e;font-weight:600;font-size:11px;">
+														🟡 Empfohlen
+													</span>
+												<?php else : ?>
+													<span style="display:inline-block;padding:3px 8px;border-radius:10px;background:#dcfce7;color:#166534;font-weight:600;font-size:11px;">
+														🟢 Kenntnis
+													</span>
+												<?php endif; ?>
+											</td>
+											<td>
+												<strong><?php echo esc_html( $item['title'] ?? 'Ohne Titel' ); ?></strong>
+												<?php if ( ! empty( $item['relevance'] ) ) : ?>
+													<span style="display:block;font-size:12px;color:#666;"><?php echo esc_html( $item['relevance'] ); ?></span>
+												<?php endif; ?>
+											</td>
+											<td><?php echo esc_html( $item['category'] ?? '-' ); ?></td>
+											<td>
+												<?php echo esc_html( $item['date'] ?? '-' ); ?>
+												<?php if ( ! empty( $item['dateLabel'] ) ) : ?>
+													<span style="display:block;font-size:11px;color:#888;"><?php echo esc_html( $item['dateLabel'] ); ?></span>
+												<?php endif; ?>
+											</td>
+											<td style="text-align:right;">
+												<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'action' => 'edit_news', 'id' => $item['id'] ), admin_url( 'admin.php' ) ) ); ?>" class="button button-small">
+													Bearbeiten
+												</a>
+												<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'digital-guide-box-v2', 'tab' => 'news', 'dgbc_delete_news' => $item['id'] ), admin_url( 'admin.php' ) ), 'dgbc_delete_news_action' ) ); ?>" class="button button-small" onclick="return confirm('Diesen Beitrag wirklich löschen?');" style="color:#b32d2e;">
+													Löschen
+												</a>
+											</td>
+										</tr>
+									<?php endforeach; ?>
+								<?php else : ?>
+									<tr>
+										<td colspan="5" style="padding:20px;text-align:center;color:#666;">
+											Keine Beiträge für diesen Filter gefunden.
+										</td>
+									</tr>
+								<?php endif; ?>
+							</tbody>
+						</table>
+					<?php endif; ?>
+
+				<!-- 8. TAB: INBOX -->
 				<?php elseif ( 'inbox' === $active_tab ) : ?>
 					<?php $inquiries = get_option( DGBC_Inquiries::OPTION_KEY, array() ); ?>
 					<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">Posteingang (Support &amp; Feedback)</h2>

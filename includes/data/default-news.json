@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "push-tan-richtig-pruefen-2026",
+    "title": "Push-TAN-Freigabe: Was du vor dem Bestätigen unbedingt lesen musst",
+    "category": "Online-Banking & Einkauf",
+    "date": "2026-09-14",
+    "dateLabel": "Warnung",
+    "relevance": "Verhindert die ungewollte Freigabe fremder Abbuchungen oder neuer Banking-Geräte.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die Banking-Apps (z. B. pushTAN, SecureGo, PhotoTAN) auf dem Handy nutzen.",
+      "action": "important",
+      "advice": "Vor dem Fingerabdruck oder Wisch immer Betrag und IBAN des Empfängers genau abgleichen."
+    },
+    "takeaway": "Die Push-TAN-App ist dein digitaler Tresorschlüssel. Betrüger versuchen oft durch Schockanrufe oder Phishing-Mails, dich zur schnellen Freigabe zu drängen. Lies immer den angezeigten Text: Steht dort „Überweisung 500 €“ oder gar „Registrierung eines neuen Geräts“?",
+    "paragraphTitles": [
+      "Was steht wirklich in der Freigabe-Meldung?",
+      "Die perfide Masche mit der „Geräteregistrierung“",
+      "So verhältst du dich bei unaufgeforderten TANs"
+    ],
+    "paragraphs": [
+      "Viele wischen die Push-TAN-Meldung aus Gewohnheit reflexartig weg oder bestätigen per Fingerabdruck, ohne hinzusehen. Die App zeigt aber stets zwei entscheidende Werte: Den genauen Geldbetrag und den Namen bzw. die IBAN des Empfängers.",
+      "Besonders gefährlich: Bestätigst du versehentlich eine „Geräteaktivierung“, schalten die Täter ihr eigenes Smartphone für dein Konto frei und können ab sofort eigenständig dein ganzes Geld überweisen.",
+      "Erhältst du eine Push-TAN, obwohl du gerade gar nichts überweist oder kaufst: Drücke sofort auf „Ablehnen“ und rufe unverzüglich deine Bank an. Kriminelle kennen in diesem Fall bereits dein Passwort!"
+    ],
+    "reading": {
+      "audience": "Für alle Online-Banking-Nutzer",
+      "actions": [
+        "Nimm dir 5 Sekunden Zeit, bevor du eine Push-TAN freigibst",
+        "Prüfe Betrag und Verwendungszweck auf dem Display der TAN-App",
+        "Lehne Freigaben bei geringstem Zweifel sofort ab"
+      ]
+    },
+    "tip": "Mitarbeiter deiner Bank werden dich NIEMALS am Telefon bitten, eine TAN freizugeben oder vorzulesen.",
+    "checkedAt": "2026-09-14",
+    "sources": [
+      {
+        "title": "Bundesverband deutscher Banken: Sicherheit beim Online-Banking",
+        "url": "https://bankenverband.de"
+      },
+      {
+        "title": "BSI: TAN-Verfahren sicher anwenden",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "jan-dennis-ki-rund-um-die-uhr-2026",
+    "title": "Der KI-Assistent in der Box: Schritt für Schritt Fragen stellen und verstehen",
+    "category": "KI & digitale Assistenz",
+    "date": "2026-09-14",
+    "dateLabel": "Box-Update",
+    "relevance": "Gibt dir rund um die Uhr verständliche, geduldige Antworten auf jede Technikfrage.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Direkt hier in dieser Digital Guide Box im Reiter „Digitaler Assistent“ nutzbar.",
+      "action": "recommended",
+      "advice": "Tippe oben auf den Tab „Digitaler Assistent“ und stelle deine Frage in normaler Alltagssprache."
+    },
+    "takeaway": "Keine Frage ist zu simpel oder peinlich: Der digitale Assistent in deiner Digital Guide Box erklärt dir jedes technische Problem so oft du willst, ohne Fachchinesisch und mit unendlicher Geduld.",
+    "paragraphTitles": [
+      "Fragen wie im Gespräch mit einem guten Freund",
+      "Wie du die besten Antworten erhältst",
+      "Sicherheit und Datenschutz beim Chatten"
+    ],
+    "paragraphs": [
+      "Du musst keine Computerbefehle lernen. Schreibe einfach, was dir auf dem Herzen liegt: „Mein Bildschirm schaltet sich nach 10 Sekunden ab, wie stelle ich das länger?“ oder „Was bedeutet der Stern neben einer E-Mail?“.",
+      "Je konkreter du schreibst, welches Gerät du nutzt (z. B. Samsung, iPhone, Windows-Laptop), desto genauer kann der Assistent die richtigen Menüschritte beschreiben.",
+      "Gib im Chat keine sensiblen persönlichen Daten ein (wie Passwörter, Bank-PIN oder Adressen). Für reine Erklärungen und Anleitungen ist der Assistent jedoch das ideale Werkzeug."
+    ],
+    "reading": {
+      "audience": "Für alle Nutzerinnen und Nutzer der Digital Guide Box",
+      "actions": [
+        "Wechsle oben im Menü auf „Digitaler Assistent“",
+        "Tippe auf einen der Beispielfragen-Knöpfe oder tippe deine eigene Frage ein",
+        "Lies die ruhige, schrittweise Antwort und probiere es aus"
+      ]
+    },
+    "tip": "Wenn eine Erklärung zu kompliziert war, antworte einfach: „Kannst du mir das noch einfacher erklären?“ – der Assistent passt sich sofort an.",
+    "checkedAt": "2026-09-14",
+    "sources": [
+      {
+        "title": "Digital Guide Box – Jan Dennis Brüning",
+        "url": "https://www.janbruening.de"
+      }
+    ]
+  },
+  {
+    "id": "nina-katwarn-notfall-apps-2026",
+    "title": "NINA und Katwarn: Offizielle Warn-Apps bei Unwetter und Notfällen einrichten",
+    "category": "Vorsorge & Warnungen",
+    "date": "2026-09-14",
+    "dateLabel": "Ratgeber",
+    "relevance": "Warnt verlässlich vor Hochwasser, Großbränden, Trinkwasserverunreinigungen und Sturm.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Sollte auf jedem Smartphone in Deutschland installiert und scharfgestellt sein.",
+      "action": "recommended",
+      "advice": "Die kostenlose Notfall-App NINA installieren und den eigenen Wohnort abonnieren."
+    },
+    "takeaway": "Sirenen allein reichen im Notfall nicht aus. Die offizielle Notfall-Informations- und Nachrichten-App des Bundes (NINA) informiert dich minutengenau über Gefahrenlagen, gibt klare Verhaltenstipps und meldet offizielle Entwarnung.",
+    "paragraphTitles": [
+      "Was die NINA-App leistet",
+      "Standort-Warnung und Heimatorte abonnieren",
+      "Entwarnung und Notfall-Tipps ohne Panik"
+    ],
+    "paragraphs": [
+      "NINA bündelt Warnungen der Feuerwehr, des Katastrophenschutzes und des Deutschen Wetterdienstes. Ob gefährliche Rauchwolke nach einem Fabrikbrand oder extremes Unwetter – du erhältst sofort einen Warnton.",
+      "Du kannst einstellen, dass NINA dich immer an deinem aktuellen Standort warnt. Zusätzlich kannst du Orte abonnieren, an denen deine Angehörigen oder Kinder wohnen, um auch für sie informiert zu sein.",
+      "Neben der reinen Warnung liefert NINA konkrete Handlungsempfehlungen: Fenster schließen, Lüftung abschalten oder Trinkwasser abkochen. Sobald die Gefahr vorüber ist, gibt es eine beruhigende Entwarnung."
+    ],
+    "reading": {
+      "audience": "Für alle Bürgerinnen und Bürger",
+      "actions": [
+        "Lade die App „NINA“ (vom Bundesamt für Bevölkerungsschutz) herunter",
+        "Erlaube der App, dir Mitteilungen zu senden",
+        "Füge deine Postleitzahl zu deinen abonnierten Orten hinzu"
+      ]
+    },
+    "tip": "NINA funktioniert auch beim bundesweiten Warntag und schlägt bei höchster Warnstufe selbst dann Alarm, wenn das Handy stummgeschaltet ist.",
+    "checkedAt": "2026-09-14",
+    "sources": [
+      {
+        "title": "Bundesamt für Bevölkerungsschutz und Katastrophenhilfe (BBK): NINA",
+        "url": "https://www.bbk.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "e-rezept-gesundheitskarte-app-2026",
+    "title": "Das E-Rezept: Wie du Medikamente mit Gesundheitskarte oder Smartphone abholst",
+    "category": "Gesundheit & E-Rezept",
+    "date": "2026-09-14",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Erspart doppelte Wege in die Arztpraxis bei Folgeverordnungen und Dauermedikation.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle gesetzlich Versicherten beim Einlösen von ärztlichen Rezepten.",
+      "action": "recommended",
+      "advice": "In der Apotheke einfach die elektronische Gesundheitskarte in das Lesegerät stecken."
+    },
+    "takeaway": "Der rosa Zettel hat ausgedient: Ärztliche Verordnungen werden digital in der bundesweiten Telematikinfrastruktur gespeichert. Du hast drei einfache Möglichkeiten, dein Medikament in jeder beliebigen Apotheke zu erhalten.",
+    "paragraphTitles": [
+      "Weg 1: Die elektronische Gesundheitskarte (eGK) einstecken",
+      "Weg 2: Die offizielle E-Rezept-App der gematik",
+      "Weg 3: Der Papierausdruck mit Rezept-Code"
+    ],
+    "paragraphs": [
+      "Der einfachste Weg für die meisten: Gehe nach dem Arztbesuch in die Apotheke und stecke deine normale Plastik-Gesundheitskarte in das Lesegerät an der Theke. Das System ruft deine offenen Rezepte automatisch ab – ganz ohne PIN.",
+      "Wer ein Smartphone mit NFC und die E-Rezept-App nutzt, kann Rezepte digital verwalten, vorab an die Apotheke senden oder bei Online-Apotheken mit zwei Klicks bestellen.",
+      "Kein Smartphone? Kein Problem! Du hast weiterhin einen gesetzlichen Anspruch darauf, dass dir die Praxis den Rezept-Code auf Papier ausdruckt. Der Apotheker scannt dann einfach den Code vom Zettel ab."
+    ],
+    "reading": {
+      "audience": "Für alle Patientinnen und Patienten",
+      "actions": [
+        "Nimm deine Gesundheitskarte mit zur Apotheke",
+        "Stecke sie auf Aufforderung in das Terminal",
+        "Nimm deine verordneten Medikamente wie gewohnt entgegen"
+      ]
+    },
+    "tip": "Bei Dauermedikamenten reicht oft ein Anruf in der Praxis: Der Arzt stellt das E-Rezept digital aus und du kannst direkt zur Apotheke gehen, ohne in der Praxis anzustehen.",
+    "checkedAt": "2026-09-14",
+    "sources": [
+      {
+        "title": "gematik: Das E-Rezept für Patientinnen und Patienten",
+        "url": "https://www.das-e-rezept-fuer-deutschland.de"
+      },
+      {
+        "title": "Bundesgesundheitsministerium: Fragen und Antworten zum E-Rezept",
+        "url": "https://www.bundesgesundheitsministerium.de"
+      }
+    ]
+  },
+  {
+    "id": "box-update-grundlagen-2026",
+    "title": "Neu in der Box: die wichtigsten Grundlagen",
+    "category": "Geräte & Technik",
+    "date": "2026-09-13",
+    "dateLabel": "Box-Update",
+    "relevance": "Wichtige Basis-Anleitungen für Smartphone, Internet und sichere Konten sind ab sofort direkt verfügbar.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die ihr Smartphone und das Internet noch sicherer und entspannter bedienen möchten.",
+      "action": "recommended",
+      "advice": "Stöbere im Tab „Anleitungen“ durch die neu sortierten Grundlagenkarten."
+    },
+    "takeaway": "Mit den neuen Grundlagen-Anleitungen gelingt der Einstieg noch einfacher: Von den ersten Wischgesten über WLAN-Verbindungen bis hin zum Schutz deiner Zugangsdaten ist alles Schritt für Schritt erklärt.",
+    "paragraphTitles": [
+      "Was ist neu in der Box?",
+      "Welche Themen decken die Grundlagen ab?",
+      "So findest du die Anleitungen"
+    ],
+    "paragraphs": [
+      "Um dir den Einstieg in neue Funktionen noch leichter zu machen, gibt es ab sofort die kompakten Grundlagen-Karten. Sie erklären wichtige Handgriffe ohne technisches Fachchinesisch und mit klaren Bildern.",
+      "Zu den neuen Themen gehören unter anderem: Erste Schritte auf dem Smartphone, sichere Passwörter erstellen und merken, WLAN richtig einrichten und testen sowie der sichere Umgang mit App-Berechtigungen.",
+      "Wechsle einfach oben auf den Reiter „Anleitungen“. Dort findest du die Grundlagen direkt oben im Schnellzugriff, gefolgt von allen weiteren Themenbereichen."
+    ],
+    "reading": {
+      "audience": "Für Einsteiger und alle, die Basiswissen auffrischen wollen",
+      "actions": [
+        "Oben auf den Tab „Anleitungen“ klicken oder tippen",
+        "Eine passende Grundlagen-Karte auswählen",
+        "Den Schritten in Ruhe folgen und direkt auf dem Gerät ausprobieren"
+      ]
+    },
+    "tip": "Du kannst jede Anleitung auch als übersichtliche PDF-Seite ausdrucken oder speichern.",
+    "checkedAt": "2026-09-13",
+    "sources": [
+      {
+        "title": "Digital Guide Box – Jan Dennis Brüning",
+        "url": "https://www.janbruening.de"
+      }
+    ]
+  },
+  {
+    "id": "smartphone-meldet-staendig-2026",
+    "title": "Dein Smartphone meldet sich ständig?",
+    "category": "Geräte & Technik",
+    "date": "2026-09-13",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert Ablenkung und Stress durch eine Flut unwichtiger Benachrichtigungen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Hilft allen, deren Telefon den ganzen Tag vibriert, piept oder aufleuchtet.",
+      "action": "recommended",
+      "advice": "Schalte Töne für Werbe- und News-Apps stumm und nutze die Funktion „Nicht stören“ für Ruhezeiten."
+    },
+    "takeaway": "Ein piependes Smartphone reißt dich ständig aus deinen Gedanken. Die meisten Benachrichtigungen sind reine Werbe- und Aufmerksamkeits-Köder von Apps. Du hast die volle Kontrolle: Deaktiviere Töne und Banner gezielt für jede App.",
+    "paragraphTitles": [
+      "Warum ständige Töne stressen",
+      "Wichtige Mitteilungen von Werbemüll trennen",
+      "So stellst du Apps gezielt stumm"
+    ],
+    "paragraphs": [
+      "Jede neu installierte App möchte standardmäßig das Recht haben, dir Mitteilungen zu schicken. Einkaufs-Apps, Nachrichtenseiten und Spiele nutzen dies oft mehrmals täglich, um dich zurück in die App zu locken.",
+      "Unterscheide klar zwischen Notfällen (Anrufe enger Kontakte, wichtige Termine) und reinem Rauschen (Sonderangebote, Breaking News, Spieleerinnerungen). Letztere kannst du bedenkenlos komplett ausschalten.",
+      "Wenn eine nervige Mitteilung auftaucht, halte den Finger einfach eine Sekunde lang darauf gedrückt. Es erscheint direkt ein kleines Menü, über das du „Mitteilungen ausschalten“ oder „Stumm zustellen“ wählen kannst."
+    ],
+    "reading": {
+      "audience": "Für alle, die mehr Ruhe im Alltag möchten",
+      "actions": [
+        "Gehe in Einstellungen > „Benachrichtigungen“",
+        "Gehe die Liste der Apps durch",
+        "Schalte bei allen Shopping-, Spiele- und News-Apps die Mitteilungen ab"
+      ]
+    },
+    "tip": "Aktiviere den Modus „Nicht stören“ für die Nacht – hinterlege dort nur Notfall-Kontakte, die dich auch im Schlaf erreichen dürfen.",
+    "checkedAt": "2026-09-13",
+    "sources": [
+      {
+        "title": "BSI – Schutz vor digitalem Stress und Benachrichtigungsflut",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "fotos-gesichert-alltagstipp-2026",
+    "title": "Sind deine Fotos wirklich gesichert?",
+    "category": "Digitale Verwaltung",
+    "date": "2026-09-13",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert unwiederbringlichen Datenverlust bei Geräteverlust, Defekt oder versehentlichem Löschen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Betrifft alle, die Fotos und Erinnerungen auf Smartphone oder Tablet aufbewahren.",
+      "action": "recommended",
+      "advice": "Prüfe in den Einstellungen von Google Fotos oder Apple iCloud, ob die automatische Sicherung aktiv ist."
+    },
+    "takeaway": "Viele wiegen sich in Sicherheit, haben aber keine echte Sicherungskopie ihrer Fotos. Geht das Smartphone verloren oder fällt ins Wasser, sind Urlaubs- und Familienbilder oft für immer weg. Eine automatische Cloud-Sicherung oder ein regelmäßiges Backup auf den Computer schafft verlässliche Ruhe.",
+    "paragraphTitles": [
+      "Warum Fotos auf dem Gerät allein nicht sicher sind",
+      "Der Unterschied zwischen Fotos-App und echter Sicherung",
+      "Die zwei wichtigsten Schritte für sichere Fotos"
+    ],
+    "paragraphs": [
+      "Ein Smartphone kann herunterfallen, gestohlen werden oder durch ein fehlerhaftes Update unbrauchbar werden. Liegen die Fotos nur im internen Gerätespeicher, ist eine Rettung meist teuer oder unmöglich.",
+      "Nur weil du deine Bilder in der Galerie-App siehst, bedeutet das noch nicht, dass sie auch gesichert sind. Eine Sicherung existiert erst, wenn dieselbe Datei an mindestens einem zweiten, unabhängigen Ort gespeichert ist.",
+      "Aktiviere die automatische Sicherung in Google Fotos (Android/iPhone) oder in den Apple iCloud-Einstellungen. Wer Cloud-Diensten nicht vertraut, sollte die Bilder regelmäßig per USB-Kabel auf den Computer oder eine externe Festplatte kopieren."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone- und Tablet-Besitzer",
+      "actions": [
+        "Öffne die Fotos-App (z. B. Google Fotos oder Apple Fotos)",
+        "Tippe auf dein Profilbild oben rechts und prüfe den Sicherungsstatus",
+        "Stelle sicher, dass „Sicherung aktivieren“ eingeschaltet ist"
+      ]
+    },
+    "tip": "Achte darauf, dass die Sicherung standardmäßig über WLAN erfolgt, um dein monatliches Datenvolumen nicht zu belasten.",
+    "checkedAt": "2026-09-13",
+    "sources": [
+      {
+        "title": "Google Support: Fotos und Videos sichern",
+        "url": "https://support.google.com/photos"
+      },
+      {
+        "title": "Apple Support: iCloud-Fotos einrichten und verwenden",
+        "url": "https://support.apple.com"
+      }
+    ]
+  },
+  {
+    "id": "app-kamera-berechtigung-2026",
+    "title": "Warum möchte diese App deine Kamera nutzen?",
+    "category": "Sicherheit & Schutz",
+    "date": "2026-09-13",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Schützt deine Privatsphäre vor neugierigen oder unnötig datenhungrigen Apps.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wichtig bei jeder App-Installation oder wenn Berechtigungs-Anfragen auf dem Bildschirm aufpoppen.",
+      "action": "recommended",
+      "advice": "Wähle bei Berechtigungen immer „Nur bei Verwendung der App“ oder lehne ab, wenn kein ersichtlicher Grund vorliegt."
+    },
+    "takeaway": "Nicht jede App braucht Zugriff auf Kamera, Mikrofon oder Standort. Eine Taschenlampen-App oder ein einfaches Notizbuch benötigt keine Kamera. Hinterfrage Berechtigungsanfragen kritisch und entziehe ungenutzten Apps den Zugriff.",
+    "paragraphTitles": [
+      "Warum Apps Berechtigungen anfordern",
+      "Wann der Kamerazugriff sinnvoll ist – und wann nicht",
+      "So überprüfst du bestehende Berechtigungen"
+    ],
+    "paragraphs": [
+      "Apps fordern Berechtigungen an, um bestimmte Hardware-Funktionen deines Telefons zu nutzen. Während WhatsApp die Kamera benötigt, um ein schnelles Foto zu verschicken, gibt es viele Spiele oder Hilfs-Apps, die Berechtigungen nur zur Werbemessung abgreifen wollen.",
+      "Frage dich immer: Braucht diese Funktion logischerweise die Kamera? Wenn du Dokumente scannen oder QR-Codes lesen willst: Ja. Wenn eine Wetter-App oder ein Rechner danach fragt: Eindeutig Nein.",
+      "Sowohl auf Android als auch auf dem iPhone kannst du in den Systemeinstellungen unter „Datenschutz & Sicherheit“ > „Berechtigungsmanager“ (oder „Kamera“) sehen, welche Apps Zugriff haben, und diesen mit einem Tippen widerrufen."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone-Nutzer",
+      "actions": [
+        "Gehe in die Systemeinstellungen deines Smartphones",
+        "Wähle den Menüpunkt „Datenschutz“ oder „Apps“",
+        "Tippe auf „Berechtigungen“ > „Kamera“ und deaktiviere verdächtige Apps"
+      ]
+    },
+    "tip": "Auf modernen Geräten siehst du oben rechts einen kleinen grünen Punkt, wenn gerade Kamera oder Mikrofon aktiv sind.",
+    "checkedAt": "2026-09-13",
+    "sources": [
+      {
+        "title": "Bundesamt für Sicherheit in der Informationstechnik (BSI) – App-Berechtigungen",
+        "url": "https://www.bsi.bund.de"
+      },
+      {
+        "title": "Verbraucherzentrale – Smartphone-Berechtigungen richtig einstellen",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "kuendigungsbutton-pflicht-2026",
+    "title": "Der gesetzliche Kündigungsbutton: Wie du Online-Abos mit zwei Klicks beendest",
+    "category": "Verträge & Abos",
+    "date": "2026-09-13",
+    "dateLabel": "Ratgeber",
+    "relevance": "Ermöglicht das Beenden von Zeitungs-, Streaming- und Fitness-Abos ohne langes Suchen oder Briefe.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Verträge, die online über eine Webseite oder App abgeschlossen wurden.",
+      "action": "recommended",
+      "advice": "Ganz nach unten auf der Webseite scrollen und auf „Verträge hier kündigen“ klicken."
+    },
+    "takeaway": "Früher musste man Kündigungsschreiben per Einschreiben schicken oder teure Hotlines anrufen. Seit dem Gesetz für faire Verbraucherverträge muss jeder Anbieter auf seiner Webseite einen gut sichtbaren Kündigungsknopf anbieten.",
+    "paragraphTitles": [
+      "Gesetzliche Pflicht: „Verträge hier kündigen“",
+      "Kündigung auch ohne vorheriges Einloggen möglich",
+      "Die sofortige Eingangsbestätigung per E-Mail"
+    ],
+    "paragraphs": [
+      "Das Gesetz schreibt vor: Der Button muss dauerhaft und leicht auffindbar sein – meist ganz unten in der Fußzeile (Footer) der Internetseite. Er heißt meist „Vertrag kündigen“ oder „Hier kündigen“.",
+      "Besonders kundenfreundlich: Du musst nicht einmal dein altes Passwort heraussuchen. Ein Klick auf den Button führt zu einem einfachen Formular, in das du Name, E-Mail-Adresse und Kündigungswunsch einträgst.",
+      "Nach dem Absenden muss der Anbieter dir sofort eine automatische Bestätigung mit dem genauen Datum und Uhrzeit der Beendigung per E-Mail zuschicken. Hebe diese Mail gut auf."
+    ],
+    "reading": {
+      "audience": "Für alle Verbraucher mit laufenden Abonnements",
+      "actions": [
+        "Scrolle auf der Anbieterseite ganz nach unten",
+        "Klicke auf die Kündigungsschaltfläche",
+        "Prüfe dein E-Mail-Postfach auf die Bestätigungsnachricht"
+      ]
+    },
+    "tip": "Fehlt der Kündigungsbutton auf der Webseite eines Anbieters, kannst du den Vertrag jederzeit fristlos kündigen!",
+    "checkedAt": "2026-09-13",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Der Kündigungsbutton im Gesetz",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "whatsapp-sprachnachrichten-2026",
+    "title": "WhatsApp-Sprachnachrichten schneller oder leiser abhören",
+    "category": "Kommunikation & Mobilität",
+    "date": "2026-09-12",
+    "dateLabel": "Praxistipp",
+    "relevance": "Spart wertvolle Zeit bei langen Audios und schützt die Privatsphäre in der Öffentlichkeit.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die häufig Sprachnachrichten von Freunden oder Enkeln erhalten.",
+      "action": "recommended",
+      "advice": "Halte das Telefon ans Ohr für diskretes Anhören und nutze die 1,5x-Geschwindigkeit bei langen Berichten."
+    },
+    "takeaway": "Lange Sprachnachrichten können im Alltag anstrengend sein. WhatsApp bietet zwei geniale Kniffe: Du kannst die Wiedergabegeschwindigkeit auf 1,5x erhöhen und das Telefon einfach wie bei einem Anruf ans Ohr halten, damit niemand im Bus mithört.",
+    "paragraphTitles": [
+      "Das Hörer-Prinzip: Niemand hört mit",
+      "Schnelleres Abspielen (1,5x und 2x)",
+      "Sprachnachrichten in Text umwandeln"
+    ],
+    "paragraphs": [
+      "Viele halten das Smartphone waagerecht vor sich und beschallen die ganze Umgebung. Wenn du nach dem Drücken auf „Play“ das Smartphone an dein Ohr hebst, schaltet WhatsApp automatisch vom Lautsprecher auf die leise Hörmuschel um.",
+      "Tippe während des Abspielens auf das kleine blaue Symbol „1x“ neben der Zeitleiste. Mit jedem Tippen beschleunigst du die Wiedergabe auf 1,5x oder 2x – die Tonhöhe bleibt dabei natürlich.",
+      "Seit neuestem bietet WhatsApp auch ein automatisches Transkript: Die gesprochenen Worte erscheinen als Text direkt unter der Sprachnotiz, ideal wenn du gerade nicht laut hören kannst."
+    ],
+    "reading": {
+      "audience": "Für alle WhatsApp-Nutzer",
+      "actions": [
+        "Drücke bei einer Sprachnachricht auf Play und hebe das Handy direkt ans Ohr",
+        "Tippe auf das Tempo-Symbol (1x / 1.5x / 2x) zum Ausprobieren",
+        "Prüfe in WhatsApp > Einstellungen > Chats, ob „Sprachnachrichten-Transkripte“ aktiv sind"
+      ]
+    },
+    "tip": "Du musst die Sprachnachricht nicht festhalten: Wische beim Sprechen nach oben auf das kleine Schloss-Symbol, um freihändig aufzunehmen.",
+    "checkedAt": "2026-09-12",
+    "sources": [
+      {
+        "title": "WhatsApp Hilfebereich: Sprachnachrichten verwenden",
+        "url": "https://faq.whatsapp.com"
+      }
+    ]
+  },
+  {
+    "id": "ard-zdf-mediathek-tipps-2026",
+    "title": "Öffentlich-rechtliche Mediatheken: Filme und Dokus ganz ohne Zeitdruck sehen",
+    "category": "Medien & Informationen",
+    "date": "2026-09-12",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Macht unabhängig vom starren Fernsehprogramm mit riesiger Mediatheken-Auswahl.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Fernsehzuschauer, die Sendungen verpasst haben oder Krimis und Dokumentationen werbefrei genießen wollen.",
+      "action": "recommended",
+      "advice": "Nutze die gemeinsame Suche von ARD und ZDF oder lade die kostenlose Mediathek-App auf Tablet oder Fernseher."
+    },
+    "takeaway": "Tatort verpasst oder die Tagesschau um 20 Uhr nicht geschafft? In den Mediatheken von ARD, ZDF und den Dritten Programmen kannst du tausende Sendungen jederzeit auf Knopfdruck starten, anhalten und sogar Untertitel einblenden.",
+    "paragraphTitles": [
+      "Das Vernetzungs-Wunder: ARD und ZDF gemeinsam durchsuchen",
+      "Untertitel und klare Sprache aktivieren",
+      "Sendungen für den Urlaub offline herunterladen"
+    ],
+    "paragraphs": [
+      "Früher musste man zwischen den Apps wechseln – heute sind die ARD Mediathek und die ZDFmediathek eng miteinander verknüpft. Suchst du in der ARD nach einer ZDF-Dokumentation, wird sie direkt angezeigt.",
+      "Ein riesiger Vorteil gegenüber dem linearen Fernsehen: Bei fast jedem Beitrag kannst du mit einem Klick Untertitel zuschalten oder die Tonspur „Klare Sprache“ wählen, die störende Hintergrundmusik dämpft.",
+      "In den mobilen Apps auf Tablet oder Smartphone gibt es bei vielen Filmen ein kleines Download-Symbol. Damit speicherst du den Film im heimischen WLAN und kannst ihn später im Garten oder auf Reisen ohne Internetverbindung ansehen."
+    ],
+    "reading": {
+      "audience": "Für alle Film- und Dokumentationsliebhaber",
+      "actions": [
+        "Installiere die ARD Mediathek oder ZDFmediathek App",
+        "Tippe im Video auf das Zahnrad-Symbol für Tonspur „Klare Sprache“",
+        "Lege dir interessante Beiträge auf deine persönliche Merkliste"
+      ]
+    },
+    "tip": "Über die Funktion „HbbTV“ (der rote Knopf auf deiner Fernbedienung) kannst du die Mediathek auch direkt auf deinem Smart-TV aufrufen.",
+    "checkedAt": "2026-09-12",
+    "sources": [
+      {
+        "title": "ARD Mediathek Hilfe & Barrierefreiheit",
+        "url": "https://www.ardmediathek.de"
+      },
+      {
+        "title": "ZDF Mediathek: Klare Sprache und Barrierefreiheit",
+        "url": "https://www.zdf.de"
+      }
+    ]
+  },
+  {
+    "id": "zwischenablage-kopieren-einfuegen-2026",
+    "title": "Kopieren und Einfügen (Copy & Paste): Der nützlichste Trick auf dem Handy",
+    "category": "Lernen & Wissen",
+    "date": "2026-09-12",
+    "dateLabel": "Schritt-für-Schritt",
+    "relevance": "Erspart mühsames Abtippen von langen IBANs, Adressen, Telefonnummern und Internet-Links.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für jede Situation, in der Text von einer App in eine andere übertragen werden soll.",
+      "action": "recommended",
+      "advice": "Finger 1 Sekunde auf ein Wort halten, blaue Anfasser ziehen und auf „Kopieren“ tippen."
+    },
+    "takeaway": "Niemand muss eine 22-stellige IBAN oder eine lange Webadresse Buchstabe für Buchstabe abtippen. Mit „Kopieren und Einfügen“ nimmst du den Text einfach mit dem Finger auf und setzt ihn an beliebiger anderer Stelle fehlerfrei wieder ein.",
+    "paragraphTitles": [
+      "Schritt 1: Den gewünschten Text markieren",
+      "Schritt 2: In den unsichtbaren Zwischenspeicher kopieren",
+      "Schritt 3: An der Zielstelle passgenau einfügen"
+    ],
+    "paragraphs": [
+      "Halte den Finger auf das erste Wort, das du kopieren möchtest. Es wird farbig markiert und es erscheinen zwei kleine Anfasser-Punkte. Ziehe die Punkte auseinander, bis der gesamte Text markiert ist.",
+      "Es erscheint ein kleines schwarzes oder weißes Menü: Tippe dort auf „Kopieren“. Der Text ist nun in deiner unsichtbaren „Zwischenablage“ sicher abgelegt.",
+      "Wechsle in die andere App (z. B. WhatsApp oder Banking). Halte den Finger kurz in das leere Schreibfeld und lasse los: Im aufpoppenden Menü tippst du auf „Einfügen“ – fertig!"
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone- und Tablet-Nutzer",
+      "actions": [
+        "Probiere es direkt an einer beliebigen Nachricht in WhatsApp aus",
+        "Markiere einen Satz und tippe auf „Kopieren“",
+        "Füge ihn in deine Notizen-App ein"
+      ]
+    },
+    "tip": "Tippe zweimal schnell hintereinander auf ein Wort, um es sofort komplett zu markieren – dreimal schnell markiert einen ganzen Absatz!",
+    "checkedAt": "2026-09-12",
+    "sources": [
+      {
+        "title": "Digital Guide Box – Jan Dennis Brüning",
+        "url": "https://www.janbruening.de"
+      }
+    ]
+  },
+  {
+    "id": "elster-mail-vorsicht-datenabgleich-2026",
+    "title": "ELSTER-Mail: Vorsicht beim angeblichen Datenabgleich",
+    "category": "Sicherheit & Schutz",
+    "date": "2026-09-11",
+    "dateLabel": "Warnung",
+    "relevance": "Gefährliche Phishing-Welle zielt auf Online-Banking- und Steuerdaten ab.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Aktuell kursieren betrügerische E-Mails mit dem Absender „ELSTER“ oder „Finanzamt“.",
+      "action": "important",
+      "advice": "Lösche solche E-Mails sofort. Klicke niemals auf darin enthaltene Links und gib nirgendwo deine Daten ein."
+    },
+    "takeaway": "Kriminelle versenden täuschend echte E-Mails mit Betreffzeilen wie „Mein ELSTER: Datenabgleich erforderlich“ oder „Steuererstattung bereit“. Die Links führen auf gefälschte Webseiten, die deine Bankdaten und Passwörter stehlen wollen. Die echte Steuerverwaltung fordert niemals per E-Mail persönliche Daten an.",
+    "paragraphTitles": [
+      "Wie die Betrugs-E-Mail aussieht",
+      "Die goldene Regel der Finanzverwaltung",
+      "Was tun, wenn du bereits geklickt hast?"
+    ],
+    "paragraphs": [
+      "Die gefälschten E-Mails nutzen das offizielle ELSTER-Logo und behördliche Begriffe wie „Datensynchronisierung“, „Pflichtabgleich nach §“ oder angebliche Steuererstattungen, um Druck aufzubauen. Oft wird mit Kontosperrungen gedroht, wenn man nicht innerhalb weniger Tage reagiert.",
+      "Merke dir eine feste Grundregel: Das Finanzamt und ELSTER fordern dich NIEMALS per E-Mail auf, Passwörter, PINs, IBAN oder Kreditkartendaten über einen Link einzugeben. Echte Bescheide oder Benachrichtigungen kannst du ausschließlich nach manuellem Einloggen auf elster.de abrufen.",
+      "Falls du bereits Zugangsdaten oder Kontodaten auf einer solchen Seite eingegeben hast: Rufe sofort deine Bank an (oder den Sperr-Notruf 116 116), um dein Online-Banking zu sperren, und erstatte Anzeige bei der Polizei."
+    ],
+    "reading": {
+      "audience": "Für alle E-Mail-Nutzerinnen und -Nutzer",
+      "actions": [
+        "Prüfe den Absender: Echte Mails enden ausschließlich auf @elster.de (doch auch dieser kann gefälscht sein!)",
+        "Klicke keine Links oder Anhänge in verdächtigen Steuer-Mails an",
+        "Verschiebe die Nachricht in den Spam-Ordner und lösche sie"
+      ]
+    },
+    "tip": "Gehe niemals über E-Mail-Links zu Banken oder Behörden. Tippe die Adresse (z. B. www.elster.de) immer selbst im Browser ein.",
+    "checkedAt": "2026-09-11",
+    "sources": [
+      {
+        "title": "Offizielle Sicherheitswarnung von ELSTER",
+        "url": "https://www.elster.de"
+      },
+      {
+        "title": "Verbraucherzentrale – Phishing-Radar zu Steuer-Mails",
+        "url": "https://www.verbraucherzentrale.de"
+      },
+      {
+        "title": "Polizeiliche Kriminalprävention – Phishing erkennen und abwehren",
+        "url": "https://www.polizei-beratung.de"
+      }
+    ]
+  },
+  {
+    "id": "pdf-formulare-smartphone-unterschreiben-2026",
+    "title": "PDF-Formulare direkt am Smartphone ausfüllen und unterschreiben",
+    "category": "Formulare & Anträge",
+    "date": "2026-09-11",
+    "dateLabel": "Schritt-für-Schritt",
+    "relevance": "Erspart Drucker, Papier, Einscannen und den Gang zum Briefkasten.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Mietverträge, Kündigungen, Anmeldungen und behördliche PDF-Formulare.",
+      "action": "recommended",
+      "advice": "Kostenlose App wie Adobe Acrobat Reader nutzen und Unterschrift einmalig mit dem Finger hinterlegen."
+    },
+    "takeaway": "Wer ein Formular unterschreiben muss, braucht weder Drucker noch Scanner. Moderne PDF-Apps erlauben es, Textfelder direkt auf dem Display auszufüllen und mit dem Finger sauber zu signieren.",
+    "paragraphTitles": [
+      "PDF-Dokument in der App öffnen",
+      "Textfelder ausfüllen und Häkchen setzen",
+      "Die persönliche Unterschrift mit dem Finger einfügen"
+    ],
+    "paragraphs": [
+      "Öffne die empfangene PDF-Datei in einer geeigneten App wie „Adobe Acrobat Reader“ oder dem integrierten PDF-Betrachter deines Smartphones. Tippe auf das Stift-Symbol unten rechts („Ausfüllen und unterschreiben“).",
+      "Tippe einfach auf die gestrichelte Linie, um Text einzutippen (z. B. Name, Adresse, Datum). Über kleine Symbole kannst du auch Ankreuzkästchen mit einem Häkchen versehen.",
+      "Tippe auf das Füllfederhalter-Symbol. Du kannst deine Unterschrift einmal mit dem Zeigefinger auf das Display zeichnen. Sie wird gespeichert und lässt sich künftig in jedes Dokument an die passende Stelle ziehen."
+    ],
+    "reading": {
+      "audience": "Für alle, die papierlos Formulare abwickeln möchten",
+      "actions": [
+        "Lade den kostenlosen Adobe Acrobat Reader herunter",
+        "Öffne ein beliebiges PDF-Formular",
+        "Probiere die Funktion „Ausfüllen und unterschreiben“ an einem Testdokument aus"
+      ]
+    },
+    "tip": "Nach dem Signieren: Tippe auf „Kopie freigeben“ oder „Teilen“, um die ausgefüllte PDF direkt per E-Mail an den Empfänger zu senden.",
+    "checkedAt": "2026-09-11",
+    "sources": [
+      {
+        "title": "Adobe: PDF auf mobilen Geräten ausfüllen und unterschreiben",
+        "url": "https://www.adobe.com"
+      }
+    ]
+  },
+  {
+    "id": "akku-schonen-tipps-2026",
+    "title": "Smartphone-Akku schonen: So hält er spürbar länger",
+    "category": "Geräte & Technik",
+    "date": "2026-09-10",
+    "dateLabel": "Praxistipp",
+    "relevance": "Verlängert die tägliche Laufzeit und die Lebensdauer der Batterie um mehrere Jahre.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, deren Smartphone-Akku bereits am Nachmittag schwächelt.",
+      "action": "recommended",
+      "advice": "Display-Helligkeit anpassen und unnötige Hintergrundaktualisierungen ausschalten."
+    },
+    "takeaway": "Lithium-Ionen-Akkus mögen weder extreme Hitze noch dauerhafte 100-Prozent-Ladung. Mit ein paar kleinen Handgriffen bleibt der Akku über den ganzen Tag fit und hält jahrelang ohne teuren Austausch.",
+    "paragraphTitles": [
+      "Die größten Stromfresser im Alltag",
+      "Die 20-bis-80-Prozent-Regel",
+      "Schnelle Sofortmaßnahmen"
+    ],
+    "paragraphs": [
+      "Der Bildschirm verbraucht meistens den meisten Strom. Wer die Helligkeit manuell leicht absenkt oder auf automatische Regelung stellt, spart sofort spürbar Energie.",
+      "Akkus fühlen sich zwischen 20 % und 80 % Ladung am wohlsten. Es schadet modernen Geräten zwar nicht direkt, sie über Nacht zu laden, aber dauerhafte Vollladung bei sommerlicher Wärme beschleunigt die Alterung.",
+      "Schalte Bluetooth und Standortdienste nur dann ein, wenn du sie aktiv nutzt (z. B. für Navigation). Aktiviere zudem den integrierten Energiesparmodus, wenn der Akku unter 20 % sinkt."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone- und Tablet-Besitzer",
+      "actions": [
+        "Öffne Einstellungen > „Akku“ und prüfe, welche Apps am meisten Strom verbrauchen",
+        "Aktiviere die Option „Akkuschutz“ oder „Optimiertes Laden“",
+        "Reduziere das Display-Timeout auf 30 Sekunden oder 1 Minute"
+      ]
+    },
+    "tip": "Lade dein Smartphone niemals in der prallen Sonne oder unter dem Kopfkissen auf – Hitze ist der größte Feind der Batterie.",
+    "checkedAt": "2026-09-10",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Smartphone-Akku richtig laden und schonen",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "bundid-online-ausweis-2026",
+    "title": "BundID & Online-Ausweis: Behördengänge von der Couch erledigen",
+    "category": "Digitale Verwaltung",
+    "date": "2026-09-09",
+    "dateLabel": "Ratgeber",
+    "relevance": "Spart stundenlanges Warten im Bürgeramt für Meldebescheinigungen, Führerschein und Rente.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle deutschen Bürger mit Personalausweis (mit Chip) und Smartphone mit NFC.",
+      "action": "recommended",
+      "advice": "Installiere die AusweisApp und aktiviere deine 6-stellige Online-Ausweis-PIN."
+    },
+    "takeaway": "Die BundID ist dein persönliches Behördenkonto für ganz Deutschland. Zusammen mit der AusweisApp auf dem Smartphone kannst du dich digital genauso sicher ausweisen wie am Schalter im Rathaus – rund um die Uhr und ohne Termin.",
+    "paragraphTitles": [
+      "Was du dafür brauchst: Ausweis, PIN und Smartphone",
+      "Die offizielle AusweisApp des Bundes",
+      "Typische Dienste: Von Rente bis Führerschein"
+    ],
+    "paragraphs": [
+      "Jeder Personalausweis besitzt einen kleinen Funkchip (NFC). Zusammen mit deiner persönlichen 6-stelligen PIN und der kostenlosen AusweisApp wird dein Smartphone zum offiziellen Lesegerät.",
+      "Du musst den Ausweis lediglich für zwei Sekunden an die Rückseite deines Handys halten. Die Daten werden verschlüsselt an die Behörde übertragen – sicher vor Abfangen oder Fälschung.",
+      "Damit kannst du online deine Rentenauskunft anfordern, Punkte in Flensburg abfragen, Elterngeld beantragen oder deinen Wohnsitz nach einem Umzug offiziell ummelden."
+    ],
+    "reading": {
+      "audience": "Für alle Bürgerinnen und Bürger",
+      "actions": [
+        "Lade die offizielle „AusweisApp“ aus dem App Store oder Play Store",
+        "Suche deinen PIN-Brief heraus (oder setze die PIN im Bürgeramt zurück)",
+        "Probiere den kostenlosen Testlauf direkt in der AusweisApp aus"
+      ]
+    },
+    "tip": "Hast du deine 6-stellige PIN vergessen? Du kannst sie im Bürgeramt oder per PIN-Rücksetzbrief online kostenlos neu vergeben.",
+    "checkedAt": "2026-09-09",
+    "sources": [
+      {
+        "title": "Bundesministerium des Innern: Personalausweisportal",
+        "url": "https://www.personalausweisportal.de"
+      },
+      {
+        "title": "Offizielle AusweisApp des Bundes",
+        "url": "https://www.ausweisapp.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "db-navigator-verspaetungen-2026",
+    "title": "DB Navigator: Reisebegleiter, Gleiswechsel und Verspätungsalarm",
+    "category": "Kommunikation & Mobilität",
+    "date": "2026-09-08",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert verpasste Anschlüsse durch frühzeitige Gleis- und Verspätungshinweise.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Bahnfahrer, die entspannt und verlässlich an ihr Reiseziel kommen möchten.",
+      "action": "recommended",
+      "advice": "Aktiviere für deine Reise den Reisebegleiter in der DB Navigator App."
+    },
+    "takeaway": "Bahnreisen sind deutlich stressfreier, wenn man aktuelle Änderungen vorab kennt. Die DB Navigator App schickt dir bei Gleisänderungen oder Zugausfällen direkt eine Benachrichtigung auf den Sperrbildschirm.",
+    "paragraphTitles": [
+      "Die Reise zum Reisebegleiter hinzufügen",
+      "Wagenstandsanzeiger: Wo hält mein Wagen?",
+      "Alternative Verbindungen mit einem Klick"
+    ],
+    "paragraphs": [
+      "Tippe in der Verbindungsauskunft auf deine gewünschte Fahrt und wähle „Zur Reise hinzufügen“ oder aktiviere den Schieber „Reisebegleiter“. Ab jetzt wirst du bei jeder Minute Verspätung informiert.",
+      "Über die Funktion „Wagenreihung“ siehst du genau, in welchem Gleisabschnitt (A bis F) dein Waggon oder das Ruheabteil halten wird. Das spart hektisches Suchen auf dem Bahnsteig.",
+      "Fällt ein Zug aus, zeigt die App sofort die nächsten Alternativzüge an. Bei Zugbindung wird diese bei größeren Verspätungen automatisch im System aufgehoben."
+    ],
+    "reading": {
+      "audience": "Für Gelegenheits- und Vielfahrer mit Bus und Bahn",
+      "actions": [
+        "Öffne die App DB Navigator",
+        "Suche deine Strecke und tippe auf „Reisebegleiter aktivieren“",
+        "Schau vor der Abfahrt auf die Wagenreihung am Gleis"
+      ]
+    },
+    "tip": "Mit der Funktion „Komfort Check-in“ kannst du dein Ticket im ICE selbst entwerten und musst bei der Fahrscheinkontrolle nicht gestört werden.",
+    "checkedAt": "2026-09-08",
+    "sources": [
+      {
+        "title": "Deutsche Bahn: Funktionen des DB Navigators",
+        "url": "https://www.bahn.de"
+      }
+    ]
+  },
+  {
+    "id": "was-ist-eigentlich-chatgpt-2026",
+    "title": "Was ist Künstliche Intelligenz wirklich? Technik einfach und verständlich erklärt",
+    "category": "KI & digitale Assistenz",
+    "date": "2026-09-08",
+    "dateLabel": "Ratgeber",
+    "relevance": "Nimmt die Verunsicherung vor KI und zeigt reale Einsatzmöglichkeiten im Alltag auf.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die in den Nachrichten ständig von KI, ChatGPT oder Gemini hören und wissen wollen, was dahintersteckt.",
+      "action": "none",
+      "advice": "KI ist kein Zauberwerk, sondern ein gigantischer Textrechner, der auf Knopfdruck formulieren kann."
+    },
+    "takeaway": "Künstliche Intelligenz denkt nicht wie ein Mensch und hat kein Bewusstsein. Es handelt sich um sehr leistungsfähige Computerprogramme, die riesige Mengen an Büchern und Texten analysiert haben und deshalb flüssig auf Fragen antworten können.",
+    "paragraphTitles": [
+      "Das Prinzip der Textvorhersage",
+      "Wo KI im Alltag bereits unbemerkt hilft",
+      "Warum man KI-Antworten nicht blind vertrauen darf"
+    ],
+    "paragraphs": [
+      "Vereinfacht gesagt errät eine Sprach-KI immer das nächste passende Wort in einem Satz – genau wie die automatische Worterkennung auf der Smartphone-Tastatur, nur milliardenfach komplexer.",
+      "Ob die Foto-App, die Gesichter von Enkeln auf Bildern erkennt, die automatische Rechtschreibprüfung oder die Routenberechnung im Stau: KI erleichtert unseren Alltag schon seit vielen Jahren im Hintergrund.",
+      "Wichtig zu wissen: Eine KI weiß nicht, was „Wahrheit“ bedeutet. Manchmal erfindet sie überzeugend klingende Fakten (Fachbegriff: „Halluzinieren“). Prüfe wichtige rechtliche oder medizinische Auskünfte deshalb immer bei Fachquellen nach."
+    ],
+    "reading": {
+      "audience": "Für alle Neugierigen und Technikinteressierten",
+      "actions": [
+        "Sieh KI als nützlichen Formulierungshilfe und digitalen Notizassistenten",
+        "Nutze KI zum Zusammenfassen langer Texte oder Rezeptideen",
+        "Glaube niemals blind an rechtliche oder finanzielle Prognosen einer KI"
+      ]
+    },
+    "tip": "Lass dir von einer KI mal ein Gedicht zum 70. Geburtstag deiner Schwester dichten – dafür sind Sprachmodelle hervorragend geeignet!",
+    "checkedAt": "2026-09-08",
+    "sources": [
+      {
+        "title": "BSI: Künstliche Intelligenz verständlich erklärt",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "elektronische-patientenakte-epa-2026",
+    "title": "Elektronische Patientenakte (ePA): Was drinsteht und welche Rechte du hast",
+    "category": "Gesundheit & E-Rezept",
+    "date": "2026-09-08",
+    "dateLabel": "Ratgeber",
+    "relevance": "Verhindert gefährliche Medikamenten-Wechselwirkungen und doppelte Röntgenuntersuchungen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Betrifft alle gesetzlich Versicherten im Rahmen der bundesweiten ePA für alle.",
+      "action": "recommended",
+      "advice": "Informiere dich über die ePA-App deiner Krankenkasse oder nutze dein Widerspruchsrecht (Opt-out), falls du sie nicht möchtest."
+    },
+    "takeaway": "Befunde, Laborwerte, Arztbriefe und der Medikationsplan an einem sicheren digitalen Ort: Die elektronische Patientenakte (ePA) sorgt dafür, dass neue Fachärzte sofort deine Vorgeschichte kennen. Du behältst dabei die volle Kontrolle über deine Daten.",
+    "paragraphTitles": [
+      "Die Vorteile: Nie wieder Befunde im Aktenordner suchen",
+      "Der automatische Medikationsabgleich für mehr Sicherheit",
+      "Deine Hoheit: Widerspruch und gezieltes Verstecken von Befunden"
+    ],
+    "paragraphs": [
+      "Wechselst du den Arzt oder musst ins Krankenhaus, liegen wichtige Vorbefunde oft nicht vor. In der ePA können behandelnde Ärzte mit deiner Erlaubnis auf aktuelle Röntgenbilder, Impfungen und Entlassbriefe zugreifen.",
+      "Besonders wertvoll: Die ePA warnt Ärzte automatisch, wenn sich zwei gleichzeitig verschriebene Medikamente nicht miteinander vertragen oder schwere Nebenwirkungen auslösen könnten.",
+      "Du bist der Herr deiner Daten: Über die App deiner Krankenkasse kannst du einzelne Dokumente sperren oder der ePA jederzeit komplett widersprechen (Opt-out-Verfahren), ohne dass dir Nachteile bei der Behandlung entstehen."
+    ],
+    "reading": {
+      "audience": "Für alle Versicherten in Deutschland",
+      "actions": [
+        "Lies das Informationsschreiben deiner Krankenkasse zur ePA",
+        "Lade bei Interesse die ePA-App deiner Krankenkasse herunter",
+        "Sprich deinen Hausarzt beim nächsten Termin auf die ePA an"
+      ]
+    },
+    "tip": "Auch ohne eigenes Smartphone können Ärzte deine ePA in der Praxis befüllen – deine Gesundheitskarte dient dabei als Schlüssel.",
+    "checkedAt": "2026-09-08",
+    "sources": [
+      {
+        "title": "Bundesministerium für Gesundheit: Die elektronische Patientenakte",
+        "url": "https://www.bundesgesundheitsministerium.de"
+      },
+      {
+        "title": "Verbraucherzentrale: Elektronische Patientenakte (ePA) im Überblick",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "fake-shops-enttarnen-2026",
+    "title": "Günstige Schnäppchen im Netz: 4 Merkmale, an denen du Fake-Shops erkennst",
+    "category": "Online-Banking & Einkauf",
+    "date": "2026-09-07",
+    "dateLabel": "Ratgeber",
+    "relevance": "Schützt vor Totalverlust des Kaufpreises bei betrügerischen Online-Verkaufsseiten.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Vor jedem Online-Einkauf in einem Shop, bei dem du noch nie zuvor bestellt hast.",
+      "action": "recommended",
+      "advice": "Prüfe die URL mit dem Fake-Shop-Finder der Verbraucherzentrale und meide reine Vorkasse."
+    },
+    "takeaway": "Markenartikel zum halben Preis? Betrüger kopieren bekannte Online-Shops bis ins kleinste Detail. Doch wer auf gefälschten Seiten bestellt und per Vorab-Überweisung bezahlt, erhält weder Ware noch sein Geld zurück.",
+    "paragraphTitles": [
+      "Ausschließlich Vorkasse oder Sofortüberweisung",
+      "Das Impressum: Adresse und Handelsregister prüfen",
+      "Kostenlose Hilfe: Der Fake-Shop-Finder"
+    ],
+    "paragraphs": [
+      "Oft werden im Warenkorb zunächst Logos von PayPal, Rechnung oder Kreditkarte angezeigt. Im letzten Bestellschritt heißt es dann plötzlich: „Wegen technischer Wartung steht nur Banküberweisung zur Verfügung“. Das ist ein absolutes Alarmsignal!",
+      "Ein seriöser deutscher Online-Shop hat immer ein vollständiges Impressum mit realer Firmenadresse, Vertretungsberechtigten und Handelsregisternummer. Fehlt das Impressum oder steht dort nur eine ausländische Briefkastenadresse: Sofort abbrechen.",
+      "Die Verbraucherzentrale bietet den kostenlosen „Fake-Shop-Finder“: Kopiere einfach die Web-Adresse des Shops hinein – das System prüft die Seite sekundenschnell anhand einer Ampel (Grün, Gelb, Rot)."
+    ],
+    "reading": {
+      "audience": "Für alle Online-Käuferinnen und -Käufer",
+      "actions": [
+        "Zahle bei unbekannten Shops am liebsten auf Rechnung oder mit echtem Käuferschutz",
+        "Öffne www.verbraucherzentrale.de/fakeshopfinder und teste die Shop-Adresse",
+        "Lass dich nicht von tickenden Uhren („Nur noch 2 Stück auf Lager!“) unter Druck setzen"
+      ]
+    },
+    "tip": "Suche in einer Suchmaschine nach dem Namen des Shops plus das Wort „Erfahrungen“ oder „Betrug“.",
+    "checkedAt": "2026-09-07",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale Fake-Shop-Finder",
+        "url": "https://www.verbraucherzentrale.de/fakeshopfinder"
+      }
+    ]
+  },
+  {
+    "id": "probeabos-falle-vermeiden-2026",
+    "title": "Kostenlose Probemonate: Kalender-Erinnerung schützt vor teuren Überraschungen",
+    "category": "Verträge & Abos",
+    "date": "2026-09-07",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert die automatische Umwandlung kostenloser Tests in teure Jahresverträge.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei 30-Tage-Gratis-Angeboten für Streamingdienste, Hörbücher oder Apps.",
+      "action": "recommended",
+      "advice": "Sofort nach Abschluss der Probephase direkt wieder kündigen – die Testzeit läuft trotzdem weiter."
+    },
+    "takeaway": "„Die ersten 30 Tage kostenlos testen!“ – ein verlockendes Angebot. Doch fast alle Anbieter hoffen, dass Kunden den Kündigungstermin vergessen. Wer den goldenen Kündigungstrick anwendet, testet risikofrei.",
+    "paragraphTitles": [
+      "Der goldene Trick: Direkt nach der Anmeldung kündigen",
+      "Smartphone-Kalender als verlässlicher Wächter",
+      "Abos in Apple- und Google-Konten verwalten"
+    ],
+    "paragraphs": [
+      "Die meisten Dienste (wie Amazon Prime, Netflix oder Hörbuch-Abos) lassen die kostenlose Testzeit voll weiterlaufen, selbst wenn du 5 Minuten nach der Registrierung auf „Kündigen“ klickst. So kannst du den Termin gar nicht mehr verpassen.",
+      "Falls ein Dienst die Kündigung erst zum Monatsende erlaubt: Trage dir sofort beim Abschluss einen Kalendertermin mit Wecker 5 Tage vor Ablauf ein (z. B. „Abo XY kündigen!“).",
+      "Hast du ein Probeabo über den Google Play Store oder Apple App Store abgeschlossen? Öffne dein Profil > „Zahlungen & Abos“ (Android) bzw. „Abonnements“ (iPhone) – dort kannst du alle laufenden Abos mit einem Fingerstreich beenden."
+    ],
+    "reading": {
+      "audience": "Für alle Schnäppchenjäger und App-Nutzer",
+      "actions": [
+        "Gehe nach dem Test-Abschluss direkt in die Kontoeinstellungen",
+        "Klicke auf „Abo nicht verlängern“ oder „Kündigen“",
+        "Prüfe regelmäßig die Abo-Übersicht deines App Stores"
+      ]
+    },
+    "tip": "Mache bei jedem Gratis-Test einen Screenshot der Vertragsbedingungen, auf dem die Kündigungsfrist klar zu lesen ist.",
+    "checkedAt": "2026-09-07",
+    "sources": [
+      {
+        "title": "Stiftung Warentest: Probe-Abos richtig kündigen",
+        "url": "https://www.test.de"
+      }
+    ]
+  },
+  {
+    "id": "digitaler-nachlass-vorsorge-2026",
+    "title": "Digitaler Nachlass: Was passiert mit E-Mail-Konto, Fotos und Passwörtern?",
+    "category": "Vorsorge & Warnungen",
+    "date": "2026-09-07",
+    "dateLabel": "Ratgeber",
+    "relevance": "Verhindert Streit, Datenverlust und unnötige Kosten für Hinterbliebene im Ernstfall.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Gehört zur modernen Vorsorge wie Testament und Patientenverfügung.",
+      "action": "recommended",
+      "advice": "Kontaktschlüssel für digitale Nachlassverwalter bei Google und Apple hinterlegen."
+    },
+    "takeaway": "Was geschieht mit deinem Online-Banking, dem E-Mail-Postfach oder den Familienfotos, wenn du plötzlich handlungsunfähig wirst? Wer zu Lebzeiten digital vorsorgt, erspart seinen Angehörigen langwierige juristische Hürden.",
+    "paragraphTitles": [
+      "Der digitale Nachlass: Was alles dazugehört",
+      "Der Google Kontoinaktivitäts-Manager und Apple Nachlasskontakt",
+      "Die analoge Notfallmappe im Schrank"
+    ],
+    "paragraphs": [
+      "Zum digitalen Nachlass zählen nicht nur Konten und Depots, sondern auch Verträge, Abonnements, Cloud-Speicher voller Fotos und Social-Media-Profile. Ohne Passwörter kommen Erben oft monatelang nicht an wichtige Unterlagen.",
+      "Sowohl Google als auch Apple bieten offizielle Nachlassfunktionen: Du kannst festlegen, wer benachrichtigt wird, wenn dein Konto mehrere Monate nicht genutzt wurde, und welche Daten dieser Vertrauensperson freigegeben werden.",
+      "Erstelle eine verschlossene Mappe mit einer Übersicht deiner wichtigsten Konten (ohne zwingend alle Passwörter im Klartext zu notieren – es genügt der Hinweis auf den Passwortmanager und den Aufbewahrungsort des Notfallschlüssels)."
+    ],
+    "reading": {
+      "audience": "Für alle vorausschauenden Internetnutzer",
+      "actions": [
+        "Richte bei Google den „Kontoinaktivitäts-Manager“ ein",
+        "Hinterlege bei Apple einen „Nachlasskontakt“",
+        "Lege eine Liste aller laufenden Abos zu deinen Vorsorgeunterlagen"
+      ]
+    },
+    "tip": "Regle die digitale Vorsorge ausdrücklich in deiner Vorsorgevollmacht mit dem Satz: „Die Vollmacht gilt auch für den gesamten digitalen Nachlass.“",
+    "checkedAt": "2026-09-07",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Digitaler Nachlass – Der digitale Nachlass gehört zur Vorsorge",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "speicher-voll-bereinigen-2026",
+    "title": "Speicher voll? Unnötigen Ballast ohne Datenverlust entfernen",
+    "category": "Geräte & Technik",
+    "date": "2026-09-06",
+    "dateLabel": "Schritt-für-Schritt",
+    "relevance": "Verhindert Systemabstürze und macht Platz für neue Fotos und wichtige Updates.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wenn die Meldung „Gerätespeicher fast voll“ auf dem Bildschirm erscheint.",
+      "action": "recommended",
+      "advice": "WhatsApp-Medien und ungenutzte Apps bereinigen, bevor man panisch Fotos löscht."
+    },
+    "takeaway": "Oft sind es gar nicht die eigenen Urlaubsfotos, die den Speicher verstopfen, sondern weitergeleitete Videos in WhatsApp-Gruppen oder doppelte Downloads. Mit der richtigen Reihenfolge schaffst du in wenigen Minuten Gigabytes an Platz.",
+    "paragraphTitles": [
+      "Wo verstecken sich die Speicherfresser?",
+      "Der WhatsApp-Speichertrick",
+      "Downloads und App-Cache leeren"
+    ],
+    "paragraphs": [
+      "In WhatsApp sammeln sich über Monate hinweg tausende Begrüßungsbilder, Witze-Videos und Sprachnachrichten. Viele wissen nicht, dass diese auf dem Gerät gespeichert bleiben, selbst wenn man sie längst vergessen hat.",
+      "Tippe in WhatsApp auf Einstellungen > „Speicher und Daten“ > „Speicher verwalten“. Dort siehst du auf einen Blick alle Dateien, die größer als 5 MB sind, und kannst sie bequem löschen.",
+      "Prüfe im Menü „Dateien“ oder „Eigene Dateien“ den Ordner „Downloads“. Oft liegen dort alte PDF-Rechnungen, Fahrpläne oder Handbücher, die längst nicht mehr gebraucht werden."
+    ],
+    "reading": {
+      "audience": "Für alle Nutzer mit knapper Speicherkapazität",
+      "actions": [
+        "Öffne Einstellungen > „Speicher“ für einen Gesamtüberblick",
+        "Öffne WhatsApp > Einstellungen > „Speicher verwalten“",
+        "Lösche ungenutzte Apps, die du seit Monaten nicht geöffnet hast"
+      ]
+    },
+    "tip": "Nutze die offizielle App „Files by Google“ (auf Android) – sie schlägt dir automatisch doppelte Dateien und temporären Müll zum Löschen vor.",
+    "checkedAt": "2026-09-06",
+    "sources": [
+      {
+        "title": "Google Support: Speicherplatz auf Android-Geräten freigeben",
+        "url": "https://support.google.com"
+      }
+    ]
+  },
+  {
+    "id": "fake-news-bilder-erkennen-2026",
+    "title": "Gefälschte Nachrichten & Bilder im Netz: So prüfst du den Wahrheitsgehalt",
+    "category": "Medien & Informationen",
+    "date": "2026-09-06",
+    "dateLabel": "Ratgeber",
+    "relevance": "Schützt davor, auf erfundene Skandalmeldungen oder manipulierte KI-Bilder hereinzufallen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei reißerischen Sensationsmeldungen in sozialen Medien, Messenger-Gruppen oder dubiosen Webseiten.",
+      "action": "recommended",
+      "advice": "Vor dem Weiterleiten kurz innehalten: Wer berichtet noch darüber? Ist die Quelle vertrauenswürdig?"
+    },
+    "takeaway": "Im Internet verbreiten sich Falschmeldungen rasend schnell, weil sie starke Gefühle wie Wut oder Angst erzeugen. Mit drei einfachen Fragen entlarvst du die meisten Fälschungen, bevor du sie versehentlich an Freunde weiterleitest.",
+    "paragraphTitles": [
+      "Das Bauchgefühl: Macht die Meldung dich sofort wütend?",
+      "Die umgekehrte Bildersuche mit Google",
+      "Faktenchecker als verlässliche Anlaufstelle"
+    ],
+    "paragraphs": [
+      "Seriöse Journalisten formulieren sachlich. Schreit dich eine Überschrift mit Großbuchstaben, Ausrufezeichen und Formulierungen wie „Das verschweigen die Medien!“ an, handelt es sich mit höchster Wahrscheinlichkeit um Manipulation oder Clickbait.",
+      "Wird ein spektakuläres Foto gezeigt? Nutze die kostenlose „Google Bildersuche“: Lade das Foto dort hoch. Oft zeigt sich sofort, dass das Bild uralt ist und aus einem ganz anderen Land oder Kontext stammt.",
+      "Unabhängige Organisationen wie der „ARD-Faktenfinder“ oder das Recherchenetzwerk „Correctiv“ untersuchen aktuelle Gerüchte im Detail und erklären verständlich, was wirklich an einer Geschichte dran ist."
+    ],
+    "reading": {
+      "audience": "Für alle Internet- und Social-Media-Nutzer",
+      "actions": [
+        "Leite Nachrichten in WhatsApp-Gruppen niemals ungeprüft weiter",
+        "Suche in einer Suchmaschine nach der Schlagzeile + dem Wort „Faktencheck“",
+        "Prüfe das Impressum der Webseite, die die Nachricht verbreitet"
+      ]
+    },
+    "tip": "Merke dir: Eine Meldung wird nicht wahrer, nur weil sie von einem guten Bekannten in einer WhatsApp-Gruppe geteilt wurde.",
+    "checkedAt": "2026-09-06",
+    "sources": [
+      {
+        "title": "Tagesschau: ARD-Faktenfinder",
+        "url": "https://www.tagesschau.de/faktenfinder"
+      },
+      {
+        "title": "Correctiv: Unabhängiger Faktencheck",
+        "url": "https://correctiv.org/faktencheck"
+      }
+    ]
+  },
+  {
+    "id": "dokumente-sauber-scannen-2026",
+    "title": "Nie wieder krumme Handyfotos: Dokumente mit dem Smartphone scannen",
+    "category": "Formulare & Anträge",
+    "date": "2026-09-05",
+    "dateLabel": "Praxistipp",
+    "relevance": "Erzeugt gestochen scharfe, gerade PDFs von Briefen und Rechnungen ohne Scanner.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Anträge, Steuerbelege oder Krankenkassen-Rechnungen, die als PDF hochgeladen werden müssen.",
+      "action": "recommended",
+      "advice": "Nutze die Scan-Funktion in Google Drive, Apple Notizen oder Adobe Scan statt einfacher Kamerafotos."
+    },
+    "takeaway": "Ein einfaches Foto eines Papierbriefs hat oft Schatten, knickige Ecken und ist schwer lesbar. Eine echte Scan-Funktion schneidet das Blatt automatisch gerade zu, entfernt Schatten und macht den Text tiefschwarz wie aus dem Fotokopierer.",
+    "paragraphTitles": [
+      "Warum ein Scan besser ist als ein simples Foto",
+      "Die integrierte Scan-Funktion in Google Drive und Apple Notizen",
+      "Mehrseitige Dokumente in einer einzigen PDF bündeln"
+    ],
+    "paragraphs": [
+      "Behörden und Krankenkassen fordern oft ein PDF-Format. Ein Smartphone-Scan richtet schiefe Blickwinkel automatisch perspektivisch gerade und wandelt die Datei direkt in ein kompaktes, gut lesbares PDF um.",
+      "Auf Android: Öffne die Google Drive App und tippe auf das Plus-Zeichen > „Scannen“. Auf dem iPhone: Öffne die Notizen-App, erstelle eine Notiz, tippe auf das Kamera-Symbol und wähle „Dokumente scannen“.",
+      "Besonders praktisch: Du kannst mehrere Seiten nacheinander abfotografieren. Die App fügt alle Seiten automatisch zu einem einzigen Dokument zusammen – ideal für mehrseitige Verträge."
+    ],
+    "reading": {
+      "audience": "Für alle, die Rechnungen und Behördenbriefe digital einreichen",
+      "actions": [
+        "Lege das Papier auf einen dunklen, gut beleuchteten Tisch ohne Schattenwurf",
+        "Halte das Smartphone ruhig über das Dokument – die App erkennt die Kanten von selbst",
+        "Speichere das Dokument als PDF und gib ihm einen klaren Namen (z. B. 2026_Nebenkosten.pdf)"
+      ]
+    },
+    "tip": "Gute Beleuchtung von der Seite verhindert, dass dein eigenes Smartphone einen Schatten auf das Blatt wirft.",
+    "checkedAt": "2026-09-05",
+    "sources": [
+      {
+        "title": "Google Support: Dokumente mit Google Drive scannen",
+        "url": "https://support.google.com"
+      },
+      {
+        "title": "Apple Support: Dokumente mit der Notizen-App scannen",
+        "url": "https://support.apple.com"
+      }
+    ]
+  },
+  {
+    "id": "browser-lesemodus-2026",
+    "title": "Der Lesemodus im Browser: Webtexte sauber und ohne störendes Drumherum lesen",
+    "category": "Lernen & Wissen",
+    "date": "2026-09-05",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verwandelt unübersichtliche Webseiten in ein sauberes, augenfreundliches Buchformat.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für längere Zeitungsartikel, Ratgeber und Rezeptseiten im Internet.",
+      "action": "recommended",
+      "advice": "In der Adressleiste des Browsers nach dem kleinen Text- oder Buchsymbol Ausschau halten."
+    },
+    "takeaway": "Wer im Internet liest, wird oft von blinkenden Bannern, verschobenen Zeilen und aufdringlichen Videos gestört. Der integrierte Lesemodus blendet den ganzen Ballast mit einem Fingertipp aus – wie auf einem E-Book-Reader.",
+    "paragraphTitles": [
+      "Wo sich der Lesemodus versteckt",
+      "Schriftart, Hintergrund und Helligkeit individuell anpassen",
+      "Den Text einfach laut vorlesen lassen"
+    ],
+    "paragraphs": [
+      "Auf dem iPhone: Tippe links in der Safari-Adressleiste auf das Symbol „aA“ und wähle „Reader einblenden“. Auf Android/Chrome: Bei vielen Texten erscheint unten automatisch der Hinweis „Vereinfachte Ansicht anzeigen“.",
+      "Im Lesemodus kannst du die Schriftgröße mit einem Tippen vergrößern, die Schriftart wechseln oder den Hintergrund auf warmes Sepia oder dunklen Kontrast umstellen.",
+      "Viele Browser bieten im Lesemodus sogar einen Vorleseknopf: Das Telefon liest dir den gesamten Zeitungsartikel in angenehmer Sprache vor, während du dich entspannt zurücklehnst."
+    ],
+    "reading": {
+      "audience": "Für alle, die gern online Zeitung und Artikel lesen",
+      "actions": [
+        "Öffne einen Nachrichtenartikel im Internet",
+        "Tippe auf das Symbol für den Lesemodus in der Adresszeile",
+        "Passe Schriftgröße und Zeilenabstand nach deinem Geschmack an"
+      ]
+    },
+    "tip": "Der Lesemodus funktioniert auch auf Rezeptseiten hervorragend – keine Werbebanner mehr, die die Mengenangaben der Zutaten verdecken!",
+    "checkedAt": "2026-09-05",
+    "sources": [
+      {
+        "title": "Apple Support: Webseiten im Safari-Reader lesen",
+        "url": "https://support.apple.com"
+      },
+      {
+        "title": "Google Support: Lesemodus in Chrome verwenden",
+        "url": "https://support.google.com"
+      }
+    ]
+  },
+  {
+    "id": "zwei-faktor-authentifizierung-2026",
+    "title": "2-Faktor-Authentifizierung: Der unknackbare zweite Riegel für deine Konten",
+    "category": "Sicherheit & Schutz",
+    "date": "2026-09-04",
+    "dateLabel": "Ratgeber",
+    "relevance": "Macht Konten selbst dann sicher, wenn Kriminelle dein Passwort kennen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Empfohlen für Google, Apple, E-Mail-Postfächer, Online-Shops und soziale Netzwerke.",
+      "action": "recommended",
+      "advice": "Aktiviere die 2-Faktor-Authentifizierung in deinem wichtigsten E-Mail-Konto."
+    },
+    "takeaway": "Passwörter können durch Datenlecks im Internet landen. Mit der 2-Faktor-Authentifizierung (2FA) genügt Kriminellen das Passwort nicht mehr: Ein Einbruchsversuch scheitert, weil der Täter keinen Zugriff auf dein persönliches Smartphone hat.",
+    "paragraphTitles": [
+      "Was bedeutet 2-Faktor-Authentifizierung?",
+      "SMS-Code, Authentifikator-App oder Bestätigung am Display",
+      "Warum dein E-Mail-Konto oberste Priorität hat"
+    ],
+    "paragraphs": [
+      "Vergleichbar mit der Haustür: Das Passwort ist der Schlüssel, der zweite Faktor ist der Riegel von innen. Selbst wenn jemand deinen Schlüssel nachmacht, kommt er ohne dein Smartphone nicht hinein.",
+      "Beim Einloggen auf einem neuen Computer poppt auf deinem Smartphone eine kurze Abfrage auf: „Versuchst du dich gerade anzumelden?“. Ein einfacher Tipp auf „Ja, das bin ich“ genügt zur Freigabe.",
+      "Schütze zuerst dein zentrales E-Mail-Konto! Wenn Betrüger dein E-Mail-Passwort knacken, können sie bei allen anderen Konten (Amazon, PayPal, Bank) auf „Passwort vergessen“ klicken und dein digitales Leben übernehmen."
+    ],
+    "reading": {
+      "audience": "Für alle Internetnutzer",
+      "actions": [
+        "Gehe in die Sicherheitseinstellungen deines E-Mail-Anbieters",
+        "Aktiviere den Menüpunkt „2-Schritt-Verifizierung“ oder „2FA“",
+        "Hinterlege dein Smartphone als sicheres Bestätigungsgerät"
+      ]
+    },
+    "tip": "Drucke die angezeigten Notfall-Wiederherstellungscodes auf Papier aus und lege sie zu deinen wichtigen Dokumenten im Schrank.",
+    "checkedAt": "2026-09-04",
+    "sources": [
+      {
+        "title": "BSI: Zwei-Faktor-Authentisierung einfach erklärt",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "videotelefonie-tipps-2026",
+    "title": "Bequem videotelefonieren mit Familie: Bild und Ton optimieren",
+    "category": "Kommunikation & Mobilität",
+    "date": "2026-09-02",
+    "dateLabel": "Ratgeber",
+    "relevance": "Sorgt für wackelfreies Bild, glasklare Stimmen und entspannte Gespräche.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Videoanrufe über WhatsApp, FaceTime oder Skype mit Kindern und Enkeln.",
+      "action": "recommended",
+      "advice": "Smartphone anlehnen oder Ständer nutzen und sich mit dem Gesicht zum Fenster setzen."
+    },
+    "takeaway": "Beim Videotelefonieren ermüdet schnell der Arm, wenn man das Smartphone minutenlang in der Hand hält. Ein kleiner Ständer oder eine Tasse zum Anlehnen sorgt für Ruhe – und gutes Licht von vorne lässt dich optimal aussehen.",
+    "paragraphTitles": [
+      "Das Licht: Niemals gegen das Fenster sitzen",
+      "Fester Stand statt wackelnder Hand",
+      "Kopfhörer für deutlicheren Ton"
+    ],
+    "paragraphs": [
+      "Sitzt du mit dem Rücken zum Fenster, sieht dein Gesprächspartner nur einen dunklen Schatten. Setze dich stattdessen mit dem Gesicht zum Fenster oder stelle eine kleine Lampe vor dich.",
+      "Lehne dein Smartphone gegen ein Buch oder nutze eine kleine Halterung. So kannst du beide Hände frei bewegen, eine Tasse Kaffee trinken und das Bild bleibt ruhig.",
+      "Einfache Kabel-Kopfhörer oder kabellose Ohrhörer filtern Hall und Echos heraus. Das ist besonders angenehm, wenn mehrere Personen im Raum sprechen oder Nebengeräusche stören."
+    ],
+    "reading": {
+      "audience": "Für alle, die gern mit Verwandten über Video in Kontakt bleiben",
+      "actions": [
+        "Positioniere das Gerät auf Augenhöhe statt steil von unten",
+        "Achte auf eine Lichtquelle, die dein Gesicht von vorne beleuchtet",
+        "Nutze bei leiser Sprache ein einfaches Headset"
+      ]
+    },
+    "tip": "Wische die Frontkamera deines Smartphones vor dem Anruf kurz mit einem weichen Tuch ab – Fingerabdrücke machen das Bild oft milchig.",
+    "checkedAt": "2026-09-02",
+    "sources": [
+      {
+        "title": "Digitaler Engel: Tipps für gelungene Videoanrufe",
+        "url": "https://www.digitaler-engel.org"
+      }
+    ]
+  },
+  {
+    "id": "ki-beim-briefe-schreiben-2026",
+    "title": "Mit KI Briefe, Einsprüche und E-Mails formulieren: So gibst du gute Stichpunkte",
+    "category": "KI & digitale Assistenz",
+    "date": "2026-09-01",
+    "dateLabel": "Praxistipp",
+    "relevance": "Nimmt die Schreibblockade bei förmlichen Beschwerden, Kündigungen oder Behördenbriefen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die sich beim Verfassen förmlicher Schreiben unsicher fühlen.",
+      "action": "recommended",
+      "advice": "Der KI drei einfache Stichpunkte geben und um einen höflichen, bestimmten Tonfall bitten."
+    },
+    "takeaway": "Einen sachlichen Brief an den Vermieter oder einen Widerspruch gegen eine fehlerhafte Handwerkerrechnung aufzusetzen, kostet oft Überwindung. Moderne KI-Helfer formulieren aus wenigen Stichpunkten in Sekunden einen perfekten Briefentwurf.",
+    "paragraphTitles": [
+      "Die drei magischen Angaben für die KI",
+      "Vom Rohentwurf zum perfekten Brief",
+      "Privatsphäre wahren: Keine echten Namen eingeben"
+    ],
+    "paragraphs": [
+      "Sag der KI genau drei Dinge: 1. Wer bist du? (z. B. Mieter), 2. An wen geht der Brief? (z. B. Hausverwaltung), 3. Was ist das Problem und was forderst du? (z. B. Heizung seit 3 Tagen kalt, Bitte um Reparatur bis Freitag).",
+      "Die KI spuckt sofort einen vollständigen Brief mit passender Anrede, Datumszeile und juristisch sauberer, höflicher Wortwahl aus. Du musst den Text nur noch durchlesen und an deine persönliche Situation anpassen.",
+      "Wichtig: Gib der KI niemals deine echte Adresse, Kontonummer oder Geburtsdaten ein. Schreibe stattdessen Platzhalter wie „[Mein Name]“ oder „[Meine Straße]“ und trage die Daten erst auf deinem eigenen Computer ein."
+    ],
+    "reading": {
+      "audience": "Für alle, die Zeit und Nerven beim Schriftverkehr sparen wollen",
+      "actions": [
+        "Öffne den Digitalen Assistenten oder eine KI-App",
+        "Formuliere deine Anfrage: „Schreibe einen höflichen Brief an...“",
+        "Lies den Vorschlag in Ruhe durch und passe ihn an"
+      ]
+    },
+    "tip": "Gefällt dir der Text nicht ganz? Schreib einfach: „Mache den Brief etwas kürzer und noch bestimmter.“ – die KI ändert ihn sofort.",
+    "checkedAt": "2026-09-01",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Musterbriefe und digitale Hilfen",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "paypal-kaeuferschutz-2026",
+    "title": "Wann greift der PayPal-Käuferschutz – und wann verlierst du dein Geld?",
+    "category": "Online-Banking & Einkauf",
+    "date": "2026-08-31",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert den Verlust von Geld beim Einkauf über Kleinanzeigen oder Online-Märkte.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Einkäufe bei eBay Kleinanzeigen, Vinted oder kleineren Händlern.",
+      "action": "recommended",
+      "advice": "Wähle beim Bezahlen an Fremde niemals „Freunde & Familie“, sondern immer „Waren & Dienstleistungen“."
+    },
+    "takeaway": "Verkäufer auf Kleinanzeigen-Portalen bitten gern: „Zahl bitte per PayPal Freunde, dann sparen wir die Gebühren“. Wer darauf eingeht, verzichtet freiwillig auf jeglichen Käuferschutz. Kommt das Paket nicht an, erstattet PayPal keinen einzigen Cent.",
+    "paragraphTitles": [
+      "Der fundamentale Unterschied: Freunde vs. Waren",
+      "Was der Käuferschutz genau abdeckt",
+      "Wie du im Problemfall einen Konflikt meldest"
+    ],
+    "paragraphs": [
+      "Die Option „Freunde & Familie“ ist ausschließlich für Menschen gedacht, denen du persönlich vertraust (z. B. um das Abendessen mit Bekannten aufzuteilen). Nur bei „Waren & Dienstleistungen“ greift der offizielle PayPal-Käuferschutz.",
+      "Kommt der Artikel nicht an, ist die Ware beschädigt oder handelt es sich um eine Fälschung, kannst du innerhalb von 180 Tagen bei PayPal einen Konflikt melden. Der Händler muss den Nachweis erbringen – kann er das nicht, erhältst du den vollen Kaufpreis samt Porto zurück.",
+      "Übernehme bei privaten Verkäufern im Zweifel lieber selbst die kleine Gebühr von 2 bis 3 Prozent – diese minimale Summe ist deine sichere Versicherung gegen Betrug."
+    ],
+    "reading": {
+      "audience": "Für Nutzer von PayPal und Online-Marktplätzen",
+      "actions": [
+        "Tippe beim Senden von Geld stets auf „Für Waren und Dienstleistungen bezahlen“",
+        "Lehne Verkäufer ab, die trotz Angebot der Gebührenübernahme auf „Freunde“ bestehen",
+        "Hebe Sendungsnummern und Chatverläufe gut auf"
+      ]
+    },
+    "tip": "Bei Problemen hast du in deinem PayPal-Konto unter „Aktivitäten“ bei jeder Buchung den Button „Problem melden“.",
+    "checkedAt": "2026-08-31",
+    "sources": [
+      {
+        "title": "PayPal Support: Bedingungen für den Käuferschutz",
+        "url": "https://www.paypal.com"
+      }
+    ]
+  },
+  {
+    "id": "notfallausweis-im-sperrbildschirm-2026",
+    "title": "Notfallkontakt im Sperrbildschirm: Ersthelfern wichtige Infos bereitstellen",
+    "category": "Vorsorge & Warnungen",
+    "date": "2026-08-31",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Ermöglicht Sanitätern und Notärzten den Zugriff auf Blutgruppe, Allergien und Angehörige trotz gesperrtem Handy.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Lebenswichtig bei Unfällen oder plötzlicher Bewusstlosigkeit.",
+      "action": "recommended",
+      "advice": "In den Notfall-Einstellungen des Smartphones den Notfallausweis ausfüllen."
+    },
+    "takeaway": "Im Ernstfall zählt jede Minute. Notärzte suchen bei bewusstlosen Personen oft nach dem Smartphone. Doch dieses ist mit PIN oder Fingerabdruck gesperrt. Über den digitalen Notfallausweis können Retter lebenswichtige Angaben lesen, ohne dein Telefon entsperren zu müssen.",
+    "paragraphTitles": [
+      "Was Ersthelfer auf dem gesperrten Display sehen",
+      "Welche Daten sinnvoll sind (und welche nicht)",
+      "So richtest du den Notfallausweis in 2 Minuten ein"
+    ],
+    "paragraphs": [
+      "Tippt man auf dem Sperrbildschirm auf „Notruf“, erscheint ein rotes Feld „Notfallausweis“. Hier können Sanitäter Blutgruppe, chronische Vorerkrankungen (z. B. Diabetes, Herzschrittmacher), Medikamenteneinnahmen und Notfallkontakte ablesen.",
+      "Die hinterlegten Notfallkontakte (z. B. Ehepartner oder Kinder) können von diesem Bildschirm aus direkt angerufen werden – ohne dass der Helfer Zugriff auf deine WhatsApp-Nachrichten oder privaten Fotos erhält.",
+      "Auf Android: Einstellungen > „Sicherheit und Notfall“ > „Medizinische Informationen“ & „Notfallkontakte“. Auf dem iPhone: Einstellungen > „Health“ > „Notfallpass“ > Schalter bei „Im Sperrzustand zeigen“ aktivieren."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone-Besitzer",
+      "actions": [
+        "Öffne die Notfalleinstellungen deines Smartphones",
+        "Trage mindestens einen verlässlichen Notfallkontakt ein",
+        "Notiere wichtige Allergien (z. B. Penicillin) und Dauermedikation"
+      ]
+    },
+    "tip": "Sperre dein Telefon nach dem Ausfüllen und teste selbst: Klicke auf „Notruf“ und prüfe, ob der Notfallpass wie gewünscht angezeigt wird.",
+    "checkedAt": "2026-08-31",
+    "sources": [
+      {
+        "title": "Deutsches Rotes Kreuz (DRK): Notfallpass am Smartphone",
+        "url": "https://www.drk.de"
+      }
+    ]
+  },
+  {
+    "id": "rentenversicherung-digital-2026",
+    "title": "Deutsche Rentenversicherung online: Rentenauskunft und Bescheide abrufen",
+    "category": "Digitale Verwaltung",
+    "date": "2026-08-30",
+    "dateLabel": "Praxistipp",
+    "relevance": "Gibt sofortige Klarheit über Versicherungsverlauf, Rentenpunkte und Renteneintrittsalter.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wichtig für alle Erwerbstätigen und angehenden Ruheständler.",
+      "action": "recommended",
+      "advice": "Im Online-Portal der Deutschen Rentenversicherung mit Ausweis anmelden und Rentenverlauf prüfen."
+    },
+    "takeaway": "Kein Warten auf den jährlichen Brief der Rentenversicherung: Im Online-Portal kannst du deinen Versicherungsverlauf lückenlos prüfen, Fehlzeiten melden und deinen aktuellen Rentenanspruch sekundenschnell als PDF herunterladen.",
+    "paragraphTitles": [
+      "Lücken im Versicherungsverlauf frühzeitig schließen",
+      "Rentenauskunft und Renteninformation sofort als PDF",
+      "Anträge online einreichen ohne Postlaufzeiten"
+    ],
+    "paragraphs": [
+      "Oft fehlen im Rentenkonto Schulzeiten, Kindererziehungszeiten oder Auslandsaufenthalte. Wer diese Lücken frühzeitig erkennt, vermeidet spätere finanzielle Einbußen beim Renteneintritt.",
+      "Im Portal kannst du jederzeit berechnen lassen, wann du abschlagsfrei in Rente gehen kannst und wie hoch die Rente nach heutigem Stand ausfallen wird.",
+      "Auch der eigentliche Rentenantrag oder ein Antrag auf medizinische Rehabilitation lässt sich komplett digital ausfüllen und mit wenigen Klicks absenden."
+    ],
+    "reading": {
+      "audience": "Für alle Arbeitnehmer, Selbstständigen und Rentner",
+      "actions": [
+        "Gehe auf www.deutsche-rentenversicherung.de",
+        "Melde dich mit Personalausweis oder BundID an",
+        "Lade deinen aktuellen Versicherungsverlauf herunter"
+      ]
+    },
+    "tip": "Speichere dir die heruntergeladenen Rentenbescheide in einem gesonderten Ordner auf deinem Computer ab, um alle Unterlagen geordnet beisammenzuhaben.",
+    "checkedAt": "2026-08-30",
+    "sources": [
+      {
+        "title": "Deutsche Rentenversicherung: Online-Dienste",
+        "url": "https://www.deutsche-rentenversicherung.de"
+      }
+    ]
+  },
+  {
+    "id": "strom-handy-tarifvergleich-2026",
+    "title": "Tarifwechsel ohne Stress: Was Vergleichsportale dir oft verschweigen",
+    "category": "Verträge & Abos",
+    "date": "2026-08-30",
+    "dateLabel": "Ratgeber",
+    "relevance": "Spart jährlich Hunderte Euro bei Strom, Gas und Mobilfunk ohne Versorgungsunterbrechung.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei Preiserhöhungen oder auslaufenden Mindestvertragslaufzeiten.",
+      "action": "recommended",
+      "advice": "Filter bei Vergleichsportalen auf „Bonus nicht einrechnen“ stellen und den neuen Anbieter kündigen lassen."
+    },
+    "takeaway": "Viele scheuen den Wechsel von Strom- oder Handytarifen aus Angst vor Papierkram oder Stromausfall. Dabei ist gesetzlich garantiert, dass die Versorgung nahtlos weiterläuft – und der neue Anbieter übernimmt fast immer die Kündigung für dich.",
+    "paragraphTitles": [
+      "Der Trick mit den Neukundenboni",
+      "Gesetzliche Sicherheit: Es gibt keinen Stromausfall",
+      "Sonderkündigungsrecht bei jeder Preiserhöhung"
+    ],
+    "paragraphs": [
+      "Vergleichsportale rechnen oft hohe Einmalboni in den monatlichen Preis ein. Im zweiten Jahr wird der Tarif dann plötzlich massiv teurer. Deaktiviere in den Sucheinstellungen das Häkchen bei „Boni einrechnen“, um die echten Dauerkosten zu sehen.",
+      "Keine Sorge vor dunklen Zimmern: Der örtliche Grundversorger ist in Deutschland gesetzlich verpflichtet, dich unterbrechungsfrei weiter mit Strom zu beliefern, selbst wenn bei einem Wechsel eine Verzögerung auftritt.",
+      "Erhöht dein Anbieter die Preise? Dann hast du immer ein gesetzliches Sonderkündigungsrecht – egal, wie lange die normale Mindestlaufzeit noch gedauert hätte."
+    ],
+    "reading": {
+      "audience": "Für alle Haushalte und Vertragsinhaber",
+      "actions": [
+        "Halte deine letzte Jahresabrechnung und Zählernummer bereit",
+        "Nutze Vergleichsportale mit konservativen Filtereinstellungen",
+        "Lass den neuen Anbieter den alten Vertrag kündigen"
+      ]
+    },
+    "tip": "Nach Ablauf der 2-jährigen Erstlaufzeit sind Handy- und Stromverträge seit 2022 gesetzlich monatlich kündbar!",
+    "checkedAt": "2026-08-30",
+    "sources": [
+      {
+        "title": "Bundesnetzagentur: Stromanbieter wechseln",
+        "url": "https://www.bundesnetzagentur.de"
+      }
+    ]
+  },
+  {
+    "id": "krankenkassen-app-bonus-nachweis-2026",
+    "title": "Die App deiner Krankenkasse: Krankschreibungen, Rechnungen und Bonusprogramm",
+    "category": "Gesundheit & E-Rezept",
+    "date": "2026-08-30",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Spart Portokosten und bringt bares Geld durch digitale Bonushefte und Vorsorgeprämien.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Mitglieder aller gesetzlichen Krankenkassen (TK, Barmer, DAK, AOK, IKK etc.).",
+      "action": "recommended",
+      "advice": "App der eigenen Krankenkasse herunterladen und Registrierung mit Ausweis oder Aktivierungscode durchführen."
+    },
+    "takeaway": "Zahnarzt-Vorsorge, Krebsfrüherkennung oder Sportverein: Viele Krankenkassen zahlen jährlich Prämien von 50 bis 150 Euro aus. In den Kassen-Apps fotografierst du den Stempel einfach ab und erhältst das Bonusgeld direkt aufs Konto.",
+    "paragraphTitles": [
+      "Prämien kassieren mit dem digitalen Bonusheft",
+      "Rechnungen für Osteopathie oder Sehhilfen per Foto einreichen",
+      "Auslandsreisekrankenschein digital abrufen"
+    ],
+    "paragraphs": [
+      "Früher musste man das Papierheftchen mit Stempeln zur Geschäftsstelle tragen. In der App lädst du die Bestätigung von Zahnarzt oder Fitnesskurs hoch – die Auszahlung erfolgt meist nach wenigen Tagen.",
+      "Zahlt deine Krankenkasse Zuschüsse zur professionellen Zahnreinigung oder Osteopathie? Rechnung auf den Küchentisch legen, mit der App abfotografieren und absenden. Die Erstattung kommt ohne Postweg.",
+      "Auch Versicherungsbescheinigungen für den Arbeitgeber, die Universität oder Krankenscheine für Auslandsreisen (EHIC) lassen sich sekundenschnell als offizielle PDF herunterladen."
+    ],
+    "reading": {
+      "audience": "Für alle gesetzlich und privat Krankenversicherten",
+      "actions": [
+        "Lade die offizielle App deiner Krankenkasse",
+        "Fordere den Freischaltcode per Post an oder nutze deinen Online-Ausweis",
+        "Prüfe die Bedingungen des jährlichen Bonusprogramms"
+      ]
+    },
+    "tip": "Elektronische Arbeitsunfähigkeitsbescheinigungen (eAU) übermittelt dein Arzt heute automatisch an Kasse und Arbeitgeber – du musst den Zettel nicht mehr selbst verschicken.",
+    "checkedAt": "2026-08-30",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Was Krankenkassen-Apps können",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "pflegegrad-antrag-online-2026",
+    "title": "Pflegegrad-Antrag digital einreichen: Was du vorab parat haben solltest",
+    "category": "Formulare & Anträge",
+    "date": "2026-08-29",
+    "dateLabel": "Ratgeber",
+    "relevance": "Beschleunigt die Bearbeitung und sichert Ansprüche ab dem Antragsmonat.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wenn Angehörige oder man selbst Unterstützung im Alltag benötigt.",
+      "action": "recommended",
+      "advice": "Antrag formlos oder digital über das Portal der Pflegekasse stellen, um keine Fristen zu versäumen."
+    },
+    "takeaway": "Pflegeleistungen werden ab dem Monat gezahlt, in dem der Antrag bei der Pflegekasse eingegangen ist. Wer den Antrag digital einreicht, hat sofort einen Eingangsnachweis in der Hand und verliert keine wertvolle Zeit.",
+    "paragraphTitles": [
+      "Der Stichtag: Warum schnelles Handeln bares Geld bedeutet",
+      "Welche Angaben und Dokumente vorab nötig sind",
+      "Die Vorbereitung auf den Besuch des Medizinischen Dienstes (MD)"
+    ],
+    "paragraphs": [
+      "Selbst wenn die Begutachtung durch den Medizinischen Dienst erst Wochen später stattfindet: Das Pflegegeld wird rückwirkend ab dem Antragsdatum überwiesen. Ein digitaler Antrag sichert diesen Anspruch minutengenau.",
+      "Halte die Versichertennummer der pflegebedürftigen Person, Kontaktdaten der behandelnden Ärzte, eine Liste der aktuellen Medikamente und vorhandene Arztberichte bereit.",
+      "Führe in den Tagen vor dem Gutachterbesuch ein kurzes Pflegetagebuch: Wo wird Hilfe beim Aufstehen, Waschen, Kochen oder bei Behördengängen gebraucht? Das erleichtert die Einstufung enorm."
+    ],
+    "reading": {
+      "audience": "Für pflegende Angehörige und Betroffene",
+      "actions": [
+        "Öffne die Internetseite oder App der zuständigen Krankenkasse/Pflegekasse",
+        "Nutze das Online-Formular „Erstantrag auf Pflegeleistungen“",
+        "Sichere die Sendebestätigung als PDF"
+      ]
+    },
+    "tip": "Kostenlose und unabhängige Beratung vor dem Antrag bieten die örtlichen Pflegestützpunkte deiner Stadt.",
+    "checkedAt": "2026-08-29",
+    "sources": [
+      {
+        "title": "Bundesministerium für Gesundheit: Pflegeleistungen beantragen",
+        "url": "https://www.bundesgesundheitsministerium.de"
+      }
+    ]
+  },
+  {
+    "id": "display-schrift-vergroessern-2026",
+    "title": "Schriftgröße & Kontrast: So wird das Display augenfreundlich",
+    "category": "Geräte & Technik",
+    "date": "2026-08-28",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Macht Texte auf dem Smartphone ohne Lesebrille wieder mühelos lesbar.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die Texte auf dem Smartphone als zu klein, grau oder anstrengend empfinden.",
+      "action": "recommended",
+      "advice": "Schriftgröße um eine oder zwei Stufen anheben und fetten Text aktivieren."
+    },
+    "takeaway": "Niemand muss sich mit mikroskopisch kleinen Buchstaben quälen. Moderne Smartphones bieten hervorragende Sehhilfen: vergrößerte Schrift, fettere Buchstaben und augenschonende Farbtemperaturen für den Abend.",
+    "paragraphTitles": [
+      "Schriftgröße in den Einstellungen anpassen",
+      "Fettschrift und hoher Kontrast",
+      "Der Augenkomfort-Modus (Blaulichtfilter)"
+    ],
+    "paragraphs": [
+      "Unter „Anzeige“ oder „Bedienungshilfen“ findest du den Schieberegler für Schriftgröße. Du kannst in Echtzeit sehen, wie sich die Lesbarkeit verändert, ohne dass Webseiten kaputtgehen.",
+      "Zusätzlich zur Größe hilft die Option „Fetter Text“: Sie verstärkt die Linien der Buchstaben, wodurch der Kontrast zum hellen Hintergrund drastisch steigt.",
+      "Für die Abendstunden empfiehlt sich der „Augenkomfort“ oder „Night Shift“: Er filtert grelles blaues Licht heraus und taucht das Display in ein warmes, schlaffreundliches Licht."
+    ],
+    "reading": {
+      "audience": "Für alle, die entspannter auf ihr Display blicken wollen",
+      "actions": [
+        "Öffne Einstellungen > „Anzeige“ oder „Bedienungshilfen“",
+        "Wähle „Schriftgröße und -stil“ und ziehe den Regler nach rechts",
+        "Aktiviere den Schalter für „Fetter Text“"
+      ]
+    },
+    "tip": "Du kannst auch nur einzelne Webseiten im Browser größer zoomen: Ziehe dazu einfach zwei Finger auf dem Bildschirm auseinander.",
+    "checkedAt": "2026-08-28",
+    "sources": [
+      {
+        "title": "BSI – Barrierefreiheit und Bedienungshilfen am Smartphone",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "podcasts-hoerbuecher-einsteiger-2026",
+    "title": "Podcasts & Hörbücher für Einsteiger: Spannende Radiosendungen auf Abruf",
+    "category": "Medien & Informationen",
+    "date": "2026-08-28",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Eröffnet eine riesige, kostenlose Welt aus Hörspielen, Wissenssendungen und Interviews.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die beim Spazierengehen, Kochen oder Entspannen gern interessante Geschichten hören.",
+      "action": "recommended",
+      "advice": "ARD Audiothek App oder integrierte Podcast-App öffnen und nach Lieblingsthemen stöbern."
+    },
+    "takeaway": "Was früher das Radiohörspiel am Sonntagabend war, heißt heute Podcast. Das Beste daran: Du bist an keine Sendezeit gebunden. Ob Geschichte, Gesundheit, Garten oder Kriminalfälle – für jedes Interesse gibt es tausende kostenlose Sendungen.",
+    "paragraphTitles": [
+      "Was genau ist ein Podcast?",
+      "Die ARD Audiothek: Ein Schatz an hochwertigen Hörstücken",
+      "Praktische Funktionen: Pause, Einschlaftimer und Tempo"
+    ],
+    "paragraphs": [
+      "Ein Podcast ist wie eine Radiosendung in Folgen, die du jederzeit abspielen kannst. Du kannst Sendungen abonnieren, sodass neue Folgen automatisch auf deinem Telefon erscheinen.",
+      "Eine der besten und komplett werbefreien Quellen im deutschsprachigen Raum ist die „ARD Audiothek“. Dort findest du Hörspiele, Dokumentationen von NDR, WDR, SWR und BR sowie Wissensmagazine wie „Radiowissen“.",
+      "Hörst du gern zum Einschlafen? Aktiviere den „Schlummermodus“ (Sleeptimer) – die Wiedergabe stoppt dann automatisch nach beispielsweise 30 Minuten, damit der Akku nicht die ganze Nacht durchläuft."
+    ],
+    "reading": {
+      "audience": "Für Radio- und Hörbuchfreunde",
+      "actions": [
+        "Lade die kostenlose App „ARD Audiothek“ auf dein Gerät",
+        "Tippe auf die Lupe und suche nach Themen wie „Geschichte“, „Garten“ oder „Krimi“",
+        "Drücke auf Play und passe die Lautstärke an"
+      ]
+    },
+    "tip": "Über ein einfaches Bluetooth-Kabel oder einen kleinen Bluetooth-Lautsprecher kannst du Podcasts im ganzen Wohnzimmer in hervorragender Klangqualität hören.",
+    "checkedAt": "2026-08-28",
+    "sources": [
+      {
+        "title": "Offizielle ARD Audiothek",
+        "url": "https://www.ardaudiothek.de"
+      }
+    ]
+  },
+  {
+    "id": "passwort-manager-sicher-2026",
+    "title": "Nie wieder Passwörter vergessen: So hilft dir ein digitaler Passwort-Tresor",
+    "category": "Sicherheit & Schutz",
+    "date": "2026-08-27",
+    "dateLabel": "Praxistipp",
+    "relevance": "Beendet Zettelwirtschaft und schützt vor unsicheren Mehrfach-Passwörtern.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die überall dasselbe Passwort nutzen oder ständig auf „Passwort vergessen“ klicken.",
+      "action": "recommended",
+      "advice": "Nutze den integrierten Passwortmanager von Google oder Apple oder Programme wie Bitwarden."
+    },
+    "takeaway": "Niemand kann sich 50 verschiedene, komplizierte Passwörter merken. Die Lösung ist ein Passwortmanager: Du merkst dir nur ein einziges, starkes Master-Passwort – alle anderen Zugangsdaten füllt der Tresor automatisch und sicher für dich aus.",
+    "paragraphTitles": [
+      "Das gefährliche Problem identischer Passwörter",
+      "Wie ein Passwortmanager im Alltag funktioniert",
+      "Kostenlose und sichere Lösungen"
+    ],
+    "paragraphs": [
+      "Wird ein kleiner Online-Shop gehackt, bei dem du dich vor fünf Jahren registriert hast, probieren Kriminelle dieselbe Kombination aus E-Mail und Passwort sofort bei Amazon, PayPal und eBay aus.",
+      "Ein Passwortmanager speichert jedes Passwort stark verschlüsselt ab. Wenn du eine Webseite besuchst, erkennt die App das Eingabefeld und fragt dich nach Fingerabdruck oder Gesichtserkennung, um die Daten einzutragen.",
+      "Sowohl Android (Google Passwortmanager) als auch iPhone (Apple Passwörter) haben kostenlose Tresore fest eingebaut. Wer Geräte mischt, findet in „Bitwarden“ eine hervorragende, geprüfte Open-Source-Alternative."
+    ],
+    "reading": {
+      "audience": "Für alle, die ihre Zugänge stressfrei und sicher ordnen wollen",
+      "actions": [
+        "Prüfe in den Einstellungen deines Browsers den Bereich „Passwörter“",
+        "Lass dir von der Sicherheitsprüfung schwache und doppelte Passwörter anzeigen",
+        "Ändere nach und nach die wichtigsten Passwörter in kryptische Zufallscodes"
+      ]
+    },
+    "tip": "Erstelle ein starkes Master-Passwort aus einem einfachen Merksatz, z. B.: „Mein Hund Bello frisst jeden Morgen 2 Kekse!“ wird zu: MhBfjM2K!.",
+    "checkedAt": "2026-08-27",
+    "sources": [
+      {
+        "title": "Stiftung Warentest: Passwort-Manager im Test",
+        "url": "https://www.test.de"
+      }
+    ]
+  },
+  {
+    "id": "qr-code-scanner-verstehen-2026",
+    "title": "Was QR-Codes bedeuten und wie du sie sicher mit der Kamera öffnest",
+    "category": "Lernen & Wissen",
+    "date": "2026-08-27",
+    "dateLabel": "Praxistipp",
+    "relevance": "Macht Zusatz-Apps überflüssig und schützt vor gefährlichen Fake-Codes.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Auf Plakaten, Speisekarten, Rechnungen und Formularen.",
+      "action": "recommended",
+      "advice": "Einfach die normale Foto-Kamera auf den Code richten – du brauchst keine extra Scanner-App!"
+    },
+    "takeaway": "Die kleinen schwarz-weißen Quadrate sind heute überall zu sehen. Sie sind nichts anderes als eine gedruckte Internetadresse. Du brauchst dafür keine fragwürdigen Zusatz-Apps herunterladen – deine normale Foto-Kamera kann das längst von allein.",
+    "paragraphTitles": [
+      "Keine extra App nötig: Die Foto-Kamera genügt",
+      "Den Link vor dem Klick prüfen: Wohin führt die Reise?",
+      "Vorsicht vor überklebten QR-Codes an Parkscheinautomaten"
+    ],
+    "paragraphs": [
+      "Öffne einfach deine ganz normale Kamera-App und halte das Objektiv vor den QR-Code (du musst kein Foto schießen!). Innerhalb von einer Sekunde erscheint ein kleiner gelber oder blauer Link auf dem Bildschirm.",
+      "Lies den angezeigten Web-Link aufmerksam durch: Führt der Link zu der Institution, die du erwartest (z. B. bahn.de oder bsi.bund.de)? Tippe erst dann auf den Link, um die Seite zu öffnen.",
+      "Betrüger überkleben manchmal echte QR-Codes auf Parkscheinautomaten oder E-Ladesäulen mit gefälschten Aufklebern, um Kartendaten abzugreifen. Fahre kurz mit dem Finger über den Code: Ist er spürbar überklebt, tippe die Adresse lieber manuell ein."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone-Besitzer",
+      "actions": [
+        "Öffne deine Kamera-App",
+        "Richte sie auf einen QR-Code auf einer Verpackung oder einem Brief",
+        "Tippe auf die eingeblendete Internetadresse"
+      ]
+    },
+    "tip": "Lösche dubiose „QR-Scanner“-Apps aus den Stores – viele davon sind reine Werbeschleudern oder fordern teure Abos.",
+    "checkedAt": "2026-08-27",
+    "sources": [
+      {
+        "title": "BSI: Risiken von QR-Codes erkennen (Quishing)",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "google-maps-fussgaenger-2026",
+    "title": "Google Maps für Fußgänger: Immer die richtige Richtung finden",
+    "category": "Kommunikation & Mobilität",
+    "date": "2026-08-25",
+    "dateLabel": "Praxistipp",
+    "relevance": "Verhindert Umwege und Orientierungslosigkeit in fremden Städten oder Parks.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Hilft Fußgängern, beim Verlassen der U-Bahn oder des Bahnhofs sofort die richtige Gehrichtung zu finden.",
+      "action": "recommended",
+      "advice": "Nutze den blauen Strahl am Standortpunkt und die Funktion „Live View“."
+    },
+    "takeaway": "Wer aus einem Bahnhof kommt, weiß oft nicht, ob er nach links oder rechts losgehen muss. Der kleine blaue Standortpunkt in Google Maps hat einen integrierten Kompassstrahl, der genau anzeigt, wohin du dein Telefon gerade hältst.",
+    "paragraphTitles": [
+      "Der blaue Lichtkegel als digitaler Kompass",
+      "Live View: Pfeile direkt in die echte Welt eingeblendet",
+      "Karten vorab für den Urlaub offline speichern"
+    ],
+    "paragraphs": [
+      "Öffne Google Maps und tippe auf das Fadenkreuz-Symbol, um deinen Standort zu zentrieren. Der blaue Punkt wirft einen kleinen Lichtkegel: Drehe dich um die eigene Achse – der Kegel dreht sich mit und weist den Weg.",
+      "Tippe auf der Route auf den Button „Live View“. Die Kamera öffnet sich und blendet riesige, deutliche Richtungspfeile direkt auf den Gehweg ein. Verlaufen ist damit praktisch unmöglich.",
+      "Wenn du in die Berge oder ins Ausland reist, lade den Kartenausschnitt vorher über „Offlinekarten“ herunter. So funktioniert die Orientierung auch im Funkloch ohne Mobilfunkdaten."
+    ],
+    "reading": {
+      "audience": "Für alle Spaziergänger und Reisende",
+      "actions": [
+        "Öffne Google Maps und starte eine Fußgänger-Navigation",
+        "Achte auf den blauen Richtungsstrahl deines Punktes",
+        "Probiere Live View aus, falls dein Gerät AR unterstützt"
+      ]
+    },
+    "tip": "Tippe vor dem Losgehen auf das Parkplatz-Symbol am Zielort, um dir den Standort deines abgestellten Autos oder Fahrrads zu merken.",
+    "checkedAt": "2026-08-25",
+    "sources": [
+      {
+        "title": "Google Support: Fußgängernavigation und Live View",
+        "url": "https://support.google.com/maps"
+      }
+    ]
+  },
+  {
+    "id": "sprachassistenten-siri-google-2026",
+    "title": "Siri und Google Assistant: Praktische Sprachbefehle für den Alltag",
+    "category": "KI & digitale Assistenz",
+    "date": "2026-08-24",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Macht die Bedienung des Telefons ohne Tippen mit einfachen Sprachbefehlen möglich.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Situationen, in denen man nasse Hände hat, kocht oder das Display nicht berühren möchte.",
+      "action": "recommended",
+      "advice": "Halte die Hometaste oder Einschalttaste gedrückt und sprich klar und deutlich."
+    },
+    "takeaway": "Tippen auf der kleinen Bildschirmtastatur kann mühsam sein. Über die eingebaute Sprachsteuerung kannst du Wecker stellen, Timer beim Eierkochen setzen oder Kontakte anrufen – ganz ohne deine Brille suchen zu müssen.",
+    "paragraphTitles": [
+      "Die nützlichsten Befehle für den Küchentisch",
+      "Nachrichten diktieren statt mühsam tippen",
+      "Wie du den Sprachassistenten startest"
+    ],
+    "paragraphs": [
+      "Probiere einfache Sätze: „Stelle einen Wecker auf morgen früh 7 Uhr“, „Erinnere mich in 10 Minuten an den Kuchen im Ofen“ oder „Wie wird das Wetter heute Nachmittag in Hamburg?“. Das Smartphone antwortet sofort mit Sprache.",
+      "Auch beim Schreiben in WhatsApp gibt es auf der Tastatur ein kleines Mikrofon-Symbol. Tippst du darauf, kannst du deinen Text einfach flüssig sprechen – das Telefon wandelt deine Stimme fehlerfrei in geschriebenen Text um.",
+      "Auf Android sagst du einfach „Hey Google“ oder wischst von der Bildschirmecke. Auf dem iPhone sagst du „Siri“ oder hältst die rechte Seitentaste für eine Sekunde gedrückt."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone-Besitzer",
+      "actions": [
+        "Drücke die Taste für den Sprachassistenten",
+        "Sage: „Stelle einen Timer auf 5 Minuten“",
+        "Probiere beim nächsten Chat das Mikrofon-Symbol auf der Tastatur aus"
+      ]
+    },
+    "tip": "Sage beim Diktieren Satzzeichen einfach mit, z. B.: „Hallo Peter Komma ich komme um 15 Uhr Ausrufezeichen“ – das Telefon setzt die Zeichen passend ein.",
+    "checkedAt": "2026-08-24",
+    "sources": [
+      {
+        "title": "Google Support: Google Assistant auf Deutsch verwenden",
+        "url": "https://support.google.com"
+      },
+      {
+        "title": "Apple Support: Siri verwenden",
+        "url": "https://support.apple.com"
+      }
+    ]
+  },
+  {
+    "id": "paket-sendungsverfolgung-sms-2026",
+    "title": "Gefälschte Paket-SMS („Ihr Paket liegt bereit“): So schützt du dich vor Betrug",
+    "category": "Online-Banking & Einkauf",
+    "date": "2026-08-23",
+    "dateLabel": "Warnung",
+    "relevance": "Verhindert die Installation von Schadsoftware oder teure Abo-Abbuchungen auf dem Smartphone.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Sehr häufige Betrugsmasche per SMS mit Links wie dhl-paket-verfolgen.info oder paket-info24.com.",
+      "action": "important",
+      "advice": "Niemals auf den Link in der SMS klicken! Sendungen nur in der echten App des Paketdienstes prüfen."
+    },
+    "takeaway": "Fast jeder bestellt im Internet – das wissen auch Kriminelle. Sie versenden millionenfach SMS: „Ihr Paket konnte nicht zugestellt werden, bitte Zollgebühr von 1,99 € zahlen“ oder „Sendung verfolgen“. Der Link führt in Abofallen oder installiert Spionage-Apps.",
+    "paragraphTitles": [
+      "Warum Paketdienste keine SMS mit Zahlungslinks schicken",
+      "Was passiert, wenn man auf den Link klickt?",
+      "Die richtige Reaktion: Löschen und Blockieren"
+    ],
+    "paragraphs": [
+      "Echte Logistikunternehmen wie DHL, Hermes oder DPD fordern dich niemals per SMS unaufgefordert auf, Kreditkartendaten für angebliche Zoll- oder Lagergebühren einzugeben. Wenn Gebühren anfallen, bezahlst du diese beim Zusteller an der Haustür oder in der Filiale.",
+      "Klickst du auf den Link, landest du auf einer nachgebauten Webseite. Unter Android wird oft versucht, eine bösartige Installationsdatei (.apk) herunterzuladen, die heimlich SMS an teure Mehrwertdienste verschickt.",
+      "Hast du tatsächlich ein Paket bestellt, öffne deinen E-Mail-Eingang und suche die offizielle Bestellbestätigung des Shops oder öffne direkt die offizielle DHL-App auf deinem Handy."
+    ],
+    "reading": {
+      "audience": "Für alle Handy- und Smartphone-Besitzer",
+      "actions": [
+        "Lösche dubiose Paket-SMS sofort, ohne den Link anzutippen",
+        "Aktiviere bei deinem Mobilfunkanbieter die kostenlose Drittanbietersperre",
+        "Prüfe Sendungen ausschließlich über die offizielle Sendungsnummer auf www.dhl.de"
+      ]
+    },
+    "tip": "Unter Android kannst du in der Nachrichten-App den integrierten „Spamschutz“ einschalten – er fängt die meisten Betrugs-SMS automatisch ab.",
+    "checkedAt": "2026-08-23",
+    "sources": [
+      {
+        "title": "BSI: Gefälschte Paketdienst-Nachrichten (Smishing)",
+        "url": "https://www.bsi.bund.de"
+      },
+      {
+        "title": "DHL Sicherheitshinweise zu Phishing und Betrugs-SMS",
+        "url": "https://www.dhl.de"
+      }
+    ]
+  },
+  {
+    "id": "sperr-notruf-116116-2026",
+    "title": "Der Sperr-Notruf 116 116: EC-Karten, Kreditkarten und Online-Ausweis sofort sperren",
+    "category": "Vorsorge & Warnungen",
+    "date": "2026-08-23",
+    "dateLabel": "Praxistipp",
+    "relevance": "Stoppt Missbrauch und finanzielle Schäden bei Diebstahl oder Verlust der Brieftasche.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Sofort anrufen, wenn Geldbörse, Bankkarte oder Personalausweis abhandengekommen sind.",
+      "action": "important",
+      "advice": "Die Nummer 116 116 im Telefonbuch speichern und IBAN bzw. Kartennummer parat haben."
+    },
+    "takeaway": "Portemonnaie verloren oder im Urlaub bestohlen worden? Unter der bundesweiten, gebührenfreien Rufnummer 116 116 kannst du Girokarten fast aller Banken, Kreditkarten, Handykarten und die Online-Ausweisfunktion rund um die Uhr in einem einzigen Anruf sperren lassen.",
+    "paragraphTitles": [
+      "Eine Nummer für alles: 116 116",
+      "Welche Angaben du beim Anruf brauchst",
+      "Der zusätzliche Schritt bei der Polizei (KUNO-Sperre)"
+    ],
+    "paragraphs": [
+      "Der Sperr-Notruf ist aus Deutschland kostenlos und 24 Stunden an 365 Tagen erreichbar (aus dem Ausland mit Vorwahl: +49 116 116). Der Sprachcomputer leitet dich direkt an das Rechenzentrum deiner Bank weiter.",
+      "Damit die Karte sofort gesperrt werden kann, solltest du deine IBAN oder die Bankleitzahl und Kontonummer nennen können. Notiere dir diese Daten vorab an einem sicheren Ort zu Hause.",
+      "Wichtig: Die 116 116 sperrt nur Zahlungen mit PIN. Damit Diebe nicht mit gefälschter Unterschrift einkaufen können, solltest du den Verlust zusätzlich bei der Polizei melden und um die sogenannte „KUNO-Sperre“ für das Lastschriftverfahren bitten."
+    ],
+    "reading": {
+      "audience": "Für alle Karteninhaber",
+      "actions": [
+        "Speichere die 116 116 sofort in deinen Handy-Kontakten ein",
+        "Hinterlege deine IBAN und Kartennummern sicher in deinen Unterlagen",
+        "Rufe bei Verlust sofort an – je schneller, desto geringer dein Haftungsrisiko"
+      ]
+    },
+    "tip": "Nach erfolgter Sperrung haftest du in der Regel nicht mehr für Schäden, die Betrüger danach mit deiner Karte anrichten.",
+    "checkedAt": "2026-08-23",
+    "sources": [
+      {
+        "title": "Offizieller Sperr-Notruf e.V.",
+        "url": "https://www.sperr-notruf.de"
+      }
+    ]
+  },
+  {
+    "id": "wohnsitz-ummeldung-digital-2026",
+    "title": "Digitale Meldebescheinigung: Wann sich der Gang zum Amt erübrigt",
+    "category": "Digitale Verwaltung",
+    "date": "2026-08-22",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Spart Behördentermine und Urlaubstage bei Umzug oder Ausweisangelegenheiten.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die eine aktuelle Meldebescheinigung für Banken, Arbeitgeber oder Vermieter benötigen.",
+      "action": "recommended",
+      "advice": "Über das Service-Portal der eigenen Stadt oder über wohnsitzanmeldung.de digital anfordern."
+    },
+    "takeaway": "Immer mehr Städte und Gemeinden bieten die elektronische Wohnsitzanmeldung (eWA) an. Nach einem Umzug kann man sich komplett online ummelden – sogar der Adressaufkleber für den Personalausweis kommt per Post nach Hause.",
+    "paragraphTitles": [
+      "Die elektronische Wohnsitzanmeldung (eWA)",
+      "Vermieterbescheinigung einfach als Foto hochladen",
+      "Meldebestätigung mit digitalem Siegel sofort als Download"
+    ],
+    "paragraphs": [
+      "Früher musste man wochenlang auf einen Termin im Bürgeramt warten und Strafen fürchten, wenn die zweiwöchige Meldefrist verstrich. Heute genügt die Anmeldung per Online-Ausweis.",
+      "Die vom Vermieter ausgefüllte Wohnungsgeberbestätigung fotografierst du einfach mit dem Smartphone ab und lädst sie direkt im Portal hoch.",
+      "Nach erfolgreicher Prüfung erhältst du eine fälschungssichere digitale Meldebestätigung mit kryptografischem Siegel, die von allen Behörden und Banken anerkannt wird."
+    ],
+    "reading": {
+      "audience": "Für Umziehende und alle, die Nachweise benötigen",
+      "actions": [
+        "Prüfe auf dem Portal deiner Stadt, ob eWA bereits freigeschaltet ist",
+        "Halte deinen Ausweis und die Wohnungsgeberbestätigung bereit",
+        "Schließe die Ummeldung digital in ca. 10 Minuten ab"
+      ]
+    },
+    "tip": "Nach der Online-Ummeldung wird auch der Chip in deinem Ausweis per Smartphone aktualisiert – ganz ohne Schalterbesuch.",
+    "checkedAt": "2026-08-22",
+    "sources": [
+      {
+        "title": "Elektronische Wohnsitzanmeldung der Bundesregierung",
+        "url": "https://www.wohnsitzanmeldung.de"
+      }
+    ]
+  },
+  {
+    "id": "drittanbietersperre-mobilfunk-2026",
+    "title": "Die Drittanbietersperre: Ungewollte Abbuchungen über die Handyrechnung stoppen",
+    "category": "Verträge & Abos",
+    "date": "2026-08-22",
+    "dateLabel": "Praxistipp",
+    "relevance": "Schützt vor versehentlich abgeschlossenen Klingelton-, Spiele- oder Erotik-Abos beim Surfen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Sollte für jedes Smartphone (besonders für Kinder und Senioren) sofort eingerichtet werden.",
+      "action": "recommended",
+      "advice": "In der App des Mobilfunkanbieters oder per Anruf die kostenlose Drittanbietersperre aktivieren."
+    },
+    "takeaway": "Ein unachtsamer Klick auf ein Werbebanner – und schon taucht auf der nächsten Handyrechnung ein Posten über 4,99 Euro pro Woche auf. Das sogenannte WAP-Billing bucht Geld direkt über den Mobilfunkvertrag ab. Eine Drittanbietersperre riegelt diesen Weg dauerhaft ab.",
+    "paragraphTitles": [
+      "Wie die heimliche Abbuchung funktioniert",
+      "Kostenloser Rechtsanspruch bei jedem Provider",
+      "Welche Dienste blockiert werden – und was weiter funktioniert"
+    ],
+    "paragraphs": [
+      "Beim Surfen über das Mobilfunknetz erkennt der Werbeserver automatisch deine Handynummer. Klickst du auf ein getarntes Banner, wird das als Kaufbestätigung gewertet und taucht als „Mehrwertdienst“ auf der Rechnung auf.",
+      "Nach § 45d des Telekommunikationsgesetzes ist jeder Netzanbieter (Telekom, Vodafone, o2, 1&1, Congstar etc.) verpflichtet, diese Sperre auf Wunsch kostenlos und unverzüglich einzurichten.",
+      "Keine Sorge: Normale SMS, WhatsApp, Anrufe und dein mobiles Internet funktionieren uneingeschränkt weiter. Lediglich dubiose Abrechnungen Dritter werden blockiert."
+    ],
+    "reading": {
+      "audience": "Für alle Smartphone-Besitzer",
+      "actions": [
+        "Öffne die Kunden-App deines Mobilfunkanbieters (z. B. Mein o2, MeinMagenta)",
+        "Suche unter „Tarif & Optionen“ nach „Drittanbietersperre“",
+        "Aktiviere die Vollsperrung oder rufe die Hotline deines Anbieters an"
+      ]
+    },
+    "tip": "Taucht bereits ein unberechtigter Posten auf deiner Rechnung auf: Widerspreche der Rechnung schriftlich binnen 8 Wochen bei deinem Mobilfunker.",
+    "checkedAt": "2026-08-22",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Drittanbietersperre schützt vor Abofallen",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "apotheken-vorbestellung-online-2026",
+    "title": "Medikamente in der Apotheke vorbestellen: Keine doppelten Wege mehr",
+    "category": "Gesundheit & E-Rezept",
+    "date": "2026-08-22",
+    "dateLabel": "Praxistipp",
+    "relevance": "Verhindert vergebliche Gänge in die Apotheke, wenn spezielle Medikamente nicht vorrätig sind.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Vor dem Gang in die Apotheke bei dringend benötigten oder seltenen Arzneimitteln.",
+      "action": "recommended",
+      "advice": "Rezept oder Medikamentenname vorab über „ihreapotheken.de“ oder lokale Apotheken-Apps übermitteln."
+    },
+    "takeaway": "Nichts ist ärgerlicher, als krank in die Apotheke zu gehen, nur um zu hören: „Das haben wir leider nicht da, kommt erst heute Abend“. Mit einer kurzen digitalen Vorbestellung liegt die Packung abholbereit an der Kasse oder wird per Botendienst geliefert.",
+    "paragraphTitles": [
+      "Wie die digitale Vorbestellung funktioniert",
+      "E-Rezept direkt an die Wunsch-Apotheke zuweisen",
+      "Kostenloser Botendienst direkt an die Haustür"
+    ],
+    "paragraphs": [
+      "Über Portale wie „ihreapotheken.de“ oder die E-Rezept-App kannst du deine Stamm-Apotheke um die Ecke auswählen und dein Rezept digital dorthin senden. Die Apotheke prüft sofort die Verfügbarkeit im Lager.",
+      "Sobald das Arzneimittel bereitliegt, erhältst du eine Benachrichtigung auf dein Smartphone. Du gehst vorbei und kannst es ohne Wartezeit direkt mitnehmen.",
+      "Bist du bettlägerig oder kannst die Wohnung nicht verlassen? Fast jede deutsche Apotheke vor Ort bietet einen kostenlosen Botendienst an, der die Medikamente oft noch am selben Nachmittag an deine Haustür bringt."
+    ],
+    "reading": {
+      "audience": "Für alle Patientinnen und Patienten",
+      "actions": [
+        "Suche deine Stammapotheke in der E-Rezept-App",
+        "Sende das Rezept digital vorab ein",
+        "Wähle zwischen „Selbstabholung“ und „Lieferung per Bote“"
+      ]
+    },
+    "tip": "Gib bei der Bestellung deine Telefonnummer an – bei dringenden Rückfragen zu Dosierungen ruft der Apotheker dich vorab kurz an.",
+    "checkedAt": "2026-08-22",
+    "sources": [
+      {
+        "title": "Bundesvereinigung Deutscher Apothekerverbände (ABDA): Arzneimittel vorbestellen",
+        "url": "https://www.abda.de"
+      }
+    ]
+  },
+  {
+    "id": "schwerbehindertenausweis-digital-2026",
+    "title": "Schwerbehindertenausweis online beantragen oder verlängern",
+    "category": "Formulare & Anträge",
+    "date": "2026-08-21",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Erleichtert die Beantragung von Nachteilsausgleichen, Steuerfreibeträgen und Vergünstigungen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für Erstanträge, Verschlimmerungsanträge oder Verlängerungen beim Versorgungsamt.",
+      "action": "recommended",
+      "advice": "Nutze das Online-Portal deines Bundeslandes (z. B. ELSA, Versorgungsamt Online)."
+    },
+    "takeaway": "Den Grad der Behinderung (GdB) zu beantragen war früher mit dicken Papierstapeln verbunden. Die Online-Portale der Versorgungsämter leiten dich Schritt für Schritt durch die Fragen und fordern Unterlagen direkt digital an.",
+    "paragraphTitles": [
+      "Welche Vorteile ein anerkannter GdB bringt",
+      "Schritt-für-Schritt durch das Landesportal",
+      "Arztberichte und Schweigepflichtentbindung digital hochladen"
+    ],
+    "paragraphs": [
+      "Ab einem GdB von 20 gibt es steuerliche Pauschbeträge. Ab einem GdB von 50 gilt man als schwerbehindert – mit Anspruch auf Zusatzurlaub, besonderen Kündigungsschutz und verbilligte Tickets im Nahverkehr.",
+      "Je nach Bundesland gibt es Portale wie „ELSA“ (z. B. in Niedersachsen, NRW oder Bayern). Du füllst persönliche Daten aus und nennst deine gesundheitlichen Einschränkungen in eigenen Worten.",
+      "Besonders bequem: Du musst nicht alle alten Krankenhausberichte selbst zusammensuchen. Gib einfach die Namen und Praxen deiner behandelnden Ärzte an und erteile online die Schweigepflichtentbindung – das Amt holt die Berichte ein."
+    ],
+    "reading": {
+      "audience": "Für chronisch Kranke und Menschen mit gesundheitlichen Einschränkungen",
+      "actions": [
+        "Suche nach „Schwerbehindertenantrag online [Dein Bundesland]“",
+        "Halte ein digitales Passfoto für den späteren Ausweis bereit",
+        "Fülle die behandelnden Fachärzte lückenlos aus"
+      ]
+    },
+    "tip": "Notiere nicht nur medizinische Fachbegriffe, sondern schildere konkret, welche alltäglichen Handlungen dir schwerfallen.",
+    "checkedAt": "2026-08-21",
+    "sources": [
+      {
+        "title": "Familienratgeber der Aktion Mensch: Schwerbehinderung beantragen",
+        "url": "https://www.familienratgeber.de"
+      }
+    ]
+  },
+  {
+    "id": "whatsapp-enkeltrick-schutz-2026",
+    "title": "„Hallo Mama, neue Nummer“: So entlarvst du den WhatsApp-Enkeltrick sofort",
+    "category": "Sicherheit & Schutz",
+    "date": "2026-08-20",
+    "dateLabel": "Warnung",
+    "relevance": "Schützt vor perfiden Betrugsversuchen, die Tausende Euro Schaden anrichten können.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Häufige Betrugsmasche per WhatsApp und SMS an Eltern und Großeltern.",
+      "action": "important",
+      "advice": "Niemals Geld überweisen! Immer zuerst die bekannte alte Telefonnummer anrufen."
+    },
+    "takeaway": "Eine Nachricht von einer unbekannten Nummer: „Hallo Papa, mein Handy ist ins Klo gefallen, das ist meine neue Nummer. Ich habe ein dringendes Problem...“. Dahinter stecken professionelle Betrüger. Mit einer einfachen Kontrollfrage fliegt der Schwindel sofort auf.",
+    "paragraphTitles": [
+      "Die Masche mit dem angeblich kaputten Smartphone",
+      "Der emotionale Druck: Dringende Rechnungen müssen bezahlt werden",
+      "Der rettende Schritt: Die alte Nummer anrufen"
+    ],
+    "paragraphs": [
+      "Die Täter nutzen menschliche Fürsorge schamlos aus. Sie behaupten, das alte Telefon sei kaputt und das Online-Banking auf dem neuen Gerät noch nicht freigeschaltet.",
+      "Kurz darauf folgt die Bitte: „Kannst du heute dringend eine Rechnung für mich überweisen? Morgen gebe ich dir das Geld zurück!“. Wer hier überweist, sieht sein Geld in der Regel nie wieder.",
+      "Reagiere niemals mit Überweisungen. Rufe dein Kind oder Enkelkind einfach unter der Nummer an, die du seit Jahren im Telefonbuch gespeichert hast. In 99 % der Fälle meldet sich der Verwandte völlig ahnungslos."
+    ],
+    "reading": {
+      "audience": "Für alle Eltern, Großeltern und WhatsApp-Nutzer",
+      "actions": [
+        "Speichere unbekannte Nummern nicht voreilig als Kontakt ab",
+        "Stelle bei Geldforderungen eine persönliche Frage, die nur der echte Verwandte kennen kann (z. B. Haustiername)",
+        "Blockiere und melde die Nummer direkt in WhatsApp"
+      ]
+    },
+    "tip": "Sprecht in der Familie offen über diese Masche – Betrüger setzen gezielt darauf, dass Betroffene aus Scham schweigen.",
+    "checkedAt": "2026-08-20",
+    "sources": [
+      {
+        "title": "Polizeiliche Kriminalprävention: WhatsApp-Betrug erkennen",
+        "url": "https://www.polizei-beratung.de"
+      }
+    ]
+  },
+  {
+    "id": "cookie-banner-richtig-einstellen-2026",
+    "title": "Cookie-Banner auf Webseiten: Was passiert bei „Nur notwendige Cookies“?",
+    "category": "Medien & Informationen",
+    "date": "2026-08-20",
+    "dateLabel": "Praxistipp",
+    "relevance": "Schützt deine Privatsphäre und verhindert lästige, personalisierte Werbeverfolgung.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Erscheint beim erstmaligen Aufrufen fast jeder neuen Internetseite.",
+      "action": "recommended",
+      "advice": "Immer auf „Nur essenzielle / notwendige Cookies akzeptieren“ oder „Alles ablehnen“ klicken."
+    },
+    "takeaway": "Kaum öffnet man eine Webseite, verdeckt ein graues Fenster den gesamten Text. Viele klicken entnervt auf den großen, bunten Button „Alle akzeptieren“. Warum ein gezielter Klick auf „Nur notwendige“ deine Privatsphäre schützt.",
+    "paragraphTitles": [
+      "Was Cookies eigentlich tun",
+      "Die Masche mit dem „Design-Trick“ (Dark Patterns)",
+      "Browser-Erweiterungen, die Banner automatisch wegklicken"
+    ],
+    "paragraphs": [
+      "Notwendige Cookies sorgen dafür, dass die Webseite funktioniert (z. B. der Warenkorb nicht vergessen wird). Marketing-Cookies hingegen verfolgen dein Surfverhalten über Wochen hinweg, um dir maßgeschneiderte Werbung einzublenden.",
+      "Webseitenbetreiber färben den Button „Alle akzeptieren“ oft auffällig grün oder blau ein, während der Knopf „Ablehnen“ als unscheinbarer grauer Text versteckt wird. Lass dich davon nicht täuschen: Ein Klick auf „Ablehnen“ reicht völlig aus!",
+      "Moderne Browser wie Firefox, Brave oder Safari blockieren Tracking-Cookies bereits standardmäßig. Wer gar keine Banner mehr sehen möchte, kann Erweiterungen wie „Consent-O-Matic“ nutzen, die im Hintergrund automatisch ablehnen."
+    ],
+    "reading": {
+      "audience": "Für alle Internetnutzer",
+      "actions": [
+        "Suche bei Cookie-Bannern gezielt nach Begriffen wie „Ablehnen“, „Nur notwendige“ oder „Details anpassen“",
+        "Klicke nicht ungeduldig auf den auffälligsten Button",
+        "Lösche in den Browsereinstellungen alle paar Monate deine Verlaufs-Cookies"
+      ]
+    },
+    "tip": "Nach dem Ablehnen von Marketing-Cookies funktioniert die Webseite in 99,9 % der Fälle genauso schnell und vollständig wie zuvor.",
+    "checkedAt": "2026-08-20",
+    "sources": [
+      {
+        "title": "Verbraucherzentrale: Cookie-Banner richtig verstehen und bedienen",
+        "url": "https://www.verbraucherzentrale.de"
+      }
+    ]
+  },
+  {
+    "id": "suchmaschinen-tricks-google-2026",
+    "title": "Besser googeln: Mit gezielten Suchbegriffen schneller ans Ziel kommen",
+    "category": "Lernen & Wissen",
+    "date": "2026-08-19",
+    "dateLabel": "Ratgeber",
+    "relevance": "Filtert Werbeanzeigen heraus und liefert exakt die gewünschte Information.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei jeder Recherche nach Öffnungszeiten, Anleitungen, Rezepten oder Problemlösungen.",
+      "action": "recommended",
+      "advice": "Füllwörter weglassen und bei exakten Phrasen Anführungszeichen verwenden."
+    },
+    "takeaway": "Gibst du ganze Sätze wie „Wo finde ich die nächste Apotheke die heute noch offen hat“ ein? Suchmaschinen arbeiten viel präziser, wenn man ihnen nur die entscheidenden Kernbegriffe gibt und kleine Such-Tricks anwendet.",
+    "paragraphTitles": [
+      "Weniger ist mehr: Füllwörter weglassen",
+      "Der Trick mit den Anführungszeichen \"...\"",
+      "Gezielt nach PDF-Anleitungen suchen"
+    ],
+    "paragraphs": [
+      "Statt eines langen Satzes genügen drei prägnante Schlagworte: „Notapotheke Köln heute“. Die Suchmaschine findet sofort die offizielle Liste der Notdienste ohne unnötige Werbeseiten dazwischen.",
+      "Suchst du nach einem genauen Zitat, einer Fehlermeldung oder einem Songtext? Setze den Satz in Anführungszeichen, z. B. \"Fehlercode 404 Gerät nicht gefunden\". Google sucht dann exakt nach dieser Wortfolge in dieser Reihenfolge.",
+      "Möchtest du die Bedienungsanleitung für deine Waschmaschine finden? Gib den Modellnamen ein und füge „filetype:pdf“ hinzu. Du erhältst sofort die offizielle Hersteller-Anleitung als direkten PDF-Download."
+    ],
+    "reading": {
+      "audience": "Für alle Internetforscher",
+      "actions": [
+        "Verzichte auf Wörter wie „ich“, „bitte“, „wo“, „kannst du“",
+        "Nutze Anführungszeichen für feste Wortkombinationen",
+        "Überspringe die ersten zwei Treffer, wenn dort fett „Anzeige“ oder „Gesponsert“ steht"
+      ]
+    },
+    "tip": "Rechne direkt in der Google-Suchzeile: Tippe einfach „150 Euro in Dollar“ oder „25 Prozent von 180“ ein – die Antwort erscheint sofort!",
+    "checkedAt": "2026-08-19",
+    "sources": [
+      {
+        "title": "Google Hilfecenter: Tipps für die Websuche",
+        "url": "https://support.google.com"
+      }
+    ]
+  },
+  {
+    "id": "deutschlandticket-app-2026",
+    "title": "Deutschlandticket auf dem Handy: So hast du den Fahrschein offline griffbereit",
+    "category": "Kommunikation & Mobilität",
+    "date": "2026-08-18",
+    "dateLabel": "Ratgeber",
+    "relevance": "Verhindert Bußgelder und Hektik bei Fahrkartenkontrollen im Funkloch.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Abonnenten des Deutschlandtickets auf dem Smartphone.",
+      "action": "recommended",
+      "advice": "Ticket in die Wallet-App laden oder vor Monatsbeginn einmal in der App öffnen."
+    },
+    "takeaway": "Im Zug oder in der U-Bahn gibt es oft kein Handynetz. Öffnet man die App erst vor dem Kontrolleur, lädt das Ticket möglicherweise nicht. Ein kurzer Blick am Monatsanfang im heimischen WLAN stellt sicher, dass der Barcode offline gespeichert bleibt.",
+    "paragraphTitles": [
+      "Warum Tickets im Funkloch manchmal fehlen",
+      "Das Ticket in Google Wallet oder Apple Wallet ablegen",
+      "Personalausweis nicht vergessen"
+    ],
+    "paragraphs": [
+      "Das Ticket erneuert sich am Monatsersten automatisch. Damit das neue Monatsticket auf dem Gerät landet, muss die Ticket-App einmal mit Internetzugang geöffnet werden. Danach ist es für 30 Tage offline gespeichert.",
+      "Viele Verkehrsverbünde erlauben es, das Ticket direkt in die „Wallet“-App des Smartphones zu legen. Dort ist es mit einem Doppelklick auf die Einschalttaste sofort aufrufbar – selbst bei gesperrtem Bildschirm.",
+      "Wichtig: Das Deutschlandticket ist personengebunden. Führe immer deinen Personalausweis oder Führerschein mit, da Kontrolleure die Übereinstimmung der Namen stichprobenartig prüfen."
+    ],
+    "reading": {
+      "audience": "Für Nutzer des Deutschlandtickets",
+      "actions": [
+        "Öffne am 1. jedes Monats zu Hause deine Bahn- oder Verkehrs-App",
+        "Prüfe, ob der Barcode für den aktuellen Monat angezeigt wird",
+        "Füge das Ticket falls möglich zur digitalen Wallet hinzu"
+      ]
+    },
+    "tip": "Ein Screenshot (Bildschirmfoto) des Barcodes ist bei den meisten Verkehrsbetrieben offiziell nicht gültig – nutze immer die Original-App oder Wallet.",
+    "checkedAt": "2026-08-18",
+    "sources": [
+      {
+        "title": "Bundesministerium für Digitales und Verkehr: Deutschlandticket Regelungen",
+        "url": "https://bmdv.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "deepfakes-stimmen-erkennen-2026",
+    "title": "Stimmen-Klonen & Deepfakes: Warum man bei ungewöhnlichen Anrufen nachfragen sollte",
+    "category": "KI & digitale Assistenz",
+    "date": "2026-08-17",
+    "dateLabel": "Warnung",
+    "relevance": "Schützt vor neuartigen Betrugsanrufen, die mit vertrauten Stimmen von Verwandten täuschen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Betrifft Anrufe, bei denen sich angeblich Angehörige in akuter Geldnot oder nach Unfällen melden.",
+      "action": "important",
+      "advice": "Immer auflegen und den Angehörigen selbst unter der gewohnten Nummer zurückrufen."
+    },
+    "takeaway": "Künstliche Intelligenz kann heute aus wenigen Sekunden Tonaufnahme die Stimme eines Menschen täuschend echt nachahmen. Kriminelle nutzen dies für Schockanrufe: Am Telefon weint angeblich die Enkelin nach einem Unfall und bittet um Kaution.",
+    "paragraphTitles": [
+      "Wie Täter Stimmen mit KI kopieren",
+      "Die Schocktaktik: Zeitdruck und Weinen",
+      "Die Vereinbarung eines geheimen Familien-Codeworts"
+    ],
+    "paragraphs": [
+      "Wenige Sekunden Audio aus einem Instagram-Video oder einer WhatsApp-Sprachnachricht reichen moderner KI-Software, um beliebige Texte mit derselben Stimmfarbe und Sprechweise vorzulesen.",
+      "Die Anrufe sind dramatisch inszeniert: Die angebliche Tochter weint aufgelöst, übergibt schnell an einen vermeintlichen Polizisten oder Anwalt, der sofortige Barzahlung oder Goldübergabe verlangt.",
+      "Lass dich niemals unter Druck setzen. Vereinbare in der Familie ein einfaches Sicherheitswort (z. B. der Mädchenname der Oma oder das Lieblingsurlaubsziel). Betrüger kennen dieses Codewort niemals."
+    ],
+    "reading": {
+      "audience": "Für alle Telefon- und Smartphone-Nutzer",
+      "actions": [
+        "Lass dich bei schockierenden Nachrichten am Telefon niemals zu überstürzten Handlungen verleiten",
+        "Lege sofort auf – die echte Polizei oder Justiz verlangt niemals Bargeld oder Kautionen an der Haustür",
+        "Rufe den Verwandten sofort auf seiner normalen Handynummer an"
+      ]
+    },
+    "tip": "Sprich mit deinen Kindern und Enkeln über diese Masche – Aufklärung nimmt Kriminellen die wichtigste Waffe.",
+    "checkedAt": "2026-08-17",
+    "sources": [
+      {
+        "title": "Polizeiliche Kriminalprävention: Gefahren durch KI und Deepfakes",
+        "url": "https://www.polizei-beratung.de"
+      },
+      {
+        "title": "BSI: Risiken durch Stimm-Kloning",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "kontaktlos-bezahlen-karte-2026",
+    "title": "Mit Karte oder Smartphone kontaktlos bezahlen: Wie sicher ist das wirklich?",
+    "category": "Online-Banking & Einkauf",
+    "date": "2026-08-16",
+    "dateLabel": "Ratgeber",
+    "relevance": "Nimmt die Angst vor modernem bargeldlosem Bezahlen an der Supermarktkasse.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die an der Kasse bisher unsicher waren, ob die Bankkarte oder das Smartphone sicher sind.",
+      "action": "none",
+      "advice": "Kontaktloses Bezahlen ist oft sicherer als Bargeld oder die herkömmliche PIN-Eingabe."
+    },
+    "takeaway": "Karte oder Telefon kurz an das Lesegerät halten – und schon ist bezahlt. Viele fürchten, Diebe könnten im Vorbeigehen Geld vom Konto abbuchen. Warum diese Sorge unbegründet ist und warum das Smartphone sogar sicherer als die Plastikkarte ist.",
+    "paragraphTitles": [
+      "Die Reichweite von wenigen Zentimetern",
+      "Sicherheitsgrenzen und Zufalls-PIN",
+      "Smartphone-Zahlung: Echte Kartennummer bleibt geheim"
+    ],
+    "paragraphs": [
+      "Die Funktechnik (NFC) funktioniert nur über einen Abstand von maximal 2 bis 4 Zentimetern. Ein heimliches „Abkassieren im Vorbeigehen“ im Bus ist technisch nahezu unmöglich, da die Karte millimetergenau ausgerichtet sein müsste.",
+      "Selbst wenn eine Karte verloren geht: Beträge über 50 Euro erfordern zwingend die PIN-Eingabe. Zudem verlangen Banken nach wenigen kontaktlosen Kleinbeträgen automatisch wieder die PIN, um Missbrauch zu stoppen.",
+      "Beim Bezahlen mit dem Smartphone (Google Wallet oder Apple Pay) wird deine echte Kartennummer dem Händler gar nicht mitgeteilt. Zudem muss jede Zahlung durch deinen Fingerabdruck oder Gesichtsscan freigegeben werden."
+    ],
+    "reading": {
+      "audience": "Für alle Einkäufer im Einzelhandel",
+      "actions": [
+        "Halte die Karte mit der Chipseite flach auf das Display des Terminals",
+        "Warte auf das Piepen und das grüne Häkchen",
+        "Wirf regelmäßig einen Blick auf deine monatlichen Kontoauszüge"
+      ]
+    },
+    "tip": "Bei Verlust der Bankkarte hilft der bundesweite Sperr-Notruf 116 116 – halte dafür deine IBAN oder Kontonummer griffbereit.",
+    "checkedAt": "2026-08-16",
+    "sources": [
+      {
+        "title": "Bundesbank: Kontaktloses Bezahlen mit Karte und Smartphone",
+        "url": "https://www.bundesbank.de"
+      }
+    ]
+  },
+  {
+    "id": "betrugsmasche-falsche-polizisten-2026",
+    "title": "Falsche Polizisten und Handwerker am Telefon: 3 klare Verhaltensregeln",
+    "category": "Vorsorge & Warnungen",
+    "date": "2026-08-16",
+    "dateLabel": "Warnung",
+    "relevance": "Schützt Ersparnisse und Schmuck vor hochprofessionellen Betrügerbanden.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei Anrufen angeblicher Kriminalbeamter, Staatsanwälte oder Bankmitarbeiter.",
+      "action": "important",
+      "advice": "Sofort auflegen! Die echte Polizei ruft niemals unter der Notrufnummer 110 an."
+    },
+    "takeaway": "„Hier ist die Kriminalpolizei. In Ihrer Nachbarschaft wurde eingebrochen, auf einem Zettel der Täter steht Ihr Name...“. Betrüger schüchtern gezielt ältere Menschen ein, um sie zur Herausgabe von Bargeld und Gold zu bewegen. Wie du die Masche sofort durchschaust.",
+    "paragraphTitles": [
+      "Gefälschte Telefonnummer im Display (Call-ID-Spoofing)",
+      "Die goldene Regel: Die Polizei nimmt kein Geld in Verwahrung",
+      "Richtig reagieren: Auflegen und 110 wählen"
+    ],
+    "paragraphs": [
+      "Kriminelle können mit technischen Tricks jede beliebige Telefonnummer auf deinem Telefondisplay anzeigen lassen – sogar die „110“ oder die Nummer deiner örtlichen Polizeiwache. Die echte Polizei wird dich aber NIEMALS über die 110 anrufen.",
+      "Egal wie dramatisch die Geschichte klingt: Echte Polizisten fordern niemals Bargeld, Schmuck oder Bankkarten zur „sicheren Verwahrung“ an oder schicken Boten an die Haustür.",
+      "Sei nicht unhöflich, sondern konsequent: Beende das Telefonat sofort, indem du den Hörer auflegst. Wähle anschließend selbst die 110 (wichtig: erst auflegen, dann neu wählen!) und melde den Vorfall."
+    ],
+    "reading": {
+      "audience": "Für alle Bürgerinnen und Bürger mit Festnetzanschluss",
+      "actions": [
+        "Lass dich am Telefon niemals nach Vermögen, Schmuck oder Bargeldbeständen ausfragen",
+        "Übergib niemals Geld oder Wertsachen an unbekannte Personen",
+        "Lösche falls möglich deinen Vornamen aus dem öffentlichen Telefonbuch"
+      ]
+    },
+    "tip": "Betrüger suchen im Telefonbuch gezielt nach traditionellen Vornamen. Ein kurzer Anruf beim Telefonanbieter genügt, um den Vornamen im Telefonbuch auf einen Anfangsbuchstaben zu kürzen.",
+    "checkedAt": "2026-08-16",
+    "sources": [
+      {
+        "title": "Polizeiliche Kriminalprävention: Falsche Polizeibeamte",
+        "url": "https://www.polizei-beratung.de"
+      }
+    ]
+  },
+  {
+    "id": "elektronischer-steuerbescheid-2026",
+    "title": "Steuerbescheid digital empfangen: Schneller als der Postweg",
+    "category": "Digitale Verwaltung",
+    "date": "2026-08-15",
+    "dateLabel": "Ratgeber",
+    "relevance": "Verschafft sofortigen Einblick in Steuererstattungen und startet die Einspruchsfrist verlässlich.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle Steuerzahler, die ihre Steuererklärung über ELSTER oder Steuer-Apps abgeben.",
+      "action": "recommended",
+      "advice": "In Mein ELSTER die elektronische Bescheidbekanntgabe aktivieren."
+    },
+    "takeaway": "Wer die Steuererklärung online einreicht, kann auch den Bescheid rein digital erhalten. Das Finanzamt stellt die Daten oft Tage vor dem Papierbrief bereit und markiert Abweichungen zur eigenen Steuererklärung automatisch farbig.",
+    "paragraphTitles": [
+      "Wie die Benachrichtigung funktioniert",
+      "Der automatische Abgleich: Wo weicht das Finanzamt ab?",
+      "Wann die einmonatige Einspruchsfrist beginnt"
+    ],
+    "paragraphs": [
+      "Sobald das Finanzamt deinen Bescheid bearbeitet hat, erhältst du eine E-Mail mit dem Hinweis: „Für Sie liegt eine neue Nachricht in Mein ELSTER bereit“. In der E-Mail selbst stehen aus Sicherheitsgründen keine Zahlen.",
+      "Loggst du dich bei ELSTER oder in deiner Steuersoftware ein, siehst du sofort den Vergleich: Was hattest du angegeben und was hat der Sachbearbeiter anerkannt? Rote Markierungen heben Kürzungen sofort hervor.",
+      "Die gesetzliche Einspruchsfrist von einem Monat beginnt am dritten Tag nach Bereitstellung der E-Mail. Du gewinnst dadurch wertvolle Zeit, um Belege nachzureichen."
+    ],
+    "reading": {
+      "audience": "Für Steuerzahlerinnen und Steuerzahler",
+      "actions": [
+        "Melde dich auf www.elster.de an",
+        "Prüfe im Posteingang neue Bescheiddaten",
+        "Lade den Bescheid als PDF herunter und vergleiche die Posten"
+      ]
+    },
+    "tip": "Nutze für Einsprüche direkt die Vorlagen in Mein ELSTER – damit kannst du fehlende Belege sofort per Mausklick nachsenden.",
+    "checkedAt": "2026-08-15",
+    "sources": [
+      {
+        "title": "ELSTER: Elektronische Bescheidbekanntgabe",
+        "url": "https://www.elster.de"
+      }
+    ]
+  },
+  {
+    "id": "in-app-kaeufe-sperren-2026",
+    "title": "In-App-Käufe auf Smartphone und Tablet sperren: Schutz vor teuren Klicks",
+    "category": "Verträge & Abos",
+    "date": "2026-08-15",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Verhindert unbeabsichtigte Zahlungen durch Enkelkinder oder versehentliches Antippen beim Spielen.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wichtig, wenn Kinder das Tablet nutzen oder man selbst gern Puzzlespiele spielt.",
+      "action": "recommended",
+      "advice": "Passwort- oder Fingerabdruck-Pflicht für JEDEN Kauf im Google Play Store oder Apple App Store erzwingen."
+    },
+    "takeaway": "Kostenlose Spiele (Free-to-play) finanzieren sich oft durch virtuelle Münzen oder Extra-Leben, die mit einem Klick echtes Geld kosten. Wer die Kauffunktion mit einem Passwort oder PIN absichert, erlebt beim Blick aufs Bankkonto keine bösen Überraschungen.",
+    "paragraphTitles": [
+      "Die Verlockung in scheinbar kostenlosen Spielen",
+      "Die Schranke aktivieren: Immer nach Passwort fragen",
+      "Familienfreigabe für Kinder und Enkel einrichten"
+    ],
+    "paragraphs": [
+      "Oft tippt man in der Hektik des Spiels auf „Weiterspielen“ oder „Extra-Leben“ und schon wird ohne PIN bezahlt, wenn das System Zahlungsdaten gespeichert hat.",
+      "Auf Android: Öffne den Google Play Store > Profilbild > Einstellungen > „Authentifizierung für Käufe erforderlich“ und wähle „Für alle Käufe“. Auf dem iPhone: Einstellungen > Bildschirmzeit > „Käufe im iTunes & App Store“ > In-App-Käufe auf „Nicht erlauben“ stellen.",
+      "Geben Sie Enkeln das Tablet zum Spielen, aktivieren Sie die Kindersicherung. So können Spiele zwar gespielt, aber keine echten Euros ausgegeben werden."
+    ],
+    "reading": {
+      "audience": "Für Tablet- und Smartphone-Besitzer",
+      "actions": [
+        "Prüfe die Authentifizierungseinstellungen in deinem App Store",
+        "Wähle die Option „Authentifizierung bei jedem einzelnen Kauf“",
+        "Hinterlege keine Kreditkartendaten, wenn du keine Käufe tätigen möchtest"
+      ]
+    },
+    "tip": "Auch Gutscheinkarten (z. B. 15-Euro-Google-Play-Guthaben) aus dem Supermarkt sind sicherer als hinterlegte Kreditkarten, da maximal das Guthaben aufgebraucht werden kann.",
+    "checkedAt": "2026-08-15",
+    "sources": [
+      {
+        "title": "BSI: Kostenfallen bei Apps und In-App-Käufen vermeiden",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "kindergeld-bafoeg-antrag-2026",
+    "title": "Antragsformulare digital versenden: Empfangsbestätigung und Nachweise sichern",
+    "category": "Formulare & Anträge",
+    "date": "2026-08-14",
+    "dateLabel": "Ratgeber",
+    "relevance": "Gibt rechtssichere Beweise, dass ein Antrag pünktlich und vollständig bei der Behörde eingegangen ist.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Bei allen fristgebundenen Anträgen (Kindergeld, Wohngeld, BAföG, Rente, Einsprüche).",
+      "action": "recommended",
+      "advice": "Immer das Sendeprotokoll mit Zeitstempel und Transaktionsnummer als PDF herunterladen."
+    },
+    "takeaway": "Ein Brief kann bei der Post verloren gehen – ein digitaler Antrag hinterlässt ein unveränderliches Protokoll. Wer Anträge über behördliche Portale einreicht, sollte die Quittung niemals wegklicken, sondern sofort dauerhaft sichern.",
+    "paragraphTitles": [
+      "Die digitale Quittung: Dein rechtssicherer Nachweis",
+      "Warum ein Screenshot oft nicht reicht",
+      "Sinnvolle Dateinamen für schnelles Wiederfinden"
+    ],
+    "paragraphs": [
+      "Nach dem Klick auf „Antrag verbindlich absenden“ erscheint eine Bestätigungsseite mit Datum, genauer Uhrzeit und einer Vorgangsnummer. Fast alle Portale bieten einen Button „Eingangsbestätigung als PDF herunterladen“.",
+      "Ein einfacher Screenshot vom Bildschirm enthält oft keine kryptografische Signatur des Serverbetreibers. Die offizielle PDF-Quittung hingegen belegt im Streitfall vor Gericht den fristgerechten Eingang.",
+      "Gewöhne dir an, Dateien sofort nach dem Schema „JAHR-MONAT-BEHOERDE-THEMA“ zu benennen, z. B. „2026-08-Wohngeldamt-Eingangsbestaetigung.pdf“. So findest du sie nach Monaten in Sekundenschnelle wieder."
+    ],
+    "reading": {
+      "audience": "Für alle, die offizielle Anträge online stellen",
+      "actions": [
+        "Klicke am Ende des Antragsprozesses immer auf „Bestätigung herunterladen“",
+        "Verschiebe die Datei in deinen Ordner für wichtige Dokumente",
+        "Notiere dir die Vorgangsnummer im Kalender zur Nachverfolgung"
+      ]
+    },
+    "tip": "Antworte bei Nachfragen der Behörde immer unter Angabe dieser Vorgangsnummer – das beschleunigt die Zuordnung beim Sachbearbeiter enorm.",
+    "checkedAt": "2026-08-14",
+    "sources": [
+      {
+        "title": "Bundesministerium des Innern: Digitale Verwaltung & Bürgerportal",
+        "url": "https://www.bmi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "medikamenten-erinnerung-smartphone-2026",
+    "title": "Einnahme nie vergessen: Kostenlose Medikamenten-Erinnerungen auf dem Telefon",
+    "category": "Gesundheit & E-Rezept",
+    "date": "2026-08-14",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Sichert den Therapieerfolg durch pünktliche und lückenlose Tabletteneinnahme.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Für alle, die täglich zu festen Zeiten mehrere Medikamente einnehmen müssen.",
+      "action": "recommended",
+      "advice": "Die integrierte Medikamenten-Funktion in Apple Health oder Apps wie MyTherapy nutzen."
+    },
+    "takeaway": "Morgens vor dem Frühstück, mittags zur Mahlzeit oder abends vor dem Schlafen: Wer mehrere Tabletten nimmt, verliert leicht den Überblick. Dein Smartphone erinnert dich zuverlässig mit Name, Dosis und Tablettenform an jede Einnahme.",
+    "paragraphTitles": [
+      "Eingebaute Helfer: Apple Health und kostenlose Android-Apps",
+      "Aussehen und Einnahmehinweise hinterlegen",
+      "Das gute Gefühl: Jede Einnahme mit einem Haken quittieren"
+    ],
+    "paragraphs": [
+      "Auf dem iPhone ist die Funktion „Medikamente“ direkt in der vorinstallierten „Health“-App integriert. Für Android gibt es hervorragende, werbefreie und vom Bundesgesundheitsministerium gelobte Apps wie „MyTherapy“.",
+      "Du kannst genau eintragen: „Blutdrucksenker 5mg, weiße runde Tablette, morgens 8:00 Uhr mit einem Glas Wasser“. Ein sanfter Ton erinnert dich zum richtigen Zeitpunkt.",
+      "Tippst du auf „Eingenommen“, verschwindet die Erinnerung. Hast du mal Zweifel („Habe ich die Tablette vorhin eigentlich schon genommen?“), wirfst du einfach einen Blick in die App: Der Haken zeigt dir sofort die Gewissheit."
+    ],
+    "reading": {
+      "audience": "Für Patientinnen und Patienten mit Dauermedikation",
+      "actions": [
+        "Öffne Health > „Medikamente“ (iPhone) oder lade „MyTherapy“ (Android)",
+        "Trage deine wichtigsten Tabletten mit Einnahmezeiten ein",
+        "Quittiere die Erinnerung täglich mit einem Fingertipp"
+      ]
+    },
+    "tip": "Du kannst deinen Einnahmeplan in vielen Apps als übersichtliche PDF ausdrucken und beim nächsten Kontrolltermin deinem Arzt vorlegen.",
+    "checkedAt": "2026-08-14",
+    "sources": [
+      {
+        "title": "Stiftung Gesundheitswissen: Apps für die Medikamenteneinnahme",
+        "url": "https://www.stiftung-gesundheitswissen.de"
+      }
+    ]
+  },
+  {
+    "id": "werbung-im-browser-reduzieren-2026",
+    "title": "Störende Pop-ups und Anzeigen im Internetbrowser wirksam reduzieren",
+    "category": "Medien & Informationen",
+    "date": "2026-08-12",
+    "dateLabel": "Ratgeber",
+    "relevance": "Macht das Lesen von Nachrichtenartikeln wieder ruhig und übersichtlich.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Wenn Webseiten voller blinkender Werbebanner, automatisch startender Videos und Pop-ups sind.",
+      "action": "recommended",
+      "advice": "Den integrierten Lesemodus nutzen oder einen vertrauenswürdigen Werbeblocker aktivieren."
+    },
+    "takeaway": "Oft sieht man vor lauter blinkender Reklame den eigentlichen Text kaum noch. Es gibt einfache, kostenlose Möglichkeiten, um das Internet wieder auf das Wesentliche zu reduzieren: den eigentlichen Lesestoff.",
+    "paragraphTitles": [
+      "Der Lesemodus: Der beste Geheimtipp der Browser",
+      "Werbeblocker (Ad-Blocker) sicher installieren",
+      "Vorsicht vor gefälschten „Virenwarnungen“ in Werbebannern"
+    ],
+    "paragraphs": [
+      "Fast jeder Browser (Safari, Firefox, Chrome, Edge) hat ein kleines Buch- oder Blattsymbol in der Adressleiste. Klickst du darauf, verschwinden mit einem Schlag alle Werbebanner, Menüs und Pop-ups – es bleibt nur der reine Text auf weißem Grund.",
+      "Wer dauerhaft weniger Reklame sehen möchte, kann sich ein seriöses Browser-Add-on wie „uBlock Origin“ installieren. Es filtert störende Anzeigen heraus, schont das Datenvolumen und beschleunigt den Seitenaufbau spürbar.",
+      "Wichtig: Viele Banner versuchen Besucher mit Meldungen wie „Achtung! Ihr Telefon hat 5 Viren!“ in Angst zu versetzen. Das ist reine Betrugswerbung – schließe das Fenster einfach, dein Gerät ist nicht infiziert."
+    ],
+    "reading": {
+      "audience": "Für alle Leserinnen und Leser von Online-Magazinen",
+      "actions": [
+        "Suche in der Adresszeile deines Browsers nach dem Symbol für den „Lesemodus“",
+        "Aktiviere in den Smartphone-Einstellungen unter „Safari“ oder „Chrome“ die Option „Pop-ups blockieren“",
+        "Ignoriere blinkende Warnmeldungen auf Webseiten grundsätzlich"
+      ]
+    },
+    "tip": "Webseiten guter Lokalzeitungen finanzieren sich durch Werbung – dort kannst du den Blocker mit einem Klick auf das Schutzschild gezielt pausieren.",
+    "checkedAt": "2026-08-12",
+    "sources": [
+      {
+        "title": "BSI: Sicher surfen ohne störende Werbung und Tracker",
+        "url": "https://www.bsi.bund.de"
+      }
+    ]
+  },
+  {
+    "id": "begriffe-verstehen-cloud-wlan-app-2026",
+    "title": "Digitales Wörterbuch: Die wichtigsten Computerbegriffe kurz und einfach übersetzt",
+    "category": "Lernen & Wissen",
+    "date": "2026-08-10",
+    "dateLabel": "Alltagstipp",
+    "relevance": "Nimmt die Verwirrung bei Gesprächen mit Verkäufern, Technikern oder Enkeln.",
+    "assessment": {
+      "relevance": "yes",
+      "context": "Zum schnellen Nachschlagen bei englischen Begriffen in der digitalen Welt.",
+      "action": "none",
+      "advice": "Keine Angst vor Fachbegriffen – die allermeisten lassen sich mit einfachen Bildern erklären."
+    },
+    "takeaway": "Cloud, Browser, Update, WLAN, Cache... In der Technik wimmelt es von englischen Ausdrücken. Wir übersetzen die sechs häufigsten Begriffe in einfaches, klares Alltagsdeutsch.",
+    "paragraphTitles": [
+      "WLAN und Browser: Die Türen ins Netz",
+      "Cloud und Update: Festplatte im Internet und Reparatur",
+      "App und Account: Hilfsprogramm und persönlicher Ausweis"
+    ],
+    "paragraphs": [
+      "WLAN ist schlicht die kabellose Funkverbindung zwischen deinem Router und dem Smartphone. Der Browser (z. B. Chrome, Safari, Firefox) ist das Programm, mit dem du Internetseiten anschaust.",
+      "Die „Cloud“ (englisch für Wolke) ist kein mystischer Ort, sondern einfach eine gesicherte Großrechner-Festplatte im Internet, auf der deine Fotos oder Dateien liegen, damit du von überall darauf zugreifen kannst. Ein „Update“ ist eine kostenlose digitale Reparatur und Verbesserung deines Geräts.",
+      "Eine „App“ ist die Abkürzung für Application, also ein kleines Anwendungsprogramm für eine ganz bestimmte Aufgabe. Ein „Account“ ist dein persönliches Benutzerkonto mit Name und Passwort."
+    ],
+    "reading": {
+      "audience": "Für Einsteiger und Wissbegierige",
+      "actions": [
+        "Lies dir die Erklärungen in Ruhe durch",
+        "Schlage bei unverständlichen Begriffen in der Box nach",
+        "Frage im Zweifel einfach den Digitalen Assistenten: „Was bedeutet...“"
+      ]
+    },
+    "tip": "Niemand weiß alles: Auch IT-Profis schlagen täglich Begriffe im Internet nach – Nachfragen ist ein Zeichen von Klugheit!",
+    "checkedAt": "2026-08-10",
+    "sources": [
+      {
+        "title": "Digital Guide Box – Jan Dennis Brüning",
+        "url": "https://www.janbruening.de"
+      }
+    ]
+  }
+]

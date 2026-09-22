@@ -14,6 +14,8 @@ $inquiry_url = rest_url( 'digital-guide-box-v2/v1/inquiry' );
 $chat_url    = rest_url( 'digital-guide-box-v2/v1/chat' );
 $password    = DGBC_Auth::get_expected_password();
 $settings    = DGBC_Settings::get_all();
+$guides      = DGBC_Content::get_guides();
+$news        = DGBC_Content::get_news();
 
 $fav_icon = ! empty( $settings['profile']['avatar_url'] )
 	? $settings['profile']['avatar_url']
@@ -43,7 +45,9 @@ $fav_icon = ! empty( $settings['profile']['avatar_url'] )
         chatUrl: <?php echo wp_json_encode( $chat_url ); ?>,
         siteUrl: <?php echo wp_json_encode( home_url() ); ?>,
         password: <?php echo wp_json_encode( $password ); ?>,
-        settings: <?php echo wp_json_encode( $settings ); ?>
+        settings: <?php echo wp_json_encode( $settings ); ?>,
+        guides: <?php echo wp_json_encode( $guides ); ?>,
+        news: <?php echo wp_json_encode( $news ); ?>
       };
     </script>
   </head>

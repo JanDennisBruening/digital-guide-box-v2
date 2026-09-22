@@ -270,7 +270,7 @@ final class DGBC_Admin {
 			'gate'     => '🚪 Eingangstor / Begrüßung',
 			'profile'  => '👤 Profil & Beraterkontakt',
 			'whatsapp' => '💬 WhatsApp-Kanal',
-			'gemini'   => '🤖 KI-Assistent (Gemini)',
+			'gemini'   => '🤖 KI-Assistent & Anbieter',
 			'guides'   => '📖 Anleitungen (' . count( $all_guides ) . ')',
 			'news'     => '📰 Neuigkeiten (' . count( $all_news ) . ')',
 			'inbox'    => '📥 Posteingang',
@@ -587,68 +587,223 @@ final class DGBC_Admin {
 						</p>
 					</form>
 
-				<!-- 5. TAB: GEMINI KI-ASSISTENT -->
+				<!-- 5. TAB: MULTI-PROVIDER AI ASSISTANT -->
 				<?php elseif ( 'gemini' === $active_tab ) : 
-					$gemini = $settings['gemini'] ?? DGBC_Settings::get_defaults()['gemini'];
-					$has_api_key = ! empty( $gemini['api_key'] );
+					$ai_cfg       = $settings['gemini'] ?? DGBC_Settings::get_defaults()['gemini'];
+					$cur_provider = ! empty( $ai_cfg['provider'] ) ? $ai_cfg['provider'] : 'gemini';
+
+					$has_gemini_key  = ! empty( $ai_cfg['api_key'] );
+					$has_openai_key  = ! empty( $ai_cfg['openai_api_key'] );
+					$has_mistral_key = ! empty( $ai_cfg['mistral_api_key'] );
+					$has_groq_key    = ! empty( $ai_cfg['groq_api_key'] );
+					$has_custom_ep   = ! empty( $ai_cfg['custom_endpoint'] );
 				?>
 					<form method="post" action="">
 						<?php wp_nonce_field( 'dgbc_settings_nonce_action', 'dgbc_settings_nonce' ); ?>
 						<input type="hidden" name="dgbc_current_tab" value="gemini" />
-						<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">🤖 KI-Assistent (Google Gemini)</h2>
-						<p style="color:#555;">Der integrierte KI-Assistent steht deinen Nutzerinnen und Nutzern in der Digital Guide Box geduldig zur Seite, erklärt Schritte einfach und nimmt Scheu vor digitaler Technik.</p>
-
-						<div style="background: <?php echo $has_api_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_api_key ? '#22c55e' : '#f59e0b'; ?>; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px;">
-							<?php if ( $has_api_key ) : ?>
-								<strong style="color:#166534;display:block;">✓ Google Gemini API-Schlüssel ist hinterlegt und aktiv.</strong>
-								<span style="font-size:13px;color:#15803d;">Der KI-Assistent kann in der Digital Guide Box Anfragen beantworten.</span>
-							<?php else : ?>
-								<strong style="color:#92400e;display:block;">⚠️ Noch kein Gemini API-Schlüssel hinterlegt</strong>
-								<span style="font-size:13px;color:#b45309;">
-									Um den KI-Assistenten zu nutzen, erstelle bitte einen kostenlosen API-Schlüssel in 
-									<a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">Google AI Studio (hier klicken) ↗</a> 
-									und trage ihn unten ein.
-								</span>
-							<?php endif; ?>
-						</div>
+						<h2 style="margin-top:0;font-size:18px;border-bottom:1px solid #eee;padding-bottom:10px;">🤖 KI-Assistent &amp; Modellauswahl</h2>
+						<p style="color:#555;">Der integrierte KI-Assistent steht deinen Nutzerinnen und Nutzern in der Digital Guide Box geduldig zur Seite. Wähle hier flexibel deinen bevorzugten KI-Dienst – von Google Gemini über europäische DSGVO-Anbieter (Mistral AI) bis hin zu einem selbstgehosteten Server (Ollama).</p>
 
 						<table class="form-table" role="presentation">
 							<tr>
 								<th scope="row">KI-Assistent aktivieren</th>
 								<td>
 									<label>
-										<input type="checkbox" name="gemini[enabled]" value="1" <?php checked( ! empty( $gemini['enabled'] ) ); ?> />
+										<input type="checkbox" name="gemini[enabled]" value="1" <?php checked( ! empty( $ai_cfg['enabled'] ) ); ?> />
 										<strong>KI-Assistent in der Digital Guide Box verfügbar machen</strong>
 									</label>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="gemini_api_key">Gemini API-Schlüssel</label></th>
+								<th scope="row"><label for="ai_provider">KI-Anbieter / Dienst</label></th>
 								<td>
-									<input name="gemini[api_key]" type="password" id="gemini_api_key" value="<?php echo esc_attr( $gemini['api_key'] ); ?>" class="large-text" placeholder="AIzaSy..." />
-									<button type="button" class="button button-secondary" style="margin-top:6px;" onclick="const f=document.getElementById('gemini_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">
-										Anzeigen / Verbergen
-									</button>
-									<p class="description">Wird sicher im WordPress-Backend gespeichert und niemals im Browser-Quellcode an die Besucher übertragen.</p>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row"><label for="gemini_default_model">Standard-KI-Modell</label></th>
-								<td>
-									<select name="gemini[default_model]" id="gemini_default_model">
-										<option value="gemini-2.5-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.5-flash' ); ?>>Gemini 2.5 Flash (Empfohlen – schnell, modern, ideal für Alltagshilfe)</option>
-										<option value="gemini-2.5-pro" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.5-pro' ); ?>>Gemini 2.5 Pro (Für besonders anspruchsvolle, komplexe Aufgaben)</option>
-										<option value="gemini-2.0-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-2.0-flash' ); ?>>Gemini 2.0 Flash (Sehr schnelle Reaktionszeit)</option>
-										<option value="gemini-1.5-flash" <?php selected( ( $gemini['default_model'] ?? '' ), 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash (Bewährtes Basis-Modell)</option>
+									<select name="gemini[provider]" id="ai_provider" style="font-size:14px;padding:6px 12px;width:380px;" onchange="switchAiProvider(this.value)">
+										<option value="gemini" <?php selected( $cur_provider, 'gemini' ); ?>>🔵 Google Gemini (Standard · Schnell &amp; kostenlos)</option>
+										<option value="openai" <?php selected( $cur_provider, 'openai' ); ?>>🟢 OpenAI (ChatGPT · GPT-4o-mini / GPT-4o)</option>
+										<option value="mistral" <?php selected( $cur_provider, 'mistral' ); ?>>🇫🇷 Mistral AI (EU / Paris · 100% DSGVO-konform)</option>
+										<option value="groq" <?php selected( $cur_provider, 'groq' ); ?>>⚡ Groq (Ultra-schnell · Open-Source Llama 3.3)</option>
+										<option value="custom" <?php selected( $cur_provider, 'custom' ); ?>>🖥️ Eigener Server / Ollama (Self-Hosted)</option>
 									</select>
-									<p class="description">Wähle das bevorzugte Gemini-Modell für die Standard-Antworten.</p>
+									<p class="description">Du kannst den Anbieter jederzeit wechseln, ohne dass deine Einstellungen bei den anderen Anbietern verloren gehen.</p>
 								</td>
 							</tr>
+						</table>
+
+						<!-- 1. GOOGLE GEMINI FIELDS -->
+						<div id="ai_section_gemini" class="ai-provider-section" style="<?php echo 'gemini' === $cur_provider ? '' : 'display:none;'; ?>background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+							<h3 style="margin-top:0;font-size:15px;color:#164781;">🔵 Google Gemini Konfiguration</h3>
+							<div style="background: <?php echo $has_gemini_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_gemini_key ? '#22c55e' : '#f59e0b'; ?>; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+								<?php if ( $has_gemini_key ) : ?>
+									<strong style="color:#166534;display:block;">✓ Google Gemini API-Schlüssel ist hinterlegt.</strong>
+								<?php else : ?>
+									<strong style="color:#92400e;display:block;">⚠️ Noch kein Gemini API-Schlüssel hinterlegt</strong>
+									<span style="font-size:13px;color:#b45309;">Kostenlosen Schlüssel erstellen in <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">Google AI Studio ↗</a>.</span>
+								<?php endif; ?>
+							</div>
+							<table class="form-table" style="margin:0;">
+								<tr>
+									<th style="width:180px;"><label for="gemini_api_key">Gemini API-Schlüssel</label></th>
+									<td>
+										<input name="gemini[api_key]" type="password" id="gemini_api_key" value="<?php echo esc_attr( $ai_cfg['api_key'] ?? '' ); ?>" class="large-text" placeholder="AIzaSy..." />
+										<button type="button" class="button button-secondary" style="margin-top:4px;" onclick="const f=document.getElementById('gemini_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">Anzeigen / Verbergen</button>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="gemini_default_model">Gemini Modell</label></th>
+									<td>
+										<select name="gemini[default_model]" id="gemini_default_model">
+											<option value="gemini-2.5-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.5-flash' ); ?>>Gemini 2.5 Flash (Empfohlen – schnell &amp; kostenlos)</option>
+											<option value="gemini-2.5-pro" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.5-pro' ); ?>>Gemini 2.5 Pro (Für besonders anspruchsvolle Aufgaben)</option>
+											<option value="gemini-2.0-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.0-flash' ); ?>>Gemini 2.0 Flash (Sehr schnelle Reaktionszeit)</option>
+											<option value="gemini-1.5-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash (Bewährtes Basis-Modell)</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 2. OPENAI FIELDS -->
+						<div id="ai_section_openai" class="ai-provider-section" style="<?php echo 'openai' === $cur_provider ? '' : 'display:none;'; ?>background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+							<h3 style="margin-top:0;font-size:15px;color:#164781;">🟢 OpenAI (ChatGPT) Konfiguration</h3>
+							<div style="background: <?php echo $has_openai_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_openai_key ? '#22c55e' : '#f59e0b'; ?>; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+								<?php if ( $has_openai_key ) : ?>
+									<strong style="color:#166534;display:block;">✓ OpenAI API-Schlüssel ist hinterlegt.</strong>
+								<?php else : ?>
+									<strong style="color:#92400e;display:block;">⚠️ Noch kein OpenAI API-Schlüssel hinterlegt</strong>
+									<span style="font-size:13px;color:#b45309;">API-Schlüssel erstellen unter <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">platform.openai.com ↗</a>.</span>
+								<?php endif; ?>
+							</div>
+							<table class="form-table" style="margin:0;">
+								<tr>
+									<th style="width:180px;"><label for="openai_api_key">OpenAI API-Schlüssel</label></th>
+									<td>
+										<input name="gemini[openai_api_key]" type="password" id="openai_api_key" value="<?php echo esc_attr( $ai_cfg['openai_api_key'] ?? '' ); ?>" class="large-text" placeholder="sk-..." />
+										<button type="button" class="button button-secondary" style="margin-top:4px;" onclick="const f=document.getElementById('openai_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">Anzeigen / Verbergen</button>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="openai_model">OpenAI Modell</label></th>
+									<td>
+										<select name="gemini[openai_model]" id="openai_model">
+											<option value="gpt-4o-mini" <?php selected( ( $ai_cfg['openai_model'] ?? '' ), 'gpt-4o-mini' ); ?>>GPT-4o-mini (Empfohlen – extrem günstig, schnell &amp; verlässlich)</option>
+											<option value="gpt-4o" <?php selected( ( $ai_cfg['openai_model'] ?? '' ), 'gpt-4o' ); ?>>GPT-4o (Maximales Sprachverständnis)</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 3. MISTRAL AI FIELDS -->
+						<div id="ai_section_mistral" class="ai-provider-section" style="<?php echo 'mistral' === $cur_provider ? '' : 'display:none;'; ?>background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+							<h3 style="margin-top:0;font-size:15px;color:#164781;">🇫🇷 Mistral AI (EU / DSGVO) Konfiguration</h3>
+							<div style="background: <?php echo $has_mistral_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_mistral_key ? '#22c55e' : '#f59e0b'; ?>; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+								<?php if ( $has_mistral_key ) : ?>
+									<strong style="color:#166534;display:block;">✓ Mistral AI API-Schlüssel ist hinterlegt (Server in Paris / EU).</strong>
+								<?php else : ?>
+									<strong style="color:#92400e;display:block;">⚠️ Noch kein Mistral API-Schlüssel hinterlegt</strong>
+									<span style="font-size:13px;color:#b45309;">API-Schlüssel erstellen unter <a href="https://console.mistral.ai/api-keys/" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">console.mistral.ai ↗</a>.</span>
+								<?php endif; ?>
+							</div>
+							<table class="form-table" style="margin:0;">
+								<tr>
+									<th style="width:180px;"><label for="mistral_api_key">Mistral API-Schlüssel</label></th>
+									<td>
+										<input name="gemini[mistral_api_key]" type="password" id="mistral_api_key" value="<?php echo esc_attr( $ai_cfg['mistral_api_key'] ?? '' ); ?>" class="large-text" placeholder="..." />
+										<button type="button" class="button button-secondary" style="margin-top:4px;" onclick="const f=document.getElementById('mistral_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">Anzeigen / Verbergen</button>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="mistral_model">Mistral Modell</label></th>
+									<td>
+										<select name="gemini[mistral_model]" id="mistral_model">
+											<option value="mistral-small-latest" <?php selected( ( $ai_cfg['mistral_model'] ?? '' ), 'mistral-small-latest' ); ?>>Mistral Small (Empfohlen – schnell, kostengünstig &amp; sehr gutes Deutsch)</option>
+											<option value="mistral-large-latest" <?php selected( ( $ai_cfg['mistral_model'] ?? '' ), 'mistral-large-latest' ); ?>>Mistral Large (Spitzenmodell von Mistral)</option>
+											<option value="open-mistral-nemo" <?php selected( ( $ai_cfg['mistral_model'] ?? '' ), 'open-mistral-nemo' ); ?>>Mistral Nemo (Effizientes Open-Weights-Modell)</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 4. GROQ FIELDS -->
+						<div id="ai_section_groq" class="ai-provider-section" style="<?php echo 'groq' === $cur_provider ? '' : 'display:none;'; ?>background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+							<h3 style="margin-top:0;font-size:15px;color:#164781;">⚡ Groq (Ultra-schnelle LPU-Chips) Konfiguration</h3>
+							<div style="background: <?php echo $has_groq_key ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_groq_key ? '#22c55e' : '#f59e0b'; ?>; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+								<?php if ( $has_groq_key ) : ?>
+									<strong style="color:#166534;display:block;">✓ Groq API-Schlüssel ist hinterlegt.</strong>
+								<?php else : ?>
+									<strong style="color:#92400e;display:block;">⚠️ Noch kein Groq API-Schlüssel hinterlegt</strong>
+									<span style="font-size:13px;color:#b45309;">Kostenlosen API-Schlüssel erstellen unter <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" style="color:#1d4ed8;font-weight:600;">console.groq.com ↗</a>.</span>
+								<?php endif; ?>
+							</div>
+							<table class="form-table" style="margin:0;">
+								<tr>
+									<th style="width:180px;"><label for="groq_api_key">Groq API-Schlüssel</label></th>
+									<td>
+										<input name="gemini[groq_api_key]" type="password" id="groq_api_key" value="<?php echo esc_attr( $ai_cfg['groq_api_key'] ?? '' ); ?>" class="large-text" placeholder="gsk_..." />
+										<button type="button" class="button button-secondary" style="margin-top:4px;" onclick="const f=document.getElementById('groq_api_key'); f.type = f.type === 'password' ? 'text' : 'password';">Anzeigen / Verbergen</button>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="groq_model">Groq Modell</label></th>
+									<td>
+										<select name="gemini[groq_model]" id="groq_model">
+											<option value="llama-3.3-70b-versatile" <?php selected( ( $ai_cfg['groq_model'] ?? '' ), 'llama-3.3-70b-versatile' ); ?>>Llama 3.3 70B Versatile (Empfohlen – extrem starkes Open-Source-Modell)</option>
+											<option value="llama-3.1-8b-instant" <?php selected( ( $ai_cfg['groq_model'] ?? '' ), 'llama-3.1-8b-instant' ); ?>>Llama 3.1 8B Instant (Ultraschnell, bis zu 800 Tokens/Sekunde)</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 5. CUSTOM / OLLAMA FIELDS -->
+						<div id="ai_section_custom" class="ai-provider-section" style="<?php echo 'custom' === $cur_provider ? '' : 'display:none;'; ?>background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+							<h3 style="margin-top:0;font-size:15px;color:#164781;">🖥️ Eigener Server / Ollama / Self-Hosted Konfiguration</h3>
+							<div style="background: <?php echo $has_custom_ep ? '#f0fdf4' : '#fffbeb'; ?>; border-left: 4px solid <?php echo $has_custom_ep ? '#22c55e' : '#f59e0b'; ?>; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;">
+								<?php if ( $has_custom_ep ) : ?>
+									<strong style="color:#166534;display:block;">✓ Eigener Server-Endpunkt ist konfiguriert.</strong>
+								<?php else : ?>
+									<strong style="color:#92400e;display:block;">⚠️ Noch kein Server-Endpunkt hinterlegt</strong>
+									<span style="font-size:13px;color:#b45309;">Trage die vollständige Chat-Completions-URL deines Servers ein (z. B. <code>http://deine-server-ip:11434/v1/chat/completions</code>).</span>
+								<?php endif; ?>
+							</div>
+							<table class="form-table" style="margin:0;">
+								<tr>
+									<th style="width:180px;"><label for="custom_endpoint">Chat-Completions URL *</label></th>
+									<td>
+										<input name="gemini[custom_endpoint]" type="url" id="custom_endpoint" value="<?php echo esc_attr( $ai_cfg['custom_endpoint'] ?? '' ); ?>" class="large-text" placeholder="http://localhost:11434/v1/chat/completions" />
+										<p class="description">Vollständiger Pfad zur OpenAI-kompatiblen Schnittstelle (z. B. bei Ollama, vLLM oder LocalAI).</p>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="custom_model">Modell-Name</label></th>
+									<td>
+										<input name="gemini[custom_model]" type="text" id="custom_model" value="<?php echo esc_attr( $ai_cfg['custom_model'] ?? 'llama3.2' ); ?>" class="regular-text" placeholder="llama3.2" />
+										<p class="description">Der Name des Modells, wie er auf deinem Server geladen ist (z. B. <code>llama3.2</code>, <code>mistral</code>, <code>gemma2</code>).</p>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="custom_api_key">API-Schlüssel / Token (optional)</label></th>
+									<td>
+										<input name="gemini[custom_api_key]" type="password" id="custom_api_key" value="<?php echo esc_attr( $ai_cfg['custom_api_key'] ?? '' ); ?>" class="large-text" placeholder="Optionaler Bearer-Token..." />
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<script>
+						function switchAiProvider(provider) {
+							jQuery('.ai-provider-section').hide();
+							jQuery('#ai_section_' + provider).fadeIn(150);
+						}
+						</script>
+
+						<table class="form-table" role="presentation">
 							<tr>
 								<th scope="row"><label for="gemini_prompt">Persönlichkeit &amp; System-Prompt</label></th>
 								<td>
-									<textarea name="gemini[system_prompt]" id="gemini_prompt" rows="8" class="large-text" style="font-family:monospace;font-size:12px;"><?php echo esc_textarea( $gemini['system_prompt'] ); ?></textarea>
-									<p class="description">Definiert Tonfall, Verhaltensregeln und Zielgruppe des KI-Assistenten.</p>
+									<textarea name="gemini[system_prompt]" id="gemini_prompt" rows="8" class="large-text" style="font-family:monospace;font-size:12px;"><?php echo esc_textarea( $ai_cfg['system_prompt'] ); ?></textarea>
+									<p class="description">Definiert Tonfall, Verhaltensregeln und Zielgruppe des KI-Assistenten – gilt einheitlich für alle ausgewählten KI-Anbieter.</p>
 								</td>
 							</tr>
 						</table>

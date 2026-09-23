@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 interface PreloaderProps {
   active: boolean;
@@ -18,6 +19,9 @@ export const Preloader: React.FC<PreloaderProps> = ({ active }) => {
 
   if (!active && !visible) return null;
 
+  const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
+  const avatarUrl = config?.settings?.profile?.avatar_url || getAssetUrl('profilbild.png');
+
   return (
     <div
       className={`box-preloader${active ? '' : ' is-leaving'}`}
@@ -34,7 +38,18 @@ export const Preloader: React.FC<PreloaderProps> = ({ active }) => {
             </svg>
           </span>
           <span className="preloader-mark">
-            <img src="/profilbild.png" alt="" width="128" height="128" />
+            <img
+              src={avatarUrl}
+              alt=""
+              width="128"
+              height="128"
+              onError={(e) => {
+                const fallback = getAssetUrl('profilbild.png');
+                if (e.currentTarget.src !== fallback) {
+                  e.currentTarget.src = fallback;
+                }
+              }}
+            />
           </span>
         </div>
         <p>

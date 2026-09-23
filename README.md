@@ -1,6 +1,13 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.2)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.3)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.3:
+- **Korrektur der Profilbild-Pfade & Ladefehler:**
+  - **KI-Assistenten-Header:** Die Bildquelle des Profilbilds (`GeminiAssistantSection`) greift nun dynamisch auf das hinterlegte Profilbild bzw. die korrekte Plugin-Asset-URL zu, anstatt auf den statischen Pfad `/profilbild.png`, der auf der Website zu einem Darstellungsfehler (gebrochenes Bild) führte.
+  - **Leseansicht („Frage zu diesem Thema?“):** In der Anleitungs- und Neuigkeiten-Leseansicht (`ReadingDialog`) nutzt das Profilbild neben „Frag Jan Dennis direkt im neuen KI-Assistenten“ nun ebenfalls die dynamische URL mit robuster Fallback-Behandlung (`onError`).
+  - **Preloader & PDF-Druck:** Auch im Start-Preloader und der Druckfunktion werden die Bildpfade nun zuverlässig über `getAssetUrl` und die Konfiguration aufgelöst.
+  - **Automatischer Fallback:** Alle Profilbilder besitzen nun einen `onError`-Handler, der bei verzögertem Laden oder Domain-Abweichungen automatisch auf das Standard-Asset zurückgreift.
 
 ### Neu in Version 2.9.2:
 - **Titel-Korrektur beim KI-Assistenten:**

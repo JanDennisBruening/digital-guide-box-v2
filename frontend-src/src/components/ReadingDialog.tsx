@@ -30,6 +30,7 @@ import { openGuidePrintWindow } from '../utils/pdfGenerator';
 import { getDateLabelStyle } from '../utils/dateLabels';
 import { GuideRatingCard } from './GuideRatingCard';
 import { getGuideRating, subscribeToRatings } from '../utils/guideRatings';
+import { getAssetUrl } from '../utils/assets';
 
 function formatGermanDate(isoString: string): string {
   try {
@@ -61,6 +62,10 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
   onSelectRelated,
   onAskAssistant
 }) => {
+  const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
+  const profileAvatar = config?.settings?.profile?.avatar_url || getAssetUrl('profilbild.png');
+  const profileName = config?.settings?.profile?.name || 'Jan Dennis';
+
   const [stepIndex, setStepIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -657,8 +662,14 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
               <div className="my-6 p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3 min-w-0">
                   <img
-                    src="/profilbild.png"
-                    alt="Jan Dennis"
+                    src={profileAvatar}
+                    alt={profileName}
+                    onError={(e) => {
+                      const fallback = getAssetUrl('profilbild.png');
+                      if (e.currentTarget.src !== fallback) {
+                        e.currentTarget.src = fallback;
+                      }
+                    }}
                     className="w-10 h-10 rounded-full border border-blue-300 object-cover bg-white flex-shrink-0"
                   />
                   <div className="min-w-0">

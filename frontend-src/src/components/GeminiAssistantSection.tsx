@@ -266,8 +266,14 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
           {/* Avatar */}
           <div className="relative flex-shrink-0 mt-0.5">
             <img
-              src="/profilbild.png"
-              alt="Jan Dennis Brüning"
+              src={profileAvatar}
+              alt={profileName}
+              onError={(e) => {
+                const fallback = getAssetUrl('profilbild.png');
+                if (e.currentTarget.src !== fallback) {
+                  e.currentTarget.src = fallback;
+                }
+              }}
               className="w-13 h-13 sm:w-14 sm:h-14 rounded-full border-2 border-[#235cbb] shadow-sm object-cover bg-white"
             />
             <span
@@ -382,6 +388,12 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   <img
                     src={profileAvatar}
                     alt={profileName}
+                    onError={(e) => {
+                      const fallback = getAssetUrl('profilbild.png');
+                      if (e.currentTarget.src !== fallback) {
+                        e.currentTarget.src = fallback;
+                      }
+                    }}
                     className="w-8 h-8 rounded-full border border-emerald-300 shadow-xs object-cover bg-white"
                   />
                 ) : (
@@ -453,8 +465,14 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
         {isLoading && messages[messages.length - 1]?.role === 'user' && (
           <div className="flex gap-3 max-w-3xl mr-auto">
             <img
-              src="/profilbild.png"
-              alt="Jan Dennis"
+              src={profileAvatar}
+              alt={profileName}
+              onError={(e) => {
+                const fallback = getAssetUrl('profilbild.png');
+                if (e.currentTarget.src !== fallback) {
+                  e.currentTarget.src = fallback;
+                }
+              }}
               className="w-8 h-8 rounded-full border border-blue-300 shadow-xs object-cover bg-white animate-pulse"
             />
             <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-none px-4 py-3 shadow-xs flex items-center gap-2 font-body">

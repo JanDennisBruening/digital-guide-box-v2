@@ -200,6 +200,12 @@ export function App() {
                   alt={profileSettings?.name || 'Jan Dennis Brüning'}
                   width="80"
                   height="80"
+                  onError={(e) => {
+                    const fallback = getAssetUrl('profilbild.png');
+                    if (e.currentTarget.src !== fallback) {
+                      e.currentTarget.src = fallback;
+                    }
+                  }}
                 />
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 tracking-tight m-0">
@@ -496,7 +502,19 @@ export function App() {
           {/* Print-only Contact Card */}
           <section className="contact-print" aria-label="Kontaktkarte zum Ausdrucken">
             <div className="contact-print-heading">
-              <img src={profileSettings.avatar_url || getAssetUrl('profilbild.png')} alt="" width="56" height="56" style={{ borderRadius: '50%', objectFit: 'cover' }} />
+              <img
+                src={profileSettings.avatar_url || getAssetUrl('profilbild.png')}
+                alt=""
+                width="56"
+                height="56"
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+                onError={(e) => {
+                  const fallback = getAssetUrl('profilbild.png');
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
+              />
               <div>
                 <h2>Kontaktkarte</h2>
                 <p>von {profileSettings.name || 'Jan Dennis Brüning'}</p>

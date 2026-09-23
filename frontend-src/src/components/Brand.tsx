@@ -15,6 +15,12 @@ export const Brand: React.FC = () => {
         alt={authorName}
         width="56"
         height="56"
+        onError={(e) => {
+          const fallback = getAssetUrl('profilbild.png');
+          if (e.currentTarget.src !== fallback) {
+            e.currentTarget.src = fallback;
+          }
+        }}
       />
       <div>
         <div className="brand-title">

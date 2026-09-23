@@ -58,7 +58,8 @@ export function generateGuidePrintHtml(guide: Guide, origin: string = ''): strin
     `
       : '';
 
-  const avatarUrl = origin ? `${origin}/profilbild.png` : '/profilbild.png';
+  const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
+  const avatarUrl = config?.settings?.profile?.avatar_url || (config?.assetsUrl ? `${config.assetsUrl.replace(/\/+$/, '')}/profilbild.png` : (origin ? `${origin}/profilbild.png` : '/profilbild.png'));
 
   return `<!DOCTYPE html>
 <html lang="de">

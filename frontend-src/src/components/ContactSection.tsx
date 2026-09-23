@@ -416,6 +416,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         width="64"
                         height="64"
                         style={{ borderRadius: '50%', objectFit: 'cover' }}
+                        onError={(e) => {
+                          const fallback = getAssetUrl('profilbild.png');
+                          if (e.currentTarget.src !== fallback) {
+                            e.currentTarget.src = fallback;
+                          }
+                        }}
                       />
                       <div>
                         <h3>{profileName}</h3>

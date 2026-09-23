@@ -1,6 +1,80 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.6.5)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.1)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.1:
+- **Optimierung der Bewertungskarte bei Anleitungen:**
+  - Der Hinweis `(Deine Stimme gezählt)` bei bereits bewerteten Anleitungen wird nun aufgeräumt und sauber unterhalb von `★ 4.8 von 5 · 48 Bewertungen` platziert, anstatt den Text horizontal zu überladen.
+
+### Neu in Version 2.9.0:
+- **Erweitertes Filter- und Sortier-Menü für Anleitungen:**
+  - Klick auf den neuen Button **„Filter & Sortierung“** öffnet ein übersichtliches Dropdown-Menü mit mehreren Filter- und Sortieroptionen.
+  - **Sortierung nach „Am besten bewertet“:** Anleitungen können jetzt direkt nach der höchsten durchschnittlichen Sternebewertung (z. B. 5.0 ★, 4.9 ★) sortiert werden.
+  - Weitere Sortiermöglichkeiten: **Empfohlen**, **Alphabetisch (A–Z)**, **Kürzeste Lesezeit** und **Ausführlichste Anleitungen**.
+  - **Erweiterte Schnellfilter:**
+    - **Mindestbewertung:** Ab 4.8 Sterne (Top-Tipps), Ab 4.5 Sterne oder Alle.
+    - **Lesezeit / Dauer:** Unter 5 Minuten (Schnelltipps), 5–7 Minuten, Ab 8 Minuten oder Alle Zeiten.
+    - **Gerät / Plattform:** Smartphone & Tablet (Android / iPhone / iPad), Computer & Laptop (Windows / Mac) oder Alle.
+  - Aktive Filter werden als praktische Entfern-Tags unter der Suche angezeigt und können einzeln oder mit einem Klick auf **„Alle zurücksetzen“** geleert werden.
+- **Interaktives Sterne-Bewertungssystem für Anleitungen:**
+  - Jede Anleitung besitzt jetzt eine sichtbare Sterne-Bewertung (z. B. `★ 4.9 (28)`), die direkt auf den Kärtchen und im Lesekopf angezeigt wird.
+  - **Bewertung in der Leseansicht:** Am Ende jeder geöffneten Anleitung können Leser mit 1 bis 5 interaktiven Sternen direkt Feedback abgeben („War diese Anleitung hilfreich?“).
+  - Hover-Vorschau und sofortige Rückmeldung („Danke für dein Feedback! Du hast X von 5 Sternen vergeben.“).
+  - Bewertungen werden dauerhaft gespeichert (`localStorage`), fließen sofort in den Gesamtschnitt der Anleitung ein und aktualisieren die Sortierung in Echtzeit.
+
+### Neu in Version 2.8.3:
+- **Farbliche Differenzierung der Beitragsarten & Warnmeldungen bei den Neuigkeiten:**
+  - Oben rechts auf jeder Neuigkeiten-Karte wird die Beitragsart (z. B. **„Warnung“**, **„Alltagstipp“**, **„Praxistipp“**, **„Ratgeber“**, **„Box-Update“**, **„Schritt-für-Schritt“**) nun als passend eingefärbter Pill-Badge mit passendem Icon dargestellt.
+  - **„Warnung“** sticht in markantem Signalrot (`#b91c1c` auf dezentem `#fef2f2` mit feinem Rahmen `#fca5a5`) und einem `AlertTriangle`-Warnsymbol sofort ins Auge. Zusätzlich erhalten Warnbeiträge einen dezenten roten Akzentstreifen am linken Kartenrand.
+  - Auch die übrigen Beitragsarten verfügen über maßgeschneiderte, sympathische Farbtöne (z. B. Smaragdgrün für Praxistipps/Alltagstipps, Digital-Guide-Blau für Box-Updates, Himmelsblau für Ratgeber, Violett für Schritt-für-Schritt).
+  - Das Veröffentlichungsdatum steht harmonisch und übersichtlich daneben.
+  - In der Vollbild-Leseansicht (`ReadingDialog`) wird derselbe typisierte Badge konsistent weitergeführt.
+
+### Neu in Version 2.8.2:
+- **Flüssige, nachvollziehbare Animation beim Hovern der Support-Karten:**
+  - Die drei Akkordeon-Karten **„Du kommst nicht weiter?“**, **„Dringende Hilfe“** und **„Feedback & Wünsche“** springen beim Darüberfahren mit der Maus (Hover) nicht mehr ruckartig auf.
+  - Mittels CSS Grid-Transition (`grid-template-rows: 0fr` zu `1fr`) und weicher Opazitätsüberblendung (`cubic-bezier(0.16, 1, 0.3, 1)`) gleiten die Inhalte geschmeidig und natürlich auf und zu.
+  - Der Pfeil (`ChevronDown`) dreht sich synchron und sanft über 280ms mit.
+  - Ein erweiterter Puffer (160ms) verhindert jedes Flackern, wenn die Maus zwischen Kopfbereich und Formularfeldern bewegt wird.
+- **Entfernung technischer Modellbezeichnungen („Gemini 3“):**
+  - Der Hinweis auf ein spezifisches technisches Modell („Gemini 3“) wurde aus der Benutzeroberfläche entfernt.
+  - Im Hauptreiter oben wird stattdessen ein sympathischer, lebendiger Badge **„Live-Hilfe“** mit dezentem Pulse-Indikator angezeigt.
+  - Im Assistentenbereich und den Sprechblasen werden neutrale, serviceorientierte Bezeichnungen wie **„Digital-Assistent“** und **„KI-Assistent“** verwendet.
+
+### Neu in Version 2.8.1:
+- **Harmonisierung der Neuigkeiten-Boxen (Runde Ecken):**
+  - Die Beitrags-Boxen im Bereich „Neuigkeiten“ (`.news-entry`, `.news-card`, `.news-trigger` und `.news-article-content`) besitzen nun durchgehend weiche, runde Ecken (`border-radius: 1rem` / `rounded-2xl`).
+  - Dadurch fügen sich die Neuigkeiten nahtlos in das Gesamtkonzept der Digital-Guide-Box ein, bei dem alle Kärtchen (wie die Anleitungen, Support-Karten und Infobereiche) harmonisch abgerundet sind.
+  - Auch die Unterboxen der Einordnung (`.news-assessment > div`), der Sortierbutton und der Scrollbereich wurden optisch an das abgerundete Gesamtdesign angepasst.
+
+### Neu in Version 2.8.0:
+- **Kontaktkarte: „Dein persönlicher Digitalguide“:**
+  - In der Druckansicht der Kontaktkarte (`ContactCardPrintDialog`), auf dem tatsächlichen Druckformat (Standard-Visitenkarte 85 × 55 mm) und im direkten Kontaktbereich steht unter dem Namen von Jan Dennis Brüning nun exakt die Bezeichnung: **„Dein persönlicher Digitalguide“**.
+  - Auch in den Standard-Einstellungen und im WordPress-Adminbereich (`class-dgbc-admin.php`, `class-dgbc-settings.php`) wurde die Standardbezeichnung entsprechend angepasst.
+- **Desktop Hover-Akkordeons für Kontakt & Feedback:**
+  - Auf Desktop-Geräten (Präzisionszeiger / Maus) öffnen sich die drei Kontaktkarten **„Du kommst nicht weiter?“**, **„Dringende Hilfe“** und **„Feedback & Wünsche“** automatisch, sobald man mit der Maus darüber fährt (Hover).
+  - Sobald der Mauszeiger die Karte wieder verlässt, schließt sie sich automatisch. Wenn der Nutzer gerade ein Eingabefeld fokussiert hat (z. B. eine Nachricht schreibt), bleibt die Karte geöffnet, um ein versehentliches Schließen zu verhindern.
+  - **Mobile Touch-Optimierung erhalten:** Auf Smartphones und Tablets (Touchscreen) bleibt das gewohnte Auf- und Zuklappen per Fingertipp erhalten – ohne störende oder unabsichtliche Hover-Effekte.
+
+### Neu in Version 2.7.3:
+- **Entfernung des redundanten Grundlagen-Blocks:** Der hervorgehobene Kasten *„Wichtigste Grundlagen auf einen Blick“* oberhalb der Anleitungen wurde vollständig entfernt. Alle Anleitungen beginnen nun direkt unter der Such- und Sortierleiste – übersichtlich, ohne doppelte Inhalte und mit sofortigem Zugriff auf alle Themen. Die Grundlagen-Anleitungen bleiben über das Buch-/Hut-Icon in der Kategorieleiste sowie in der Gesamtauswahl jederzeit direkt erreichbar.
+
+### Neu in Version 2.7.2:
+- **Einheitliche Höhe von Eingabefeld & „Fragen“-Button:** Das Texteingabefeld und der blaue Absende-Button des KI-Assistenten besitzen nun auf Desktop und Mobile exakt dieselbe ergonomische Höhe (56px bzw. mitwachsend im Flex-Stretch), sodass das Layout harmonisch und wie aus einem Guss wirkt.
+- **Feinabstimmung von Abständen & Größen:**
+  - *Schritt-Tabs im Lese-Dialog:* Nahtloser aktiver Zustand ohne Höhenversatz dank Inset-Glow; einheitliche Mindesthöhe von 38px für alle Tabs.
+  - *Grundlagen-Karten:* Die Aktionsschaltfläche „Erklärung lesen“ erstreckt sich auf Mobilgeräten nun über die volle Breite – exakt synchron zu den regulären Anleitungs-Karten für optimale Touch-Bedienung.
+  - *Konsistente Innen- und Außenabstände* in allen Ansichten, Dialogen und Bedienelementen.
+
+### Neu in Version 2.7.1:
+- **KI-Assistent aufgeräumt:** Die vorgefertigten Fragenchips („Häufige Fragen zum Ausprobieren“) oberhalb der Eingabebox wurden entfernt. Dadurch wirkt der Chatverlauf wesentlich ruhiger, aufgeräumter und das Eingabefeld steht uneingeschränkt im Fokus.
+
+### Neu in Version 2.7.0:
+- **Interaktive Schritt-Tabs mit Namen:** Die Schritte jeder Anleitung werden in der Leseansicht als moderne, horizontal scrollbare Tab-Leiste dargestellt. Jeder Tab zeigt neben der Schrittnummer (mit Indikator bei erledigten Schritten) den vollständigen Schrittnamen (z. B. *„Chat öffnen“*, *„Nachricht eingeben“*, *„Senden“*).
+- **Butterweicher horizontaler Slide-Effekt:** Beim Wechseln zwischen den Schritten (per Klick auf einen Tab, Klick auf „Weiter“ / „Zurück“, Wischgeste auf Touchscreens oder Pfeiltasten ◄ / ► auf der Tastatur) gleitet der Schrittkarten-Inhalt sanft von der Seite hinein, sodass die Interaktion haptisch und intuitiv nachvollziehbar wird.
+- **Automatisches Mitscrollen des aktiven Tabs:** Die Tab-Leiste scrollt den gerade aktiven Schritt immer sanft ins sichtbare Sichtfeld.
+- **Volle PDF- & Druckkompatibilität:** Die PDF-Generierung sowie die Druckansicht (`Ctrl+P` / `Cmd+P`) bleiben zu 100 % erhalten – Druckdokumente und PDFs listen weiterhin alle Schritte vollständig, fortlaufend und barrierefrei auf.
+- **Optionale Listenansicht:** Über den Umschalt-Button oben rechts kann weiterhin jederzeit zwischen der geführten Tab/Slide-Ansicht und einer durchgehenden Listenansicht gewechselt werden.
 
 ### Neu in Version 2.6.5:
 - **Kategorie „Grundlagen“ an zweiter Position:** In der Kategorienleiste der Anleitungen steht „Grundlagen“ nun direkt an zweiter Stelle nach „Alle“ – mit Direktfilter auf alle 6 Grundlagen-Anleitungen.

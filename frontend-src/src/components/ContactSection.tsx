@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   MessageSquareText,
   MessageSquareHeart,
@@ -30,7 +30,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const whatsapp = config?.settings?.whatsapp || {};
 
   const profileName = profile.name || 'Jan Dennis Brüning';
-  const profileRole = profile.role || 'Dein Digital-Guide';
+  const profileRole = profile.role && profile.role !== 'Dein Digital-Guide' ? profile.role : 'Dein persönlicher Digitalguide';
   const profileAvatar = profile.avatar_url || getAssetUrl('profilbild.png');
   const profileEmail = profile.email || 'office@janbruening.de';
   const profilePhone = profile.phone || '+49 1520 2553087';
@@ -47,6 +47,114 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [directOpen, setDirectOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
+
+  // Desktop hover detection: hover capability and fine pointer (mouse / trackpad)
+  const isDesktopHover = useCallback(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  }, []);
+
+  const supportCardRef = useRef<HTMLDivElement | null>(null);
+  const directCardRef = useRef<HTMLDivElement | null>(null);
+  const feedbackCardRef = useRef<HTMLDivElement | null>(null);
+
+  const supportLeaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const directLeaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const feedbackLeaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (supportLeaveTimer.current) clearTimeout(supportLeaveTimer.current);
+      if (directLeaveTimer.current) clearTimeout(directLeaveTimer.current);
+      if (feedbackLeaveTimer.current) clearTimeout(feedbackLeaveTimer.current);
+    };
+  }, []);
+
+  // Handlers for "Du kommst nicht weiter?"
+  const handleSupportMouseEnter = () => {
+    if (!isDesktopHover()) return;
+    if (supportLeaveTimer.current) {
+      clearTimeout(supportLeaveTimer.current);
+      supportLeaveTimer.current = null;
+    }
+    setSupportOpen(true);
+  };
+
+  const handleSupportMouseLeave = () => {
+    if (!isDesktopHover()) return;
+    // Don't close if user is currently typing/focused in an input inside
+    if (supportCardRef.current?.contains(document.activeElement)) {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    }
+    if (supportLeaveTimer.current) clearTimeout(supportLeaveTimer.current);
+    supportLeaveTimer.current = setTimeout(() => {
+      if (!supportCardRef.current?.matches(':hover')) {
+        setSupportOpen(false);
+      }
+    }, 160);
+  };
+
+  const handleSupportBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!isDesktopHover()) return;
+    const nextTarget = e.relatedTarget as Node | null;
+    if (!supportCardRef.current?.contains(nextTarget) && !supportCardRef.current?.matches(':hover')) {
+      setSupportOpen(false);
+    }
+  };
+
+  // Handlers for "Dringende Hilfe"
+  const handleDirectMouseEnter = () => {
+    if (!isDesktopHover()) return;
+    if (directLeaveTimer.current) {
+      clearTimeout(directLeaveTimer.current);
+      directLeaveTimer.current = null;
+    }
+    setDirectOpen(true);
+  };
+
+  const handleDirectMouseLeave = () => {
+    if (!isDesktopHover()) return;
+    if (directLeaveTimer.current) clearTimeout(directLeaveTimer.current);
+    directLeaveTimer.current = setTimeout(() => {
+      if (!directCardRef.current?.matches(':hover')) {
+        setDirectOpen(false);
+      }
+    }, 160);
+  };
+
+  // Handlers for "Feedback & Wünsche"
+  const handleFeedbackMouseEnter = () => {
+    if (!isDesktopHover()) return;
+    if (feedbackLeaveTimer.current) {
+      clearTimeout(feedbackLeaveTimer.current);
+      feedbackLeaveTimer.current = null;
+    }
+    setFeedbackOpen(true);
+  };
+
+  const handleFeedbackMouseLeave = () => {
+    if (!isDesktopHover()) return;
+    // Don't close if user is currently typing/focused in an input inside
+    if (feedbackCardRef.current?.contains(document.activeElement)) {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    }
+    if (feedbackLeaveTimer.current) clearTimeout(feedbackLeaveTimer.current);
+    feedbackLeaveTimer.current = setTimeout(() => {
+      if (!feedbackCardRef.current?.matches(':hover')) {
+        setFeedbackOpen(false);
+      }
+    }, 160);
+  };
+
+  const handleFeedbackBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!isDesktopHover()) return;
+    const nextTarget = e.relatedTarget as Node | null;
+    if (!feedbackCardRef.current?.contains(nextTarget) && !feedbackCardRef.current?.matches(':hover')) {
+      setFeedbackOpen(false);
+    }
+  };
 
   // Support form state
   const [email, setEmail] = useState('');
@@ -138,7 +246,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </div>
           )}
           {/* Accordion 1: Support ("Du kommst gerade nicht weiter?") */}
-          <div className={`support${supportOpen ? ' is-open' : ''}`}>
+          <div
+            ref={supportCardRef}
+            className={`support${supportOpen ? ' is-open' : ''}`}
+            onMouseEnter={handleSupportMouseEnter}
+            onMouseLeave={handleSupportMouseLeave}
+            onBlur={handleSupportBlur}
+          >
             <button
               type="button"
               className="support-toggle"
@@ -156,105 +270,115 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 aria-hidden="true"
                 style={{
                   transform: supportOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
                   marginLeft: 'auto'
                 }}
               />
             </button>
 
-            {supportOpen && (
-              <div className="box-disclosure-content" data-state="open">
-                <div className="support-form">
-                  {supportSubmitted ? (
-                    <div className="success" role="status">
-                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
-                      <strong>Deine Anfrage ist angekommen.</strong>
-                      <p>
-                        Sie liegt im priorisierten Eingang. Ich melde mich unter {email} bei dir.
-                      </p>
-                      <p className="form-note">Anfragenummer: {requestId}</p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSupportSubmit}>
-                      <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label htmlFor="email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
-                          Deine E-Mail-Adresse
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          autoComplete="email"
-                          required
-                          maxLength={254}
-                          placeholder="name@beispiel.de"
-                          value={email}
-                          onChange={e => setEmail(e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '0.625rem 0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid #8fa6c5',
-                            background: '#fff',
-                            fontSize: '0.9375rem'
-                          }}
-                        />
-                      </div>
-
-                      <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label htmlFor="message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
-                          Wobei brauchst du Hilfe?
-                        </label>
-                        <textarea
-                          id="message"
-                          required
-                          minLength={10}
-                          maxLength={4000}
-                          rows={4}
-                          placeholder="Beschreibe kurz deine Frage …"
-                          value={message}
-                          onChange={e => setMessage(e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '0.625rem 0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid #8fa6c5',
-                            background: '#fff',
-                            fontSize: '0.9375rem',
-                            resize: 'vertical'
-                          }}
-                        />
-                        <p style={{ fontSize: '0.75rem', color: '#596579', marginTop: '0.25rem' }}>
-                          Nenne dein Gerät, die App und was gerade nicht klappt.
+            <div
+              className={`support-collapse-wrapper ${supportOpen ? 'is-expanded' : ''}`}
+              aria-hidden={!supportOpen}
+            >
+              <div className="support-collapse-inner">
+                <div className="box-disclosure-content" data-state={supportOpen ? 'open' : 'closed'}>
+                  <div className="support-form">
+                    {supportSubmitted ? (
+                      <div className="success" role="status">
+                        <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
+                        <strong>Deine Anfrage ist angekommen.</strong>
+                        <p>
+                          Sie liegt im priorisierten Eingang. Ich melde mich unter {email} bei dir.
                         </p>
+                        <p className="form-note">Anfragenummer: {requestId}</p>
                       </div>
+                    ) : (
+                      <form onSubmit={handleSupportSubmit}>
+                        <div className="field-group" style={{ marginBottom: '0.875rem' }}>
+                          <label htmlFor="email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
+                            Deine E-Mail-Adresse
+                          </label>
+                          <input
+                            id="email"
+                            type="email"
+                            autoComplete="email"
+                            required
+                            maxLength={254}
+                            placeholder="name@beispiel.de"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '0.625rem 0.75rem',
+                              borderRadius: '0.5rem',
+                              border: '1px solid #8fa6c5',
+                              background: '#fff',
+                              fontSize: '0.9375rem'
+                            }}
+                          />
+                        </div>
 
-                      <p className="form-note" id="support-privacy">
-                        Bitte keine Passwörter oder Bestätigungscodes senden. E-Mail-Adresse und
-                        Nachricht werden zur Bearbeitung deiner Anfrage gespeichert und nur von Jan
-                        eingesehen.
-                      </p>
+                        <div className="field-group" style={{ marginBottom: '0.875rem' }}>
+                          <label htmlFor="message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
+                            Wobei brauchst du Hilfe?
+                          </label>
+                          <textarea
+                            id="message"
+                            required
+                            minLength={10}
+                            maxLength={4000}
+                            rows={4}
+                            placeholder="Beschreibe kurz deine Frage …"
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '0.625rem 0.75rem',
+                              borderRadius: '0.5rem',
+                              border: '1px solid #8fa6c5',
+                              background: '#fff',
+                              fontSize: '0.9375rem',
+                              resize: 'vertical'
+                            }}
+                          />
+                          <p style={{ fontSize: '0.75rem', color: '#596579', marginTop: '0.25rem' }}>
+                            Nenne dein Gerät, die App und was gerade nicht klappt.
+                          </p>
+                        </div>
 
-                      <button
-                        type="submit"
-                        className="primary-button"
-                        style={{ marginTop: '1.125rem', width: '100%' }}
-                      >
-                        <Send aria-hidden="true" />
-                        <span>Priorisierte Anfrage senden</span>
-                      </button>
+                        <p className="form-note" id="support-privacy">
+                          Bitte keine Passwörter oder Bestätigungscodes senden. E-Mail-Adresse und
+                          Nachricht werden zur Bearbeitung deiner Anfrage gespeichert und nur von Jan
+                          eingesehen.
+                        </p>
 
-                      <p className="form-note" style={{ marginTop: '0.5rem' }}>
-                        Ich antworte per E-Mail. Eine feste Antwortzeit kann ich nicht zusagen.
-                      </p>
-                    </form>
-                  )}
+                        <button
+                          type="submit"
+                          className="primary-button"
+                          style={{ marginTop: '1.125rem', width: '100%' }}
+                        >
+                          <Send aria-hidden="true" />
+                          <span>Priorisierte Anfrage senden</span>
+                        </button>
+
+                        <p className="form-note" style={{ marginTop: '0.5rem' }}>
+                          Ich antworte per E-Mail. Eine feste Antwortzeit kann ich nicht zusagen.
+                        </p>
+                      </form>
+                    )}
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
           {/* Accordion 2: Direct Contact ("Dringende Hilfe") */}
-          <div className={`support direct-contact${directOpen ? ' is-open' : ''}`}>
+          <div
+            ref={directCardRef}
+            className={`support direct-contact${directOpen ? ' is-open' : ''}`}
+            onMouseEnter={handleDirectMouseEnter}
+            onMouseLeave={handleDirectMouseLeave}
+          >
             <button
               type="button"
               className="support-toggle"
@@ -272,69 +396,80 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 aria-hidden="true"
                 style={{
                   transform: directOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
                   marginLeft: 'auto'
                 }}
               />
             </button>
 
-            {directOpen && (
-              <div className="box-disclosure-content" data-state="open">
-                <div className="direct-contact-body">
-                  <div className="contact-person">
-                    <img
-                      src={profileAvatar}
-                      alt={profileName}
-                      width="64"
-                      height="64"
-                      style={{ borderRadius: '50%', objectFit: 'cover' }}
-                    />
-                    <div>
-                      <h3>{profileName}</h3>
-                      <p>{profileRole}</p>
+            <div
+              className={`support-collapse-wrapper ${directOpen ? 'is-expanded' : ''}`}
+              aria-hidden={!directOpen}
+            >
+              <div className="support-collapse-inner">
+                <div className="box-disclosure-content" data-state={directOpen ? 'open' : 'closed'}>
+                  <div className="direct-contact-body">
+                    <div className="contact-person">
+                      <img
+                        src={profileAvatar}
+                        alt={profileName}
+                        width="64"
+                        height="64"
+                        style={{ borderRadius: '50%', objectFit: 'cover' }}
+                      />
+                      <div>
+                        <h3>{profileName}</h3>
+                        <p>{profileRole}</p>
+                      </div>
                     </div>
+
+                    <a className="contact-link" href={`mailto:${profileEmail}`}>
+                      <Mail aria-hidden="true" />
+                      <span>
+                        <small>E-Mail</small>
+                        {profileEmail}
+                      </span>
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+
+                    <a className="contact-link" href={`tel:${profilePhone.replace(/\s+/g, '')}`}>
+                      <Phone aria-hidden="true" />
+                      <span>
+                        <small>Telefon</small>
+                        {profilePhone}
+                      </span>
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+
+                    <button
+                      type="button"
+                      className="contact-print-button"
+                      onClick={handlePrintCard}
+                    >
+                      <Printer aria-hidden="true" />
+                      <span>Kontaktkarte drucken</span>
+                    </button>
+
+                    <p className="form-note">
+                      Ich melde mich, sobald ich kann. Eine sofortige Antwort kann ich nicht zusagen.
+                    </p>
+                    <p className="form-note">
+                      Die Kontaktkarte kannst du für später ausdrucken.
+                    </p>
                   </div>
-
-                  <a className="contact-link" href={`mailto:${profileEmail}`}>
-                    <Mail aria-hidden="true" />
-                    <span>
-                      <small>E-Mail</small>
-                      {profileEmail}
-                    </span>
-                    <ArrowUpRight aria-hidden="true" />
-                  </a>
-
-                  <a className="contact-link" href={`tel:${profilePhone.replace(/\s+/g, '')}`}>
-                    <Phone aria-hidden="true" />
-                    <span>
-                      <small>Telefon</small>
-                      {profilePhone}
-                    </span>
-                    <ArrowUpRight aria-hidden="true" />
-                  </a>
-
-                  <button
-                    type="button"
-                    className="contact-print-button"
-                    onClick={handlePrintCard}
-                  >
-                    <Printer aria-hidden="true" />
-                    <span>Kontaktkarte drucken</span>
-                  </button>
-
-                  <p className="form-note">
-                    Ich melde mich, sobald ich kann. Eine sofortige Antwort kann ich nicht zusagen.
-                  </p>
-                  <p className="form-note">
-                    Die Kontaktkarte kannst du für später ausdrucken.
-                  </p>
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
           {/* Accordion 3: Feedback ("Feedback & Wünsche") */}
-          <div className={`support feedback-panel${feedbackOpen ? ' is-open' : ''}`}>
+          <div
+            ref={feedbackCardRef}
+            className={`support feedback-panel${feedbackOpen ? ' is-open' : ''}`}
+            onMouseEnter={handleFeedbackMouseEnter}
+            onMouseLeave={handleFeedbackMouseLeave}
+            onBlur={handleFeedbackBlur}
+          >
             <button
               type="button"
               className="support-toggle"
@@ -352,80 +487,85 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 aria-hidden="true"
                 style={{
                   transform: feedbackOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
                   marginLeft: 'auto'
                 }}
               />
             </button>
 
-            {feedbackOpen && (
-              <div className="box-disclosure-content" data-state="open">
-                <div className="support-form">
-                  {fbSubmitted ? (
-                    <div className="success" role="status">
-                      <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
-                      <strong>Danke für deine Rückmeldung.</strong>
-                      <p>Dein Feedback ist angekommen und hilft, die Box besser zu machen.</p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleFeedbackSubmit}>
-                      <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label htmlFor="fb-email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
-                          Deine E-Mail (optional)
-                        </label>
-                        <input
-                          id="fb-email"
-                          type="email"
-                          placeholder="name@beispiel.de"
-                          value={fbEmail}
-                          onChange={e => setFbEmail(e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '0.625rem 0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid #8fa6c5',
-                            background: '#fff',
-                            fontSize: '0.9375rem'
-                          }}
-                        />
+            <div
+              className={`support-collapse-wrapper ${feedbackOpen ? 'is-expanded' : ''}`}
+              aria-hidden={!feedbackOpen}
+            >
+              <div className="support-collapse-inner">
+                <div className="box-disclosure-content" data-state={feedbackOpen ? 'open' : 'closed'}>
+                  <div className="support-form">
+                    {fbSubmitted ? (
+                      <div className="success" role="status">
+                        <CheckCircle2 style={{ marginBottom: '.625rem', color: '#235cbb' }} />
+                        <strong>Danke für deine Rückmeldung.</strong>
+                        <p>Dein Feedback ist angekommen und hilft, die Box besser zu machen.</p>
                       </div>
+                    ) : (
+                      <form onSubmit={handleFeedbackSubmit}>
+                        <div className="field-group" style={{ marginBottom: '0.875rem' }}>
+                          <label htmlFor="fb-email" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
+                            Deine E-Mail (optional)
+                          </label>
+                          <input
+                            id="fb-email"
+                            type="email"
+                            placeholder="name@beispiel.de"
+                            value={fbEmail}
+                            onChange={e => setFbEmail(e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '0.625rem 0.75rem',
+                              borderRadius: '0.5rem',
+                              border: '1px solid #8fa6c5',
+                              background: '#fff',
+                              fontSize: '0.9375rem'
+                            }}
+                          />
+                        </div>
 
-                      <div className="field-group" style={{ marginBottom: '0.875rem' }}>
-                        <label htmlFor="fb-message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
-                          Dein Feedback oder Wunsch
-                        </label>
-                        <textarea
-                          id="fb-message"
-                          required
-                          rows={3}
-                          placeholder="Welche Anleitung fehlt dir? Was können wir verbessern?"
-                          value={fbMessage}
-                          onChange={e => setFbMessage(e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '0.625rem 0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid #8fa6c5',
-                            background: '#fff',
-                            fontSize: '0.9375rem',
-                            resize: 'vertical'
-                          }}
-                        />
-                      </div>
+                        <div className="field-group" style={{ marginBottom: '0.875rem' }}>
+                          <label htmlFor="fb-message" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.3125rem' }}>
+                            Dein Feedback oder Wunsch
+                          </label>
+                          <textarea
+                            id="fb-message"
+                            required
+                            rows={3}
+                            placeholder="Welche Anleitung fehlt dir? Was können wir verbessern?"
+                            value={fbMessage}
+                            onChange={e => setFbMessage(e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '0.625rem 0.75rem',
+                              borderRadius: '0.5rem',
+                              border: '1px solid #8fa6c5',
+                              background: '#fff',
+                              fontSize: '0.9375rem',
+                              resize: 'vertical'
+                            }}
+                          />
+                        </div>
 
-                      <button
-                        type="submit"
-                        className="primary-button"
-                        style={{ marginTop: '0.75rem', width: '100%' }}
-                      >
-                        <Send aria-hidden="true" />
-                        <span>Feedback senden</span>
-                      </button>
-                    </form>
-                  )}
+                        <button
+                          type="submit"
+                          className="primary-button"
+                          style={{ marginTop: '0.75rem', width: '100%' }}
+                        >
+                          <Send aria-hidden="true" />
+                          <span>Feedback senden</span>
+                        </button>
+                      </form>
+                    )}
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>

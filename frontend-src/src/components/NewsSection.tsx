@@ -29,6 +29,7 @@ import {
 import { NewsItem } from '../types';
 import { getNewsStyles, NEWS_CATEGORIES } from '../data/themes';
 import { NewsAssessmentView } from './NewsAssessmentView';
+import { getDateLabelStyle } from '../utils/dateLabels';
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
   settings: Settings,
@@ -225,7 +226,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ news, onOpenNews }) =>
           <div className="flex items-center gap-2 flex-wrap">
             <button
               type="button"
-              className="news-sort"
+              className="news-sort rounded-lg px-2.5 py-1"
               id="news-sort"
               aria-controls="news-results"
               aria-label={`${sortLabel}. Zu „${nextSortLabel}“ wechseln`}
@@ -279,13 +280,13 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ news, onOpenNews }) =>
               return (
                 <article
                   key={item.id}
-                  className="news-entry"
+                  className="news-entry rounded-2xl overflow-hidden"
                   data-state={isExpanded ? 'open' : 'closed'}
                   style={getNewsStyles(item.category)}
                 >
                   <button
                     type="button"
-                    className="news-card news-trigger"
+                    className={`news-card news-trigger ${isExpanded ? 'rounded-t-2xl' : 'rounded-2xl'}`}
                     aria-labelledby={`news-title-${item.id}`}
                     aria-describedby={`news-preview-hint-${item.id}`}
                     onClick={() => toggleExpand(item.id)}
@@ -296,9 +297,21 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ news, onOpenNews }) =>
                         <CategoryIcon aria-hidden="true" />
                         {item.category}
                       </span>
-                      <time dateTime={item.date}>
-                        {item.dateLabel || 'Beitrag'} · {formatGermanDate(item.date)}
-                      </time>
+                      <span className="news-date-meta">
+                        {(() => {
+                          const dateStyle = getDateLabelStyle(item.dateLabel);
+                          const LabelIcon = dateStyle.Icon;
+                          return (
+                            <span className={dateStyle.pillClass}>
+                              <LabelIcon aria-hidden="true" />
+                              <span>{dateStyle.text}</span>
+                            </span>
+                          );
+                        })()}
+                        <time dateTime={item.date} className="news-date-text">
+                          {formatGermanDate(item.date)}
+                        </time>
+                      </span>
                     </span>
 
                     <span className="news-title-line">
@@ -320,7 +333,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ news, onOpenNews }) =>
 
                   {isExpanded && (
                     <div
-                      className="border-t border-slate-200/90 bg-slate-50/80 p-4 sm:p-5 flex flex-col gap-3.5 text-left transition-all news-article-content"
+                      className="border-t border-slate-200/90 bg-slate-50/80 p-4 sm:p-5 flex flex-col gap-3.5 text-left transition-all news-article-content rounded-b-2xl"
                       id={`news-preview-${item.id}`}
                       style={{ display: 'flex' }}
                     >

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   ArrowDown,
   ArrowRight,
@@ -14,14 +14,27 @@ import {
   Layers,
   Check,
   ChevronRight,
+  ChevronDown,
   BookOpen,
   Search,
   X,
+  Star,
+  SlidersHorizontal,
+  RotateCcw,
+  Sparkles,
   LucideIcon
 } from 'lucide-react';
 import { Guide, ThemeColor } from '../types';
 import { GUIDE_GROUPS, FOUNDATIONS, getGuideStyles } from '../data/themes';
 import { getGuideIcon } from './GuideIcon';
+import {
+  GuideFilterMenu,
+  GuideSortOption,
+  RatingFilterOption,
+  DurationFilterOption,
+  DeviceFilterOption
+} from './GuideFilterMenu';
+import { getGuideRating, subscribeToRatings, GuideRatingData } from '../utils/guideRatings';
 
 const GROUP_ICONS: Record<string, LucideIcon> = {
   communication: MessagesSquare,
@@ -47,19 +60,36 @@ interface GuidesSectionProps {
   onOpenGuide: (guide: Guide) => void;
 }
 
-type SortOption = 'default' | 'alphabetical' | 'time';
-
 export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuide }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isRailExpanded, setIsRailExpanded] = useState<boolean>(false);
-  const [sortOption, setSortOption] = useState<SortOption>('default');
 
-  const foundationsList = useMemo(() => {
-    return FOUNDATIONS.flatMap(item => {
-      const guide = guides.find(g => g.id === item.id);
-      return guide ? [{ ...item, guide }] : [];
+  // Filter & Sort States
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState<boolean>(false);
+  const [sortOption, setSortOption] = useState<GuideSortOption>('default');
+  const [ratingFilter, setRatingFilter] = useState<RatingFilterOption>('all');
+  const [durationFilter, setDurationFilter] = useState<DurationFilterOption>('all');
+  const [deviceFilter, setDeviceFilter] = useState<DeviceFilterOption>('all');
+
+  // Dynamic Guide Ratings map
+  const [ratingsMap, setRatingsMap] = useState<Record<string, GuideRatingData>>(() => {
+    const map: Record<string, GuideRatingData> = {};
+    guides.forEach(g => {
+      map[g.id] = getGuideRating(g.id);
     });
+    return map;
+  });
+
+  useEffect(() => {
+    const refreshRatings = () => {
+      const map: Record<string, GuideRatingData> = {};
+      guides.forEach(g => {
+        map[g.id] = getGuideRating(g.id);
+      });
+      setRatingsMap(map);
+    };
+    return subscribeToRatings(refreshRatings);
   }, [guides]);
 
   // Categories list for the rail menu (matching Neuigkeiten rail structure)
@@ -108,7 +138,7 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
     return railCategories.find(c => c.id === selectedCategory) || null;
   }, [selectedCategory, railCategories]);
 
-  // Guides matching current category filter and search query
+  // Guides matching current category filter, search query, and advanced filters
   const filteredGuides = useMemo(() => {
     let list = guides;
     if (activeCategoryObj) {
@@ -124,34 +154,139 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
         (g.learning?.why && g.learning.why.toLowerCase().includes(q))
       );
     }
+
+    // Advanced Filter: Rating
+    if (ratingFilter === '4.8') {
+      list = list.filter(g => (ratingsMap[g.id]?.score ?? 0) >= 4.8);
+    } else if (ratingFilter === '4.5') {
+      list = list.filter(g => (ratingsMap[g.id]?.score ?? 0) >= 4.5);
+    }
+
+    // Advanced Filter: Duration
+    if (durationFilter === 'short') {
+      list = list.filter(g => g.minutes <= 4);
+    } else if (durationFilter === 'medium') {
+      list = list.filter(g => g.minutes >= 5 && g.minutes <= 7);
+    } else if (durationFilter === 'long') {
+      list = list.filter(g => g.minutes >= 8);
+    }
+
+    // Advanced Filter: Device / Scope
+    if (deviceFilter === 'mobile') {
+      list = list.filter(g => {
+        const s = (g.scope + ' ' + g.category).toLowerCase();
+        return (
+          s.includes('android') ||
+          s.includes('iphone') ||
+          s.includes('smartphone') ||
+          s.includes('tablet') ||
+          s.includes('ipad') ||
+          s.includes('handy')
+        );
+      });
+    } else if (deviceFilter === 'computer') {
+      list = list.filter(g => {
+        const s = (g.scope + ' ' + g.category).toLowerCase();
+        return (
+          s.includes('windows') ||
+          s.includes('mac') ||
+          s.includes('computer') ||
+          s.includes('pc') ||
+          s.includes('laptop')
+        );
+      });
+    }
+
     return list;
-  }, [guides, activeCategoryObj, searchQuery]);
+  }, [guides, activeCategoryObj, searchQuery, ratingFilter, durationFilter, deviceFilter, ratingsMap]);
 
   // Sorted guides according to chosen sort option
   const sortedGuides = useMemo(() => {
     const list = [...filteredGuides];
-    if (sortOption === 'alphabetical') {
+    if (sortOption === 'best-rated') {
+      list.sort((a, b) => {
+        const rA = ratingsMap[a.id] || { score: 0, count: 0 };
+        const rB = ratingsMap[b.id] || { score: 0, count: 0 };
+        if (rB.score !== rA.score) {
+          return rB.score - rA.score;
+        }
+        if (rB.count !== rA.count) {
+          return rB.count - rA.count;
+        }
+        return a.title.localeCompare(b.title, 'de');
+      });
+    } else if (sortOption === 'alphabetical') {
       list.sort((a, b) => a.title.localeCompare(b.title, 'de'));
-    } else if (sortOption === 'time') {
+    } else if (sortOption === 'time-asc') {
       list.sort((a, b) => a.minutes - b.minutes);
+    } else if (sortOption === 'time-desc') {
+      list.sort((a, b) => b.minutes - a.minutes);
     }
     return list;
-  }, [filteredGuides, sortOption]);
+  }, [filteredGuides, sortOption, ratingsMap]);
 
-  const cycleSort = () => {
-    setSortOption(prev => {
-      if (prev === 'default') return 'alphabetical';
-      if (prev === 'alphabetical') return 'time';
-      return 'default';
-    });
+  const sortLabel = useMemo(() => {
+    switch (sortOption) {
+      case 'best-rated':
+        return 'Am besten bewertet';
+      case 'alphabetical':
+        return 'Alphabetisch (A–Z)';
+      case 'time-asc':
+        return 'Kürzeste Lesezeit';
+      case 'time-desc':
+        return 'Ausführlichste Anleitungen';
+      default:
+        return 'Empfohlene Reihenfolge';
+    }
+  }, [sortOption]);
+
+  const activeFilterBadges = useMemo(() => {
+    const badges: Array<{ id: string; label: string; onRemove: () => void }> = [];
+    if (sortOption !== 'default') {
+      badges.push({
+        id: 'sort',
+        label: `Sortierung: ${sortLabel}`,
+        onRemove: () => setSortOption('default')
+      });
+    }
+    if (ratingFilter !== 'all') {
+      badges.push({
+        id: 'rating',
+        label: ratingFilter === '4.8' ? '★ Ab 4.8 Sterne' : '★ Ab 4.5 Sterne',
+        onRemove: () => setRatingFilter('all')
+      });
+    }
+    if (durationFilter !== 'all') {
+      const durLabel =
+        durationFilter === 'short'
+          ? '⚡ Unter 5 Min.'
+          : durationFilter === 'medium'
+          ? '⏱️ 5–7 Min.'
+          : '📖 Ab 8 Min.';
+      badges.push({
+        id: 'duration',
+        label: durLabel,
+        onRemove: () => setDurationFilter('all')
+      });
+    }
+    if (deviceFilter !== 'all') {
+      badges.push({
+        id: 'device',
+        label: deviceFilter === 'mobile' ? '📱 Smartphone & Tablet' : '💻 Computer & Laptop',
+        onRemove: () => setDeviceFilter('all')
+      });
+    }
+    return badges;
+  }, [sortOption, sortLabel, ratingFilter, durationFilter, deviceFilter]);
+
+  const hasActiveFilters = activeFilterBadges.length > 0;
+
+  const handleResetAllFilters = () => {
+    setSortOption('default');
+    setRatingFilter('all');
+    setDurationFilter('all');
+    setDeviceFilter('all');
   };
-
-  const sortLabel =
-    sortOption === 'alphabetical'
-      ? 'Alphabetisch (A–Z)'
-      : sortOption === 'time'
-      ? 'Kürzeste Lesezeit'
-      : 'Empfohlene Reihenfolge';
 
   return (
     <div className="news-feed-layout">
@@ -302,36 +437,97 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
               )}
             </div>
 
-            {/* 2. Sub-Row: Count on left, sort switcher on right */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100">
+            {/* 2. Sub-Row: Count on left, Filter & Sort popover trigger on right */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-2 border-t border-slate-100">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold text-slate-600">
-                  {sortedGuides.length} {sortedGuides.length === 1 ? 'Anleitung' : 'Anleitungen'} {searchQuery ? 'gefunden' : 'verfügbar'}
+                  {sortedGuides.length} {sortedGuides.length === 1 ? 'Anleitung' : 'Anleitungen'} {searchQuery || hasActiveFilters ? 'gefunden' : 'verfügbar'}
                 </span>
-                {searchQuery && (
+                {(searchQuery || hasActiveFilters) && (
                   <button
                     type="button"
-                    onClick={() => setSearchQuery('')}
+                    onClick={() => {
+                      setSearchQuery('');
+                      handleResetAllFilters();
+                    }}
                     className="text-[11px] text-[#235cbb] hover:underline font-semibold cursor-pointer ml-1"
                   >
-                    (Filter aufheben)
+                    (Zurücksetzen)
                   </button>
                 )}
               </div>
 
-              <div className="flex items-center gap-1.5 self-start sm:self-auto">
-                <span className="text-xs text-slate-400 hidden sm:inline">Reihenfolge:</span>
+              {/* Filter & Sort Popover Trigger */}
+              <div className="relative self-start sm:self-auto">
                 <button
                   type="button"
-                  onClick={cycleSort}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs transition-colors cursor-pointer whitespace-nowrap"
-                  title={`Sortierung: ${sortLabel}. Klicken zum Wechseln.`}
+                  onClick={() => setIsFilterMenuOpen(prev => !prev)}
+                  aria-expanded={isFilterMenuOpen}
+                  aria-haspopup="dialog"
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border shadow-2xs transition-all cursor-pointer whitespace-nowrap ${
+                    hasActiveFilters
+                      ? 'bg-blue-50 text-[#184b9c] border-blue-300 hover:bg-blue-100/80 font-bold'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
+                  }`}
+                  title="Filter und Sortierung anpassen"
                 >
-                  <ArrowDown className="w-3 h-3 text-[#235cbb]" aria-hidden="true" />
-                  <span>{sortLabel}</span>
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#235cbb]" aria-hidden="true" />
+                  <span>{sortOption === 'best-rated' ? '⭐ Am besten bewertet' : 'Filter & Sortierung'}</span>
+                  {activeFilterBadges.length > 0 && (
+                    <span className="w-4.5 h-4.5 rounded-full bg-[#235cbb] text-white text-[10px] font-bold flex items-center justify-center ml-0.5">
+                      {activeFilterBadges.length}
+                    </span>
+                  )}
+                  <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isFilterMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
+
+                <GuideFilterMenu
+                  isOpen={isFilterMenuOpen}
+                  onClose={() => setIsFilterMenuOpen(false)}
+                  sortOption={sortOption}
+                  onSelectSort={setSortOption}
+                  ratingFilter={ratingFilter}
+                  onSelectRatingFilter={setRatingFilter}
+                  durationFilter={durationFilter}
+                  onSelectDurationFilter={setDurationFilter}
+                  deviceFilter={deviceFilter}
+                  onSelectDeviceFilter={setDeviceFilter}
+                  onResetAll={handleResetAllFilters}
+                  hasActiveFilters={hasActiveFilters}
+                />
               </div>
             </div>
+
+            {/* 3. Active filter chips */}
+            {activeFilterBadges.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100">
+                <span className="text-[11px] font-medium text-slate-400">Aktive Filter:</span>
+                {activeFilterBadges.map(badge => (
+                  <span
+                    key={badge.id}
+                    className="inline-flex items-center gap-1 pl-2.5 pr-1.5 py-0.5 rounded-lg bg-blue-50 border border-blue-200/80 text-[#184b9c] text-xs font-medium"
+                  >
+                    <span>{badge.label}</span>
+                    <button
+                      type="button"
+                      onClick={badge.onRemove}
+                      className="p-0.5 hover:bg-blue-100 text-blue-600 rounded cursor-pointer"
+                      title={`${badge.label} entfernen`}
+                      aria-label={`${badge.label} entfernen`}
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                <button
+                  type="button"
+                  onClick={handleResetAllFilters}
+                  className="text-[11px] text-slate-500 hover:text-rose-600 underline cursor-pointer ml-1"
+                >
+                  Alle zurücksetzen
+                </button>
+              </div>
+            )}
           </div>
 
           {/* If a category is selected in the rail: show Category Banner & Back Link */}
@@ -369,67 +565,7 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
             </div>
           )}
 
-          {/* 1. Schnelleinstieg: Wichtigste Grundlagen (geräumig im 2-Spalten-Layout statt zusammengequetscht) */}
-          {!activeCategoryObj && !searchQuery && foundationsList.length > 0 && (
-            <section
-              className="guide-quick-foundations mb-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-blue-50/90 via-slate-50/80 to-indigo-50/40 border border-blue-200/80 shadow-2xs"
-              aria-labelledby="quick-foundations-title"
-            >
-              <div className="flex items-center gap-3.5 mb-3.5 pb-2.5 border-b border-blue-200/70">
-                <div className="w-11 h-11 rounded-xl bg-[#235cbb] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-                  <GraduationCap className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h2
-                    id="quick-foundations-title"
-                    className="text-lg sm:text-xl font-bold text-slate-900 m-0 font-display leading-snug tracking-normal"
-                    style={{ letterSpacing: '0.015em' }}
-                  >
-                    Wichtigste Grundlagen auf einen Blick
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-600 m-0 mt-0.5 leading-relaxed">
-                    Verständliche Antworten auf die elementaren Basisbegriffe – ohne Fachchinesisch.
-                  </p>
-                </div>
-              </div>
-
-              {/* 100% width stacked foundations list (unter- und übereinander) */}
-              <div className="foundation-grid">
-                {foundationsList.map(({ id, title, description, guide }) => {
-                  const Icon = getGuideIcon(guide.id);
-                  return (
-                    <button
-                      key={id}
-                      type="button"
-                      className="foundation-card group"
-                      onClick={() => onOpenGuide(guide)}
-                      aria-haspopup="dialog"
-                    >
-                      <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#235cbb] flex items-center justify-center flex-shrink-0 group-hover:bg-[#235cbb] group-hover:text-white transition-colors shadow-2xs">
-                        <Icon className="w-5.5 h-5.5" aria-hidden="true" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <strong className="block text-sm sm:text-base font-bold text-slate-800 group-hover:text-[#235cbb] transition-colors leading-snug">
-                          {title}
-                        </strong>
-                        <span className="block text-xs sm:text-sm text-slate-600 mt-0.5 line-clamp-2 leading-relaxed">
-                          {description}
-                        </span>
-                      </div>
-                      <div className="flex-shrink-0 self-center">
-                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#235cbb] bg-blue-50 group-hover:bg-[#235cbb] group-hover:text-white px-3 py-2 rounded-xl transition-colors whitespace-nowrap">
-                          <span>Erklärung lesen</span>
-                          <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
-          )}
-
-          {/* 2. Alle Anleitungen - Vollflächig gestapelt "unter- und übereinander" */}
+          {/* Alle Anleitungen - Vollflächig gestapelt "unter- und übereinander" */}
           <section className="guide-collection" aria-labelledby="all-guides-heading">
             {!activeCategoryObj && (
               <div className="flex items-center justify-between gap-3 mb-3.5">
@@ -510,8 +646,18 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
                         </div>
                       </div>
 
-                      {/* Right: Kurzinformationen (Lesezeit, Schritte, Gerät, Stand) rechts auf der Seite */}
+                      {/* Right: Kurzinformationen (Bewertung, Lesezeit, Schritte, Gerät, Stand) rechts auf der Seite */}
                       <div className="guide-row-meta-col">
+                        {ratingsMap[guide.id] && (
+                          <div
+                            className="guide-row-meta-item guide-row-rating-item"
+                            title={`Bewertung: ${ratingsMap[guide.id].score.toFixed(1)} von 5 Sternen (${ratingsMap[guide.id].count} Bewertungen)`}
+                          >
+                            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500 flex-shrink-0" aria-hidden="true" />
+                            <span className="font-bold text-slate-800 text-xs">{ratingsMap[guide.id].score.toFixed(1)}</span>
+                            <span className="text-slate-400 text-[11px]">({ratingsMap[guide.id].count})</span>
+                          </div>
+                        )}
                         <div className="guide-row-meta-item">
                           <Clock3 className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
                           <span><strong>{guide.minutes} Min.</strong> · {guide.steps.length} Schritte</span>
@@ -536,10 +682,20 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
                 <h3 className="text-base font-bold text-slate-700 m-0">Keine passende Anleitung gefunden</h3>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
                   {searchQuery
-                    ? `Für den Suchbegriff „${searchQuery}“ gibt es noch keine passende Anleitung. Probiere z. B. „WhatsApp“, „WLAN“ oder „Fotos“.`
-                    : 'In dieser Kategorie sind derzeit keine Anleitungen vorhanden.'}
+                    ? `Für den Suchbegriff „${searchQuery}“ gibt es noch keine passende Anleitung mit den gewählten Filtern.`
+                    : 'Mit den aktuell gewählten Filter- und Sucheinstellungen wurden keine Anleitungen gefunden.'}
                 </p>
-                <div className="mt-4 flex items-center justify-center gap-2">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                  {hasActiveFilters && (
+                    <button
+                      type="button"
+                      onClick={handleResetAllFilters}
+                      className="px-4 py-2 text-xs font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-colors cursor-pointer shadow-2xs inline-flex items-center gap-1.5"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Filter zurücksetzen</span>
+                    </button>
+                  )}
                   {searchQuery && (
                     <button
                       type="button"
@@ -553,9 +709,9 @@ export const GuidesSection: React.FC<GuidesSectionProps> = ({ guides, onOpenGuid
                     <button
                       type="button"
                       onClick={() => setSelectedCategory('')}
-                      className="px-4 py-2 text-xs font-semibold rounded-xl bg-[#235cbb] text-white hover:bg-[#184b9c] transition-colors cursor-pointer shadow-2xs"
+                      className="px-4 py-2 text-xs font-semibold rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer shadow-2xs"
                     >
-                      Alle Anleitungen anzeigen
+                      Alle Kategorien anzeigen
                     </button>
                   )}
                 </div>

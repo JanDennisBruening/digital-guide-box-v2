@@ -358,6 +358,124 @@ body {
   max-width: none !important;
 }
 
+/* Step Tabs & Smooth Slide Transitions for Guides */
+.walkthrough-tabs-wrapper {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.step-tab-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  overflow-x: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #cbd5e1 transparent !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.step-tab-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.step-tab-bar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.step-tab-btn {
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.875rem !important;
+  min-height: 2.375rem !important;
+  box-sizing: border-box !important;
+  border-radius: 0.75rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  border: 1px solid transparent !important;
+}
+
+.step-tab-btn:focus-visible {
+  outline: 2px solid var(--guide-color, #235cbb) !important;
+  outline-offset: 2px !important;
+}
+
+.step-slider-container {
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.step-slider-track {
+  display: flex !important;
+  width: 100% !important;
+  will-change: transform !important;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) !important;
+}
+
+.step-slide-item {
+  flex: 0 0 100% !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+
+.learning-step-slide-card {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border: 1px solid color-mix(in srgb, var(--guide-color, #235cbb) 30%, #e2e8f0) !important;
+  background: linear-gradient(135deg, #ffffff, var(--guide-tint, #eff6ff)) !important;
+  border-radius: 1.125rem !important;
+  padding: 1.5rem !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 1.125rem !important;
+}
+
+@media (max-width: 639px) {
+  .learning-step-slide-card {
+    flex-direction: column !important;
+    gap: 0.875rem !important;
+    padding: 1.125rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-slider-track {
+    transition: none !important;
+  }
+  .step-tab-btn {
+    transition: none !important;
+  }
+}
+
+@media print {
+  .walkthrough-tabs-wrapper,
+  .walkthrough-navigation,
+  .step-tab-bar {
+    display: none !important;
+  }
+  .step-slider-container {
+    overflow: visible !important;
+  }
+  .step-slider-track {
+    display: block !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  .step-slide-item {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+    page-break-inside: avoid !important;
+  }
+}
+
 /* Ensure workspace always presents both tabs (left) and sidebar (right) on desktop */
 .box-workspace {
   display: grid !important;
@@ -827,21 +945,64 @@ body {
   visibility: visible !important;
 }
 
-.news-grid .news-entry {
+.news-grid .news-entry,
+.news-entry {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
   height: auto !important;
   visibility: visible !important;
-  overflow: visible !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1px solid #e1e7f0 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.news-grid .news-card {
+.news-grid .news-entry:hover,
+.news-entry:hover {
+  border-color: var(--news-color, #235cbb) !important;
+  box-shadow: 0 6px 20px rgba(35, 92, 187, 0.09) !important;
+}
+
+.news-grid .news-card,
+.news-card,
+.news-trigger {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
   height: auto !important;
   visibility: visible !important;
+  border-radius: 1rem !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: linear-gradient(135deg, #ffffff 60%, var(--news-tint, #f0f4fc)) !important;
+}
+
+.news-entry[data-state=open] .news-card,
+.news-entry[data-state=open] .news-trigger {
+  border-radius: 1rem 1rem 0 0 !important;
+}
+
+.news-entry[data-state=open] .news-article-content,
+.news-article-content {
+  border-bottom-left-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+}
+
+.news-scroller {
+  border-radius: 1rem !important;
+}
+
+.news-assessment > div {
+  border-radius: 0.875rem !important;
+}
+
+.news-sort {
+  border-radius: 0.625rem !important;
 }
 
 /* AI Assistant card in Contact sidebar - matches the other 3 support accordion points */
@@ -856,6 +1017,37 @@ body {
   background: #e7f6ed !important;
   border-color: #82cb9e !important;
   box-shadow: 0 4px 14px rgba(22, 101, 52, 0.1) !important;
+}
+
+/* Smooth Accordion Hover & Expand Transition (No sudden jumping) */
+.support-collapse-wrapper {
+  display: grid !important;
+  grid-template-rows: 0fr !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s !important;
+  overflow: hidden !important;
+}
+
+.support-collapse-wrapper.is-expanded {
+  grid-template-rows: 1fr !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.support-collapse-inner {
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-collapse-wrapper {
+    transition: none !important;
+  }
 }
 
 .support.support-ai .support-toggle {
@@ -1498,5 +1690,174 @@ body {
 .guide-quick-foundations {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* ==========================================================================
+   News Card: Type Badge (Top Right Pill next to Date) & Warning Highlight
+   ========================================================================== */
+
+.news-date-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+.news-type-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3125rem !important;
+  padding: 0.1875rem 0.5rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.015em !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  transition: transform 0.15s ease, background 0.15s ease !important;
+}
+
+.news-type-pill svg {
+  width: 0.8125rem !important;
+  height: 0.8125rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* 1. Warnung: Signalrot, auffällig und klar als Warnmeldung erkennbar */
+.news-type-pill-warning {
+  background: #fef2f2 !important;
+  color: #b91c1c !important;
+  border: 1px solid #fca5a5 !important;
+  font-weight: 700 !important;
+}
+
+.news-type-pill-warning svg {
+  color: #dc2626 !important;
+}
+
+/* Subtile visuelle Untermalung für Warn-Karten */
+.news-entry:has(.news-type-pill-warning) {
+  border-left: 4px solid #ef4444 !important;
+}
+
+.news-entry:has(.news-type-pill-warning):hover {
+  border-color: #ef4444 !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.12) !important;
+}
+
+/* 2. Box-Update: Digital Guide Box Blau */
+.news-type-pill-update {
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border: 1px solid #bfdbfe !important;
+}
+
+.news-type-pill-update svg {
+  color: #2563eb !important;
+}
+
+/* 3. Alltagstipp & Praxistipp: Smaragdgrün / Frisch */
+.news-type-pill-tip {
+  background: #ecfdf5 !important;
+  color: #047857 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+.news-type-pill-tip svg {
+  color: #059669 !important;
+}
+
+/* 4. Ratgeber: Himmelsblau / Informativ */
+.news-type-pill-guide {
+  background: #f0f9ff !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+}
+
+.news-type-pill-guide svg {
+  color: #0284c7 !important;
+}
+
+/* 5. Schritt-für-Schritt: Violett */
+.news-type-pill-steps {
+  background: #faf5ff !important;
+  color: #7e22ce !important;
+  border: 1px solid #e9d5ff !important;
+}
+
+.news-type-pill-steps svg {
+  color: #9333ea !important;
+}
+
+/* 6. Default / Standard-Beitrag */
+.news-type-pill-default {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.news-type-pill-default svg {
+  color: #64748b !important;
+}
+
+.news-date-text {
+  color: #64748b !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+@media (max-width: 639px) {
+  .news-card-meta {
+    flex-wrap: wrap !important;
+    gap: 0.375rem 0.5rem !important;
+  }
+
+  .news-date-meta {
+    margin-left: 0 !important;
+    width: auto !important;
+  }
+}
+
+html[data-view-contrast=strong] .news-type-pill {
+  border-width: 1.5px !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   Guide Ratings & Filter Popover
+   ========================================================================== */
+
+.guide-row-rating-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3125rem !important;
+  padding: 0.125rem 0.4375rem !important;
+  background: #fffbeb !important;
+  border: 1px solid #fde68a !important;
+  border-radius: 0.5rem !important;
+  color: #92400e !important;
+  font-size: 0.75rem !important;
+  line-height: 1.2 !important;
+}
+
+.guide-row-rating-item svg {
+  color: #f59e0b !important;
+}
+
+.guide-rating-card {
+  position: relative;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fcd34d;
+}
+
+.guide-filter-popover {
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.16), 0 4px 12px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+
 
 

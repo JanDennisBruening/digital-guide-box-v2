@@ -19,13 +19,17 @@ import {
   Sparkles,
   Check,
   CheckCircle2,
-  Printer
+  Printer,
+  Star
 } from 'lucide-react';
 import { Guide, NewsItem, SelectionState } from '../types';
 import { getGuideStyles, getNewsStyles } from '../data/themes';
 import { GuideIcon, getStepIcon } from './GuideIcon';
 import { NewsAssessmentView } from './NewsAssessmentView';
 import { openGuidePrintWindow } from '../utils/pdfGenerator';
+import { getDateLabelStyle } from '../utils/dateLabels';
+import { GuideRatingCard } from './GuideRatingCard';
+import { getGuideRating, subscribeToRatings } from '../utils/guideRatings';
 
 function formatGermanDate(isoString: string): string {
   try {
@@ -61,6 +65,9 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
   const [showAll, setShowAll] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   // Reset scroll and step index when selection changes
   useEffect(() => {
@@ -71,6 +78,17 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
     }
   }, [selection?.item.id]);
 
+  // Auto-scroll active tab into view in the tab bar
+  useEffect(() => {
+    if (tabRefs.current[stepIndex]) {
+      tabRefs.current[stepIndex]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      });
+    }
+  }, [stepIndex]);
+
   useEffect(() => {
     if (!selection) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -80,11 +98,57 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selection, onClose]);
 
+  const isGuide = selection?.kind === 'guide';
+  const guide = isGuide ? (selection?.item as Guide) : null;
+  const newsItem = !isGuide ? (selection?.item as NewsItem) : null;
+
+  const [guideRating, setGuideRating] = useState(() => (guide ? getGuideRating(guide.id) : { score: 5.0, count: 0, userRating: null }));
+
+  useEffect(() => {
+    if (!guide) return;
+    setGuideRating(getGuideRating(guide.id));
+    return subscribeToRatings(() => {
+      setGuideRating(getGuideRating(guide.id));
+    });
+  }, [guide?.id]);
+
+  // Arrow key navigation between steps
+  useEffect(() => {
+    if (!selection || !isGuide || !guide || showAll) return;
+    const handleArrowKeys = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) return;
+      if (e.key === 'ArrowRight') {
+        setStepIndex(s => Math.min(guide.steps.length - 1, s + 1));
+      } else if (e.key === 'ArrowLeft') {
+        setStepIndex(s => Math.max(0, s - 1));
+      }
+    };
+    window.addEventListener('keydown', handleArrowKeys);
+    return () => window.removeEventListener('keydown', handleArrowKeys);
+  }, [selection, isGuide, guide, showAll]);
+
   if (!selection) return null;
 
-  const isGuide = selection.kind === 'guide';
-  const guide = isGuide ? (selection.item as Guide) : null;
-  const newsItem = !isGuide ? (selection.item as NewsItem) : null;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null || !guide) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+      if (deltaX < 0 && stepIndex < guide.steps.length - 1) {
+        setStepIndex(s => s + 1);
+      } else if (deltaX > 0 && stepIndex > 0) {
+        setStepIndex(s => s - 1);
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
 
   const isExplain = guide?.learning?.kind === 'explain';
   const stepLabel = isExplain ? 'Abschnitt' : 'Schritt';
@@ -168,15 +232,36 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                 <div className="reading-meta">
                   <span>
                     <CalendarDays aria-hidden="true" />
-                    {isGuide && guide
-                      ? `Stand: ${guide.updatedAt}`
-                      : `${newsItem?.dateLabel || 'Beitrag'}: ${formatGermanDate(newsItem?.date || '')}`}
+                    {isGuide && guide ? (
+                      `Stand: ${guide.updatedAt}`
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 flex-wrap">
+                        {(() => {
+                          const dateStyle = getDateLabelStyle(newsItem?.dateLabel);
+                          const LabelIcon = dateStyle.Icon;
+                          return (
+                            <span className={dateStyle.pillClass}>
+                              <LabelIcon aria-hidden="true" />
+                              <span>{dateStyle.text}</span>
+                            </span>
+                          );
+                        })()}
+                        <span>{formatGermanDate(newsItem?.date || '')}</span>
+                      </span>
+                    )}
                   </span>
                   {isGuide && guide && (
-                    <span>
-                      <Clock3 aria-hidden="true" />
-                      {guide.minutes} Minuten Lesezeit
-                    </span>
+                    <>
+                      <span>
+                        <Clock3 aria-hidden="true" />
+                        {guide.minutes} Minuten Lesezeit
+                      </span>
+                      <span className="inline-flex items-center gap-1 font-semibold text-slate-700">
+                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" aria-hidden="true" />
+                        <span>{guideRating.score.toFixed(1)}</span>
+                        <span className="text-slate-400 font-normal text-xs">({guideRating.count})</span>
+                      </span>
+                    </>
                   )}
                 </div>
 
@@ -250,95 +335,193 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                       <List className="w-4 h-4 text-slate-500 flex-shrink-0" aria-hidden="true" />
                       <span>
                         {showAll
-                          ? 'Einzeln ansehen'
-                          : `Alle ${isExplain ? 'Abschnitte' : 'Schritte'} ansehen`}
+                          ? 'Als Tabs & Slider ansehen'
+                          : `Alle ${isExplain ? 'Abschnitte' : 'Schritte'} untereinander`}
                       </span>
                     </button>
                   </header>
 
+                  {/* Tab Navigation with Step Names and Progress */}
                   {!showAll && (
-                    <nav
-                      className="walkthrough-position"
-                      aria-label={`${stepLabel} auswählen`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-200/90 shadow-2xs">
-                          {stepLabel} <span style={{ color: 'var(--guide-color, #235cbb)' }}>{stepIndex + 1}</span> von {guide.steps.length}
-                        </span>
+                    <div className="walkthrough-tabs-wrapper mb-5">
+                      <div className="flex items-center justify-between gap-3 mb-2 px-0.5">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-slate-700 bg-white px-2.5 py-1 rounded-lg border border-slate-200/90 shadow-2xs">
+                            {stepLabel} <strong style={{ color: 'var(--guide-color, #235cbb)' }}>{stepIndex + 1}</strong> von {guide.steps.length}
+                          </span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 hidden sm:flex items-center gap-1.5 font-medium">
+                          <span>Klicke auf die Tabs oder nutze Pfeiltasten ◄ / ►</span>
+                        </div>
                       </div>
 
-                      <ol className="flex items-center gap-1.5 m-0 p-0 list-none">
+                      {/* Scrollable Tabs with step names */}
+                      <nav
+                        role="tablist"
+                        aria-label={`${stepLabel}-Auswahl`}
+                        className="step-tab-bar p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200/90 shadow-2xs"
+                      >
                         {guide.steps.map((s, idx) => {
                           const isActive = idx === stepIndex;
+                          const isCompleted = idx < stepIndex;
                           return (
-                            <li key={s.title || idx}>
-                              <button
-                                type="button"
-                                aria-current={isActive ? 'step' : undefined}
-                                aria-controls={walkthroughId}
-                                aria-label={`${stepLabel} ${idx + 1}: ${s.title}`}
-                                onClick={() => handleStepJump(idx)}
-                                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center transition-all cursor-pointer ${
+                            <button
+                              key={s.title || idx}
+                              ref={el => { tabRefs.current[idx] = el; }}
+                              role="tab"
+                              id={`step-tab-${idx}`}
+                              aria-selected={isActive}
+                              aria-controls={`step-panel-${idx}`}
+                              tabIndex={isActive ? 0 : -1}
+                              type="button"
+                              onClick={() => handleStepJump(idx)}
+                              className={`step-tab-btn select-none ${
+                                isActive
+                                  ? 'bg-white text-slate-900 shadow-xs border-slate-200/90 font-bold'
+                                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60 font-medium'
+                              }`}
+                              style={
+                                isActive
+                                  ? {
+                                      boxShadow: 'inset 0 -2.5px 0 var(--guide-color, #235cbb), 0 1px 2px rgba(0, 0, 0, 0.05)',
+                                      borderColor: '#cbd5e1'
+                                    }
+                                  : {}
+                              }
+                              title={`${stepLabel} ${idx + 1}: ${s.title}`}
+                            >
+                              <span
+                                className={`w-5.5 h-5.5 rounded-full text-[11px] font-bold flex items-center justify-center transition-colors flex-shrink-0 ${
                                   isActive
-                                    ? 'text-white shadow-xs scale-105'
-                                    : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 hover:border-slate-400'
+                                    ? 'text-white'
+                                    : isCompleted
+                                    ? 'bg-blue-100 text-[#235cbb]'
+                                    : 'bg-slate-200/90 text-slate-600'
                                 }`}
-                                style={
-                                  isActive
-                                    ? {
-                                        background: 'var(--guide-color, #235cbb)',
-                                        borderColor: 'var(--guide-color, #235cbb)'
-                                      }
-                                    : {}
-                                }
+                                style={isActive ? { background: 'var(--guide-color, #235cbb)' } : {}}
                               >
-                                {idx + 1}
-                              </button>
-                            </li>
+                                {isCompleted ? '✓' : idx + 1}
+                              </span>
+                              <span className="tracking-tight text-xs sm:text-sm">
+                                {s.title}
+                              </span>
+                            </button>
                           );
                         })}
-                      </ol>
-                    </nav>
+                      </nav>
+
+                      {/* Visual step progress line */}
+                      <div className="w-full bg-slate-200/70 h-1.5 rounded-full overflow-hidden mt-2.5">
+                        <div
+                          className="h-full transition-all duration-300 rounded-full"
+                          style={{
+                            width: `${((stepIndex + 1) / guide.steps.length) * 100}%`,
+                            background: 'var(--guide-color, #235cbb)'
+                          }}
+                        />
+                      </div>
+                    </div>
                   )}
 
-                  <ol
-                    id={walkthroughId}
-                    className="learning-steps"
-                    start={showAll ? 1 : stepIndex + 1}
-                  >
-                    {guide.steps.map((step, idx) => {
-                      if (!showAll && idx !== stepIndex) return null;
-                      const StepIcon = getStepIcon(guide.id, idx);
-                      return (
-                        <li key={idx} value={idx + 1} className="transition-all">
-                          <div className="learning-step-symbol" aria-hidden="true">
-                            <StepIcon aria-hidden="true" />
-                          </div>
-                          <div className="learning-step-copy">
-                            <p className="learning-step-number">
-                              {stepLabel} {idx + 1}
-                            </p>
-                            <h3
-                              ref={idx === (showAll ? 0 : stepIndex) ? stepHeadingRef : undefined}
-                              tabIndex={-1}
+                  {/* Single view with smooth slide transition */}
+                  {!showAll ? (
+                    <div
+                      id={walkthroughId}
+                      className="step-slider-container"
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={handleTouchEnd}
+                    >
+                      <div
+                        className="step-slider-track"
+                        style={{
+                          transform: `translateX(-${stepIndex * 100}%)`,
+                          transitionTimingFunction: 'cubic-bezier(0.2, 0.9, 0.3, 1)'
+                        }}
+                      >
+                        {guide.steps.map((step, idx) => {
+                          const StepIcon = getStepIcon(guide.id, idx);
+                          const isCurrent = idx === stepIndex;
+                          return (
+                            <div
+                              key={idx}
+                              role="tabpanel"
+                              id={`step-panel-${idx}`}
+                              aria-labelledby={`step-tab-${idx}`}
+                              aria-hidden={!isCurrent}
+                              tabIndex={isCurrent ? 0 : -1}
+                              className="step-slide-item"
                             >
-                              {step.title}
-                            </h3>
-                            <p>{step.text}</p>
+                              <div className="learning-step-slide-card">
+                                <div className="learning-step-symbol" aria-hidden="true">
+                                  <StepIcon aria-hidden="true" />
+                                </div>
+                                <div className="learning-step-copy">
+                                  <p className="learning-step-number">
+                                    {stepLabel} {idx + 1} von {guide.steps.length}
+                                  </p>
+                                  <h3
+                                    ref={isCurrent ? stepHeadingRef : undefined}
+                                    tabIndex={-1}
+                                  >
+                                    {step.title}
+                                  </h3>
+                                  <p>{step.text}</p>
 
-                            {step.check && (
-                              <div className="mt-3 p-3 rounded-xl bg-slate-50/90 border border-slate-200 text-xs sm:text-sm text-slate-800 flex items-start gap-2.5">
-                                <CheckCircle2 className="w-4 h-4 text-[#235cbb] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                                <div className="leading-relaxed">
-                                  <strong className="text-slate-900 font-bold">Erfolgs-Check:</strong> {step.check}
+                                  {step.check && (
+                                    <div className="mt-3.5 p-3.5 rounded-xl bg-slate-50/95 border border-slate-200 text-xs sm:text-sm text-slate-800 flex items-start gap-2.5 shadow-2xs">
+                                      <CheckCircle2 className="w-4.5 h-4.5 text-[#235cbb] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                                      <div className="leading-relaxed">
+                                        <strong className="text-slate-900 font-bold">Erfolgs-Check:</strong> {step.check}
+                                      </div>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
-                            )}
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ol>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    /* Stacked list when user explicitly toggles overview */
+                    <ol
+                      id={walkthroughId}
+                      className="learning-steps"
+                      start={1}
+                    >
+                      {guide.steps.map((step, idx) => {
+                        const StepIcon = getStepIcon(guide.id, idx);
+                        return (
+                          <li key={idx} value={idx + 1} className="transition-all">
+                            <div className="learning-step-symbol" aria-hidden="true">
+                              <StepIcon aria-hidden="true" />
+                            </div>
+                            <div className="learning-step-copy">
+                              <p className="learning-step-number">
+                                {stepLabel} {idx + 1}
+                              </p>
+                              <h3
+                                ref={idx === 0 ? stepHeadingRef : undefined}
+                                tabIndex={-1}
+                              >
+                                {step.title}
+                              </h3>
+                              <p>{step.text}</p>
+
+                              {step.check && (
+                                <div className="mt-3 p-3 rounded-xl bg-slate-50/90 border border-slate-200 text-xs sm:text-sm text-slate-800 flex items-start gap-2.5">
+                                  <CheckCircle2 className="w-4 h-4 text-[#235cbb] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                                  <div className="leading-relaxed">
+                                    <strong className="text-slate-900 font-bold">Erfolgs-Check:</strong> {step.check}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  )}
 
                   {!showAll && (
                     <div className="walkthrough-navigation flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-6 pt-5 border-t border-slate-200">
@@ -409,6 +592,9 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                     <p>{guide.tip}</p>
                   </aside>
                 )}
+
+                {/* Rating component for interactivity */}
+                <GuideRatingCard guideId={guide.id} guideTitle={guide.title} />
               </div>
             )}
 

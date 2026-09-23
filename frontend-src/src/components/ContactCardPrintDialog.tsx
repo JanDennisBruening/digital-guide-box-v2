@@ -14,7 +14,7 @@ export const ContactCardPrintDialog: React.FC<ContactCardPrintDialogProps> = ({
   const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
   const profile = config?.settings?.profile || {};
   const profileName = profile.name || 'Jan Dennis Brüning';
-  const profileRole = profile.role || 'Dein Digital-Guide';
+  const profileRole = profile.role && profile.role !== 'Dein Digital-Guide' ? profile.role : 'Dein persönlicher Digitalguide';
   const profilePhone = profile.phone || '+49 1520 2553087';
   const profileEmail = profile.email || 'office@janbruening.de';
   const profileAvatar = profile.avatar_url || getAssetUrl('profilbild.png');

@@ -460,7 +460,7 @@ final class DGBC_Admin {
 								<th scope="row"><label for="profile_role">Bezeichnung / Rolle</label></th>
 								<td>
 									<input name="profile[role]" type="text" id="profile_role" value="<?php echo esc_attr( $settings['profile']['role'] ); ?>" class="regular-text" />
-									<p class="description">Standard: <code>Dein Digital-Guide</code></p>
+									<p class="description">Standard: <code>Dein persönlicher Digitalguide</code></p>
 								</td>
 							</tr>
 							<tr>

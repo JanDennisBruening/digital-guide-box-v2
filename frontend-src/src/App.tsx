@@ -380,7 +380,10 @@ export function App() {
                         </span>
                         <span>KI-Assistent</span>
                       </span>
-                      <span className="guide-count text-emerald-800 bg-emerald-100/90 font-medium">Gemini 3</span>
+                      <span className="guide-count text-emerald-800 bg-emerald-100/90 font-medium inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
+                        <span>Live-Hilfe</span>
+                      </span>
                     </button>
 
                     <button

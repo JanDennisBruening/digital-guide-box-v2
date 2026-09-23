@@ -29,7 +29,7 @@ final class DGBC_Settings {
 			),
 			'profile' => array(
 				'name'           => 'Jan Dennis Brüning',
-				'role'           => 'Dein Digital-Guide',
+				'role'           => 'Dein persönlicher Digitalguide',
 				'avatar_url'     => '',
 				'email'          => 'office@janbruening.de',
 				'phone'          => '+49 1520 2553087',

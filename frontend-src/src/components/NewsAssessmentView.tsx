@@ -25,7 +25,7 @@ export const NewsAssessmentView: React.FC<NewsAssessmentViewProps> = ({ news, co
       className={`news-assessment${compact ? ' is-compact' : ''}`}
       aria-label="Einordnung der Nachricht"
     >
-      <div>
+      <div className="rounded-xl">
         <dt>Für dich wichtig?</dt>
         <dd>
           <strong>
@@ -36,7 +36,7 @@ export const NewsAssessmentView: React.FC<NewsAssessmentViewProps> = ({ news, co
         </dd>
       </div>
 
-      <div data-action={n.action}>
+      <div data-action={n.action} className="rounded-xl">
         <dt>Musst du etwas tun?</dt>
         <dd>
           <strong>

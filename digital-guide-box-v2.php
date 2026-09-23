@@ -3,7 +3,7 @@
  * Plugin Name:       Digital-Guide-Box (Version 2)
  * Plugin URI:        https://janbruening.de/
  * Description:       Digital-Guide-Box für Jan Dennis Brüning – mit flexibler WordPress-Backend-Verwaltung für Texte, Profilbild, WhatsApp-Kanal, Zugangszeiten und eigene Neuigkeiten.
- * Version:           2.6.5
+ * Version:           2.9.1
  * Author:            Jan Dennis Brüning
  * Author URI:        https://janbruening.de/
  * Text Domain:       digital-guide-box-v2
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DGBC_VERSION', '2.6.5' );
+define( 'DGBC_VERSION', '2.9.1' );
 define( 'DGBC_FILE', __FILE__ );
 define( 'DGBC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DGBC_URL', plugin_dir_url( __FILE__ ) );

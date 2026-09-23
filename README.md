@@ -1,6 +1,10 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.1)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.2)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.2:
+- **Titel-Korrektur beim KI-Assistenten:**
+  - Der Kopfbereich des KI-Assistenten lautet nun einheitlich und verständlich **„Jan Dennis · KI Assistenz rundum die Uhr“** (Korrektur des vorherigen Platzhalters).
 
 ### Neu in Version 2.9.1:
 - **Optimierung der Bewertungskarte bei Anleitungen:**

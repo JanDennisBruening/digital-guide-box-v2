@@ -280,7 +280,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
           <div className="min-w-0 flex-1 flex flex-col items-start justify-start gap-2">
             {/* Row 1: Name */}
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-800 tracking-normal text-left m-0 p-0">
-              Jan Dennis · Digitalgeld KI
+              Jan Dennis · KI Assistenz rundum die Uhr
             </h2>
 
             {/* Row 2: Assistant Badge + Schnell/Standard/Komplex + Refresh Icon */}

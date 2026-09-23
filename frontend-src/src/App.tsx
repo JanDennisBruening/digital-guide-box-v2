@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   BookOpen,
   Newspaper,
-  MessageSquareText,
   LogOut,
   LockKeyhole,
   ArrowRight,
@@ -13,8 +12,7 @@ import {
   Phone,
   Mail,
   Globe,
-  Sparkles,
-  Compass
+  Sparkles
 } from 'lucide-react';
 import { ALL_GUIDES } from './data/guides';
 import { ALL_NEWS } from './data/news';
@@ -80,8 +78,6 @@ export function App() {
   const [assistantPrompt, setAssistantPrompt] = useState<string | null>(null);
   const [selection, setSelection] = useState<SelectionState | null>(null);
   const [supportFocus, setSupportFocus] = useState(false);
-  const [isOrientationFocused, setIsOrientationFocused] = useState(false);
-  const [hasNavigated, setHasNavigated] = useState(false);
 
   // Gate form state
   const [password, setPassword] = useState('');
@@ -242,7 +238,7 @@ export function App() {
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Passwort eingeben"
                     disabled={preloaderActive}
-                    className="w-full px-4 py-3 pr-12 text-base rounded-xl border border-slate-200 bg-white/95 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#235cbb] focus:ring-4 focus:ring-blue-500/10 transition-all shadow-2xs"
+                    className="w-full px-4 py-3 pr-12 text-base leading-normal rounded-xl border border-slate-200 bg-white/95 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#235cbb] focus:ring-4 focus:ring-blue-500/10 transition-all shadow-2xs"
                   />
                   <button
                     type="button"
@@ -274,7 +270,7 @@ export function App() {
               </button>
             </form>
 
-            <p className="text-xs text-slate-400 text-center mt-4 mb-0">
+            <p className="gate-note text-xs text-slate-400 text-center mt-7 sm:mt-8 mb-0">
               {gateSettings.note || 'Dein Zugang bleibt für acht Stunden geöffnet.'}
             </p>
           </section>
@@ -307,7 +303,6 @@ export function App() {
       ) : (
         /* Authorized Main Shell */
         <>
-          <div className="box-focus-shade" aria-hidden="true" />
           <a className="skip" href="#box-content">
             Zum Inhalt
           </a>
@@ -315,11 +310,7 @@ export function App() {
           <main className="shell">
             <div className="box">
               {/* Header */}
-              <header
-                className={`box-header transition-all duration-300 ${
-                  isOrientationFocused ? 'filter blur-[2px] opacity-60 pointer-events-none' : ''
-                }`}
-              >
+              <header className="box-header">
                 <Brand />
 
                 <SearchDialog
@@ -345,147 +336,8 @@ export function App() {
 
               <h1 className="sr-only">Deine Digital-Guide-Box</h1>
 
-              {/* Orientation Navigation */}
-              <nav
-                className={`box-orientation relative z-20 transition-all duration-300 rounded-2xl mx-3 sm:mx-6 my-2 sm:my-3.5 p-3.5 sm:p-5 transform-none ${
-                  isOrientationFocused && !hasNavigated
-                    ? 'bg-gradient-to-r from-blue-50/95 via-white to-indigo-50/90 shadow-lg border border-blue-300/80 ring-2 ring-blue-400/20'
-                    : 'bg-slate-50/95 hover:bg-slate-50/100 border border-slate-200/90 shadow-2xs'
-                }`}
-                aria-labelledby="box-orientation-title"
-                onMouseEnter={() => {
-                  if (!hasNavigated) setIsOrientationFocused(true);
-                }}
-                onMouseLeave={() => {
-                  setIsOrientationFocused(false);
-                  setHasNavigated(false);
-                }}
-                onFocus={() => {
-                  if (!hasNavigated) setIsOrientationFocused(true);
-                }}
-                onBlur={() => {
-                  setIsOrientationFocused(false);
-                  setHasNavigated(false);
-                }}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="p-1.5 rounded-lg bg-blue-100 text-[#235cbb] flex items-center justify-center">
-                      <Compass className="w-4 h-4" aria-hidden="true" />
-                    </span>
-                    <h2
-                      id="box-orientation-title"
-                      className="text-sm sm:text-base font-bold text-slate-800 tracking-tight m-0 font-display"
-                    >
-                      Was möchtest du heute tun?
-                    </h2>
-                  </div>
-                  <span className="text-[11px] sm:text-xs text-slate-500 font-medium">
-                    Schnellzugriff & Inspiration
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-                  <button
-                    type="button"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-left bg-white text-slate-800 border border-slate-200/90 shadow-2xs hover:border-blue-400 hover:bg-blue-50/40 hover:text-[#235cbb] active:scale-[0.98] transition-all cursor-pointer group"
-                    onClick={() => {
-                      setIsOrientationFocused(false);
-                      setHasNavigated(true);
-                      setActiveTab('guides');
-                      document.getElementById('box-content')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#235cbb] flex items-center justify-center flex-shrink-0 group-hover:bg-[#235cbb] group-hover:text-white transition-colors">
-                      <BookOpen className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#235cbb] truncate">
-                        Anleitungen
-                      </span>
-                      <span className="block text-[10.5px] text-slate-500 truncate">
-                        Schritt für Schritt lernen
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-left bg-white text-slate-800 border border-slate-200/90 shadow-2xs hover:border-blue-400 hover:bg-blue-50/40 hover:text-[#235cbb] active:scale-[0.98] transition-all cursor-pointer group"
-                    onClick={() => {
-                      setIsOrientationFocused(false);
-                      setHasNavigated(true);
-                      setActiveTab('news');
-                      document.getElementById('box-content')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                      <Newspaper className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-xs sm:text-sm font-bold text-slate-800 group-hover:text-indigo-700 truncate">
-                        Neuigkeiten
-                      </span>
-                      <span className="block text-[10.5px] text-slate-500 truncate">
-                        Aktuelle Tipps & Warnungen
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-left bg-white text-slate-800 border border-slate-200/90 shadow-2xs hover:border-emerald-400 hover:bg-emerald-50/40 hover:text-emerald-800 active:scale-[0.98] transition-all cursor-pointer group"
-                    onClick={() => {
-                      setIsOrientationFocused(false);
-                      setHasNavigated(true);
-                      setActiveTab('assistant');
-                      document.getElementById('box-content')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                      <Sparkles className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-xs sm:text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate">
-                        KI-Assistent
-                      </span>
-                      <span className="block text-[10.5px] text-slate-500 truncate">
-                        Fragen geduldig beantwortet
-                      </span>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-left bg-white text-slate-800 border border-slate-200/90 shadow-2xs hover:border-amber-400 hover:bg-amber-50/40 hover:text-amber-800 active:scale-[0.98] transition-all cursor-pointer group"
-                    onClick={() => {
-                      setIsOrientationFocused(false);
-                      setHasNavigated(true);
-                      setSupportFocus(true);
-                      document.getElementById('contact-title')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                      <MessageSquareText className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="block text-xs sm:text-sm font-bold text-slate-800 group-hover:text-amber-800 truncate">
-                        Du kommst nicht weiter?
-                      </span>
-                      <span className="block text-[10.5px] text-slate-500 truncate">
-                        Persönlicher Kontakt zu Jan
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </nav>
-
               {/* Workspace with Left Tabs & Right Sidebar */}
-              <div
-                className={`box-workspace transition-all duration-300 ${
-                  isOrientationFocused && !hasNavigated ? 'filter blur-[1px] opacity-75' : ''
-                }`}
-              >
+              <div className="box-workspace">
                 <div
                   className="box-tabs"
                   data-active-tab={activeTab}
@@ -506,7 +358,9 @@ export function App() {
                       onClick={() => setActiveTab('news')}
                     >
                       <span className="box-tab-label">
-                        <Newspaper aria-hidden="true" />
+                        <span className="tab-icon-badge tab-icon-badge-news" aria-hidden="true">
+                          <Newspaper className="w-5 h-5" />
+                        </span>
                         <span>Neuigkeiten</span>
                       </span>
                       <span className="guide-count text-slate-700 bg-white/80 font-medium">{newsData.length} Beiträge</span>
@@ -521,7 +375,9 @@ export function App() {
                       onClick={() => setActiveTab('assistant')}
                     >
                       <span className="box-tab-label">
-                        <Sparkles aria-hidden="true" className="text-emerald-600" />
+                        <span className="tab-icon-badge tab-icon-badge-assistant" aria-hidden="true">
+                          <Sparkles className="w-5 h-5" />
+                        </span>
                         <span>KI-Assistent</span>
                       </span>
                       <span className="guide-count text-emerald-800 bg-emerald-100/90 font-medium">Gemini 3</span>
@@ -536,7 +392,9 @@ export function App() {
                       onClick={() => setActiveTab('guides')}
                     >
                       <span className="box-tab-label">
-                        <BookOpen aria-hidden="true" />
+                        <span className="tab-icon-badge tab-icon-badge-guides" aria-hidden="true">
+                          <BookOpen className="w-5 h-5" />
+                        </span>
                         <span>Anleitungen</span>
                       </span>
                       <span className="guide-count">{guidesData.length} verfügbar</span>
@@ -609,11 +467,7 @@ export function App() {
             </div>
 
             {/* Outer Footer (outside the white box, styled for dark background) */}
-            <footer
-              className={`outer-footer transition-all duration-300 ${
-                isOrientationFocused ? 'filter blur-[2px] opacity-60 pointer-events-none' : ''
-              }`}
-            >
+            <footer className="outer-footer">
               <p>{profileSettings.name || 'Jan Dennis Brüning'} · Persönliche Begleitung im digitalen Alltag</p>
               <nav className="footer-links" aria-label="Weitere Informationen">
                 <a

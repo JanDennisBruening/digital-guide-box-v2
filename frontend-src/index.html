@@ -14,6 +14,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      window.DGB_CONFIG = {
+        assetsUrl: "",
+        verifyUrl: "/api/verify",
+        lockUrl: "/api/lock",
+        inquiryUrl: "/api/inquiry",
+        chatUrl: "/api/chat",
+        siteUrl: "",
+        password: "digitalguidejan",
+        settings: {
+          access: {
+            password: 'digitalguidejan',
+            session_duration: 28800,
+            slug: 'digital-guide-box',
+            notification_email: 'office@janbruening.de'
+          },
+          gate: {
+            principle: 'Nachlesen · Verstehen · Anwenden',
+            title: 'Schön, dass du da bist.',
+            subtitle: 'Deine Anleitungen und Neuigkeiten für einen entspannten digitalen Alltag.',
+            note: 'Dein Zugang bleibt für acht Stunden geöffnet.',
+            home_url: 'https://www.janbruening.de',
+            imprint_url: 'https://www.janbruening.de/impressum'
+          },
+          profile: {
+            name: 'Jan Dennis Brüning',
+            role: 'Dein Digital-Guide',
+            avatar_url: '/profilbild.png',
+            email: 'office@janbruening.de',
+            phone: '+49 1520 2553087',
+            emergency_note: 'Wenn du allein nicht weiterkommst, bin ich für dich da.'
+          },
+          whatsapp: {
+            enabled: true,
+            badge: 'Direkt auf dem Smartphone immer dabei',
+            title: 'Neu: WhatsApp-Kanal',
+            description: 'Im Kanal bekommst du neue Tipps. Hier in der Box findest du die Anleitungen zum Nachlesen und Ausprobieren.',
+            url: 'https://whatsapp.com/channel/0029VbBej87KAwEt5x4IYN03',
+            footer_note: 'Kostenlos abonnieren. In Ruhe mitlesen.'
+          },
+          gemini: {
+            enabled: true,
+            provider: 'gemini',
+            default_model: 'gemini-2.5-flash',
+            max_input_length: 800
+          }
+        }
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>

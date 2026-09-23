@@ -29,7 +29,9 @@ export function getGuideStyles(themeName?: string): CSSProperties {
   const theme = getTheme(themeName);
   return {
     '--guide-tint': theme.tint,
-    '--guide-color': theme.color
+    '--guide-color': theme.color,
+    '--news-tint': theme.tint,
+    '--news-color': theme.color
   } as CSSProperties;
 }
 

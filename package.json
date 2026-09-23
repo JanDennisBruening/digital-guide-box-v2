@@ -1,0 +1,15 @@
+{
+  "name": "digital-guide-box-v2",
+  "version": "2.6.5",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "frontend-src"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend-src",
+    "build": "npm run build --workspace=frontend-src",
+    "start": "npm run start --workspace=frontend-src",
+    "lint": "npm run lint --workspace=frontend-src"
+  }
+}

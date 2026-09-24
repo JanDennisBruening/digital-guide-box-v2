@@ -97,6 +97,10 @@ body {
 }
 
 /* 3-Tab Support for Box Tabs: Balanced, flex-based alignment with no squishing */
+.box-tabs {
+  container-type: inline-size;
+}
+
 .box-tabs[data-active-tab=assistant] {
   --tab-ink: #014B6F;
   --tab-track: rgba(1, 75, 111, 0.06);
@@ -136,12 +140,13 @@ body {
   align-items: center !important;
   justify-content: space-between !important;
   white-space: nowrap !important;
-  gap: 0.75rem !important;
-  padding: 0.625rem 1.125rem !important;
-  min-height: 3.375rem !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.875rem !important;
+  min-height: 3.25rem !important;
   border-radius: 0.75rem !important;
-  flex: 1 1 15rem !important;
+  flex: 1 1 0 !important;
   min-width: 0 !important;
+  overflow: hidden !important;
   background: rgba(255, 255, 255, 0.85) !important;
   border: 1px solid rgba(1, 75, 111, 0.12) !important;
   color: #01060C !important;
@@ -155,18 +160,19 @@ body {
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
-  gap: 0.5rem !important;
+  gap: 0.375rem !important;
   white-space: nowrap !important;
-  flex-shrink: 0 !important;
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
   font-family: var(--font-dosis) !important;
-  font-size: 1.25rem !important;
+  font-size: clamp(1rem, 1.1vw, 1.25rem) !important;
   font-weight: 600 !important;
   line-height: 1.2 !important;
 }
 
 .box-tabs .box-tab .box-tab-label span {
   font-family: var(--font-dosis) !important;
-  font-size: 1.25rem !important;
+  font-size: inherit !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
 }
@@ -176,9 +182,9 @@ body {
   flex-shrink: 0 !important;
   margin-left: auto !important;
   font-family: var(--font-inter) !important;
-  font-size: 0.8125rem !important;
+  font-size: clamp(0.72rem, 0.75vw, 0.8125rem) !important;
   font-weight: 600 !important;
-  padding: 0.25rem 0.625rem !important;
+  padding: 0.2rem 0.5rem !important;
   border-radius: 9999px !important;
   background: #FDF4E4 !important;
   color: #014B6F !important;
@@ -186,6 +192,11 @@ body {
   display: inline-flex !important;
   align-items: center !important;
   transition: all 0.2s ease !important;
+}
+
+.box-tabs .box-tab .guide-count span {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 /* Hover state: interactive elevation and subtle tint */
@@ -234,9 +245,8 @@ body {
   border: 1px solid rgba(11, 158, 188, 0.3) !important;
 }
 
-/* When total space is insufficient for 3 side-by-side tabs (under 1120px viewport or in narrow container),
-   the tab buttons stack over- and under each other cleanly */
-@media (max-width: 1120px) {
+/* Responsive tab switching fallback (screens up to 1480px wide in 2-column layout) */
+@media (max-width: 1480px) {
   .box-tabs .box-tab-list {
     flex-direction: column !important;
     gap: 0.4375rem !important;
@@ -250,6 +260,51 @@ body {
   }
 }
 
+/* Container query: adapts dynamically based on exact available width of .box-tabs */
+@container (max-width: 860px) {
+  .box-tabs .box-tab-list {
+    flex-direction: column !important;
+    gap: 0.4375rem !important;
+    width: calc(100% - 2rem) !important;
+    margin: 1rem 1rem 0 !important;
+  }
+  .box-tabs .box-tab {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+}
+
+@container (min-width: 861px) {
+  .box-tabs .box-tab-list {
+    flex-direction: row !important;
+    gap: 0.625rem !important;
+  }
+  .box-tabs .box-tab {
+    flex: 1 1 0 !important;
+    width: auto !important;
+  }
+}
+
+/* Collapse workspace to single-column earlier at <= 1200px due to 8vw margins */
+@media (max-width: 1200px) {
+  .box-workspace {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+    display: flex !important;
+    overflow-y: auto !important;
+  }
+  .box-tabs {
+    flex: none !important;
+    height: auto !important;
+    min-height: 28rem !important;
+  }
+  .box-sidebar {
+    border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
+    border-left: 0 !important;
+  }
+}
+
 /* Digital Guide Box: 5% vertical spacing, 8% horizontal margins */
 :root {
   --box-top-space: max(1.5rem, 5vh);
@@ -259,6 +314,22 @@ body {
   --box-frame-max-width: 100% !important;
   --box-frame-height: calc(100vh - var(--box-top-space) - var(--box-bottom-space) - 3.75rem) !important;
   --box-frame-max-height: none !important;
+}
+
+@media (max-width: 960px) {
+  :root {
+    --box-top-space: max(1rem, 3vh);
+    --box-side-padding: max(1rem, 4vw);
+    --box-bottom-space: max(1rem, 3vh);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --box-top-space: 0.75rem;
+    --box-side-padding: 0.75rem;
+    --box-bottom-space: 0.75rem;
+  }
 }
 
 .shell {

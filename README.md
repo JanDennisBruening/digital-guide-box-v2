@@ -1,6 +1,14 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.6)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.7)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.7:
+- **Optimiertes Responsive-Verhalten & Container Queries für Tabs:**
+  - **Dynamisches Umschalten per Container Query (`@container`):** Die 3 Hauptreiter (Neuigkeiten, KI-Assistent, Anleitungen) reagieren nun direkt auf die tatsächliche Breite ihres Elterncontainers (`.box-tabs`). Unter 860px Containerbreite (bzw. Viewport unter 1480px) schalten die Tabs nahtlos in die vertikale Stapelung um.
+  - **Schutz vor Text- und Badge-Überlauf:** Die Status-Badges („Aktuell“, „Live-Hilfe“, „X verfügbar“) sind mit `flex-shrink: 0` und `white-space: nowrap` geschützt, sodass Badges und Texte bei jeder Fensterbreite sauber in der Box bleiben.
+  - **Fluide Typografie:** Fließende Skalierung via `clamp()` bei Labeln und Badges sorgt für harmonische Proportionen.
+  - **Früheres Workspace-Collapse:** Der 2-spaltige Workspace schaltet bei schmaleren Bildschirmen (unter 1200px) auf einspaltig um, wodurch Tabs und Sidebar nie beengt werden.
+  - **Adaptive Viewport-Ränder:** Auf Tablets und Smartphones skalieren die Außenabstände dynamisch (4vw / 3vh bzw. 0.75rem), um wertvolle mobile Bildschirmfläche zu bewahren.
 
 ### Neu in Version 2.9.6:
 - **Erweiterter Raum & Randabstände der Digital Guide Box:**

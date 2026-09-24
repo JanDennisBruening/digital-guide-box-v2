@@ -250,11 +250,11 @@ body {
   }
 }
 
-/* Full Width Digital Guide Box: 1% visual separation on top, matched popup width */
+/* Digital Guide Box: 5% vertical spacing, 8% horizontal margins */
 :root {
-  --box-top-space: max(1.25rem, 1.6vh);
-  --box-side-padding: max(1rem, 1.5vw);
-  --box-bottom-space: max(0.5rem, 1vh);
+  --box-top-space: max(1.5rem, 5vh);
+  --box-side-padding: max(1.25rem, 8vw);
+  --box-bottom-space: max(1.5rem, 5vh);
   --box-frame-width: 100% !important;
   --box-frame-max-width: 100% !important;
   --box-frame-height: calc(100vh - var(--box-top-space) - var(--box-bottom-space) - 3.75rem) !important;

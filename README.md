@@ -1,6 +1,13 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.5)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.6)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.6:
+- **Erweiterter Raum & Randabstände der Digital Guide Box:**
+  - Der Außenabstand der Digital Guide Box zum Viewport wurde gezielt vergrößert:
+    - **Oben und unten:** 5 % Abstand (`5vh`), sodass der mehrschichtige, sanfte Hintergrund über der Box und unter dem Footer luftig zur Geltung kommt.
+    - **Links und rechts:** 8 % Abstand (`8vw`), wodurch die Box als edles, zentriertes Interface harmonisch im Sichtfeld eingebettet ist.
+    - Die Leseansicht (`ReadingDialog`) übernimmt dieselbe proportionale Geometrie.
 
 ### Neu in Version 2.9.5:
 - **Visuelles Designsystem implementiert:**

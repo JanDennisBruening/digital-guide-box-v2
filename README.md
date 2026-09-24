@@ -1,8 +1,8 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.3)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.4)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
 
-### Neu in Version 2.9.3:
+### Neu in Version 2.9.4:
 - **Neuigkeiten-Reiter:**
   - Der starre Zähler „60 Beiträge“ wurde durch den aufgeräumten, zukunftssicheren Status **„Aktuell“** mit blauem Aktiv-Indikator ersetzt. So bleibt die Leiste auch bei wachsendem Beitragsarchiv kompakt und übersichtlich.
 - **Harmonisierung der Icon-Größen beim KI-Assistenten:**

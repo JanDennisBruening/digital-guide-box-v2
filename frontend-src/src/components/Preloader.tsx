@@ -38,18 +38,20 @@ export const Preloader: React.FC<PreloaderProps> = ({ active }) => {
             </svg>
           </span>
           <span className="preloader-mark">
-            <img
-              src={avatarUrl}
-              alt=""
-              width="128"
-              height="128"
-              onError={(e) => {
-                const fallback = getAssetUrl('profilbild.png');
-                if (e.currentTarget.src !== fallback) {
-                  e.currentTarget.src = fallback;
-                }
-              }}
-            />
+            <div className="brand-avatar-frame">
+              <img
+                src={avatarUrl}
+                alt=""
+                width="128"
+                height="128"
+                onError={(e) => {
+                  const fallback = getAssetUrl('profilbild.png');
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
+              />
+            </div>
           </span>
         </div>
         <p>

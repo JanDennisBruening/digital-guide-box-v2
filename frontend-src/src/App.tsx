@@ -190,12 +190,12 @@ export function App() {
       {!authorized ? (
         /* Gate Screen (Authentic Login / Welcome Gate) */
         <main className="gate-shell min-h-screen w-full flex flex-col items-center justify-center p-4 sm:p-6 relative z-10">
-          <section className="gate-box w-full max-w-[480px] bg-white/92 backdrop-blur-2xl border border-white/80 rounded-3xl shadow-[0_25px_60px_-15px_rgba(27,41,65,0.12),0_0_0_1px_rgba(255,255,255,0.8)] p-6 sm:p-9 flex flex-col items-center text-center">
-            {/* Header: Avatar with gradient border + Name & Subtitle */}
+          <section className="gate-box w-full max-w-[480px] bg-white/90 backdrop-blur-[20px] border border-[rgba(1,75,111,0.12)] rounded-3xl shadow-[0_25px_60px_-15px_rgba(1,75,111,0.1),0_0_0_1px_rgba(253,244,228,0.6)] p-6 sm:p-9 flex flex-col items-center text-center">
+            {/* Header: Avatar with signature gradient border + Name & Subtitle */}
             <div className="flex flex-col items-center mb-6">
-              <div className="relative p-[3px] rounded-full bg-gradient-to-tr from-[#235cbb] via-[#38bdf8] to-[#f472b6] shadow-sm mb-3">
+              <div className="brand-avatar-frame mb-3">
                 <img
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover bg-white"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover"
                   src={profileSettings?.avatar_url || getAssetUrl('profilbild.png')}
                   alt={profileSettings?.name || 'Jan Dennis Brüning'}
                   width="80"
@@ -208,20 +208,20 @@ export function App() {
                   }}
                 />
               </div>
-              <h1 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 tracking-tight m-0">
+              <h1 className="text-2xl sm:text-3xl font-bold font-heading text-[#01060C] tracking-tight m-0">
                 {profileSettings?.name || 'Jan Dennis Brüning'}
               </h1>
-              <p className="text-xs sm:text-sm font-medium text-slate-500 mt-1 m-0">
+              <p className="text-xs sm:text-sm font-medium text-[#014B6F] mt-1 m-0 font-body">
                 {gateSettings.principle || profileSettings?.subtitle || 'Designer, Creator & Digital-Guide'}
               </p>
             </div>
 
             {/* Welcome text */}
-            <div className="w-full bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-100 mb-6 text-left">
-              <h2 className="text-lg sm:text-xl font-bold font-heading text-slate-800 m-0 mb-1.5">
+            <div className="w-full bg-[rgba(253,244,228,0.45)] rounded-2xl p-4 sm:p-5 border border-[rgba(1,75,111,0.12)] mb-6 text-left">
+              <h2 className="text-lg sm:text-xl font-bold font-heading text-[#01060C] m-0 mb-1.5">
                 {gateSettings.title || 'Schön, dass du da bist.'}
               </h2>
-              <p className="text-sm text-slate-600 leading-relaxed m-0">
+              <p className="text-sm text-slate-700 leading-relaxed m-0 font-body">
                 {gateSettings.subtitle || 'Deine Anleitungen und Neuigkeiten für einen entspannten digitalen Alltag.'}
               </p>
             </div>
@@ -231,7 +231,7 @@ export function App() {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5"
+                  className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5 font-body"
                 >
                   Dein Passwort
                 </label>
@@ -244,7 +244,7 @@ export function App() {
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Passwort eingeben"
                     disabled={preloaderActive}
-                    className="w-full px-4 py-3 pr-12 text-base leading-normal rounded-xl border border-slate-200 bg-white/95 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#235cbb] focus:ring-4 focus:ring-blue-500/10 transition-all shadow-2xs"
+                    className="w-full px-4 py-3 pr-12 text-base leading-normal rounded-xl border border-[rgba(1,75,111,0.18)] bg-white/95 text-[#01060C] placeholder:text-slate-400 focus:outline-none focus:border-[#0B9EBC] focus:ring-4 focus:ring-[#0B9EBC]/15 transition-all shadow-2xs font-body"
                   />
                   <button
                     type="button"
@@ -260,7 +260,7 @@ export function App() {
               </div>
 
               {gateError && (
-                <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium" id="gate-error" role="alert">
+                <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium font-body" id="gate-error" role="alert">
                   {gateError}
                 </div>
               )}
@@ -268,7 +268,7 @@ export function App() {
               <button
                 type="submit"
                 disabled={preloaderActive}
-                className="w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-[#235cbb] hover:bg-[#1b4a99] active:bg-[#163f82] transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2.5 text-base cursor-pointer disabled:opacity-50"
+                className="w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-[#014B6F] to-[#0B9EBC] hover:brightness-105 active:scale-[0.99] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2.5 text-base cursor-pointer disabled:opacity-50 font-body"
               >
                 <LockKeyhole className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span>{preloaderActive ? 'Box wird geöffnet …' : 'Box öffnen'}</span>

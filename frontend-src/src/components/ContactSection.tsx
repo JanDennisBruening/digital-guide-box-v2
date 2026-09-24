@@ -410,19 +410,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="box-disclosure-content" data-state={directOpen ? 'open' : 'closed'}>
                   <div className="direct-contact-body">
                     <div className="contact-person">
-                      <img
-                        src={profileAvatar}
-                        alt={profileName}
-                        width="64"
-                        height="64"
-                        style={{ borderRadius: '50%', objectFit: 'cover' }}
-                        onError={(e) => {
-                          const fallback = getAssetUrl('profilbild.png');
-                          if (e.currentTarget.src !== fallback) {
-                            e.currentTarget.src = fallback;
-                          }
-                        }}
-                      />
+                      <div className="brand-avatar-frame">
+                        <img
+                          src={profileAvatar}
+                          alt={profileName}
+                          width="60"
+                          height="60"
+                          className="rounded-full object-cover"
+                          onError={(e) => {
+                            const fallback = getAssetUrl('profilbild.png');
+                            if (e.currentTarget.src !== fallback) {
+                              e.currentTarget.src = fallback;
+                            }
+                          }}
+                        />
+                      </div>
                       <div>
                         <h3>{profileName}</h3>
                         <p>{profileRole}</p>

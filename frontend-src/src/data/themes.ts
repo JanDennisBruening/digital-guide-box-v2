@@ -9,13 +9,13 @@ export interface ThemeConfig {
 
 export const THEMES: Record<ThemeColor, ThemeConfig> = {
   gruen: { label: 'Grün', tint: '#e7f5ee', color: '#167c52' },
-  blau: { label: 'Blau', tint: '#eef3fd', color: '#3566b3' },
-  rot: { label: 'Rot', tint: '#fcefee', color: '#b44344' },
-  tuerkis: { label: 'Türkis', tint: '#e9f5f6', color: '#257780' },
+  blau: { label: 'Petrol', tint: '#EDF8F7', color: '#014B6F' },
+  rot: { label: 'Magenta', tint: '#FFF0F5', color: '#FD2675' },
+  tuerkis: { label: 'Türkis', tint: '#E8FAFE', color: '#0B9EBC' },
   violett: { label: 'Violett', tint: '#f1ebfb', color: '#7956a2' },
-  gold: { label: 'Gold', tint: '#fbf2e5', color: '#96631d' },
-  magenta: { label: 'Magenta', tint: '#f9edf6', color: '#a13683' },
-  schiefer: { label: 'Schieferblau', tint: '#edf0f8', color: '#526589' }
+  gold: { label: 'Gold', tint: '#FDF4E4', color: '#F7C270' },
+  magenta: { label: 'Magenta', tint: '#FFF0F5', color: '#FD2675' },
+  schiefer: { label: 'Schieferblau', tint: '#EDF8F7', color: '#014B6F' }
 };
 
 export function getTheme(themeName?: string): ThemeConfig {

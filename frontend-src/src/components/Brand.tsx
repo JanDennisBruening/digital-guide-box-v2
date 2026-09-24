@@ -9,19 +9,21 @@ export const Brand: React.FC = () => {
 
   return (
     <div className="brand">
-      <img
-        className="brand-portrait"
-        src={avatarSrc}
-        alt={authorName}
-        width="56"
-        height="56"
-        onError={(e) => {
-          const fallback = getAssetUrl('profilbild.png');
-          if (e.currentTarget.src !== fallback) {
-            e.currentTarget.src = fallback;
-          }
-        }}
-      />
+      <div className="brand-avatar-frame">
+        <img
+          className="brand-portrait"
+          src={avatarSrc}
+          alt={authorName}
+          width="56"
+          height="56"
+          onError={(e) => {
+            const fallback = getAssetUrl('profilbild.png');
+            if (e.currentTarget.src !== fallback) {
+              e.currentTarget.src = fallback;
+            }
+          }}
+        />
+      </div>
       <div>
         <div className="brand-title">
           Digital-Guide-<span>Box</span>

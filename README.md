@@ -1,6 +1,15 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.4)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.5)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.5:
+- **Visuelles Designsystem implementiert:**
+  - **Farbwelt harmonisiert:** Petrol (`#014B6F`), Türkis (`#0B9EBC`), Cyan (`#2AE7FE`), Magenta (`#FD2675`), Creme (`#FDF4E4`), Pfirsich (`#FCC59A`), warmes Gold (`#F7C270`) und tiefe Textfarbe (`#01060C`).
+  - **Atmosphärischer Mehrschicht-Hintergrund:** Cremefarbener Grundverlauf kombiniert mit radialen Lichtpunkten in Cyan/Türkis, Pfirsich, Magenta und warmem Gold.
+  - **Markantes Signature-Profil-Portrait:** Kreisrunder Avatar-Ausschnitt mit Farbverlauf von Cyan über Petrol zu Magenta (`linear-gradient(135deg, #2AE7FE, #014B6F 48%, #FD2675)`), feiner heller Innenkante in Creme (`#FDF4E4`) und weichem Tiefenschatten – konsistent angewendet über Header, Begrüßungstor, KI-Assistent, Lesemodus und Kontaktbereich.
+  - **Glasmorphismus & weiche Oberflächen:** Halbtransparente Flächen mit 20px Blur, feinen Petrol-Rahmen (`rgba(1, 75, 111, 0.12)`) und weichen, organischen Radien.
+  - **Tabs & Navigation:** Klare visuelle Differenzierung zwischen inaktiven und aktiven Tabs mit erhabener Fläche und präziser Petrol-/Türkis-Akzentuierung.
+  - **Thematische Farbfamilien:** Klare Trennung zwischen Kreativ-/Design-Themen (Magenta/Pfirsich), Digital-/Technik-Themen (Petrol/Türkis/Cyan) und Erhalt der Social-Identitäten (WhatsApp-Grün).
 
 ### Neu in Version 2.9.4:
 - **Neuigkeiten-Reiter:**

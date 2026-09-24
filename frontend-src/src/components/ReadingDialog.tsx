@@ -659,22 +659,24 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
 
             {/* Ask Jan Dennis AI about this topic */}
             {onAskAssistant && (
-              <div className="my-6 p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+              <div className="my-6 p-4 rounded-2xl bg-[#EDF8F7] border border-[#0B9EBC]/25 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3 min-w-0">
-                  <img
-                    src={profileAvatar}
-                    alt={profileName}
-                    onError={(e) => {
-                      const fallback = getAssetUrl('profilbild.png');
-                      if (e.currentTarget.src !== fallback) {
-                        e.currentTarget.src = fallback;
-                      }
-                    }}
-                    className="w-10 h-10 rounded-full border border-blue-300 object-cover bg-white flex-shrink-0"
-                  />
+                  <div className="brand-avatar-frame flex-shrink-0">
+                    <img
+                      src={profileAvatar}
+                      alt={profileName}
+                      onError={(e) => {
+                        const fallback = getAssetUrl('profilbild.png');
+                        if (e.currentTarget.src !== fallback) {
+                          e.currentTarget.src = fallback;
+                        }
+                      }}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
                   <div className="min-w-0">
-                    <h4 className="text-base font-bold text-slate-900 flex items-center gap-1.5 font-heading tracking-wide">
-                      <Sparkles className="w-4 h-4 text-[#235cbb] flex-shrink-0" />
+                    <h4 className="text-base font-bold text-[#01060C] flex items-center gap-1.5 font-heading tracking-wide">
+                      <Sparkles className="w-4 h-4 text-[#0B9EBC] flex-shrink-0" />
                       <span>Frage zu diesem Thema?</span>
                     </h4>
                     <p className="text-xs text-slate-600 font-body mt-0.5">
@@ -690,7 +692,7 @@ export const ReadingDialog: React.FC<ReadingDialogProps> = ({
                     onClose();
                     onAskAssistant(prompt);
                   }}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#235cbb] hover:bg-[#1b4a99] active:bg-[#153b7b] text-white rounded-xl text-xs font-semibold font-body transition-colors shadow-xs whitespace-nowrap flex-shrink-0 self-start sm:self-auto cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#014B6F] to-[#0B9EBC] hover:brightness-105 active:scale-[0.99] text-white rounded-xl text-xs font-semibold font-body transition-all shadow-xs whitespace-nowrap flex-shrink-0 self-start sm:self-auto cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
                   <span>Jan Dennis (KI) fragen</span>

@@ -157,13 +157,17 @@ final class DGBC_Assistant {
 			);
 		}
 
-		$default_model  = ! empty( $ai_config['default_model'] ) ? $ai_config['default_model'] : 'gemini-2.5-flash';
+		$default_model  = ( ! empty( $ai_config['default_model'] ) && ! in_array( $ai_config['default_model'], array( 'gemini-2.5-flash', 'gemini-2.5-pro' ), true ) )
+			? $ai_config['default_model']
+			: 'gemini-2.0-flash';
 		$selected_model = $default_model;
 
-		if ( 'complex' === $task_type || 'gemini-3.1-pro-preview' === $model_choice ) {
-			$selected_model = 'gemini-2.5-pro';
-		} elseif ( 'fast' === $task_type || 'gemini-3.1-flash-lite' === $model_choice ) {
-			$selected_model = 'gemini-2.0-flash';
+		if ( 'complex' === $task_type || 'gemini-1.5-pro' === $model_choice || 'gemini-3.1-pro-preview' === $model_choice || 'gemini-2.5-pro' === $model_choice ) {
+			$selected_model = 'gemini-1.5-pro';
+		} elseif ( 'fast' === $task_type || 'gemini-2.0-flash-lite' === $model_choice || 'gemini-3.1-flash-lite' === $model_choice ) {
+			$selected_model = 'gemini-2.0-flash-lite';
+		} else {
+			$selected_model = $default_model;
 		}
 
 		$contents = array();

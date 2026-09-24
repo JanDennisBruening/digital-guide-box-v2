@@ -47,7 +47,7 @@ final class DGBC_Settings {
 				'enabled'          => true,
 				'provider'         => 'gemini', // 'gemini', 'openai', 'mistral', 'groq', 'custom'
 				'api_key'          => '',
-				'default_model'    => 'gemini-2.5-flash',
+				'default_model'    => 'gemini-2.0-flash',
 				'openai_api_key'   => '',
 				'openai_model'     => 'gpt-4o-mini',
 				'mistral_api_key'  => '',
@@ -163,7 +163,7 @@ final class DGBC_Settings {
 			? $input['gemini']['provider']
 			: 'gemini';
 		$clean['gemini']['api_key']       = isset( $input['gemini']['api_key'] ) ? trim( sanitize_text_field( $input['gemini']['api_key'] ) ) : '';
-		$clean['gemini']['default_model'] = ! empty( $input['gemini']['default_model'] ) ? sanitize_text_field( $input['gemini']['default_model'] ) : 'gemini-2.5-flash';
+		$clean['gemini']['default_model'] = ( ! empty( $input['gemini']['default_model'] ) && ! in_array( $input['gemini']['default_model'], array( 'gemini-2.5-flash', 'gemini-2.5-pro' ), true ) ) ? sanitize_text_field( $input['gemini']['default_model'] ) : 'gemini-2.0-flash';
 
 		$clean['gemini']['openai_api_key']  = isset( $input['gemini']['openai_api_key'] ) ? trim( sanitize_text_field( $input['gemini']['openai_api_key'] ) ) : '';
 		$clean['gemini']['openai_model']    = ! empty( $input['gemini']['openai_model'] ) ? sanitize_text_field( $input['gemini']['openai_model'] ) : 'gpt-4o-mini';

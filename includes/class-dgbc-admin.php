@@ -654,10 +654,10 @@ final class DGBC_Admin {
 									<th><label for="gemini_default_model">Gemini Modell</label></th>
 									<td>
 										<select name="gemini[default_model]" id="gemini_default_model">
-											<option value="gemini-2.5-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.5-flash' ); ?>>Gemini 2.5 Flash (Empfohlen – schnell &amp; kostenlos)</option>
-											<option value="gemini-2.5-pro" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.5-pro' ); ?>>Gemini 2.5 Pro (Für besonders anspruchsvolle Aufgaben)</option>
-											<option value="gemini-2.0-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.0-flash' ); ?>>Gemini 2.0 Flash (Sehr schnelle Reaktionszeit)</option>
-											<option value="gemini-1.5-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash (Bewährtes Basis-Modell)</option>
+											<option value="gemini-2.0-flash" <?php selected( ( in_array( $ai_cfg['default_model'] ?? '', array( 'gemini-2.5-flash', 'gemini-2.0-flash', '' ), true ) ? 'gemini-2.0-flash' : $ai_cfg['default_model'] ), 'gemini-2.0-flash' ); ?>>Gemini 2.0 Flash (Empfohlen – blitzschnell, präzise &amp; kostenlos)</option>
+											<option value="gemini-1.5-flash" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash (Bewährtes Standard-Modell)</option>
+											<option value="gemini-1.5-pro" <?php selected( ( in_array( $ai_cfg['default_model'] ?? '', array( 'gemini-2.5-pro', 'gemini-1.5-pro' ), true ) ? 'gemini-1.5-pro' : $ai_cfg['default_model'] ), 'gemini-1.5-pro' ); ?>>Gemini 1.5 Pro (Für besonders anspruchsvolle Aufgaben)</option>
+											<option value="gemini-2.0-flash-lite" <?php selected( ( $ai_cfg['default_model'] ?? '' ), 'gemini-2.0-flash-lite' ); ?>>Gemini 2.0 Flash Lite (Sehr schnelle Reaktionszeit)</option>
 										</select>
 									</td>
 								</tr>

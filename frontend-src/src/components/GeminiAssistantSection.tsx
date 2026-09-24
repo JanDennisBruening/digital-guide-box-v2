@@ -33,7 +33,7 @@ Egal ob Smartphone, WhatsApp, Passwörter oder verdächtige Nachrichten – frag
 
 Womit kann ich dir heute helfen?`,
   timestamp: new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }),
-  modelUsed: 'gemini-3.5-flash',
+  modelUsed: 'gemini-2.0-flash',
 };
 
 export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
@@ -49,7 +49,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
   const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [modelChoice, setModelChoice] = useState<ChatModel>('gemini-3.5-flash');
+  const [modelChoice, setModelChoice] = useState<ChatModel>('gemini-2.0-flash');
   const [taskType, setTaskType] = useState<ChatTaskType>('general');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -83,8 +83,13 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
   };
 
   const handleClearHistory = () => {
-    if (window.confirm('Möchtest du den bisherigen Chatverlauf wirklich zurücksetzen?')) {
+    if (messages.length <= 1) {
+      return;
+    }
+    if (window.confirm('Möchtest du den bisherigen Chatverlauf wirklich zurücksetzen und von vorne beginnen?')) {
       setMessages([INITIAL_MESSAGE]);
+      setInput('');
+      setIsLoading(false);
     }
   };
 
@@ -127,9 +132,9 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
 
       // Determine task type and model
       let activeModel = modelChoice;
-      if (taskType === 'complex') activeModel = 'gemini-3.1-pro-preview';
-      else if (taskType === 'fast') activeModel = 'gemini-3.1-flash-lite';
-      else activeModel = 'gemini-3.5-flash';
+      if (taskType === 'complex') activeModel = 'gemini-1.5-pro';
+      else if (taskType === 'fast') activeModel = 'gemini-2.0-flash-lite';
+      else activeModel = 'gemini-2.0-flash';
 
       const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
       const chatUrl = config?.chatUrl || '/api/chat';
@@ -292,7 +297,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
             {/* Row 2: Assistant Badge + Schnell/Standard/Komplex + Refresh Icon */}
             <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap sm:flex-nowrap overflow-x-auto max-w-full text-left justify-start py-0.5">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold font-body bg-blue-100 text-[#1b4a99] border border-blue-200 whitespace-nowrap shadow-2xs shrink-0">
-                <Sparkles className="w-3.5 h-3.5 text-[#235cbb]" />
+                <Sparkles className="w-3 h-3 text-[#235cbb]" />
                 Digital-Assistent
               </span>
 
@@ -302,7 +307,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   type="button"
                   onClick={() => {
                     setTaskType('fast');
-                    setModelChoice('gemini-3.1-flash-lite');
+                    setModelChoice('gemini-2.0-flash-lite');
                   }}
                   className={`px-2.5 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
                     taskType === 'fast'
@@ -311,7 +316,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   }`}
                   title="Schnellste Antwortzeit für kurze Fragen"
                 >
-                  <Zap className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                  <Zap className="w-3 h-3 text-amber-600 flex-shrink-0" />
                   <span>Schnell</span>
                 </button>
 
@@ -319,7 +324,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   type="button"
                   onClick={() => {
                     setTaskType('general');
-                    setModelChoice('gemini-3.5-flash');
+                    setModelChoice('gemini-2.0-flash');
                   }}
                   className={`px-2.5 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
                     taskType === 'general'
@@ -328,7 +333,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   }`}
                   title="Ausgewogener Standard-Begleiter (Empfohlen)"
                 >
-                  <Bot className="w-3.5 h-3.5 text-[#235cbb] flex-shrink-0" />
+                  <Bot className="w-3 h-3 text-[#235cbb] flex-shrink-0" />
                   <span>Standard</span>
                 </button>
 
@@ -336,7 +341,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   type="button"
                   onClick={() => {
                     setTaskType('complex');
-                    setModelChoice('gemini-3.1-pro-preview');
+                    setModelChoice('gemini-1.5-pro');
                   }}
                   className={`px-2.5 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
                     taskType === 'complex'
@@ -345,7 +350,7 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
                   }`}
                   title="Für besonders knifflige Probleme und tiefe Analysen"
                 >
-                  <Brain className="w-3.5 h-3.5 text-purple-600 flex-shrink-0" />
+                  <Brain className="w-3 h-3 text-purple-600 flex-shrink-0" />
                   <span>Komplex</span>
                 </button>
               </div>
@@ -354,11 +359,12 @@ export const GeminiAssistantSection: React.FC<GeminiAssistantSectionProps> = ({
               <button
                 type="button"
                 onClick={handleClearHistory}
-                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-white rounded-lg border border-slate-200 transition-colors flex-shrink-0 shadow-2xs cursor-pointer"
-                title="Chatverlauf zurücksetzen"
+                disabled={messages.length <= 1 || isLoading}
+                className="p-1.5 text-slate-500 hover:text-slate-800 disabled:opacity-40 disabled:hover:text-slate-500 hover:bg-white rounded-lg border border-slate-200 transition-colors flex-shrink-0 shadow-2xs cursor-pointer disabled:cursor-not-allowed"
+                title={messages.length <= 1 ? 'Kein Chatverlauf zum Zurücksetzen vorhanden' : 'Chatverlauf zurücksetzen (Neuer Chat)'}
                 aria-label="Chatverlauf zurücksetzen"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-3 h-3" />
               </button>
             </div>
 

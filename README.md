@@ -3,11 +3,14 @@
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
 
 ### Neu in Version 2.9.3:
-- **Korrektur der Profilbild-Pfade & Ladefehler:**
-  - **KI-Assistenten-Header:** Die Bildquelle des Profilbilds (`GeminiAssistantSection`) greift nun dynamisch auf das hinterlegte Profilbild bzw. die korrekte Plugin-Asset-URL zu, anstatt auf den statischen Pfad `/profilbild.png`, der auf der Website zu einem Darstellungsfehler (gebrochenes Bild) führte.
-  - **Leseansicht („Frage zu diesem Thema?“):** In der Anleitungs- und Neuigkeiten-Leseansicht (`ReadingDialog`) nutzt das Profilbild neben „Frag Jan Dennis direkt im neuen KI-Assistenten“ nun ebenfalls die dynamische URL mit robuster Fallback-Behandlung (`onError`).
-  - **Preloader & PDF-Druck:** Auch im Start-Preloader und der Druckfunktion werden die Bildpfade nun zuverlässig über `getAssetUrl` und die Konfiguration aufgelöst.
-  - **Automatischer Fallback:** Alle Profilbilder besitzen nun einen `onError`-Handler, der bei verzögertem Laden oder Domain-Abweichungen automatisch auf das Standard-Asset zurückgreift.
+- **Neuigkeiten-Reiter:**
+  - Der starre Zähler „60 Beiträge“ wurde durch den aufgeräumten, zukunftssicheren Status **„Aktuell“** mit blauem Aktiv-Indikator ersetzt. So bleibt die Leiste auch bei wachsendem Beitragsarchiv kompakt und übersichtlich.
+- **Harmonisierung der Icon-Größen beim KI-Assistenten:**
+  - Sämtliche Icons in der Steuerungszeile des Assistenten (`Digital-Assistent`, `Schnell`, `Standard`, `Komplex`, Chatverlauf leeren) wurden auf einheitliche `12px` (`w-3 h-3`) skaliert, passend zur Schrifthöhe der Buttons.
+- **KI-Modell-Anbindung & Modi:**
+  - Die Modi **Schnell**, **Standard** und **Komplex** wurden mit den echten, hochperformanten Google Gemini Modellen verknüpft (`gemini-2.0-flash`, `gemini-2.0-flash-lite`, `gemini-1.5-pro`). Fiktive Platzhalter-Modellnamen im Backend und Frontend wurden behoben.
+- **Verbesserter Reset-Button („Chatverlauf leeren“):**
+  - Der Reload-Button ist nun deaktiviert, solange noch kein Chatverlauf existiert. Bei aktivem Verlauf leert er die Konversation nach Bestätigung verlässlich und setzt den Zustand zurück.
 
 ### Neu in Version 2.9.2:
 - **Titel-Korrektur beim KI-Assistenten:**

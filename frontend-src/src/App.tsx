@@ -369,7 +369,10 @@ export function App() {
                         </span>
                         <span>Neuigkeiten</span>
                       </span>
-                      <span className="guide-count text-slate-700 bg-white/80 font-medium">{newsData.length} Beiträge</span>
+                      <span className="guide-count text-blue-800 bg-blue-100/90 font-medium inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600" aria-hidden="true" />
+                        <span>Aktuell</span>
+                      </span>
                     </button>
 
                     <button

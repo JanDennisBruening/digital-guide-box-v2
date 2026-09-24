@@ -64,7 +64,14 @@ export interface AppearanceSettings {
 
 export type ActiveTab = 'news' | 'guides' | 'assistant';
 
-export type ChatModel = 'gemini-3.5-flash' | 'gemini-3.1-pro-preview' | 'gemini-3.1-flash-lite';
+export type ChatModel =
+  | 'gemini-2.0-flash'
+  | 'gemini-2.0-flash-lite'
+  | 'gemini-1.5-pro'
+  | 'gemini-1.5-flash'
+  | 'gemini-3.5-flash'
+  | 'gemini-3.1-pro-preview'
+  | 'gemini-3.1-flash-lite';
 
 export type ChatTaskType = 'general' | 'complex' | 'fast';
 

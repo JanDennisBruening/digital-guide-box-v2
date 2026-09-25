@@ -1,6 +1,15 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.9)
+# Digital Guide Box · WordPress CMS Plugin (Version 3.0.0)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 3.0.0:
+- **Ausklappbare Seitenleiste auf Desktop (Collapsible Sidebar mit Dock-Modus):**
+  - **Perfekt ausbalanciertes Größenverhältnis:** Die geöffnete Seitenleiste ist wieder großzügig und harmonisch dimensioniert (`clamp(360px, 28vw, 420px)`), sodass „Kontakt & Feedback“, „Sofort-Hilfe mit KI“ und die WhatsApp-Karte vollen optischen Raum haben.
+  - **Ein- und Ausklappbar auf Klick:** Über einen neuen Button *„Einklappen“* in der Seitenleisten-Kopfzeile kann der gesamte Kontakt- und WhatsApp-Bereich eingeklappt werden, um den Beiträgen und Anleitungen die maximale Bildschirmbreite zu überlassen.
+  - **Elegante Docking-Leiste am rechten Rand:** Im eingeklappten Zustand verwandelt sich die Seitenleiste in eine schmale, edle Funktionsleiste mit Icons (Kontakt, KI-Hilfe, WhatsApp), vertikaler Beschriftung und sanftem Schwebe-Effekt. Ein Klick darauf klappt die Leiste sofort wieder flüssig aus.
+  - **Reine Scrollansicht auf Mobilgeräten:** Auf Smartphones und Tablets (≤ 1099px) entfällt die Einklapp-Funktion ganz bewusst – alle Bereiche fließen untereinander in einem natürlichen, intuitiven Scrollstream.
+- **Vollständige Behebung des mobilen Darstellungsfehlers:**
+  - `box-workspace` besitzt im responsiven Modus nun explizit `flex: 1 0 auto !important; height: auto !important; min-height: min-content !important; overflow: visible !important;`. Dadurch kollabiert der Workspace unterhalb des Headers nie mehr auf 0 Pixel und alle Tabs, News-Karten und Inhalte sind sofort sichtbar.
 
 ### Neu in Version 2.9.9:
 - **Behebung der mobilen Inhaltsanzeige (Tabs öffnen verlässlich mit vollem Inhalt):**

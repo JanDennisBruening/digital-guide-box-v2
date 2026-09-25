@@ -9,7 +9,9 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Send,
-  Sparkles
+  Sparkles,
+  PanelRightClose,
+  PanelRightOpen
 } from 'lucide-react';
 import { ContactCardPrintDialog } from './ContactCardPrintDialog';
 import { getAssetUrl } from '../utils/assets';
@@ -18,12 +20,16 @@ interface ContactSectionProps {
   openSupport?: boolean;
   onSupportHandled?: () => void;
   onOpenAssistant?: () => void;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   openSupport,
   onSupportHandled,
-  onOpenAssistant
+  onOpenAssistant,
+  isCollapsed,
+  onToggleCollapse
 }) => {
   const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
   const profile = config?.settings?.profile || {};
@@ -209,14 +215,80 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setIsPrintDialogOpen(true);
   };
 
+  if (isCollapsed) {
+    return (
+      <aside
+        className="box-sidebar box-sidebar-docked"
+        aria-label="Kontakt, Feedback und WhatsApp-Kanal öffnen"
+        onClick={onToggleCollapse}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onToggleCollapse?.();
+          }
+        }}
+        title="Seitenleiste ausklappen (Kontakt & WhatsApp-Kanal)"
+      >
+        <div className="sidebar-docked-top">
+          <button
+            type="button"
+            className="sidebar-docked-toggle-btn"
+            aria-label="Seitenleiste ausklappen"
+            title="Seitenleiste ausklappen"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleCollapse?.();
+            }}
+          >
+            <PanelRightOpen className="w-4 h-4 text-[#014B6F]" />
+          </button>
+
+          <div className="sidebar-docked-icons" aria-hidden="true">
+            <span className="sidebar-docked-icon-badge" title="Kontakt & Feedback">
+              <MessageSquareText className="w-3.5 h-3.5 text-[#014B6F]" />
+            </span>
+            <span className="sidebar-docked-icon-badge" title="Sofort-Hilfe mit KI">
+              <Sparkles className="w-3.5 h-3.5 text-[#0B9EBC]" />
+            </span>
+            {isWhatsAppEnabled && (
+              <span className="sidebar-docked-icon-badge" title="WhatsApp-Kanal">
+                <img src={getAssetUrl('whatsapp.svg')} alt="" className="w-3.5 h-3.5" />
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="sidebar-docked-vertical-title" aria-hidden="true">
+          <span>Kontakt &amp; WhatsApp</span>
+        </div>
+      </aside>
+    );
+  }
+
   return (
     <aside className="box-sidebar" aria-label="Kontakt, Feedback und Digitalkanal">
       <section className="sidebar-contact" aria-labelledby="contact-title">
         <header className="sidebar-contact-heading">
-          <h2 id="contact-title">
-            <MessageSquareText aria-hidden="true" />
-            <span>Kontakt &amp; Feedback</span>
-          </h2>
+          <div className="flex items-center justify-between gap-2">
+            <h2 id="contact-title" className="m-0 flex items-center gap-2">
+              <MessageSquareText aria-hidden="true" />
+              <span>Kontakt &amp; Feedback</span>
+            </h2>
+            {onToggleCollapse && (
+              <button
+                type="button"
+                className="sidebar-collapse-toggle"
+                onClick={onToggleCollapse}
+                title="Seitenleiste einklappen für mehr Platz"
+                aria-label="Seitenleiste einklappen"
+              >
+                <PanelRightClose className="w-3.5 h-3.5 text-[#014B6F]" />
+                <span className="text-xs font-semibold">Einklappen</span>
+              </button>
+            )}
+          </div>
           <p>{emergencyNote}</p>
         </header>
 

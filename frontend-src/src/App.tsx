@@ -78,6 +78,13 @@ export function App() {
   const [assistantPrompt, setAssistantPrompt] = useState<string | null>(null);
   const [selection, setSelection] = useState<SelectionState | null>(null);
   const [supportFocus, setSupportFocus] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  useEffect(() => {
+    if (supportFocus) {
+      setIsSidebarCollapsed(false);
+    }
+  }, [supportFocus]);
 
   // Gate form state
   const [password, setPassword] = useState('');
@@ -343,7 +350,7 @@ export function App() {
               <h1 className="sr-only">Deine Digital-Guide-Box</h1>
 
               {/* Workspace with Left Tabs & Right Sidebar */}
-              <div className="box-workspace">
+              <div className={`box-workspace ${isSidebarCollapsed ? 'sidebar-is-collapsed' : 'sidebar-is-open'}`}>
                 <div
                   className="box-tabs"
                   data-active-tab={activeTab}
@@ -474,6 +481,8 @@ export function App() {
                     setActiveTab('assistant');
                     document.getElementById('box-content')?.scrollIntoView({ behavior: 'smooth' });
                   }}
+                  isCollapsed={isSidebarCollapsed}
+                  onToggleCollapse={() => setIsSidebarCollapsed(prev => !prev)}
                 />
               </div>
             </div>

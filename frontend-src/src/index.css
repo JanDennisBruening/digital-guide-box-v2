@@ -248,15 +248,24 @@ body {
   border: 1px solid rgba(11, 158, 188, 0.3) !important;
 }
 
-/* On extra wide screens (>= 1400px), display 3 tabs horizontally in left column */
-@media (min-width: 1400px) {
+/* On extra wide screens (>= 1550px), display 3 tabs horizontally in left column */
+@media (min-width: 1550px) {
   .box-tabs .box-tab-list {
     flex-direction: row !important;
-    gap: 0.625rem !important;
+    gap: 0.5rem !important;
   }
   .box-tabs .box-tab {
     flex: 1 1 0 !important;
     width: auto !important;
+    padding: 0.5rem 0.625rem !important;
+    gap: 0.375rem !important;
+  }
+  .box-tabs .box-tab .box-tab-label {
+    font-size: 1.05rem !important;
+  }
+  .box-tabs .box-tab .guide-count {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0.45rem !important;
   }
 }
 
@@ -513,11 +522,11 @@ body {
   }
 }
 
-/* Ensure workspace presents 2 columns ONLY on desktop displays (>= 1025px) */
-@media (min-width: 1025px) {
+/* Ensure workspace presents 2 columns ONLY on desktop displays (>= 1100px) */
+@media (min-width: 1100px) {
   .box-workspace {
     display: grid !important;
-    grid-template-columns: minmax(0, 13fr) minmax(0, 7fr) !important;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 340px) !important;
     grid-template-rows: minmax(0, 1fr) !important;
     flex: 1 1 0 !important;
     min-height: 0 !important;
@@ -607,17 +616,24 @@ body {
   padding: 1.125rem 1.25rem !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1099px) {
   .shell {
     padding: var(--box-top-space) var(--box-side-padding) var(--box-bottom-space) !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
   }
+
   .shell > .box {
     height: auto !important;
-    min-height: auto !important;
+    min-height: 0 !important;
     max-height: none !important;
+    flex: 0 0 auto !important;
     margin-bottom: 1.5rem !important;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
+
   .box-workspace {
     display: flex !important;
     flex-direction: column !important;
@@ -625,6 +641,7 @@ body {
     min-height: 0 !important;
     overflow: visible !important;
   }
+
   .box-tabs {
     width: 100% !important;
     height: auto !important;
@@ -632,34 +649,139 @@ body {
     flex: none !important;
     overflow: visible !important;
   }
-  .box-tab-panel,
-  .tab-panel-inner {
+
+  .box-tab-panel[hidden] {
+    display: none !important;
+  }
+
+  .box-tab-panel:not([hidden]) {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .tab-panel-inner,
+  .news-panel-content,
+  .guides-panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .news-feed-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     overflow: visible !important;
   }
+
+  .news-rail-container {
+    height: auto !important;
+    min-height: 100% !important;
+    align-self: stretch !important;
+    flex: 0 0 3.5rem !important;
+    width: 3.5rem !important;
+    min-width: 3.5rem !important;
+    max-width: 3.5rem !important;
+  }
+
+  .news-filter-rail {
+    position: sticky !important;
+    top: 1rem !important;
+    height: calc(100vh - 4rem) !important;
+    max-height: 38rem !important;
+  }
+
+  .news-feed-main {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .news-scroller,
   .guide-scroller {
+    display: block !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow-y: visible !important;
+    overflow-x: visible !important;
   }
+
+  .news-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+    height: auto !important;
+  }
+
+  /* Dedicated interactive mobile height for AI Assistant chat tab */
+  .panel-assistant .assistant-panel-content,
+  .panel-assistant .assistant-panel-content > div {
+    height: 560px !important;
+    min-height: 480px !important;
+    max-height: 75vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  /* Bottom Sidebar: Flush with box bottom, WhatsApp card pinned directly to bottom */
   .box-sidebar {
     height: auto !important;
-    overflow: visible !important;
     width: 100% !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 2rem !important;
     border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
     border-left: none !important;
-    margin-top: 1.5rem !important;
+    border-bottom-left-radius: 1.75rem !important;
+    border-bottom-right-radius: 1.75rem !important;
+    overflow: hidden !important;
+    background: rgba(253, 244, 228, 0.45) !important;
   }
+
   .box-sidebar > .sidebar-contact {
     overflow-y: visible !important;
     height: auto !important;
+    padding: 1.25rem 1.25rem 0 !important;
   }
+
   .box-sidebar > .channel-section {
-    margin-top: 0 !important;
+    margin-top: 1.25rem !important;
     border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
+    border-bottom-left-radius: 1.75rem !important;
+    border-bottom-right-radius: 1.75rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .news-rail-container {
+    flex: 0 0 3rem !important;
+    width: 3rem !important;
+    min-width: 3rem !important;
+    max-width: 3rem !important;
+  }
+  .news-filter-rail {
+    width: 3rem !important;
+    max-width: 3rem !important;
+    padding: 0.5rem 0.25rem !important;
   }
 }
 
@@ -1115,10 +1237,10 @@ body {
   background: transparent !important;
   border: 0 !important;
   align-items: center !important;
-  gap: 1rem !important;
+  gap: 0.75rem !important;
   width: 100% !important;
-  min-height: 7rem !important;
-  padding: 1.3125rem 1.25rem !important;
+  min-height: auto !important;
+  padding: 1.125rem 1rem !important;
   display: flex !important;
   cursor: pointer !important;
 }
@@ -1127,25 +1249,26 @@ body {
   color: #15803d !important;
   background: #d4f4e2 !important;
   border-radius: 0.875rem !important;
-  flex: 0 0 2.8125rem !important;
+  flex: 0 0 2.5rem !important;
   place-items: center !important;
-  height: 2.8125rem !important;
+  height: 2.5rem !important;
   display: grid !important;
 }
 
 .support-icon-ai svg {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: 1.375rem !important;
+  height: 1.375rem !important;
   color: #15803d !important;
 }
 
 .support.support-ai h3 {
   font-family: var(--font-dosis), Dosis, Inter, Arial, sans-serif !important;
-  font-size: 1.4rem !important;
-  font-weight: 600 !important;
+  font-size: 1.1875rem !important;
+  font-weight: 700 !important;
   color: #14532d !important;
   margin: 0 !important;
-  line-height: 1.3 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
 }
 
 .support-ai-badge {

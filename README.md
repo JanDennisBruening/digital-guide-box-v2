@@ -1,6 +1,18 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.8)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.9)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.9:
+- **Behebung der mobilen Inhaltsanzeige (Tabs öffnen verlässlich mit vollem Inhalt):**
+  - Auf mobilen Bildschirmen und schmaleren Fenstern (≤ 1099px) kollabieren die Reiterinhalte von **Neuigkeiten**, **KI-Assistent** und **Anleitungen** nicht mehr auf 0 Höhe. Alle Nachrichtenbeiträge, Themenkategorien und Anleitungen werden in natürlicher Höhe vollständig dargestellt und sind flüssig durchscrollbar.
+  - Der KI-Assistent erhält auf mobilen Geräten ein ergonomisches, dediziertes Chatfenster mit fixiertem Header und Eingabefeld.
+- **Bündiger Abschluss des WhatsApp-Kanals & Beseitigung des Leerraums:**
+  - Auf mobilen Geräten und schmaleren Auflösungen dehnt sich die Box nicht mehr künstlich ins Leere (`flex: 0 0 auto`). Die Karte **„Neu: WhatsApp-Kanal“** schließt bündig am unteren abgerundeten Rand der Box ab, ohne unschöne weiße Leerräume darunter.
+- **Optimierung von „Sofort-Hilfe mit KI“ im Seitenbereich:**
+  - Der Titel bricht nicht mehr unschön in drei Zeilen um („Sofort- / Hilfe mit [Neu] / KI“). Die Schriftgröße wurde harmonisiert und der Textumbruch mit `whitespace-nowrap` und flexibler Badge-Ausrichtung stabilisiert.
+  - Auf Desktop-Bildschirmen ist die rechte Seitenleiste durch `minmax(290px, 340px)` garantiert ausreichend breit, sodass Akkordeons und Schnellaktionen immer großzügig Platz haben.
+- **Perfektioniertes Umschaltverhalten der horizontalen Reiter:**
+  - Der Schwellenwert für das nebeneinanderliegende 3-Reiter-Layout wurde auf ≥ 1550 px angehoben. Dadurch passen Statusangaben wie „Aktuell“, „Live-Hilfe“ und „35 verfügbar“ bei jeder Bildschirmgröße garantiert ohne Abschneiden oder Kantenüberlauf in die Buttons.
 
 ### Neu in Version 2.9.8:
 - **Vollständig behobenes Responsive-Layout für schmale & mobile Ansichten:**

@@ -235,9 +235,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <Sparkles />
                 </span>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h3>Sofort-Hilfe mit KI</h3>
-                    <span className="support-ai-badge">Neu</span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="whitespace-nowrap">Sofort-Hilfe mit KI</h3>
+                    <span className="support-ai-badge shrink-0">Neu</span>
                   </div>
                   <p>Frag Jan Dennis KI rund um die Uhr – verständliche Unterstützung ohne Wartezeit.</p>
                 </div>

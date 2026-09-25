@@ -1,6 +1,12 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 2.9.7)
+# Digital Guide Box · WordPress CMS Plugin (Version 2.9.8)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 2.9.8:
+- **Vollständig behobenes Responsive-Layout für schmale & mobile Ansichten:**
+  - **Reiterleiste standardmäßig vertikal gestapelt:** Die 3 Tabs (Neuigkeiten, KI-Assistent, Anleitungen) sind standardmäßig als vollwertige, 100 % breite Karten untereinander angeordnet. Erst ab 1400 px Bildschirmbreite schalten sie nebeneinander um. Dadurch sind alle 3 Tabs immer sichtbar, barrierefrei erreichbar und können nie wieder abgeschnitten werden.
+  - **Einspaltiger Workspace bei kleineren Bildschirmen (≤ 1024px):** Die Desktop-2-Spalten-Anordnung (`grid-template-columns: 13fr 7fr`) greift nun erst ab 1025 px. Auf Tablets, Smartphones und schmalen Browserfenstern klappt der Workspace verlässlich in eine einzige flüssige Spalte um: Tabs und Inhalte oben in voller Breite, Kontakt- und WhatsApp-Bereich darunter in voller Breite.
+  - **Keine gequetschte Sidebar mehr:** Die WhatsApp-Karte wird auf mobilen Geräten nie mehr in eine schmale 150px-Spalte gequetscht, sondern besitzt stets volle Breite mit optimaler Lesbarkeit.
 
 ### Neu in Version 2.9.7:
 - **Optimiertes Responsive-Verhalten & Container Queries für Tabs:**

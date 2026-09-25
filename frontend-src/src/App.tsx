@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   BookOpen,
   Newspaper,
@@ -79,6 +79,46 @@ export function App() {
   const [selection, setSelection] = useState<SelectionState | null>(null);
   const [supportFocus, setSupportFocus] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem('digital-guide-box-v2:sidebar_width');
+      if (saved) {
+        const val = parseInt(saved, 10);
+        if (val >= 280 && val <= 560) return val;
+      }
+    } catch {}
+    return 380;
+  });
+  const [isResizingSidebar, setIsResizingSidebar] = useState(false);
+
+  const handleResizeStart = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsResizingSidebar(true);
+
+    const startX = e.clientX;
+    const startW = sidebarWidth;
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      const delta = startX - moveEvent.clientX;
+      const nextWidth = Math.min(560, Math.max(280, startW + delta));
+      setSidebarWidth(nextWidth);
+    };
+
+    const onMouseUp = () => {
+      setIsResizingSidebar(false);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+      setSidebarWidth(currentW => {
+        try {
+          localStorage.setItem('digital-guide-box-v2:sidebar_width', String(currentW));
+        } catch {}
+        return currentW;
+      });
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  }, [sidebarWidth]);
 
   useEffect(() => {
     if (supportFocus) {
@@ -350,7 +390,10 @@ export function App() {
               <h1 className="sr-only">Deine Digital-Guide-Box</h1>
 
               {/* Workspace with Left Tabs & Right Sidebar */}
-              <div className={`box-workspace ${isSidebarCollapsed ? 'sidebar-is-collapsed' : 'sidebar-is-open'}`}>
+              <div
+                className={`box-workspace ${isSidebarCollapsed ? 'sidebar-is-collapsed' : 'sidebar-is-open'} ${isResizingSidebar ? 'is-resizing' : ''}`}
+                style={{ '--sidebar-width': `${sidebarWidth}px` } as React.CSSProperties}
+              >
                 <div
                   className="box-tabs"
                   data-active-tab={activeTab}
@@ -483,6 +526,7 @@ export function App() {
                   }}
                   isCollapsed={isSidebarCollapsed}
                   onToggleCollapse={() => setIsSidebarCollapsed(prev => !prev)}
+                  onResizeStart={handleResizeStart}
                 />
               </div>
             </div>

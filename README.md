@@ -1,6 +1,18 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 3.0.0)
+# Digital Guide Box · WordPress CMS Plugin (Version 3.0.1)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 3.0.1:
+- **Perfektionierte Button-Positionierung & nahtlose Ausklapp-/Einklapp-Achse:**
+  - Der Einklappen-Button wurde aus der Kopfzeile von *Kontakt & Feedback* entfernt. Dadurch bleibt die Überschrift einzeilig, elegant und großzügig.
+  - Der Einklappen-Button ist nun direkt an der linken Trennkante der Seitenleiste angedockt (`.sidebar-edge-toggle-btn`) – auf **haargenau derselben vertikalen Position** (`top: 1rem`), auf der im eingeklappten Zustand der Ausklappen-Button sitzt. Das Umschalten erfolgt dadurch vollkommen flüssig und an derselben Stelle.
+- **Top-Left Ausrichtung aller Icons & Top-Right Badge bei Sofort-Hilfe:**
+  - **Sofort-Hilfe mit KI:** Das `[Neu]`-Badge ist fest in der **oberen rechten Ecke** verankert. Das grüne Zauberstab-Icon sitzt oben links in der Ecke, bündig mit der Titelzeile.
+  - **Akkordeon-Karten:** Bei allen drei Karten (*Du kommst nicht weiter?*, *Dringende Hilfe*, *Feedback & Wünsche*) sitzen die Icons oben links in der Ecke (`align-self: flex-start`), der Text schließt sauber daneben an und die Pfeile sitzen oben rechts.
+- **Stufenlos verstellbare Seitenleisten-Breite (Split-Pane Drag & Drop):**
+  - Auf Desktop-Bildschirmen kann die Breite der Seitenleiste nun durch Ziehen an der Trennlinie stufenlos zwischen 280px und 560px frei vergrößert und verkleinert werden. Die gewählte Breite wird automatisch im lokalen Browser gespeichert.
+- **Behebung der Inhaltsanzeige auf kleineren & mobilen Viewports (circa 80 % Höhe mit Scroll-Funktion):**
+  - Auf Bildschirmen unter 1100px (Tablets, kleinere Browserfenster und Smartphones) kollabiert der Nachrichten- und Anleitungsbereich nie mehr in einen 0px-Schlitz. Das Hauptfenster nimmt circa 72–80 % der Bildschirmhöhe (`height: 72vh; min-height: 520px;`) ein und besitzt eine eigenständige, flüssige Scroll-Funktion (`overflow-y: auto`), sodass alle News-Beiträge und Anleitungen komfortabel durchgescrollt werden können.
 
 ### Neu in Version 3.0.0:
 - **Ausklappbare Seitenleiste auf Desktop (Collapsible Sidebar mit Dock-Modus):**

@@ -22,6 +22,7 @@ interface ContactSectionProps {
   onOpenAssistant?: () => void;
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
+  onResizeStart?: (e: React.MouseEvent) => void;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
@@ -29,7 +30,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   onSupportHandled,
   onOpenAssistant,
   isCollapsed,
-  onToggleCollapse
+  onToggleCollapse,
+  onResizeStart
 }) => {
   const config = typeof window !== 'undefined' ? (window as any).DGB_CONFIG : null;
   const profile = config?.settings?.profile || {};
@@ -269,26 +271,41 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   return (
     <aside className="box-sidebar" aria-label="Kontakt, Feedback und Digitalkanal">
+      {/* Desktop Split-Pane Resize Handle */}
+      {onResizeStart && (
+        <div
+          className="sidebar-resize-handle"
+          onMouseDown={onResizeStart}
+          role="separator"
+          aria-orientation="vertical"
+          title="Seitenleiste anpassen (Ziehen)"
+        >
+          <div className="sidebar-resize-indicator" />
+        </div>
+      )}
+
+      {/* Desktop Edge Toggle Button (Docked on left border at same vertical position as collapsed toggle) */}
+      {onToggleCollapse && (
+        <button
+          type="button"
+          className="sidebar-edge-toggle-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleCollapse();
+          }}
+          aria-label="Seitenleiste einklappen"
+          title="Seitenleiste einklappen"
+        >
+          <PanelRightClose className="w-4 h-4 text-[#014B6F]" />
+        </button>
+      )}
+
       <section className="sidebar-contact" aria-labelledby="contact-title">
         <header className="sidebar-contact-heading">
-          <div className="flex items-center justify-between gap-2">
-            <h2 id="contact-title" className="m-0 flex items-center gap-2">
-              <MessageSquareText aria-hidden="true" />
-              <span>Kontakt &amp; Feedback</span>
-            </h2>
-            {onToggleCollapse && (
-              <button
-                type="button"
-                className="sidebar-collapse-toggle"
-                onClick={onToggleCollapse}
-                title="Seitenleiste einklappen für mehr Platz"
-                aria-label="Seitenleiste einklappen"
-              >
-                <PanelRightClose className="w-3.5 h-3.5 text-[#014B6F]" />
-                <span className="text-xs font-semibold">Einklappen</span>
-              </button>
-            )}
-          </div>
+          <h2 id="contact-title" className="m-0 flex items-center gap-2">
+            <MessageSquareText aria-hidden="true" />
+            <span>Kontakt &amp; Feedback</span>
+          </h2>
           <p>{emergencyNote}</p>
         </header>
 
@@ -306,14 +323,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <span className="support-icon support-icon-ai" aria-hidden="true">
                   <Sparkles />
                 </span>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="whitespace-nowrap">Sofort-Hilfe mit KI</h3>
-                    <span className="support-ai-badge shrink-0">Neu</span>
+                <div className="support-ai-body">
+                  <div className="support-ai-header">
+                    <h3>Sofort-Hilfe mit KI</h3>
+                    <ArrowUpRight className="support-arrow-ai" aria-hidden="true" />
                   </div>
                   <p>Frag Jan Dennis KI rund um die Uhr – verständliche Unterstützung ohne Wartezeit.</p>
                 </div>
-                <ArrowUpRight className="support-arrow-ai" aria-hidden="true" />
+                <span className="support-ai-badge">Neu</span>
               </button>
             </div>
           )}
@@ -340,10 +357,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <ChevronDown
                 aria-hidden="true"
+                className="support-chevron"
                 style={{
                   transform: supportOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
-                  marginLeft: 'auto'
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
               />
             </button>
@@ -466,10 +483,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <ChevronDown
                 aria-hidden="true"
+                className="support-chevron"
                 style={{
                   transform: directOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
-                  marginLeft: 'auto'
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
               />
             </button>
@@ -565,10 +582,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <ChevronDown
                 aria-hidden="true"
+                className="support-chevron"
                 style={{
                   transform: feedbackOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
-                  marginLeft: 'auto'
+                  transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
               />
             </button>

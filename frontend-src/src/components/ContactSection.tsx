@@ -284,23 +284,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
       )}
 
-      {/* Desktop Edge Toggle Button (Docked on left border at same vertical position as collapsed toggle) */}
-      {onToggleCollapse && (
-        <button
-          type="button"
-          className="sidebar-edge-toggle-btn"
-          onClick={(e) => {
-            e.stopPropagation();
-            onToggleCollapse();
-          }}
-          aria-label="Seitenleiste einklappen"
-          title="Seitenleiste einklappen"
-        >
-          <PanelRightClose className="w-4 h-4 text-[#014B6F]" />
-        </button>
-      )}
-
       <section className="sidebar-contact" aria-labelledby="contact-title">
+        {/* Desktop Sidebar Integrated Header Action Bar */}
+        {onToggleCollapse && (
+          <div className="sidebar-top-bar">
+            <button
+              type="button"
+              className="sidebar-collapse-btn"
+              onClick={onToggleCollapse}
+              aria-label="Seitenleiste einklappen"
+              title="Seitenleiste einklappen für mehr Platz"
+            >
+              <PanelRightClose className="w-3.5 h-3.5 text-[#014B6F]" />
+              <span>Seitenleiste einklappen</span>
+            </button>
+          </div>
+        )}
+
         <header className="sidebar-contact-heading">
           <h2 id="contact-title" className="m-0 flex items-center gap-2">
             <MessageSquareText aria-hidden="true" />

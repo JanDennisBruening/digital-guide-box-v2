@@ -1,6 +1,16 @@
-# Digital Guide Box · WordPress CMS Plugin (Version 3.0.1)
+# Digital Guide Box · WordPress CMS Plugin (Version 3.0.2)
 
 Exklusives WordPress-Plugin für Jan Dennis Brüning (`janbruening.de` / `cms.janbruening.de`), das die vollständige **Digital Guide Box** bereitstellt.
+
+### Neu in Version 3.0.2:
+- **Integrierter Einklappen-Button in der Seitenleiste (Kein „aufgeklebter“ Fremdkörper mehr):**
+  - Der Einklappen-Button ist nun vollständig organischer Bestandteil der Seitenleiste (`.sidebar-top-bar` & `.sidebar-collapse-btn`) oben rechts. Er klebt nicht mehr als runder Kreis über der Trennlinie, sondern fügt sich homogen in das edle Gesamtdesign der Box ein.
+- **Adaptive Container-Queries für Seitenleisten-Karten (Icon über Headline bei Verengung):**
+  - Sobald die Seitenleiste per Drag & Drop schmaler gezogen wird (unter 350px) oder auf schmalen Displays dargestellt wird, springen die Icons bei allen 4 Karten (*Sofort-Hilfe mit KI*, *Du kommst nicht weiter?*, *Dringende Hilfe*, *Feedback & Wünsche*) automatisch **oberhalb der Headline**. Die Headline und die Beschreibung folgen direkt darunter, während Chevron bzw. `[Neu]`-Badge sauber oben rechts verankert bleiben. Auf breiteren Ansichten fließen die Elemente wieder elegant nebeneinander.
+- **Autoritative Behebung der mobilen Reiterinhalte (75 % Bildschirmhöhe & interner Scroller):**
+  - Die Responsive-Regeln für Bildschirme ≤ 1099px wurden an das absolute Ende des Stylesheets verschoben. Dadurch können nachfolgende Desktop-Regeln die mobilen Höhen nie mehr überschreiben. Die aktiven Tabs (*Neuigkeiten*, *Anleitungen*, *KI-Assistent*) besitzen auf Smartphones und Tablets eine garantierte Viewport-Höhe von circa 75 % (`height: 75vh; min-height: 520px;`) mit flüssigem internem Scrollen (`overflow-y: auto`).
+- **Abschluss der Seitenleiste & Pinned WhatsApp-Kanal:**
+  - Auf Mobilgeräten schließt der WhatsApp-Kanal absolut bündig am unteren Kantenradius der Box ab. Der Desktop-Einklapp-Button wird auf Mobilgeräten automatisch ausgeblendet.
 
 ### Neu in Version 3.0.1:
 - **Perfektionierte Button-Positionierung & nahtlose Ausklapp-/Einklapp-Achse:**

@@ -609,6 +609,8 @@ body {
 
 /* Right Sidebar: Anchored WhatsApp channel at bottom right, scrollable contact at top */
 .box-sidebar {
+  container-type: inline-size;
+  container-name: sidebar;
   position: relative !important;
   display: flex !important;
   flex-direction: column !important;
@@ -637,240 +639,44 @@ body {
   padding: 1.125rem 1.25rem !important;
 }
 
-@media (max-width: 1099px) {
-  .shell {
-    padding: var(--box-top-space) var(--box-side-padding) var(--box-bottom-space) !important;
-    min-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-  }
-
-  .shell > .box {
-    height: auto !important;
-    min-height: min-content !important;
-    max-height: none !important;
-    flex: 0 0 auto !important;
-    margin-bottom: 1.5rem !important;
-    overflow: visible !important;
-  }
-
-  .box-workspace {
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 0 auto !important;
-    height: auto !important;
-    min-height: min-content !important;
-    overflow: visible !important;
-    width: 100% !important;
-  }
-
-  .box-tabs {
-    width: 100% !important;
-    height: auto !important;
-    min-height: min-content !important;
-    flex: 1 0 auto !important;
-    overflow: visible !important;
-  }
-
-  .box-tab-list {
-    width: calc(100% - 2rem) !important;
-    margin: 1rem 1rem 0 !important;
-    height: auto !important;
-    flex-shrink: 0 !important;
-  }
-
-  .box-tab-panel[hidden] {
-    display: none !important;
-  }
-
-  .box-tab-panel:not([hidden]) {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: min-content !important;
-    max-height: none !important;
-    flex: 1 0 auto !important;
-    overflow: visible !important;
-    width: 100% !important;
-  }
-
-  .tab-panel-inner,
-  .news-panel-content,
-  .guides-panel-content {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: min-content !important;
-    max-height: none !important;
-    flex: 1 0 auto !important;
-    overflow: visible !important;
-    width: 100% !important;
-  }
-
-  .news-feed-layout {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 0.75rem !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    height: 72vh !important;
-    min-height: 520px !important;
-    max-height: 820px !important;
-    flex: 1 1 auto !important;
-    overflow: hidden !important;
-  }
-
-  .news-rail-container {
-    height: 100% !important;
-    min-height: 0 !important;
-    align-self: stretch !important;
-    flex: 0 0 3.5rem !important;
-    width: 3.5rem !important;
-    min-width: 3.5rem !important;
-    max-width: 3.5rem !important;
-  }
-
-  .news-filter-rail {
-    position: relative !important;
-    top: auto !important;
-    height: 100% !important;
-    max-height: none !important;
-  }
-
-  .news-feed-main {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    flex: 1 1 0 !important;
-    min-width: 0 !important;
-    width: 100% !important;
-    overflow: hidden !important;
-  }
-
-  .news-scroller {
-    display: block !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    flex: 1 1 0 !important;
-    max-height: none !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    width: 100% !important;
-  }
-
-  .panel-guides .guides-panel-content {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 72vh !important;
-    min-height: 520px !important;
-    max-height: 820px !important;
-    flex: 1 1 auto !important;
-    overflow: hidden !important;
-    width: 100% !important;
-  }
-
-  .guide-scroller {
-    display: block !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    flex: 1 1 0 !important;
-    max-height: none !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    width: 100% !important;
-  }
-
-  .news-grid {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.75rem !important;
-    height: auto !important;
-    width: 100% !important;
-  }
-
-  /* Dedicated interactive mobile height for AI Assistant chat tab */
-  .panel-assistant .assistant-panel-content,
-  .panel-assistant .assistant-panel-content > div {
-    height: 72vh !important;
-    min-height: 520px !important;
-    max-height: 820px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-  }
-
-  /* Bottom Sidebar: Flush with box bottom, WhatsApp card pinned directly to bottom */
-  .box-sidebar {
-    height: auto !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 0 auto !important;
-    margin-top: 2rem !important;
-    border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
-    border-left: none !important;
-    border-bottom-left-radius: 1.75rem !important;
-    border-bottom-right-radius: 1.75rem !important;
-    overflow: hidden !important;
-    background: rgba(253, 244, 228, 0.45) !important;
-  }
-
-  /* Hide dock, edge toggle & resize handle on mobile - keep full sidebar stream */
-  .sidebar-collapse-toggle,
-  .sidebar-edge-toggle-btn,
-  .sidebar-resize-handle,
-  .box-sidebar-docked {
-    display: none !important;
-  }
-
-  .box-sidebar > .sidebar-contact {
-    overflow-y: visible !important;
-    height: auto !important;
-    padding: 1.25rem 1.25rem 0 !important;
-  }
-
-  .box-sidebar > .channel-section {
-    margin-top: 1.25rem !important;
-    border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
-    border-bottom-left-radius: 1.75rem !important;
-    border-bottom-right-radius: 1.75rem !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    padding: 1.25rem !important;
-  }
-}
-
 /* Docked / Collapsed Sidebar on Desktop */
 @media (min-width: 1100px) {
-  /* Edge Collapse Toggle Button attached to divider border */
-  .sidebar-edge-toggle-btn {
-    position: absolute !important;
-    left: -1.1875rem !important; /* Centered on the divider line */
-    top: 1rem !important;        /* Exact matching vertical offset to docked button */
-    width: 2.375rem !important;
-    height: 2.375rem !important;
-    border-radius: 0.625rem !important;
+  /* Integrated Header Collapse Button inside the Sidebar */
+  .sidebar-top-bar {
     display: flex !important;
+    justify-content: flex-end !important;
     align-items: center !important;
-    justify-content: center !important;
-    background: #ffffff !important;
-    border: 1px solid rgba(1, 75, 111, 0.18) !important;
+    padding-bottom: 0.625rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 1px solid rgba(1, 75, 111, 0.08) !important;
+  }
+
+  .sidebar-collapse-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    padding: 0.3125rem 0.625rem !important;
+    background: rgba(253, 244, 228, 0.7) !important;
+    border: 1px solid rgba(1, 75, 111, 0.15) !important;
+    border-radius: 0.5rem !important;
+    font-family: var(--font-inter), sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
     color: #014B6F !important;
-    box-shadow: 0 2px 8px rgba(1, 75, 111, 0.12) !important;
     cursor: pointer !important;
-    z-index: 25 !important;
+    box-shadow: 0 1px 2px rgba(1, 75, 111, 0.04) !important;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  .sidebar-edge-toggle-btn:hover {
+  .sidebar-collapse-btn:hover {
     background: #014B6F !important;
     color: #ffffff !important;
-    transform: scale(1.08) !important;
-    box-shadow: 0 4px 14px rgba(1, 75, 111, 0.22) !important;
+    border-color: #014B6F !important;
+    box-shadow: 0 2px 6px rgba(1, 75, 111, 0.18) !important;
+    transform: translateY(-1px) !important;
   }
 
-  .sidebar-edge-toggle-btn:hover svg {
+  .sidebar-collapse-btn:hover svg {
     color: #ffffff !important;
   }
 
@@ -1545,7 +1351,7 @@ body {
   color: #14532d !important;
   margin: 0 !important;
   line-height: 1.25 !important;
-  white-space: nowrap !important;
+  white-space: normal !important;
 }
 
 .support-ai-badge {
@@ -2434,6 +2240,334 @@ html[data-view-contrast=strong] .news-type-pill {
   border-color: rgba(1, 75, 111, 0.25) !important;
   box-shadow: 0 0.875rem 2.5rem -0.5rem rgba(1, 75, 111, 0.18), 0 0.25rem 0.75rem rgba(1, 75, 111, 0.08) !important;
 }
+
+/* ==========================================================================
+   Responsive Sidebar Cards (Container Queries & Mobile Fallback)
+   When sidebar is narrow or dragged small: icon stacks directly above headline,
+   headline below icon, text below headline, chevron/badge pinned top-right.
+   ========================================================================== */
+@container sidebar (max-width: 350px) {
+  .support-toggle {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    padding-top: 1rem !important;
+    padding-right: 2.75rem !important;
+  }
+
+  .support-icon,
+  .support-icon-ai {
+    margin-top: 0 !important;
+    margin-bottom: 0.25rem !important;
+    align-self: flex-start !important;
+  }
+
+  .support-toggle > div:not(.support-icon),
+  .support-ai-body {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .support-toggle > div:not(.support-icon) h3,
+  .support.support-ai h3 {
+    margin: 0 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+  }
+
+  .support-toggle > div:not(.support-icon) p,
+  .support.support-ai p {
+    margin: 0.25rem 0 0 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .support-toggle .support-chevron {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    margin: 0 !important;
+  }
+
+  .support-ai-badge {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-toggle {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    padding-top: 1rem !important;
+    padding-right: 2.75rem !important;
+  }
+
+  .support-icon,
+  .support-icon-ai {
+    margin-top: 0 !important;
+    margin-bottom: 0.25rem !important;
+    align-self: flex-start !important;
+  }
+
+  .support-toggle > div:not(.support-icon),
+  .support-ai-body {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .support-toggle > div:not(.support-icon) h3,
+  .support.support-ai h3 {
+    margin: 0 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+  }
+
+  .support-toggle > div:not(.support-icon) p,
+  .support.support-ai p {
+    margin: 0.25rem 0 0 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .support-toggle .support-chevron {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    margin: 0 !important;
+  }
+
+  .support-ai-badge {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+  }
+}
+
+/* ==========================================================================
+   Authoritative Mobile & Tablet Layout (max-width: 1099px)
+   Placed at the very end of stylesheet so that its !important rules
+   always supersede any global rules declared earlier in the cascade.
+   ========================================================================== */
+@media (max-width: 1099px) {
+  .shell {
+    padding: var(--box-top-space) var(--box-side-padding) var(--box-bottom-space) !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .shell > .box {
+    height: auto !important;
+    min-height: min-content !important;
+    max-height: none !important;
+    flex: 0 0 auto !important;
+    margin-bottom: 1.5rem !important;
+    overflow: visible !important;
+  }
+
+  .box-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 0 auto !important;
+    height: auto !important;
+    min-height: min-content !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .box-tabs {
+    width: 100% !important;
+    height: auto !important;
+    min-height: min-content !important;
+    flex: 1 0 auto !important;
+    overflow: visible !important;
+  }
+
+  .box-tab-list {
+    width: calc(100% - 2rem) !important;
+    margin: 1rem 1rem 0 !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .box-tab-panel[hidden] {
+    display: none !important;
+  }
+
+  .box-tab-panel:not([hidden]) {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: min-content !important;
+    max-height: none !important;
+    flex: 1 0 auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .tab-panel-inner,
+  .news-panel-content,
+  .guides-panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: min-content !important;
+    max-height: none !important;
+    flex: 1 0 auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  /* Dedicated 75vh scrolling viewport for Neuigkeiten tab content */
+  .news-feed-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    height: 75vh !important;
+    min-height: 520px !important;
+    max-height: 850px !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+
+  .news-rail-container {
+    height: 100% !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+    flex: 0 0 3.5rem !important;
+    width: 3.5rem !important;
+    min-width: 3.5rem !important;
+    max-width: 3.5rem !important;
+  }
+
+  .news-filter-rail {
+    position: relative !important;
+    top: auto !important;
+    height: 100% !important;
+    max-height: none !important;
+  }
+
+  .news-feed-main {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .news-panel-content .news-scroller,
+  .news-scroller {
+    display: block !important;
+    height: 100% !important;
+    min-height: 420px !important;
+    flex: 1 1 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Dedicated 75vh scrolling viewport for Anleitungen tab content */
+  .panel-guides .guides-panel-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 75vh !important;
+    min-height: 520px !important;
+    max-height: 850px !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .guide-scroller {
+    display: block !important;
+    height: 100% !important;
+    min-height: 420px !important;
+    flex: 1 1 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .news-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+    height: auto !important;
+    width: 100% !important;
+    visibility: visible !important;
+  }
+
+  /* Dedicated interactive mobile height for KI-Assistent tab */
+  .panel-assistant .assistant-panel-content,
+  .panel-assistant .assistant-panel-content > div {
+    height: 75vh !important;
+    min-height: 520px !important;
+    max-height: 850px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  /* Bottom Sidebar: Flush with box bottom, WhatsApp card pinned directly to bottom */
+  .box-sidebar {
+    height: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 0 auto !important;
+    margin-top: 2rem !important;
+    border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
+    border-left: none !important;
+    border-bottom-left-radius: 1.75rem !important;
+    border-bottom-right-radius: 1.75rem !important;
+    overflow: hidden !important;
+    background: rgba(253, 244, 228, 0.45) !important;
+  }
+
+  /* Hide dock, edge toggle, resize handle & desktop collapse top bar on mobile */
+  .sidebar-collapse-toggle,
+  .sidebar-edge-toggle-btn,
+  .sidebar-resize-handle,
+  .box-sidebar-docked,
+  .sidebar-top-bar {
+    display: none !important;
+  }
+
+  .box-sidebar > .sidebar-contact {
+    overflow-y: visible !important;
+    height: auto !important;
+    padding: 1.25rem 1.25rem 0 !important;
+  }
+
+  .box-sidebar > .channel-section {
+    margin-top: 1.25rem !important;
+    border-top: 1px solid rgba(1, 75, 111, 0.12) !important;
+    border-bottom-left-radius: 1.75rem !important;
+    border-bottom-right-radius: 1.75rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 1.25rem !important;
+  }
+}
+
 
 
 
